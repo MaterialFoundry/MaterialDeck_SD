@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+        <meta name=apple-mobile-web-app-capable content=yes>
+        <meta name=apple-mobile-web-app-status-bar-style content=black>
+        <title>com.cdeenen.materialdeck Playlist Property Inspector</title>
+        <link rel="stylesheet" href="css/sdpi.css">
+    </head>
+    <body>
+        <div class="sdpi-wrapper" id="wrapper" style="visibility:hidden">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Mode</div>
+                <select class="sdpi-item-value select" id="playlistMode" type="select">
+                  <option value=0>Playlist</option>
+                  <option value=1>Track</option>
+                  <option value=2>Stop All</option>
+                </select>
+              </div>
+              <div class="sdpi-item" id='playlistModeType'>
+                <div class="sdpi-item-label">Type</div>
+                <select class="sdpi-item-value select" id="playlistType" type="select">
+                  <option value=0>Play/Stop</option>
+                  <option value=1>Offset</option>
+                </select>
+              </div>
+              <div class="spdi-wrapper" id="playlistOffsetStuff" style="visibility:hidden">
+                <div class="sdpi-item" id="offsetContainer">
+                  <div class="sdpi-item-label">Offset</div>
+                  <input class="sdpi-item-value" id="offset" value=0>
+                </div>
+                <div class="sdpi-item" id="onBackgroundContainer">
+                  <div class="sdpi-item-label">On Background</div>
+                  <input class="sdpi-item-value" id="onBackground" value="#00FF00">
+                </div>
+                <div class="sdpi-item" id="offBackgroundContainer">
+                  <div class="sdpi-item-label">Off Background</div>
+                  <input class="sdpi-item-value" id="offBackground" value="#000000">
+                </div>
+              </div>
+              <div class="spdi-wrapper" id="playlistPlayStuff" style="visibility:hidden">
+                <div type="checkbox" class="sdpi-item" id="displayPlName">
+                  <div class="sdpi-item-label">Display Name</div>
+                  <input class="sdpi-item-value" id="displayName" type="checkbox">
+                  <label for="displayName"><span></span></label>
+                </div>
+                <div class="sdpi-item" id="playlistNrContainer">
+                  <div class="sdpi-item-label">Playlist Nr</div>
+                  <input class="sdpi-item-value" id="playlistNr" value=1>
+                </div>
+                <div class="sdpi-item" id="trackNrContainer">
+                  <div class="sdpi-item-label">Track Nr</div>
+                  <input class="sdpi-item-value" id="trackNr" value=1>
+                </div>
+                <div class="sdpi-item" id="playBackgroundContainer">
+                  <div class="sdpi-item-label">Play Background</div>
+                  <input class="sdpi-item-value" id="playBackground" value="#00FF00">
+                </div>
+                <div class="sdpi-item" id="stopBackgroundContainer">
+                  <div class="sdpi-item-label">Stop Background</div>
+                  <input class="sdpi-item-value" id="stopBackground" value="#FF0000">
+                </div>
+              </div>
+              <div class="sdpi-item" id="backgroundContainer">
+                <div class="sdpi-item-label">Background</div>
+                <input class="sdpi-item-value" id="background" value="#000000">
+              </div>
+        </div>
+
+        <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
+        <script src="js/common.js"></script>
+        <script src="js/common_pi.js"></script>
+        <script src="js/index_pi.js"></script>
+    </body>
+    </html>

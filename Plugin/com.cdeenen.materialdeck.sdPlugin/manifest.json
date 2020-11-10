@@ -1,0 +1,120 @@
+{
+  "Actions": [
+    {
+      "Name": "Playlist",
+      "Icon": "action/images/playlist/play",
+      "States": [
+        {
+          "Image": "action/images/playlist/play",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Playlist Control.",
+      "UUID": "com.cdeenen.materialdeck.playlist",
+      "PropertyInspectorPath": "PropertyInspector/playlist.html"
+    },
+    {
+      "Name": "Soundboard",
+      "Icon": "action/images/soundboard/soundboard",
+      "States": [
+        {
+          "Image": "action/images/soundboard/soundboard",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Soundboard.",
+      "UUID": "com.cdeenen.materialdeck.soundboard",
+      "PropertyInspectorPath": "PropertyInspector/soundboard.html"
+    },
+    {
+      "Name": "Token",
+      "Icon": "action/images/token/mystery-man",
+      "States": [
+        {
+          "Image": "action/images/token/mystery-man",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Displays selected token information.",
+      "UUID": "com.cdeenen.materialdeck.token",
+      "PropertyInspectorPath": "PropertyInspector/token.html"
+    },
+    {
+      "Name": "Move",
+      "Icon": "action/images/move/center",
+      "States": [
+        {
+          "Image": "action/images/move/center",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Move the canvas or the selected token.",
+      "UUID": "com.cdeenen.materialdeck.move",
+      "PropertyInspectorPath": "PropertyInspector/move.html"
+    },
+    {
+      "Name": "Macro",
+      "Icon": "action/images/macro/macro",
+      "States": [
+        {
+          "Image": "action/images/macro/macro",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Trigger a macro.",
+      "UUID": "com.cdeenen.materialdeck.macro",
+      "PropertyInspectorPath": "PropertyInspector/macro.html"
+    },
+    {
+      "Name": "Combat Tracker",
+      "Icon": "action/images/combattracker/combattracker",
+      "States": [
+        {
+          "Image": "action/images/combattracker/combattracker",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Combat tracker.",
+      "UUID": "com.cdeenen.materialdeck.combattracker",
+      "PropertyInspectorPath": "PropertyInspector/combattracker.html"
+    },
+    {
+      "Name": "Other",
+      "Icon": "action/images/other/other",
+      "States": [
+        {
+          "Image": "action/images/other/other",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Other functions.",
+      "UUID": "com.cdeenen.materialdeck.other",
+      "PropertyInspectorPath": "PropertyInspector/other.html"
+    }
+  ], 
+  "SDKVersion": 2,
+  "Author": "cdeenen",
+  "Category": "Material Deck",
+  "CategoryIcon": "vtt",
+  "CodePath": "index.html", 
+  "PropertyInspectorPath": "propertyinspector/index.html", 
+  "Description": "Stream Deck plugin for the 'Material Deck' Foundry VTT module", 
+  "Name": "Material Deck", 
+  "Icon": "vtt", 
+  "URL": "https://www.elgato.com/en/gaming/stream-deck", 
+  "Version": "0.7.0",
+  "OS": [
+    {
+        "Platform": "mac", 
+        "MinimumVersion" : "10.11"
+    },
+    {
+        "Platform": "windows", 
+        "MinimumVersion" : "10"
+    }
+  ],
+  "Software": 
+    {
+        "MinimumVersion" : "4.1"
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+        <meta name=apple-mobile-web-app-capable content=yes>
+        <meta name=apple-mobile-web-app-status-bar-style content=black>
+        <title>com.cdeenen.materialdeck Combat Tracker Property Inspector</title>
+        <link rel="stylesheet" href="css/sdpi.css">
+    </head>
+    <body>
+        <div class="sdpi-wrapper" id="wrapper" style="visibility:hidden">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Mode</div>
+            <select class="sdpi-item-value select" id="combatTrackerMode" type="select">
+              <option value=0>Combatants</option>
+              <option value=1>Current Turn's Combatant</option>
+              <option value=2>Function</option>
+            </select>
+          </div>
+          <div id="func" style="display:none">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Function</div>
+              <select class="sdpi-item-value select" id="combatTrackerFunction" type="select">
+                <option value=0>Start/Stop Combat</option>
+                <option value=1>Next Turn</option>
+                <option value=2>Previous Turn</option>
+                <option value=3>Next Round</option>
+                <option value=4>Previous Round</option>
+                <option value=5>Turn Display</option>
+              </select>
+            </div>
+            <div id="turnDisplay" style="display:none">
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Display Turn</div>
+                <input class="sdpi-item-value" id="displayTurn" type="checkbox">
+                <label for="displayTurn"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Display Round</div>
+                <input class="sdpi-item-value" id="displayRound" type="checkbox">
+                <label for="displayRound"><span></span></label>
+              </div>
+            </div>
+          </div>
+          <div id="combatant" style="display:none">
+            <div type="checkbox" class="sdpi-item">
+              <div class="sdpi-item-label">Display Name</div>
+              <input class="sdpi-item-value" id="displayName" type="checkbox">
+              <label for="displayName"><span></span></label>
+            </div>
+            <div type="checkbox" class="sdpi-item">
+              <div class="sdpi-item-label">Display Icon</div>
+              <input class="sdpi-item-value" id="displayIcon" type="checkbox">
+              <label for="displayIcon"><span></span></label>
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Stats</div>
+              <select class="sdpi-item-value select" id="stats" type="select">
+                <option value=0>None</option>
+                <option value=1>HP</option>
+                <option value=2>AC</option>
+                <option value=3>Speed</option>
+                <option value=4>Initiative</option>
+              </select>
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">On Click</div>
+              <select class="sdpi-item-value select" id="onClick" type="select">
+                <option value=0>Do Nothing</option>
+                <option value=1>Select Token</option>
+                <option value=2>Center on Token</option>
+                <option value=3>Center on Token and Select Token</option>
+                <option value=4>Open Character Sheet</option>
+                <option value=5>Open Token Config</option>
+              </select>
+            </div>
+            <div class="sdpi-item" id="combatantNrSel" stype="display:none">
+              <div class="sdpi-item-label">Combatant Nr</div>
+              <input class="sdpi-item-value" id="combatantNr" value="1">
+            </div>
+          </div>
+          <div class="sdpi-item" id="backgroundContainer">
+            <div class="sdpi-item-label">Background</div>
+            <input class="sdpi-item-value" id="background" value="#000000">
+          </div>
+        </div>
+
+        <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
+        <script src="js/common.js"></script>
+        <script src="js/common_pi.js"></script>
+        <script src="js/index_pi.js"></script>
+    </body>
+    </html>
