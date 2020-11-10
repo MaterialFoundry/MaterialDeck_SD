@@ -1,0 +1,2 @@
+Get the latest release <a href="https://github.com/CDeenen/MaterialDeck_SD/releases">here</a>.<br>
+Please go to the main <a href="https://github.com/CDeenen/MaterialDeck">Material Deck</a> github page for more information on the module.
