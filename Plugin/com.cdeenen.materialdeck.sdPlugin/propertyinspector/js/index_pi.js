@@ -114,61 +114,42 @@ const updateUI = (pl) => {
     const combatTracker = document.querySelector(`#combatTrackerMode`);
     if (combatTracker){
         if (pl.combatTrackerMode == 0 || pl.combatTrackerMode == 1){
-            element = document.querySelector(`#func`);
-            element.style = 'display:none';
-            element = document.querySelector(`#combatant`);
-            element.style = '';
-            element = document.querySelector(`#combatantNrSel`);
+            displayElement(`#func`,false);
+            displayElement(`#combatant`,true);
             if (pl.combatTrackerMode == 0)
-                element.style = '';
+                displayElement(`#combatantNrSel`,true);
             else
-                element.style = 'display:none';
+                displayElement(`#combatantNrSel`,false);
         }
         else if (pl.combatTrackerMode == 2){
-            if (pl.combatTrackerFunction == 1){
-                element = document.querySelector(`#turnDisplay`);
-                element.style = '';
-            }
-            else {
-                element = document.querySelector(`#turnDisplay`);
-                element.style = 'display:none';
-            }
-            element = document.querySelector(`#func`);
-            element.style = '';
-            element = document.querySelector(`#combatant`);
-            element.style = 'display:none';
+            if (pl.combatTrackerFunction == 1)
+                displayElement(`#turnDisplay`,true);
+            else 
+                displayElement(`#turnDisplay`,false);
+            displayElement(`#func`,true);
+            displayElement(`#combatant`,false);
         }
     }
     /////////////////////////////////////////////////////////////////////////
     const macro = document.querySelector(`#macroMode`);
     if (macro){
         macroBoardMode = pl.macroBoardMode;
-        
         if (pl.macroMode == 2) {
-            element = document.querySelector(`#macroBoardModeWrapper`);
-            element.style = '';
-            if (pl.macroBoardMode == 0) {
-                element = document.querySelector(`#macroOffsetStuff`);
-                element.style = 'display:none';
-                element = document.querySelector(`#macroTriggerStuff`);
-                element.style = '';
+            displayElement(`#macroBoardModeWrapper`,true);
+            if (macroBoardMode == 0) {
+                displayElement(`#macroOffsetStuff`,false);
+                displayElement(`#macroTriggerStuff`,true);
             }
             else {
-                element = document.querySelector(`#macroOffsetStuff`);
-                element.style = '';
-                element = document.querySelector(`#macroTriggerStuff`);
-                element.style = 'display:none';
+                displayElement(`#macroOffsetStuff`,true);
+                displayElement(`#macroTriggerStuff`,false);
             }
         }
         else {
-            element = document.querySelector(`#macroBoardModeWrapper`);
-            element.style = 'display:none';
-            element = document.querySelector(`#macroOffsetStuff`);
-            element.style = 'display:none';
-            element = document.querySelector(`#macroTriggerStuff`);
-            element.style = '';
+            displayElement(`#macroBoardModeWrapper`,false);
+            displayElement(`#macroOffsetStuff`,false);
+            displayElement(`#macroTriggerStuff`,true);
         }
-        
     }
     ////////////////////////////////////////////////////////////////////
     const playlist = document.querySelector(`#playlistMode`);
@@ -176,26 +157,26 @@ const updateUI = (pl) => {
         playlistType = pl.playlistType;
         if (pl.playlistMode < 2){
             displayElement('#playlistModeType',true)
+            displayElement(`#ringColorWrapper`,true);
             if (playlistType == 1){
-                displayElement(`#playlistOffsetStuff`,true);
-                displayElement(`#playlistPlayStuff`,false);
-                displayElement(`#backgroundContainer`,true);
+                displayElement(`#playlistOffsetWrapper`,true);
+                displayElement(`#playlistPlayWrapper`,false);
+                
             }
             else {
                 if (pl.playlistMode == 0)
                     displayElement(`#trackNrContainer`,false);
                 else
                     displayElement(`#trackNrContainer`,false);
-                displayElement(`#playlistOffsetStuff`,false);
-                displayElement(`#playlistPlayStuff`,true);
-                displayElement(`#backgroundContainer`,false);
+                displayElement(`#playlistOffsetWrapper`,false);
+                displayElement(`#playlistPlayWrapper`,true);
             }
         }
         else {
             displayElement(`#playlistModeType`,false);
-            displayElement(`#playlistOffsetStuff`,false);
-            displayElement(`#playlistPlayStuff`,false);
-            displayElement(`#backgroundContainer`,true);
+            displayElement(`#playlistOffsetWrapper`,false);
+            displayElement(`#playlistPlayWrapper`,false);
+            displayElement(`#ringColorWrapper`,false);
         }
     }
     ////////////////////////////////////////////////////////////////////
@@ -204,17 +185,17 @@ const updateUI = (pl) => {
         if (pl.soundboardMode == 0){    //play sound
             displayElement(`#playContainer`,true);
             displayElement(`#offsetContainer`,false);
-            displayElement(`#stopAllSoundsContainer`,false);
+            displayElement(`#ringColorWrapper`,false);
         }
         else if (pl.soundboardMode == 1){    //offset
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,true);
-            displayElement(`#stopAllSoundsContainer`,false);
+            displayElement(`#ringColorWrapper`,true);
         }
         else if (pl.soundboardMode == 2){    //stop all sounds
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,false);
-            displayElement(`#stopAllSoundsContainer`,true);
+            displayElement(`#ringColorWrapper`,false);
         }
     }
 ////////////////////////////////////////////////////////
@@ -227,6 +208,7 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#ringColorWrapper`,true);
         }
         else if (pl.otherMode == 1){   //scene selection
             sceneMode = pl.sceneFunction;
@@ -236,6 +218,7 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#ringColorWrapper`,true);
             if (sceneMode == 0){
                 displayElement(`#visibleSceneContainer`,true);
                 displayElement(`#anySceneContainer`,false);
@@ -253,6 +236,7 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,true);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#ringColorWrapper`,false);
     
             displayElement(`#displayedControlsContainer`,false);
             displayElement(`#basicControlsContainer`,false);
@@ -263,15 +247,15 @@ const updateUI = (pl) => {
             displayElement(`#lightingControlsContainer`,false);
             displayElement(`#soundControlsContainer`,false);
             displayElement(`#journalNotesContainer`,false);
-            if (controlMode == 0) displayElement(`#displayedControlsContainer`,true);
-            else if (controlMode == 1) displayElement(`#basicControlsContainer`,true);
-            else if (controlMode == 2) displayElement(`#measurementControlsContainer`,true);
-            else if (controlMode == 3) displayElement(`#tileControlContainer`,true);
-            else if (controlMode == 4) displayElement(`#drawingToolsContainer`,true);
-            else if (controlMode == 5) displayElement(`#wallControlsContainer`,true);
-            else if (controlMode == 6) displayElement(`#lightingControlsContainer`,true);
-            else if (controlMode == 7) displayElement(`#soundControlsContainer`,true);
-            else if (controlMode == 8) displayElement(`#journalNotesContainer`,true);
+            if (controlMode == 0 || controlMode == 1) displayElement(`#displayedControlsContainer`,true);
+            else if (controlMode == 2) displayElement(`#basicControlsContainer`,true);
+            else if (controlMode == 3) displayElement(`#measurementControlsContainer`,true);
+            else if (controlMode == 4) displayElement(`#tileControlContainer`,true);
+            else if (controlMode == 5) displayElement(`#drawingToolsContainer`,true);
+            else if (controlMode == 6) displayElement(`#wallControlsContainer`,true);
+            else if (controlMode == 7) displayElement(`#lightingControlsContainer`,true);
+            else if (controlMode == 8) displayElement(`#soundControlsContainer`,true);
+            else if (controlMode == 9) displayElement(`#journalNotesContainer`,true);
         }
         else if (pl.otherMode == 3){   //darkness
             darknessMode = pl.darknessFunction;
@@ -281,6 +265,7 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,true);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#ringColorWrapper`,false);
             if (darknessMode == 2)
                 displayElement(`#darknessVal`,false);
             else   
@@ -292,10 +277,10 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,true);
+            displayElement(`#ringColorWrapper`,false);
         }
     }
     
-
     const wrapper = document.querySelector(`#wrapper`);
     wrapper.style = 'visibility:visible';
 
@@ -304,12 +289,10 @@ const updateUI = (pl) => {
             const foundElement = document.querySelector(`#${e}`);
             console.log(`searching for: #${e}`, 'found:', foundElement);
             if (foundElement && foundElement.type !== 'file') {
-                if (foundElement.type == 'checkbox'){
+                if (foundElement.type == 'checkbox')
                     foundElement.checked = pl[e];
-                }
-                else {
+                else 
                     foundElement.value = pl[e];
-                }
             }
         }
    })
@@ -359,130 +342,107 @@ $SD.on('piDataChanged', (returnValue) => {
     console.log(returnValue);
     if (returnValue.key == 'combatTrackerMode'){
         if (returnValue.value == 0 || returnValue.value == 1){
-            element = document.querySelector(`#func`);
-            element.style = 'display:none';
-            element = document.querySelector(`#combatant`);
-            element.style = '';
-            element = document.querySelector(`#combatantNrSel`);
+            displayElement(`#func`,false);
+            displayElement(`#combatant`,true);
             if (returnValue.value == 0)
-                element.style = '';
+                displayElement(`#combatantNrSel`,true);
             else
-                element.style = 'display:none';
+                displayElement(`#combatantNrSel`,false);
         }
         else if (returnValue.value == 2){
-            element = document.querySelector(`#func`);
-            element.style = '';
-            element = document.querySelector(`#combatant`);
-            element.style = 'display:none';
+            displayElement(`#func`,true);
+            displayElement(`#combatant`,false);
         }
     }
     else if (returnValue.key == 'combatTrackerFunction'){
-        if (returnValue.value == 5){
-            element = document.querySelector(`#turnDisplay`);
-            element.style = '';
-        }
-        else {
-            element = document.querySelector(`#turnDisplay`);
-            element.style = 'display:none';
-        }
+        if (returnValue.value == 5)
+            displayElement(`#turnDisplay`,true);
+        else 
+            displayElement(`#turnDisplay`,false);
     }
 ///////////////////////////////////////////////////////////////////////////
     else if (returnValue.key == 'macroMode'){
         if (returnValue.value == 2){
             if (macroBoardMode == 1) {
-                element = document.querySelector(`#macroOffsetStuff`);
-                element.style = '';
-                element = document.querySelector(`#macroTriggerStuff`);
-                element.style = 'display:none';
+                displayElement('#macroOffsetStuff',true);
+                displayElement('#macroTriggerStuff',false);
             }
             else {
-                element = document.querySelector(`#macroOffsetStuff`);
-                element.style = 'display:none';
-                element = document.querySelector(`#macroTriggerStuff`);
-                element.style = '';
+                displayElement('#macroOffsetStuff',false);
+                displayElement('#macroTriggerStuff',true);
             }
-            element = document.querySelector(`#macroBoardModeWrapper`);
-            element.style = ''; 
+            displayElement('#macroBoardModeWrapper',true);
         }
         else{
-            element = document.querySelector(`#macroTriggerStuff`);
-            element.style = '';
-            element = document.querySelector(`#macroBoardModeWrapper`);
-            element.style = 'display:none';
-            element = document.querySelector(`#macroOffsetStuff`);
-            element.style = 'display:none';
+            displayElement('#macroOffsetStuff',false);
+            displayElement('#macroTriggerStuff',true);
+            displayElement('#macroBoardModeWrapper',false);
         }
     }
     else if (returnValue.key == 'macroBoardMode'){
         macroBoardMode = returnValue.value;
         if (returnValue.value == 0) {
-            element = document.querySelector(`#macroOffsetStuff`);
-            element.style = 'display:none';
-            element = document.querySelector(`#macroTriggerStuff`);
-            element.style = '';
+            displayElement('#macroOffsetStuff',false);
+            displayElement('#macroTriggerStuff',true);
         }
         else {
-            element = document.querySelector(`#macroOffsetStuff`);
-            element.style = '';
-            element = document.querySelector(`#macroTriggerStuff`);
-            element.style = 'display:none';
+            displayElement('#macroOffsetStuff',true);
+            displayElement('#macroTriggerStuff',false);
         }
     }
     /////////////////////////////////////////////////////////////////////////////
     else if (returnValue.key == 'playlistMode'){
-        if (returnValue.value < 2){
+        if (returnValue.value < 2){ //Track/playlist
             displayElement('#playlistModeType',true)
-            if (playlistType == 1){
-                displayElement(`#playlistOffsetStuff`,true);
-                displayElement(`#playlistPlayStuff`,false);
-                displayElement(`#backgroundContainer`,true);
+            displayElement(`#ringColorWrapper`,true);
+            if (playlistType == 1){ //Offset
+                displayElement(`#playlistOffsetWrapper`,true);
+                displayElement(`#playlistPlayWrapper`,false);
             }
-            else {
-                if (returnValue.value == 0)
+            else {  //Play/stop
+                if (returnValue.value == 0) //Playlist
                     displayElement(`#trackNrContainer`,false);
-                else
-                    displayElement(`#trackNrContainer`,true);
-                displayElement(`#playlistOffsetStuff`,false);
-                displayElement(`#playlistPlayStuff`,true);
-                displayElement(`#backgroundContainer`,false);
+                else    //Track
+                    displayElement(`#trackNrContainer`,false);
+                displayElement(`#playlistOffsetWrapper`,false);
+                displayElement(`#playlistPlayWrapper`,true);
             }
         }
-        else {
+        else {  //Stop all
             displayElement(`#playlistModeType`,false);
-            displayElement(`#playlistOffsetStuff`,false);
-            displayElement(`#playlistPlayStuff`,false);
-            displayElement(`#backgroundContainer`,true);
+            displayElement(`#playlistOffsetWrapper`,false);
+            displayElement(`#playlistPlayWrapper`,false);
+            displayElement(`#ringColorWrapper`,false);
         }
     }
-    else if (returnValue.key == 'playlistType'){
+    else if (returnValue.key == 'playlistType'){    //Track/Playlist
         playlistType = returnValue.key;
-        displayElement(`#backgroundContainer`,false);
-        if (returnValue.value == 1){
-            displayElement(`#playlistOffsetStuff`,true);
-            displayElement(`#playlistPlayStuff`,false);
+        displayElement(`#ringColorWrapper`,true);
+        if (returnValue.value == 1){    //Offset
+            displayElement(`#playlistOffsetWrapper`,true);
+            displayElement(`#playlistPlayWrapper`,false);
         }
-        else { 
-            displayElement(`#playlistOffsetStuff`,false);
-            displayElement(`#playlistPlayStuff`,true);
+        else {  //Play/stop
+            displayElement(`#playlistOffsetWrapper`,false);
+            displayElement(`#playlistPlayWrapper`,true);
         }
     }
     /////////////////////////////////////////////////////////////////////////
     else if (returnValue.key == 'soundboardMode'){
-        console.log("check",returnValue.value);
         if (returnValue.value == 0){    //play sound
             displayElement(`#playContainer`,true);
             displayElement(`#offsetContainer`,false);
-            displayElement(`#stopAllSoundsContainer`,false);
+            displayElement(`#ringColorWrapper`,false);
         }
         else if (returnValue.value == 1){    //offset
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,true);
-            displayElement(`#stopAllSoundsContainer`,false);
+            displayElement(`#ringColorWrapper`,true);
         }
         else if (returnValue.value == 2){    //stop all sounds
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,false);
-            displayElement(`#stopAllSoundsContainer`,true);
+            displayElement(`#ringColorWrapper`,false);
         }
     }
     /////////////////////////////////////////////////////////////
@@ -493,6 +453,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#ringColorWrapper`,true);
         }
         else if (returnValue.value == 1){   //scene selection
             displayElement(`#pauseContainer`,false);
@@ -500,6 +461,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#ringColorWrapper`,true);
             if (sceneMode == 0){
                 displayElement(`#visibleSceneContainer`,true);
                 displayElement(`#anySceneContainer`,false);
@@ -515,6 +477,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#controlContainer`,true);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#ringColorWrapper`,false);
 
             displayElement(`#displayedControlsContainer`,false);
             displayElement(`#basicControlsContainer`,false);
@@ -541,6 +504,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,true);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#ringColorWrapper`,false);
             if (darknessMode == 2)
                 displayElement(`#darknessVal`,false);
             else   
@@ -576,15 +540,15 @@ $SD.on('piDataChanged', (returnValue) => {
         displayElement(`#lightingControlsContainer`,false);
         displayElement(`#soundControlsContainer`,false);
         displayElement(`#journalNotesContainer`,false);
-        if (controlMode == 0) displayElement(`#displayedControlsContainer`,true);
-        else if (controlMode == 1) displayElement(`#basicControlsContainer`,true);
-        else if (controlMode == 2) displayElement(`#measurementControlsContainer`,true);
-        else if (controlMode == 3) displayElement(`#tileControlContainer`,true);
-        else if (controlMode == 4) displayElement(`#drawingToolsContainer`,true);
-        else if (controlMode == 5) displayElement(`#wallControlsContainer`,true);
-        else if (controlMode == 6) displayElement(`#lightingControlsContainer`,true);
-        else if (controlMode == 7) displayElement(`#soundControlsContainer`,true);
-        else if (controlMode == 8) displayElement(`#journalNotesContainer`,true);
+        if (controlMode == 0 || controlMode == 1) displayElement(`#displayedControlsContainer`,true);
+        else if (controlMode == 2) displayElement(`#basicControlsContainer`,true);
+        else if (controlMode == 3) displayElement(`#measurementControlsContainer`,true);
+        else if (controlMode == 4) displayElement(`#tileControlContainer`,true);
+        else if (controlMode == 5) displayElement(`#drawingToolsContainer`,true);
+        else if (controlMode == 6) displayElement(`#wallControlsContainer`,true);
+        else if (controlMode == 7) displayElement(`#lightingControlsContainer`,true);
+        else if (controlMode == 8) displayElement(`#soundControlsContainer`,true);
+        else if (controlMode == 9) displayElement(`#journalNotesContainer`,true);
     }
     else if (returnValue.key == 'darknessFunction'){
         darknessMode = returnValue.value;
@@ -593,15 +557,6 @@ $SD.on('piDataChanged', (returnValue) => {
             else   
                 displayElement(`#darknessVal`,true);
     }
-
-    //let sceneMode = 0;
-    //let darknessMode = 0;
-
-
-
-
-    //const wrapper = document.querySelector(`#wrapper`);
-    //wrapper.style = 'visibility:visible';
 
     /* SAVE THE VALUE TO SETTINGS */
     saveSettings(returnValue);

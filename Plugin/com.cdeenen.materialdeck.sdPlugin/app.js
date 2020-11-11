@@ -41,6 +41,9 @@ function connected(jsn) {
         $SD.on(actions[i]+'.keyDown', (jsonObj) => action.onEvent(jsonObj));
         $SD.on(actions[i]+'.keyUp', (jsonObj) => action.onEvent(jsonObj));
         $SD.on(actions[i]+'.didReceiveSettings', (jsonObj) => action.onEvent(jsonObj));
+        //$SD.on(actions[i]+'.propertyInspectorDidAppear', (jsonObj) => {
+       //     console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js]propertyInspectorDidAppear:');
+       // });
     }
 };
 
@@ -240,8 +243,7 @@ function sendToSDWS(msg) {
             //setState(msg);
         }
         else if (event == 'setIcon'){
-            let msg = {context: context, url: data.url, format: data.format, background: data.background, combat: data.combat}
-            drawImage(msg);
+            drawImage(data);
         }
         else 
             $SD.connection.send(msg);
@@ -333,7 +335,6 @@ function drawImage(data){
     console.log('drawImage1',data);
     if (data == undefined) 
         return;
-
     const context = data.context;
     var url = data.url;
     const format = data.format;
@@ -347,13 +348,9 @@ function drawImage(data){
             BGvalid = false;
     if (BGvalid == false) background = '#000000';
 
-    //console.log('drawImage',{context:context,url:url,format:format,background:background})
-    if (format == 'svg'){
-      url = "action/images/black.png";
-    }
     if (url == "" || format == 'color')
         url = "action/images/transparant.png"
-    console.log(url);
+
     let canvas;
     let canvasId = 'canvas' + counter;
     canvas = document.getElementById(canvasId);
@@ -364,16 +361,20 @@ function drawImage(data){
     ctx.filter = "none";
 
     let margin = 0;
-    ctx.fillStyle = background;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    if (data.combat != undefined && data.combat > 0){
+    if (data.ring != undefined && data.ring > 0){
+        ctx.fillStyle = background;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         margin = 10;
-        if (data.combat == 2) {
-            ctx.fillStyle = '#cccc00';
+        if (data.ring == 2) {
+            ctx.fillStyle = data.ringColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = background;
             ctx.fillRect(margin, margin, canvas.width-2*margin, canvas.height-2*margin);
         }
+    }
+    else {
+        ctx.fillStyle = background;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
     
     let resImageURL = url;
@@ -412,9 +413,6 @@ function drawImage(data){
             yStart = 0;
         }
         
-        if (data.combat){
-            
-        }
         ctx.drawImage(img, xStart+margin, yStart+margin, renderableWidth - 2*margin, renderableHeight - 2*margin);
         
         var json = {

@@ -1,64 +1,64 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
-        <meta name=apple-mobile-web-app-capable content=yes>
-        <meta name=apple-mobile-web-app-status-bar-style content=black>
-        <title>com.cdeenen.materialdeck Macro Property Inspector</title>
-        <link rel="stylesheet" href="css/sdpi.css">
-    </head>
-    <body>
-        <div class="sdpi-wrapper" id="wrapper" style="visibility:hidden">
-              <div class="sdpi-item">
-                <div class="sdpi-item-label">Mode</div>
-                <select class="sdpi-item-value select" id="macroMode" type="select">
-                  <option value=0>Hotbar</option>
-                  <option value=1>Visible Hotbar</option>
-                  <option value=2>Macro Board</option>
-                </select>
-              </div>
-              <div class="sdpi-item" id="macroBoardModeWrapper">
-                <div class="sdpi-item-label">Type</div>
-                <select class="sdpi-item-value select" id="macroBoardMode" type="select">
-                  <option value=0>Trigger Macro</option>
-                  <option value=1>Offset</option>
-                </select>
-              </div>
-              <div class="spdi-wrapper" id="macroOffsetStuff" style="visibility:hidden">
-                <div class="sdpi-item" id="macroOffsetAmount">
-                  <div class="sdpi-item-label">Offset</div>
-                  <input class="sdpi-item-value" id="macroOffset" value="0">
-                </div>
-                <div class="sdpi-item" id="onBackgroundContainer">
-                  <div class="sdpi-item-label">On Background</div>
-                  <input class="sdpi-item-value" id="onBackground" value="#00FF00">
-                </div>
-                <div class="sdpi-item" id="offBackgroundContainer">
-                  <div class="sdpi-item-label">Off Background</div>
-                  <input class="sdpi-item-value" id="offBackground" value="#000000">
-                </div>
-              </div>
-              <div class="spdi-wrapper" id="macroTriggerStuff" style="visibility:hidden">
-                <div type="checkbox" class="sdpi-item" id="displayMacroName">
-                  <div class="sdpi-item-label">Display Name</div>
-                  <input class="sdpi-item-value" id="displayName" type="checkbox">
-                  <label for="displayName"><span></span></label>
-                </div>
-                <div class="sdpi-item" id="macroNumberContainer">
-                  <div class="sdpi-item-label">Macro Number</div>
-                  <input class="sdpi-item-value" id="macroNumber" value="0">
-                </div>
-                <div class="sdpi-item" id="backgroundContainer">
-                  <div class="sdpi-item-label">Background</div>
-                  <input class="sdpi-item-value" id="background" value="#000000">
-                </div>
-              </div>
+  <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-status-bar-style content=black>
+    <title>com.cdeenen.materialdeck Macro Property Inspector</title>
+    <link rel="stylesheet" href="css/sdpi.css">
+  </head>
+  <body>
+    <div class="sdpi-wrapper" id="wrapper" style="visibility:hidden">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Mode</div>
+        <select class="sdpi-item-value select" id="macroMode" type="select">
+          <option value=0>Hotbar</option>
+          <option value=1>Visible Hotbar</option>
+          <option value=2>Macro Board</option>
+        </select>
+      </div>
+      <div class="sdpi-item" id="macroBoardModeWrapper">
+        <div class="sdpi-item-label">Type</div>
+        <select class="sdpi-item-value select" id="macroBoardMode" type="select">
+          <option value=0>Trigger Macro</option>
+          <option value=1>Offset</option>
+        </select>
+      </div>
+      <div class="spdi-wrapper" id="macroOffsetStuff" style="visibility:hidden">
+        <div class="sdpi-item" id="macroOffsetAmount">
+          <div class="sdpi-item-label">Offset</div>
+          <input class="sdpi-item-value" id="macroOffset" value="0">
         </div>
+        <div class="sdpi-item" id="onColorContainer">
+          <div class="sdpi-item-label">On Color</div>
+          <input class="sdpi-item-value" id="onRing" value="#00FF00">
+        </div>
+        <div class="sdpi-item" id="offColorContainer">
+          <div class="sdpi-item-label">Off Color</div>
+          <input class="sdpi-item-value" id="offRing" value="#000000">
+        </div>
+      </div>
+      <div class="spdi-wrapper" id="macroTriggerStuff" style="visibility:hidden">
+        <div type="checkbox" class="sdpi-item" id="displayMacroName">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayName" type="checkbox">
+          <label for="displayName"><span></span></label>
+        </div>
+        <div class="sdpi-item" id="macroNumberContainer">
+          <div class="sdpi-item-label">Macro Number</div>
+          <input class="sdpi-item-value" id="macroNumber" value="0">
+        </div>
+        <div class="sdpi-item" id="backgroundContainer">
+          <div class="sdpi-item-label">Background</div>
+          <input class="sdpi-item-value" id="background" value="#000000">
+        </div>
+      </div>
+    </div>
 
-        <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
-        <script src="js/common.js"></script>
-        <script src="js/common_pi.js"></script>
-        <script src="js/index_pi.js"></script>
-    </body>
-    </html>
+    <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
+    <script src="js/common.js"></script>
+    <script src="js/common_pi.js"></script>
+    <script src="js/index_pi.js"></script>
+  </body>
+</html>
