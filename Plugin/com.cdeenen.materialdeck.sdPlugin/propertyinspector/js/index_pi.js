@@ -111,6 +111,11 @@ let controlMode = 0;
 const updateUI = (pl) => {
     console.log("pl",pl);
     var element;
+    const tokenOnClick = document.querySelector(`#onClick`);
+    if (tokenOnClick){
+        if (pl.onClick == 7) displayElement(`#conditionWrapper`,true);
+        else displayElement(`#conditionWrapper`,false);
+    }
     const combatTracker = document.querySelector(`#combatTrackerMode`);
     if (combatTracker){
         if (pl.combatTrackerMode == 0 || pl.combatTrackerMode == 1){
@@ -139,16 +144,19 @@ const updateUI = (pl) => {
             if (macroBoardMode == 0) {
                 displayElement(`#macroOffsetStuff`,false);
                 displayElement(`#macroTriggerStuff`,true);
+                displayElement(`#backgroundContainer`,false);
             }
             else {
                 displayElement(`#macroOffsetStuff`,true);
                 displayElement(`#macroTriggerStuff`,false);
+                displayElement(`#backgroundContainer`,true);
             }
         }
         else {
             displayElement(`#macroBoardModeWrapper`,false);
             displayElement(`#macroOffsetStuff`,false);
             displayElement(`#macroTriggerStuff`,true);
+            displayElement(`#backgroundContainer`,true);
         }
     }
     ////////////////////////////////////////////////////////////////////
@@ -340,6 +348,10 @@ $SD.on('piDataChanged', (returnValue) => {
     var element;
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
+    if (returnValue.key == 'onClick'){
+        if (returnValue.value == 7) displayElement(`#conditionWrapper`,true);
+        else displayElement(`#conditionWrapper`,false);
+    }
     if (returnValue.key == 'combatTrackerMode'){
         if (returnValue.value == 0 || returnValue.value == 1){
             displayElement(`#func`,false);
@@ -366,10 +378,12 @@ $SD.on('piDataChanged', (returnValue) => {
             if (macroBoardMode == 1) {
                 displayElement('#macroOffsetStuff',true);
                 displayElement('#macroTriggerStuff',false);
+                displayElement(`#backgroundContainer`,false);
             }
             else {
                 displayElement('#macroOffsetStuff',false);
                 displayElement('#macroTriggerStuff',true);
+                displayElement(`#backgroundContainer`,true);
             }
             displayElement('#macroBoardModeWrapper',true);
         }
@@ -377,6 +391,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement('#macroOffsetStuff',false);
             displayElement('#macroTriggerStuff',true);
             displayElement('#macroBoardModeWrapper',false);
+            displayElement(`#backgroundContainer`,true);
         }
     }
     else if (returnValue.key == 'macroBoardMode'){
@@ -384,10 +399,12 @@ $SD.on('piDataChanged', (returnValue) => {
         if (returnValue.value == 0) {
             displayElement('#macroOffsetStuff',false);
             displayElement('#macroTriggerStuff',true);
+            displayElement(`#backgroundContainer`,false);
         }
         else {
             displayElement('#macroOffsetStuff',true);
             displayElement('#macroTriggerStuff',false);
+            displayElement(`#backgroundContainer`,true);
         }
     }
     /////////////////////////////////////////////////////////////////////////////

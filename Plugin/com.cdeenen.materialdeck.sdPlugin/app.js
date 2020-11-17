@@ -20,6 +20,11 @@ let ip = "localhost";       //Ip address of the websocket server
 let port = "3003";                //Port of the websocket server
 let sdCon = false;
 
+let buttonContext = [];
+for (let i=0; i<23; i++){
+    buttonContext[i] = undefined;
+}
+
 $SD.on('connected', (jsonObj) => connected(jsonObj));
 
 function connected(jsn) {
@@ -68,7 +73,12 @@ const action = {
             }
             sendToServer(msg);
         //}
-        if (jsn.event == 'didReceiveSettings' || jsn.event == 'willAppear') analyzeSettings(jsn.context,action,jsn.payload.settings);
+        if (jsn.event == 'didReceiveSettings' || jsn.event == 'willAppear') {
+            analyzeSettings(jsn.context,action,jsn.payload.settings);
+            setContext(jsn.payload.coordinates,msg);
+        }
+        else if (jsn.event == 'willDisappear')
+            clearContext(jsn.payload.coordinates);
     },
     onDidReceiveSettings: function(jsn) {
         console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
@@ -116,7 +126,7 @@ const action = {
     },
 
     onKeyDown: function (jsn) {
-        console.log("Key Down",jsn);
+        //console.log("Key Down",jsn);
         //this.doSomeThing(jsn, 'onKeyDown', 'green');
     },
 
@@ -125,7 +135,7 @@ const action = {
     },
 
     onSendToPlugin: function (jsn) {
-        console.log('onSendToPlugin',jsn)
+        //console.log('onSendToPlugin',jsn)
         /**
          * this is a message sent directly from the Property Inspector 
          * (e.g. some value, which is not saved to settings) 
@@ -144,11 +154,11 @@ const action = {
      */
 
     saveSettings: function (jsn, sdpi_collection) {
-        console.log('saveSettings:', jsn);
+        //console.log('saveSettings:', jsn);
         if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
             if (sdpi_collection.value && sdpi_collection.value !== undefined) {
                 this.settings[sdpi_collection.key] = sdpi_collection.value;
-                console.log('setSettings....', this.settings);
+                //console.log('setSettings....', this.settings);
                 $SD.api.setSettings(jsn.context, this.settings);
             }
         }
@@ -221,7 +231,14 @@ function connectToServerWS() {
     }, { once: true });
   
     serverWS.addEventListener('message', e => {
-        sendToSDWS(e.data); 
+       // console.log(e.data);
+        const data = JSON.parse(e.data);
+        if (data.type == 'Foundry'){
+            //console.log('test')
+            sendContext();
+        }
+        else
+            sendToSDWS(e.data); 
     });
 }
 
@@ -229,7 +246,7 @@ function sendToServer(msg){
     //console.log(serverWS);
     if (serverWS && serverWS.readyState === 1){
         serverWS.send(JSON.stringify(msg));
-       // console.log("send",msg);
+        //console.log("send",JSON.stringify(msg));
     }
 }
 
@@ -254,8 +271,26 @@ function sendToSDWS(msg) {
 //Other functions
 /////////////////////////////////////////////////////////////////////
 
+function setContext(coordinates = {column:0,row:0},msg){
+    const num = coordinates.column + coordinates.row*8;
+    buttonContext[num] = msg;
+}
+
+function clearContext(coordinates = {column:0,row:0}){
+    const num = coordinates.column + coordinates.row*8;
+    buttonContext[num] = undefined;
+}
+
+function sendContext(){
+    for (let i=0; i<buttonContext.length; i++){
+        if (buttonContext[i] != undefined)
+            sendToServer(buttonContext[i]);
+    }
+    }
+        
+
 function analyzeSettings(context,action,settings){
-    console.log(context,action,settings);
+    //console.log(context,action,settings);
     
     let background = '#000000';
     let url = "action/images/black.png";
@@ -278,7 +313,9 @@ function analyzeSettings(context,action,settings){
     }
     else if (action == 'move'){
         if (settings.background) background = settings.background;
-        if (settings.dir == 1) //up
+        if (settings.dir == 0)  //center
+            url = "action/images/move/center.png";
+        else if (settings.dir == 1) //up
             url = "action/images/move/up.png";
         else if (settings.dir == 2) //down
             url = "action/images/move/down.png";
@@ -294,8 +331,11 @@ function analyzeSettings(context,action,settings){
             url = "action/images/move/downright.png";
         else if (settings.dir == 8) 
             url = "action/images/move/downleft.png";
-        else
-            url = "action/images/move/center.png";
+        else if (settings.dir == 9) 
+            url = "action/images/move/zoomin.png";
+        else if (settings.dir == 10) 
+            url = "action/images/move/zoomout.png";
+        
         let msg = {context: context, url: url, format: 'png', background:background}
         drawImage(msg);
     }
