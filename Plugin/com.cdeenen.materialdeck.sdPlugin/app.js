@@ -17,7 +17,7 @@ console.log("Material Deck - app.js")
 //window.$SD.api = SDApi;
 //Websocket variables
 let ip = "localhost";       //Ip address of the websocket server
-let port = "3003";                //Port of the websocket server
+let port = "3001";                //Port of the websocket server
 let sdCon = false;
 
 let buttonContext = [];
@@ -63,6 +63,7 @@ const action = {
 
        // if (action == 'token'){
             const msg = {
+                target: "MD",
                 source: 0,
                 type: "data",
                 device: jsn.device,
@@ -220,7 +221,7 @@ function connectToServerWS() {
   
     // Initalise Node.js WebSocket connection.
     serverWS.addEventListener('open', () => {
-      serverWS.send(JSON.stringify({ type: 'init', source: "SD"}));
+      serverWS.send(JSON.stringify({ target: 'server', source: "SD"}));
       console.log('Connection to Node.js server successful.');
     }, { once: true });
   
@@ -231,10 +232,10 @@ function connectToServerWS() {
     }, { once: true });
   
     serverWS.addEventListener('message', e => {
-       // console.log(e.data);
+        //console.log(e.data);
         const data = JSON.parse(e.data);
-        if (data.type == 'Foundry'){
-            //console.log('test')
+        if (data.target != 'SD') return;
+        if (data.type == 'init'){
             sendContext();
         }
         else
@@ -286,7 +287,7 @@ function sendContext(){
         if (buttonContext[i] != undefined)
             sendToServer(buttonContext[i]);
     }
-    }
+}
         
 
 function analyzeSettings(context,action,settings){
