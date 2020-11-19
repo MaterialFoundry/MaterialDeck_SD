@@ -802,6 +802,14 @@ const StreamDeck = (function () {
                     '[STREAMDECK]***** WEBOCKET CLOSED **** reason:',
                     reason
                 );
+                instance.emit('disconnected', {
+                    connection: websocket,
+                    port: inPort,
+                    uuid: inUUID,
+                    actionInfo: inActionInfo,
+                    applicationInfo: inApplicationInfo,
+                    messageType: inMessageType
+                });
             };
 
             websocket.onmessage = function (evt) {
@@ -856,6 +864,8 @@ const StreamDeck = (function () {
         }
     };
 })();
+
+
 
 // eslint-disable-next-line no-unused-vars
 function initializeControlCenterClient () {

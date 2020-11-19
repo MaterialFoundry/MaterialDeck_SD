@@ -29,6 +29,8 @@ $SD.on('connected', (jsonObj) => connected(jsonObj));
 
 function connected(jsn) {
     console.log("connected to Stream Deck",jsn);
+    if (serverWS && serverWS.readyState === 1)
+        serverWS.send(JSON.stringify({ target: 'server', source: "SD"}));
     sdCon = true;
     connectToServerWS();
     let actions = [];
@@ -39,6 +41,8 @@ function connected(jsn) {
     actions[4] = 'com.cdeenen.materialdeck.playlist'; 
     actions[5] = 'com.cdeenen.materialdeck.soundboard';
     actions[6] = 'com.cdeenen.materialdeck.other';
+
+    
 
     for (let i=0; i<actions.length; i++){
         $SD.on(actions[i]+'.willAppear', (jsonObj) => action.onEvent(jsonObj));
@@ -51,6 +55,17 @@ function connected(jsn) {
        // });
     }
 };
+
+function checkConnection(){
+
+    setTimeout(() => checkConnection(),2000);
+}
+
+function disconnected(jsn){
+    console.log("disconnected from Stream Deck",jsn);
+    if (serverWS && serverWS.readyState === 1)
+        serverWS.send(JSON.stringify({ target: 'server', source: "SD", type: "disconnected"}));
+}
 
 /** ACTIONS */
 
@@ -192,8 +207,6 @@ const action = {
         console.log('%c%s', `color: white; background: ${tagColor || 'grey'}; font-size: 15px;`, `[app.js]doSomeThing from: ${caller}`);
         // console.log(inJsonData);
     }, 
-
-
 };
 
 
@@ -221,8 +234,9 @@ function connectToServerWS() {
   
     // Initalise Node.js WebSocket connection.
     serverWS.addEventListener('open', () => {
-      serverWS.send(JSON.stringify({ target: 'server', source: "SD"}));
-      console.log('Connection to Node.js server successful.');
+        if (sdCon)
+            serverWS.send(JSON.stringify({ target: 'server', source: "SD"}));
+        console.log('Connection to Node.js server successful.');
     }, { once: true });
   
     serverWS.addEventListener('close', e => {

@@ -216,6 +216,8 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
         }
         else if (pl.otherMode == 1){   //scene selection
@@ -226,6 +228,8 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
             if (sceneMode == 0){
                 displayElement(`#visibleSceneContainer`,true);
@@ -244,6 +248,8 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,true);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
     
             displayElement(`#displayedControlsContainer`,false);
@@ -273,6 +279,8 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,true);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
             if (darknessMode == 2)
                 displayElement(`#darknessVal`,false);
@@ -285,6 +293,28 @@ const updateUI = (pl) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,true);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
+            displayElement(`#ringColorWrapper`,false);
+        }
+        else if (pl.otherMode == 5){   //sidebar
+            displayElement(`#pauseContainer`,false);
+            displayElement(`#sceneContainer`,false);
+            displayElement(`#controlContainer`,false);
+            displayElement(`#darknessContainer`,false);
+            displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,true);
+            displayElement(`#compendiumContainer`,false);
+            displayElement(`#ringColorWrapper`,true);
+        }
+        else if (pl.otherMode == 6 || pl.otherMode == 7){   //open compendium or journal
+            displayElement(`#pauseContainer`,false);
+            displayElement(`#sceneContainer`,false);
+            displayElement(`#controlContainer`,false);
+            displayElement(`#darknessContainer`,false);
+            displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,true);
             displayElement(`#ringColorWrapper`,false);
         }
     }
@@ -470,6 +500,8 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
         }
         else if (returnValue.value == 1){   //scene selection
@@ -478,6 +510,8 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
             if (sceneMode == 0){
                 displayElement(`#visibleSceneContainer`,true);
@@ -494,6 +528,8 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#controlContainer`,true);
             displayElement(`#darknessContainer`,false);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
 
             displayElement(`#displayedControlsContainer`,false);
@@ -521,6 +557,8 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,true);
             displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
             if (darknessMode == 2)
                 displayElement(`#darknessVal`,false);
@@ -532,7 +570,29 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
             displayElement(`#darknessContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,false);
             displayElement(`#rollTableContainer`,true);
+        }
+        else if (returnValue.value == 5){   //sidebar
+            displayElement(`#pauseContainer`,false);
+            displayElement(`#sceneContainer`,false);
+            displayElement(`#controlContainer`,false);
+            displayElement(`#darknessContainer`,false);
+            displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,true);
+            displayElement(`#compendiumContainer`,false);
+            displayElement(`#ringColorWrapper`,true);
+        }
+        else if (returnValue.value == 6 || returnValue.value == 7){
+            displayElement(`#pauseContainer`,false);
+            displayElement(`#sceneContainer`,false);
+            displayElement(`#controlContainer`,false);
+            displayElement(`#darknessContainer`,false);
+            displayElement(`#rollTableContainer`,false);
+            displayElement(`#sidebarContainer`,false);
+            displayElement(`#compendiumContainer`,true);
+            displayElement(`#ringColorWrapper`,true);
         }
     }
     else if (returnValue.key == 'sceneFunction'){
@@ -604,7 +664,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName'){
+        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);

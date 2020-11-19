@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/sdpi.css">
   </head>
   <body>
-    <div class="sdpi-wrapper" id="wrapper" style="visibility:hidden">
+    <div class="sdpi-wrapper" id="wrapper" style="display:none">
       <div class="sdpi-item">
         <div class="sdpi-item-label">Mode</div>
         <select class="sdpi-item-value select" id="otherMode" type="select">
@@ -18,6 +18,9 @@
           <option value=2>Control Buttons</option>
           <option value=3>Darkness Control</option>
           <option value=4>Roll Tables</option>
+          <option value=5>Open Sidebar Tab</option>
+          <option value=6>Open Compendium</option>
+          <option value=7>Open Journal</option>
         </select>
       </div>
 
@@ -32,7 +35,7 @@
         </div>
       </div>
 
-      <div class="spdi-wrapper" id="sceneContainer" style="visibility:hidden">
+      <div class="spdi-wrapper" id="sceneContainer" style="display:none">
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="sceneFunction" type="select">
@@ -58,17 +61,17 @@
           <input class="sdpi-item-value" id="displaySceneIcon" type="checkbox">
           <label for="displaySceneIcon"><span></span></label>
         </div>
-        <div class="sdpi-item" id="visibleSceneContainer" style="visibility:hidden">
+        <div class="sdpi-item" id="visibleSceneContainer" style="display:none">
           <div class="sdpi-item-label">Scene Nr</div>
           <input class="sdpi-item-value" id="sceneNr" value="1">
         </div>
-        <div class="sdpi-item" id="anySceneContainer" style="visibility:hidden">
+        <div class="sdpi-item" id="anySceneContainer" style="display:none">
           <div class="sdpi-item-label">Scene Name</div>
           <input class="sdpi-item-value" id="sceneName" value="">
         </div>
       </div>
 
-      <div class="spdi-wrapper" id="controlContainer" style="visibility:hidden">
+      <div class="spdi-wrapper" id="controlContainer" style="display:none">
         <div class="sdpi-item">
           <div class="sdpi-item-label">Control</div>
           <select class="sdpi-item-value select" id="control" type="select">
@@ -84,13 +87,13 @@
             <option value=9>Journal Notes</option>
           </select>
         </div>
-        <div class="spdi-wrapper" id="displayedControlsContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="displayedControlsContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Nr</div>
             <input class="sdpi-item-value" id="controlNr" value="1">
           </div>
         </div>
-        <div class="spdi-wrapper" id="basicControlsContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="basicControlsContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
@@ -101,7 +104,7 @@
             </select>
           </div>
         </div>
-        <div class="spdi-wrapper" id="measurementControlsContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="measurementControlsContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
@@ -114,7 +117,7 @@
             </select>
           </div>
         </div>
-        <div class="spdi-wrapper" id="tileControlContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="tileControlContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
@@ -125,7 +128,7 @@
             </select>
           </div>
         </div>
-        <div class="spdi-wrapper" id="drawingToolsContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="drawingToolsContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
@@ -141,7 +144,7 @@
             </select>
           </div>
         </div>
-        <div class="spdi-wrapper" id="wallControlsContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="wallControlsContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
@@ -159,7 +162,7 @@
             </select>
           </div>
         </div>
-        <div class="spdi-wrapper" id="lightingControlsContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="lightingControlsContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
@@ -172,7 +175,7 @@
             </select>
           </div>
         </div>
-        <div class="spdi-wrapper" id="soundControlsContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="soundControlsContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
@@ -182,7 +185,7 @@
             </select>
           </div>
         </div>
-        <div class="spdi-wrapper" id="journalNotesContainer" style="visibility:hidden">
+        <div class="spdi-wrapper" id="journalNotesContainer" style="display:none">
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
@@ -195,7 +198,7 @@
         </div>
       </div>
 
-      <div class="spdi-wrapper" id="darknessContainer" style="visibility:hidden">
+      <div class="spdi-wrapper" id="darknessContainer" style="display:none">
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="darknessFunction" type="select">
@@ -204,13 +207,13 @@
             <option value=2>Display</option>
           </select>
         </div>
-        <div class="sdpi-item" id="darknessVal" style="visibility:hidden">
+        <div class="sdpi-item" id="darknessVal" style="display:none">
           <div class="sdpi-item-label">Value</div>
           <input class="sdpi-item-value" id="darknessValue" value="0">
         </div>
       </div>
       
-      <div class="spdi-wrapper" id="rollTableContainer" style="visibility:hidden">
+      <div class="spdi-wrapper" id="rollTableContainer" style="display:none">
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="rolltableFunction" type="select">
@@ -232,6 +235,47 @@
           <div class="sdpi-item-label">Display Icon</div>
           <input class="sdpi-item-value" id="displayRollIcon" type="checkbox">
           <label for="displayRollIcon"><span></span></label>
+        </div> 
+      </div>
+
+      <div class="spdi-wrapper" id="sidebarContainer" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Sidebar</div>
+          <select class="sdpi-item-value select" id="sidebarTab" type="select">
+            <option value=0>Chat Log</option>
+            <option value=1>Combat Tracker</option>
+            <option value=2>Scenes Directory</option>
+            <option value=3>Actors Directory</option>
+            <option value=4>Items Directory</option>
+            <option value=5>Journal Entries</option>
+            <option value=6>Rollable Tables</option>
+            <option value=7>Audio Playlist</option>
+            <option value=8>Compendium Packs</option>
+            <option value=9>Game Settings</option>
+            <option value=10>Collapse or Expand</option>
+          </select>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displaySidebarName" type="checkbox">
+          <label for="displaySidebarName"><span></span></label>
+        </div> 
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="displaySidebarIcon" type="checkbox">
+          <label for="displaySidebarIcon"><span></span></label>
+        </div> 
+      </div>
+
+      <div class="spdi-wrapper" id="compendiumContainer" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Name</div>
+          <input class="sdpi-item-value" id="compendiumName" value="">
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayCompendiumName" type="checkbox">
+          <label for="displayCompendiumName"><span></span></label>
         </div> 
       </div>
 
