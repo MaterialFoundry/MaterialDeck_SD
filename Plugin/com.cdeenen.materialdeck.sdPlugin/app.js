@@ -314,14 +314,18 @@ function analyzeSettings(context,action,settings){
         if (settings.displayIcon) displayIcon = true;
         if (settings.background) background = settings.background;
         if (displayIcon != true){
-            if (settings.stats == 1) //HP
+            if (settings.stats == 'HP' || settings.stats == 'TempHP') //HP
                 url = "action/images/token/hp.png";
-            else if (settings.stats == 2) //AC
+            else if (settings.stats == 'AC' || settings.stats == 'ShieldHP') //AC
                 url = "action/images/token/ac.webp";
-            else if (settings.stats == 3) //Speed
+            else if (settings.stats == 'Speed') //Speed
                 url = "action/images/token/speed.webp";
-            else if (settings.stats == 4) //Initiative
+            else if (settings.stats == 'Init') //Initiative
                 url = "action/images/token/init.png";
+            else if (settings.stats == 'PassivePerception') 
+                url = "action/images/black.png";
+            else if (settings.stats == 'PassiveInvestigation') 
+                url = "action/images/black.png";
             let msg = {context: context, url: url, format: 'png', background:background}
             drawImage(msg);
         }

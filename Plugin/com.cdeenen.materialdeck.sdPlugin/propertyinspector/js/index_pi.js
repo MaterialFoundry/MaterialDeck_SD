@@ -107,6 +107,7 @@ let playlistType = 0;
 let sceneMode = 0;
 let darknessMode = 0;
 let controlMode = 0;
+let system = 'dnd5e';
 
 const updateUI = (pl) => {
     console.log("pl",pl);
@@ -115,7 +116,30 @@ const updateUI = (pl) => {
     if (tokenOnClick){
         if (pl.onClick == 7) displayElement(`#conditionWrapper`,true);
         else displayElement(`#conditionWrapper`,false);
+
+        if (pl.system == 'dnd5e'){
+            displayElement(`#dnd5eWrapper`,true);
+            displayElement(`#conditionDnd5eWrapper`,true);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+        }
+        else if (pl.system == 'dnd3.5e'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,true);
+            displayElement(`#dnd35eWrapper`,true);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+        }
+        else if (pl.system == 'pf2e'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,false);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,true);
+            displayElement(`#conditionPf2eWrapper`,true);
+        }
     }
+    
     const combatTracker = document.querySelector(`#combatTrackerMode`);
     if (combatTracker){
         if (pl.combatTrackerMode == 0 || pl.combatTrackerMode == 1){
@@ -175,7 +199,7 @@ const updateUI = (pl) => {
                 if (pl.playlistMode == 0)
                     displayElement(`#trackNrContainer`,false);
                 else
-                    displayElement(`#trackNrContainer`,false);
+                    displayElement(`#trackNrContainer`,true);
                 displayElement(`#playlistOffsetWrapper`,false);
                 displayElement(`#playlistPlayWrapper`,true);
             }
@@ -381,8 +405,40 @@ $SD.on('piDataChanged', (returnValue) => {
     if (returnValue.key == 'onClick'){
         if (returnValue.value == 7) displayElement(`#conditionWrapper`,true);
         else displayElement(`#conditionWrapper`,false);
+        if (system == 'dnd5e' || system == 'dnd3.5e'){
+            displayElement(`#conditionDnd5eWrapper`,true);
+            displayElement(`#conditionPf2eWrapper`,false);
+        }
+        else if (system == 'pfe2'){
+            displayElement(`#conditionDnd5eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,true);
+        }
     }
-    if (returnValue.key == 'combatTrackerMode'){
+    else if (returnValue.key == 'system'){
+        system = returnValue.key;
+        if (returnValue.value == 'dnd5e'){
+            displayElement(`#dnd5eWrapper`,true);
+            displayElement(`#conditionDnd5eWrapper`,true);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+        }
+        else if (returnValue.value == 'dnd3.5e'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,true);
+            displayElement(`#dnd35eWrapper`,true);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+        }
+        else if (returnValue.value == 'pf2e'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,false);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,true);
+            displayElement(`#conditionPf2eWrapper`,true);
+        }
+    }
+    else if (returnValue.key == 'combatTrackerMode'){
         if (returnValue.value == 0 || returnValue.value == 1){
             displayElement(`#func`,false);
             displayElement(`#combatant`,true);
@@ -450,7 +506,7 @@ $SD.on('piDataChanged', (returnValue) => {
                 if (returnValue.value == 0) //Playlist
                     displayElement(`#trackNrContainer`,false);
                 else    //Track
-                    displayElement(`#trackNrContainer`,false);
+                    displayElement(`#trackNrContainer`,true);
                 displayElement(`#playlistOffsetWrapper`,false);
                 displayElement(`#playlistPlayWrapper`,true);
             }

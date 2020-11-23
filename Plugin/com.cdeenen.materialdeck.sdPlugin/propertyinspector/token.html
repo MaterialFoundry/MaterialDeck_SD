@@ -20,16 +20,57 @@
         <input class="sdpi-item-value" id="displayIcon" type="checkbox">
         <label for="displayIcon"><span></span></label>
       </div>
+
       <div class="sdpi-item">
+        <div class="sdpi-item-label">System</div>
+        <select class="sdpi-item-value select" id="system" type="select">
+          <option value='dnd5e'>DnD 5e</option>
+          <option value='dnd3.5e'>DnD 3.5e</option>
+          <option value='pf2e'>Pathfinder 2e</option>
+        </select>
+      </div>
+
+      <div class="sdpi-item" id="dnd5eWrapper" style="">
         <div class="sdpi-item-label">Stats</div>
         <select class="sdpi-item-value select" id="stats" type="select">
           <option value=0>None</option>
-          <option value=1>HP</option>
-          <option value=2>AC</option>
-          <option value=3>Speed</option>
-          <option value=4>Initiative</option>
+          <option value='HP'>HP</option>
+          <option value='TempHP'>Temp HP</option>
+          <option value='AC'>AC</option>
+          <option value='Speed'>Speed</option>
+          <option value='Init'>Initiative</option>
+          <option value='PassivePerception'>Passive Perception</option>
+          <option value='PassiveInvestigation'>Passive Investigation</option>
         </select>
       </div>
+
+      <div class="sdpi-item" id="dnd35eWrapper" style="display:none">
+        <div class="sdpi-item-label">Stats</div>
+        <select class="sdpi-item-value select" id="stats" type="select">
+          <option value=0>None</option>
+          <option value='HP'>HP</option>
+          <option value='TempHP'>Temp HP</option>
+          <option value='AC'>AC</option>
+          <option value='Speed'>Speed</option>
+          <option value='Init'>Initiative</option>
+        </select>
+      </div>
+
+      <div class="sdpi-item" id="pf2eWrapper" style="display:none">
+        <div class="sdpi-item-label">Stats</div>
+        <select class="sdpi-item-value select" id="stats" type="select">
+          <option value=0>None</option>
+          <option value='HP'>HP</option>
+          <option value='TempHP'>Temp HP</option>
+          <option value='AC'>AC</option>
+          <option value='ShieldHP'>Shield HP</option>
+          <option value='Speed'>Speed</option>
+          <option value='Init'>Initiative</option>
+          <option value='PassivePerception'>Passive Perception</option>
+          <option value='PassiveInvestigation'>Passive Investigation</option>
+        </select>
+      </div>
+    
       <div class="sdpi-item">
         <div class="sdpi-item-label">On Click</div>
         <select class="sdpi-item-value select" id="onClick" type="select">
@@ -43,51 +84,93 @@
           <option value=7>Toggle Condition</option>
         </select>
       </div>
-   
-      <div class="sdpi-item" id="conditionWrapper" style="display:none">
-        <div class="sdpi-item-label">Condition</div>
-        <select class="sdpi-item-value select" id="condition" type="select">
-          <option value=0>Remove All</option>
-          <option value=1>Dead</option>
-          <option value=2>Unconscious</option>
-          <option value=3>Asleep</option>
-          <option value=4>Stunned</option>
-          <option value=5>Prone</option>
-          <option value=6>Restrained</option>
-          <option value=7>Paralyzed</option>
-          <option value=8>Flying</option>
-          <option value=9>Blind</option>
-          <option value=10>Deaf</option>
-          <option value=11>Silenced</option>
-          <option value=12>Afraid</option>
-          <option value=13>Burning</option>
-          <option value=14>Frozen</option>
-          <option value=15>Shocked</option>
-          <option value=16>Corroding</option>
-          <option value=17>Bleeding</option>
-          <option value=18>Diseased</option>
-          <option value=19>Poisoned</option>
-          <option value=20>Radioactive</option>
-          <option value=21>Regeneration</option>
-          <option value=22>Degeneration</option>
-          <option value=23>Empowered</option>
-          <option value=24>Weakened</option>
-          <option value=25>Targeted</option>
-          <option value=26>Marked</option>
-          <option value=27>Cursed</option>
-          <option value=28>Blessed</option>
-          <option value=29>Fire Shield</option>
-          <option value=30>Ice Shield</option>
-          <option value=31>Magic Shiled</option>
-          <option value=32>Holy Shield</option>
-        </select>
+
+      <div class="sdpi-wrapper" id="conditionWrapper" style="">
+        <div class="sdpi-item" id="conditionDnd5eWrapper" style="">
+          <div class="sdpi-item-label">Condition</div>
+          <select class="sdpi-item-value select" id="condition" type="select">
+            <option value=0>Remove All</option>
+            <option value=1>Dead</option>
+            <option value=2>Unconscious</option>
+            <option value=3>Asleep</option>
+            <option value=4>Stunned</option>
+            <option value=5>Prone</option>
+            <option value=6>Restrained</option>
+            <option value=7>Paralyzed</option>
+            <option value=8>Flying</option>
+            <option value=9>Blind</option>
+            <option value=10>Deaf</option>
+            <option value=11>Silenced</option>
+            <option value=12>Afraid</option>
+            <option value=13>Burning</option>
+            <option value=14>Frozen</option>
+            <option value=15>Shocked</option>
+            <option value=16>Corroding</option>
+            <option value=17>Bleeding</option>
+            <option value=18>Diseased</option>
+            <option value=19>Poisoned</option>
+            <option value=20>Radioactive</option>
+            <option value=21>Regeneration</option>
+            <option value=22>Degeneration</option>
+            <option value=23>Empowered</option>
+            <option value=24>Weakened</option>
+            <option value=25>Targeted</option>
+            <option value=26>Marked</option>
+            <option value=27>Cursed</option>
+            <option value=28>Blessed</option>
+            <option value=29>Fire Shield</option>
+            <option value=30>Ice Shield</option>
+            <option value=31>Magic Shiled</option>
+            <option value=32>Holy Shield</option>
+          </select>
+        </div>
+
+        <div class="sdpi-item" id="conditionPf2eWrapper" style="display:none">
+          <div class="sdpi-item-label">Condition</div>
+          <select class="sdpi-item-value select" id="condition" type="select">
+            <option value=0>Remove All</option>
+            <option value=1>Blinded</option>
+            <option value=2>Broken</option>
+            <option value=3>Clumsy</option>
+            <option value=4>Concealed</option>
+            <option value=5>Confused</option>
+            <option value=6>Controlled</option>
+            <option value=7>Dazzled</option>
+            <option value=8>Deafened</option>
+            <option value=9>Doomed</option>
+            <option value=10>Drained</option>
+            <option value=11>Dying</option>
+            <option value=12>Encumbered</option>
+            <option value=13>Enfeebled</option>
+            <option value=14>Fascinated</option>
+            <option value=15>Fatigued</option>
+            <option value=16>FlatFooted</option>
+            <option value=17>Fleeing</option>
+            <option value=18>Frightened</option>
+            <option value=19>Grabbed</option>
+            <option value=20>Immobilized</option>
+            <option value=21>Invisible</option>
+            <option value=22>Paralyzed</option>
+            <option value=23>Persistent Damage</option>
+            <option value=24>Petrified</option>
+            <option value=25>Prone</option>
+            <option value=26>Quickened</option>
+            <option value=27>Restrained</option>
+            <option value=28>Sickened</option>
+            <option value=29>Slowed</option>
+            <option value=30>Stunned</option>
+            <option value=31>Stupefied</option>
+            <option value=32>Unconscious</option>
+            <option value=33>Wounded</option>
+          </select>
+        </div>
       </div>
       
       <div class="sdpi-item" id="backgroundContainer">
         <div class="sdpi-item-label">Background</div>
         <input class="sdpi-item-value" id="background" value="#000000">
       </div>
-    </div>
+    </div>    
 
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
