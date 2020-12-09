@@ -13,21 +13,21 @@
       <div class="sdpi-item">
         <div class="sdpi-item-label">Mode</div>
         <select class="sdpi-item-value select" id="combatTrackerMode" type="select">
-          <option value=0>Combatants</option>
-          <option value=1>Current Turn's Combatant</option>
-          <option value=2>Function</option>
+          <option value='combatants'>Combatants</option>
+          <option value='currentCombatant'>Current Turn's Combatant</option>
+          <option value='function'>Function</option>
         </select>
       </div>
       <div id="func" style="display:none">
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="combatTrackerFunction" type="select">
-            <option value=0>Start/Stop Combat</option>
-            <option value=1>Next Turn</option>
-            <option value=2>Previous Turn</option>
-            <option value=3>Next Round</option>
-            <option value=4>Previous Round</option>
-            <option value=5>Turn Display</option>
+            <option value='startStop'>Start/Stop Combat</option>
+            <option value='nextTurn'>Next Turn</option>
+            <option value='prevTurn'>Previous Turn</option>
+            <option value='nextRound'>Next Round</option>
+            <option value='prevRound'>Previous Round</option>
+            <option value='turnDisplay'>Turn Display</option>
           </select>
         </div>
         <div id="turnDisplay" style="display:none">
@@ -54,25 +54,90 @@
           <input class="sdpi-item-value" id="displayIcon" type="checkbox">
           <label for="displayIcon"><span></span></label>
         </div>
+
         <div class="sdpi-item">
-          <div class="sdpi-item-label">Stats</div>
-          <select class="sdpi-item-value select" id="stats" type="select">
-            <option value=0>None</option>
-            <option value=1>HP</option>
-            <option value=2>AC</option>
-            <option value=3>Speed</option>
-            <option value=4>Initiative</option>
+          <div class="sdpi-item-label">System</div>
+          <select class="sdpi-item-value select" id="system" type="select">
+            <option value='dnd5e'>DnD 5e</option>
+            <option value='dnd3.5e'>DnD 3.5e</option>
+            <option value='pf1e'>Pathfinder 1e</option>
+            <option value='pf2e'>Pathfinder 2e</option>
+            <option value='demonlord'>Shadow of the Demon Lord</option>
           </select>
         </div>
-        <div class="sdpi-item">
+
+        <div class="sdpi-item" id="dnd5eWrapper" style="">
+          <div class="sdpi-item-label">Stats</div>
+          <select class="sdpi-item-value select" id="stats" type="select">
+            <option value='none'>None</option>
+            <option value='HP'>HP</option>
+            <option value='TempHP'>Temp HP</option>
+            <option value='AC'>AC</option>
+            <option value='Speed'>Speed</option>
+            <option value='Init'>Initiative</option>
+            <option value='PassivePerception'>Passive Perception</option>
+            <option value='PassiveInvestigation'>Passive Investigation</option>
+          </select>
+        </div>
+  
+        <div class="sdpi-item" id="dnd35eWrapper" style="display:none">
+          <div class="sdpi-item-label">Stats</div>
+          <select class="sdpi-item-value select" id="stats" type="select">
+            <option value='none'>None</option>
+            <option value='HP'>HP</option>
+            <option value='TempHP'>Temp HP</option>
+            <option value='AC'>AC</option>
+            <option value='Speed'>Speed</option>
+            <option value='Init'>Initiative</option>
+          </select>
+        </div>
+  
+        <div class="sdpi-item" id="pf2eWrapper" style="display:none">
+          <div class="sdpi-item-label">Stats</div>
+          <select class="sdpi-item-value select" id="stats" type="select">
+            <option value='none'>None</option>
+            <option value='HP'>HP</option>
+            <option value='TempHP'>Temp HP</option>
+            <option value='AC'>AC</option>
+            <option value='ShieldHP'>Shield HP</option>
+            <option value='Speed'>Speed</option>
+            <option value='Init'>Initiative</option>
+          </select>
+        </div>
+
+        <div class="sdpi-item" id="demonlordWrapper" style="display:none">
+          <div class="sdpi-item-label">Stats</div>
+          <select class="sdpi-item-value select" id="stats" type="select">
+            <option value='none'>None</option>
+            <option value='HP'>HP</option>
+            <option value='TempHP'>Temp HP</option>
+            <option value='AC'>AC</option>
+            <option value='ShieldHP'>Shield HP</option>
+            <option value='Speed'>Speed</option>
+            <option value='Init'>Initiative</option>
+          </select>
+
           <div class="sdpi-item-label">On Click</div>
           <select class="sdpi-item-value select" id="onClick" type="select">
-            <option value=0>Do Nothing</option>
-            <option value=1>Select Token</option>
-            <option value=2>Center on Token</option>
-            <option value=3>Center on Token and Select Token</option>
-            <option value=4>Open Character Sheet</option>
-            <option value=5>Open Token Config</option>
+            <option value='doNothing'>Do Nothing</option>
+            <option value ='select'>Select Token</option>
+            <option value='center'>Center on Token</option>
+            <option value='centerSelect'>Center on Token and Select Token</option>
+            <option value='charSheet'>Open Character Sheet</option>
+            <option value='tokenConfig'>Open Token Config</option>
+            <option value='initiative'>Toggle Initiative</option>
+          </select>
+        </div>
+        
+        <div class="sdpi-item" id="onClickWrapper" style="">
+          <div class="sdpi-item-label">On Click</div>
+          <select class="sdpi-item-value select" id="onClick" type="select">
+            <option value='doNothing'>Do Nothing</option>
+            <option value ='select'>Select Token</option>
+            <option value='center'>Center on Token</option>
+            <option value='centerSelect'>Center on Token and Select Token</option>
+            <option value='charSheet'>Open Character Sheet</option>
+            <option value='tokenConfig'>Open Token Config</option>
           </select>
         </div>
         <div class="sdpi-item" id="combatantNrSel" stype="display:none">

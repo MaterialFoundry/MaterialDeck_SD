@@ -13,14 +13,14 @@
       <div class="sdpi-item">
         <div class="sdpi-item-label">Mode</div>
         <select class="sdpi-item-value select" id="otherMode" type="select">
-          <option value=0>Pause Game</option>
-          <option value=1>Scene Selection</option>
-          <option value=2>Control Buttons</option>
-          <option value=3>Darkness Control</option>
-          <option value=4>Roll Tables</option>
-          <option value=5>Open Sidebar Tab</option>
-          <option value=6>Open Compendium</option>
-          <option value=7>Open Journal</option>
+          <option value='pause'>Pause Game</option>
+          <option value='sceneSelect'>Scene Selection</option>
+          <option value='controlButtons'>Control Buttons</option>
+          <option value='darkness'>Darkness Control</option>
+          <option value='rollTables'>Roll Tables</option>
+          <option value='sidebarTab'>Open Sidebar Tab</option>
+          <option value='compendium'>Open Compendium</option>
+          <option value='journal'>Open Journal</option>
         </select>
       </div>
 
@@ -28,9 +28,9 @@
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="pauseFunction" type="select">
-            <option value=0>Pause Game</option>
-            <option value=1>Resume Game</option>
-            <option value=2>Toggle Pause</option>
+            <option value='pause'>Pause Game</option>
+            <option value='resume'>Resume Game</option>
+            <option value='toggle'>Toggle Pause</option>
           </select>
         </div>
       </div>
@@ -39,8 +39,8 @@
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="sceneFunction" type="select">
-            <option value=0>Visible Scenes</option>
-            <option value=1>Any Scene</option>
+            <option value='visible'>Visible Scenes</option>
+            <option value='any'>Any Scene</option>
           </select>
         </div>
         <div class="sdpi-item">
@@ -75,16 +75,16 @@
         <div class="sdpi-item">
           <div class="sdpi-item-label">Control</div>
           <select class="sdpi-item-value select" id="control" type="select">
-            <option value=0>Displayed Controls</option>
-            <option value=1>Displayed Tools</option>
-            <option value=2>Basic Controls</option>
-            <option value=3>Measurement Controls</option>
-            <option value=4>Tile Controls</option>
-            <option value=5>Drawing Tools</option>
-            <option value=6>Wall Controls</option>
-            <option value=7>Lighting Controls</option>
-            <option value=8>Ambient Sound Controls</option>
-            <option value=9>Journal Notes</option>
+            <option value='dispControls'>Displayed Controls</option>
+            <option value='dispTools'>Displayed Tools</option>
+            <option value='token'>Basic Controls</option>
+            <option value='measure'>Measurement Controls</option>
+            <option value='tiles'>Tile Controls</option>
+            <option value='drawings'>Drawing Tools</option>
+            <option value='walls'>Wall Controls</option>
+            <option value='sounds'>Lighting Controls</option>
+            <option value='sounds'>Ambient Sound Controls</option>
+            <option value='notes'>Journal Notes</option>
           </select>
         </div>
         <div class="spdi-wrapper" id="displayedControlsContainer" style="display:none">
@@ -97,10 +97,10 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
-              <option value=0>Open Control</option>
-              <option value=1>Select Tokens</option>
-              <option value=2>Select Targets</option>
-              <option value=3>Measure Distance</option>
+              <option value='open'>Open Control</option>
+              <option value='select'>Select Tokens</option>
+              <option value='target'>Select Targets</option>
+              <option value='ruler'>Measure Distance</option>
             </select>
           </div>
         </div>
@@ -108,12 +108,12 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
-              <option value=0>Open Control</option>
-              <option value=1>Circle Template</option>
-              <option value=2>Cone Template</option>
-              <option value=3>Rectangle Template</option>
-              <option value=4>Ray Template</option>
-              <option value=5>Clear Templates</option>
+              <option value='open'>Open Control</option>
+              <option value='circle'>Circle Template</option>
+              <option value='cone'>Cone Template</option>
+              <option value='rect'>Rectangle Template</option>
+              <option value='ray'>Ray Template</option>
+              <option value='clear'>Clear Templates</option>
             </select>
           </div>
         </div>
@@ -121,10 +121,10 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
-              <option value=0>Open Control</option>
-              <option value=1>Select Tiles</option>
-              <option value=2>Place Tile</option>
-              <option value=3>Tile Browser</option>
+              <option value='open'>Open Control</option>
+              <option value='select'>Select Tiles</option>
+              <option value='place'>Place Tile</option>
+              <option value='browse'>Tile Browser</option>
             </select>
           </div>
         </div>
@@ -132,15 +132,15 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
-              <option value=0>Open Control</option>
-              <option value=1>Select Drawings</option>
-              <option value=2>Draw Rectangle</option>
-              <option value=3>Draw Ellipse</option>
-              <option value=4>Draw Polygon</option>
-              <option value=5>Draw Freehand</option>
-              <option value=6>Draw Text</option>
-              <option value=7>Configure Drawing</option>
-              <option value=8>Clear Drawings</option>
+              <option value='open'>Open Control</option>
+              <option value='select'>Select Drawings</option>
+              <option value='rect'>Draw Rectangle</option>
+              <option value='ellipse'>Draw Ellipse</option>
+              <option value='polygon'>Draw Polygon</option>
+              <option value='freehand'>Draw Freehand</option>
+              <option value='text'>Draw Text</option>
+              <option value='configure'>Configure Drawing</option>
+              <option value='clear'>Clear Drawings</option>
             </select>
           </div>
         </div>
@@ -148,17 +148,17 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
-              <option value=0>Open Control</option>
-              <option value=1>Rectangular Select Walls</option>
-              <option value=2>Draw Walls</option>
-              <option value=3>Terrain Walls</option>
-              <option value=4>Invisible Walls</option>
-              <option value=5>Ethereal Walls</option>
-              <option value=6>Draw Doors</option>
-              <option value=7>Secret Doors</option>
-              <option value=8>Clone Walls</option>
-              <option value=9>Force Snap To Grid</option>
-              <option value=10>Clear Walls</option>
+              <option value='open'>Open Control</option>
+              <option value='select'>Rectangular Select Walls</option>
+              <option value='walls'>Draw Walls</option>
+              <option value='terrain'>Terrain Walls</option>
+              <option value='invisible'>Invisible Walls</option>
+              <option value='ethereal'>Ethereal Walls</option>
+              <option value='doors'>Draw Doors</option>
+              <option value='secret'>Secret Doors</option>
+              <option value='cone'>Clone Walls</option>
+              <option value='snap'>Force Snap To Grid</option>
+              <option value='clear'>Clear Walls</option>
             </select>
           </div>
         </div>
@@ -166,12 +166,12 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
-              <option value=0>Open Control</option>
-              <option value=1>Draw Light Source</option>
-              <option value=2>Transition to Daylight</option>
-              <option value=3>Transition to Darkness</option>
-              <option value=4>Reset Fog of War</option>
-              <option value=5>Clear Lights</option>
+              <option value='open'>Open Control</option>
+              <option value='light'>Draw Light Source</option>
+              <option value='day'>Transition to Daylight</option>
+              <option value='night'>Transition to Darkness</option>
+              <option value='reset'>Reset Fog of War</option>
+              <option value='clear'>Clear Lights</option>
             </select>
           </div>
         </div>
@@ -179,9 +179,9 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
-              <option value=0>Open Control</option>
-              <option value=1>Draw Ambient Sound</option>
-              <option value=2>Clear Sounds</option>
+              <option value='open'>Open Control</option>
+              <option value='sound'>Draw Ambient Sound</option>
+              <option value='clear'>Clear Sounds</option>
             </select>
           </div>
         </div>
@@ -189,10 +189,10 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Tool</div>
             <select class="sdpi-item-value select" id="tool" type="select">
-              <option value=0>Open Control</option>
-              <option value=1>Select Notes</option>
-              <option value=2>Toggle Notes Display</option>
-              <option value=3>Clear Notes</option>
+              <option value='open'>Open Control</option>
+              <option value='select'>Select Notes</option>
+              <option value='toggle'>Toggle Notes Display</option>
+              <option value='clear'>Clear Notes</option>
             </select>
           </div>
         </div>
@@ -202,9 +202,9 @@
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="darknessFunction" type="select">
-            <option value=0>Value</option>
-            <option value=1>Increase/Decrease</option>
-            <option value=2>Display</option>
+            <option value='value'>Value</option>
+            <option value='incDec'>Increase/Decrease</option>
+            <option value='disp'>Display</option>
           </select>
         </div>
         <div class="sdpi-item" id="darknessVal" style="display:none">
@@ -217,9 +217,9 @@
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="rolltableFunction" type="select">
-            <option value=0>Open</option>
-            <option value=1>Public Roll</option>
-            <option value=2>Private Roll</option>
+            <option value='open'>Open</option>
+            <option value='public'>Public Roll</option>
+            <option value='private'>Private Roll</option>
           </select>
         </div>
         <div class="sdpi-item">
@@ -242,17 +242,17 @@
         <div class="sdpi-item">
           <div class="sdpi-item-label">Sidebar</div>
           <select class="sdpi-item-value select" id="sidebarTab" type="select">
-            <option value=0>Chat Log</option>
-            <option value=1>Combat Tracker</option>
-            <option value=2>Scenes Directory</option>
-            <option value=3>Actors Directory</option>
-            <option value=4>Items Directory</option>
-            <option value=5>Journal Entries</option>
-            <option value=6>Rollable Tables</option>
-            <option value=7>Audio Playlist</option>
-            <option value=8>Compendium Packs</option>
-            <option value=9>Game Settings</option>
-            <option value=10>Collapse or Expand</option>
+            <option value='chat'>Chat Log</option>
+            <option value='combat'>Combat Tracker</option>
+            <option value='scenes'>Scenes Directory</option>
+            <option value='actors'>Actors Directory</option>
+            <option value='items'>Items Directory</option>
+            <option value='journal'>Journal Entries</option>
+            <option value='tables'>Rollable Tables</option>
+            <option value='playlists'>Audio Playlist</option>
+            <option value='compendium'>Compendium Packs</option>
+            <option value='settings'>Game Settings</option>
+            <option value='collapse'>Collapse or Expand</option>
           </select>
         </div>
         <div type="checkbox" class="sdpi-item">

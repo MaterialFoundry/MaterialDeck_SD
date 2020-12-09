@@ -114,7 +114,7 @@ const updateUI = (pl) => {
     var element;
     const tokenOnClick = document.querySelector(`#onClick`);
     if (tokenOnClick){
-        if (pl.onClick == 7) displayElement(`#conditionWrapper`,true);
+        if (pl.onClick == 'condition') displayElement(`#conditionWrapper`,true);
         else displayElement(`#conditionWrapper`,false);
 
         if (pl.system == 'dnd5e'){
@@ -123,13 +123,19 @@ const updateUI = (pl) => {
             displayElement(`#dnd35eWrapper`,false);
             displayElement(`#pf2eWrapper`,false);
             displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
+            displayElement(`#conditionDemonlordWrapper`,false);
         }
-        else if (pl.system == 'dnd3.5e'){
+        else if (pl.system == 'dnd3.5e' || pl.system == 'pf1e'){
             displayElement(`#dnd5eWrapper`,false);
             displayElement(`#conditionDnd5eWrapper`,true);
             displayElement(`#dnd35eWrapper`,true);
             displayElement(`#pf2eWrapper`,false);
             displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
+            displayElement(`#conditionDemonlordWrapper`,false);
         }
         else if (pl.system == 'pf2e'){
             displayElement(`#dnd5eWrapper`,false);
@@ -137,35 +143,118 @@ const updateUI = (pl) => {
             displayElement(`#dnd35eWrapper`,false);
             displayElement(`#pf2eWrapper`,true);
             displayElement(`#conditionPf2eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
+            displayElement(`#conditionDemonlordWrapper`,false);
+        }
+        else if (pl.system == 'demonlord'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,false);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,false);
+            displayElement(`#demonlordWrapper`,true);
+            displayElement(`#conditionDemonlordWrapper`,true);
         }
     }
     
     const combatTracker = document.querySelector(`#combatTrackerMode`);
     if (combatTracker){
-        if (pl.combatTrackerMode == 0 || pl.combatTrackerMode == 1){
+        if (pl.combatTrackerMode == 'combatants' || pl.combatTrackerMode == 'currentCombatant'){
             displayElement(`#func`,false);
             displayElement(`#combatant`,true);
-            if (pl.combatTrackerMode == 0)
+            if (pl.combatTrackerMode == 'combatants')
                 displayElement(`#combatantNrSel`,true);
             else
                 displayElement(`#combatantNrSel`,false);
+            if (settings.system == 'dnd5e'){
+                displayElement(`#dnd5eWrapper`,true);
+                displayElement(`#conditionDnd5eWrapper`,false);
+                displayElement(`#dnd35eWrapper`,false);
+                displayElement(`#pf2eWrapper`,false);
+                displayElement(`#conditionPf2eWrapper`,false);
+                displayElement(`#demonlordWrapper`,false);
+            }
+            else if (settings.system == 'dnd3.5e' || settings.system == 'pf1e'){
+                displayElement(`#dnd5eWrapper`,false);
+                displayElement(`#conditionDnd5eWrapper`,false);
+                displayElement(`#dnd35eWrapper`,true);
+                displayElement(`#pf2eWrapper`,false);
+                displayElement(`#conditionPf2eWrapper`,false);
+                displayElement(`#demonlordWrapper`,false);
+            }
+            else if (settings.system == 'pf2e'){
+                displayElement(`#dnd5eWrapper`,false);
+                displayElement(`#conditionDnd5eWrapper`,false);
+                displayElement(`#dnd35eWrapper`,false);
+                displayElement(`#pf2eWrapper`,true);
+                displayElement(`#conditionPf2eWrapper`,false);
+                displayElement(`#demonlordWrapper`,false);
+            }
+            else if (settings.system == 'demonlord'){
+                displayElement(`#dnd5eWrapper`,false);
+                displayElement(`#conditionDnd5eWrapper`,false);
+                displayElement(`#dnd35eWrapper`,false);
+                displayElement(`#pf2eWrapper`,false);
+                displayElement(`#conditionPf2eWrapper`,false);
+                displayElement(`#onClickWrapper`,false);
+                displayElement(`#demonlordWrapper`,true);
+            }
         }
-        else if (pl.combatTrackerMode == 2){
-            if (pl.combatTrackerFunction == 1)
+        else if (pl.combatTrackerMode == 'function'){
+            if (pl.combatTrackerFunction == 'turnDisplay')
                 displayElement(`#turnDisplay`,true);
             else 
                 displayElement(`#turnDisplay`,false);
             displayElement(`#func`,true);
             displayElement(`#combatant`,false);
         }
+
+        if (pl.system == 'dnd5e'){
+            displayElement(`#dnd5eWrapper`,true);
+            displayElement(`#conditionDnd5eWrapper`,true);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
+        }
+        else if (pl.system == 'dnd3.5e' || pl.system == 'pf1e'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,true);
+            displayElement(`#dnd35eWrapper`,true);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
+        }
+        else if (pl.system == 'pf2e'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,false);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,true);
+            displayElement(`#conditionPf2eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
+        }
+        else if (pl.system == 'demonlord'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,false);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,false);
+            displayElement(`#demonlordWrapper`,true);
+        }
     }
     /////////////////////////////////////////////////////////////////////////
     const macro = document.querySelector(`#macroMode`);
     if (macro){
         macroBoardMode = pl.macroBoardMode;
-        if (pl.macroMode == 2) {
+        if (pl.macroMode == 'macroBoard') {
             displayElement(`#macroBoardModeWrapper`,true);
-            if (macroBoardMode == 0) {
+            if (macroBoardMode == 'triggerMacro') {
                 displayElement(`#macroOffsetStuff`,false);
                 displayElement(`#macroTriggerStuff`,true);
                 displayElement(`#backgroundContainer`,false);
@@ -187,44 +276,43 @@ const updateUI = (pl) => {
     const playlist = document.querySelector(`#playlistMode`);
     if (playlist){
         playlistType = pl.playlistType;
-        if (pl.playlistMode < 2){
+        if (pl.playlistMode == 'stopAll') {
+            displayElement(`#playlistModeType`,false);
+            displayElement(`#playlistOffsetWrapper`,false);
+            displayElement(`#playlistPlayWrapper`,false);
+            displayElement(`#ringColorWrapper`,false);
+        }
+        else {
             displayElement('#playlistModeType',true)
             displayElement(`#ringColorWrapper`,true);
-            if (playlistType == 1){
+            if (playlistType == 'offset'){
                 displayElement(`#playlistOffsetWrapper`,true);
                 displayElement(`#playlistPlayWrapper`,false);
-                
             }
             else {
-                if (pl.playlistMode == 0)
+                if (pl.playlistMode == 'playlist')
                     displayElement(`#trackNrContainer`,false);
                 else
                     displayElement(`#trackNrContainer`,true);
                 displayElement(`#playlistOffsetWrapper`,false);
                 displayElement(`#playlistPlayWrapper`,true);
             }
-        }
-        else {
-            displayElement(`#playlistModeType`,false);
-            displayElement(`#playlistOffsetWrapper`,false);
-            displayElement(`#playlistPlayWrapper`,false);
-            displayElement(`#ringColorWrapper`,false);
-        }
+        } 
     }
     ////////////////////////////////////////////////////////////////////
     const soundboard = document.querySelector(`#soundboardMode`);
     if (soundboard) {
-        if (pl.soundboardMode == 0){    //play sound
+        if (pl.soundboardMode == 'playSound'){    //play sound
             displayElement(`#playContainer`,true);
             displayElement(`#offsetContainer`,false);
             displayElement(`#ringColorWrapper`,false);
         }
-        else if (pl.soundboardMode == 1){    //offset
+        else if (pl.soundboardMode == 'offset'){    //offset
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,true);
             displayElement(`#ringColorWrapper`,true);
         }
-        else if (pl.soundboardMode == 2){    //stop all sounds
+        else if (pl.soundboardMode == 'stopAll'){    //stop all sounds
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,false);
             displayElement(`#ringColorWrapper`,false);
@@ -234,7 +322,7 @@ const updateUI = (pl) => {
     const otherMode = document.querySelector(`#otherMode`);
     console.log(pl);
     if (otherMode){
-        if (pl.otherMode == 0){    //pause
+        if (pl.otherMode == 'pause'){    //pause
             displayElement(`#pauseContainer`,true);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -244,9 +332,9 @@ const updateUI = (pl) => {
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
         }
-        else if (pl.otherMode == 1){   //scene selection
+        else if (pl.otherMode == 'sceneSelect'){   //scene selection
             sceneMode = pl.sceneFunction;
-            if (sceneMode == undefined) sceneMode = 0;
+            if (sceneMode == undefined) sceneMode = 'visible';
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,true);
             displayElement(`#controlContainer`,false);
@@ -255,7 +343,7 @@ const updateUI = (pl) => {
             displayElement(`#sidebarContainer`,false);
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
-            if (sceneMode == 0){
+            if (sceneMode == 'visible'){
                 displayElement(`#visibleSceneContainer`,true);
                 displayElement(`#anySceneContainer`,false);
             }
@@ -264,9 +352,9 @@ const updateUI = (pl) => {
                 displayElement(`#anySceneContainer`,true);
             }
         }
-        else if (pl.otherMode == 2){   //control buttons
+        else if (pl.otherMode == 'controlButtons'){   //control buttons
             controlMode = pl.control;
-            if (controlMode == undefined) controlMode = 0;
+            if (controlMode == undefined) controlMode = 'dispControls';
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,true);
@@ -285,19 +373,19 @@ const updateUI = (pl) => {
             displayElement(`#lightingControlsContainer`,false);
             displayElement(`#soundControlsContainer`,false);
             displayElement(`#journalNotesContainer`,false);
-            if (controlMode == 0 || controlMode == 1) displayElement(`#displayedControlsContainer`,true);
-            else if (controlMode == 2) displayElement(`#basicControlsContainer`,true);
-            else if (controlMode == 3) displayElement(`#measurementControlsContainer`,true);
-            else if (controlMode == 4) displayElement(`#tileControlContainer`,true);
-            else if (controlMode == 5) displayElement(`#drawingToolsContainer`,true);
-            else if (controlMode == 6) displayElement(`#wallControlsContainer`,true);
-            else if (controlMode == 7) displayElement(`#lightingControlsContainer`,true);
-            else if (controlMode == 8) displayElement(`#soundControlsContainer`,true);
-            else if (controlMode == 9) displayElement(`#journalNotesContainer`,true);
+            if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
+            else if (controlMode == 'token') displayElement(`#basicControlsContainer`,true);
+            else if (controlMode == 'measure') displayElement(`#measurementControlsContainer`,true);
+            else if (controlMode == 'tiles') displayElement(`#tileControlContainer`,true);
+            else if (controlMode == 'drawings') displayElement(`#drawingToolsContainer`,true);
+            else if (controlMode == 'walls') displayElement(`#wallControlsContainer`,true);
+            else if (controlMode == 'lighting') displayElement(`#lightingControlsContainer`,true);
+            else if (controlMode == 'sounds') displayElement(`#soundControlsContainer`,true);
+            else if (controlMode == 'notes') displayElement(`#journalNotesContainer`,true);
         }
-        else if (pl.otherMode == 3){   //darkness
+        else if (pl.otherMode == 'darkness'){   //darkness
             darknessMode = pl.darknessFunction;
-            if (darknessMode == undefined) darknessMode = 0;
+            if (darknessMode == undefined) darknessMode = 'display';
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -306,12 +394,12 @@ const updateUI = (pl) => {
             displayElement(`#sidebarContainer`,false);
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
-            if (darknessMode == 2)
+            if (darknessMode == 'display')
                 displayElement(`#darknessVal`,false);
             else   
                 displayElement(`#darknessVal`,true); 
         }
-        else if (pl.otherMode == 4){   //roll table
+        else if (pl.otherMode == 'rollTables'){   //roll table
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -321,7 +409,7 @@ const updateUI = (pl) => {
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
         }
-        else if (pl.otherMode == 5){   //sidebar
+        else if (pl.otherMode == 'sidebarTab'){   //sidebar
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -331,7 +419,7 @@ const updateUI = (pl) => {
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
         }
-        else if (pl.otherMode == 6 || pl.otherMode == 7){   //open compendium or journal
+        else if (pl.otherMode == 'compendium' || pl.otherMode == 'journal'){   //open compendium or journal
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -344,7 +432,7 @@ const updateUI = (pl) => {
     }
     
     const wrapper = document.querySelector(`#wrapper`);
-    wrapper.style = 'visibility:visible';
+    wrapper.style = '';
 
     Object.keys(pl).map(e => {
         if (e && e != '') {
@@ -362,8 +450,10 @@ const updateUI = (pl) => {
 
 function displayElement(element,display){
     element = document.querySelector(element);
-    if (display) element.style = '';
-    else element.style = 'display:none';
+    if (element != null) {
+        if (display) element.style = '';
+        else element.style = 'display:none';
+    }
 }
 
 /**
@@ -403,15 +493,23 @@ $SD.on('piDataChanged', (returnValue) => {
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
     if (returnValue.key == 'onClick'){
-        if (returnValue.value == 7) displayElement(`#conditionWrapper`,true);
+        console.log(system,settings);
+        if (returnValue.value == 'condition') displayElement(`#conditionWrapper`,true);
         else displayElement(`#conditionWrapper`,false);
-        if (system == 'dnd5e' || system == 'dnd3.5e'){
+        if (settings.system == 'dnd5e' || system == 'dnd3.5e'){
             displayElement(`#conditionDnd5eWrapper`,true);
             displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#conditionDemonlordWrapper`,false);
         }
-        else if (system == 'pfe2'){
+        else if (settings.system == 'pfe2'){
             displayElement(`#conditionDnd5eWrapper`,false);
             displayElement(`#conditionPf2eWrapper`,true);
+            displayElement(`#conditionDemonlordWrapper`,false);
+        }
+        else if (settings.system == 'demonlord'){
+            displayElement(`#conditionDnd5eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#conditionDemonlordWrapper`,true);
         }
     }
     else if (returnValue.key == 'system'){
@@ -422,6 +520,8 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#dnd35eWrapper`,false);
             displayElement(`#pf2eWrapper`,false);
             displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
         }
         else if (returnValue.value == 'dnd3.5e'){
             displayElement(`#dnd5eWrapper`,false);
@@ -429,6 +529,8 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#dnd35eWrapper`,true);
             displayElement(`#pf2eWrapper`,false);
             displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
         }
         else if (returnValue.value == 'pf2e'){
             displayElement(`#dnd5eWrapper`,false);
@@ -436,32 +538,61 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#dnd35eWrapper`,false);
             displayElement(`#pf2eWrapper`,true);
             displayElement(`#conditionPf2eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+            displayElement(`#demonlordWrapper`,false);
+        }
+        else if (returnValue.value == 'demonlord'){
+            displayElement(`#dnd5eWrapper`,false);
+            displayElement(`#conditionDnd5eWrapper`,false);
+            displayElement(`#dnd35eWrapper`,false);
+            displayElement(`#pf2eWrapper`,false);
+            displayElement(`#conditionPf2eWrapper`,false);
+            displayElement(`#onClickWrapper`,false);
+            displayElement(`#demonlordWrapper`,true);
         }
     }
     else if (returnValue.key == 'combatTrackerMode'){
-        if (returnValue.value == 0 || returnValue.value == 1){
+        if (returnValue.value == 'combatants' || returnValue.value == 'currentCombatant'){
             displayElement(`#func`,false);
             displayElement(`#combatant`,true);
-            if (returnValue.value == 0)
+            if (returnValue.value == 'combatants')
                 displayElement(`#combatantNrSel`,true);
             else
                 displayElement(`#combatantNrSel`,false);
+            if (settings.system == 'dnd5e' || settings.system == 'dnd3.5e'){
+                displayElement(`#conditionDnd5eWrapper`,true);
+                displayElement(`#conditionPf2eWrapper`,false);
+                displayElement(`#demonlordWrapper`,false);
+                displayElement(`#onClickWrapper`,true);
+            }
+            else if (settings.system == 'pfe2'){
+                displayElement(`#conditionDnd5eWrapper`,false);
+                displayElement(`#conditionPf2eWrapper`,true);
+                displayElement(`#demonlordWrapper`,false);
+                displayElement(`#onClickWrapper`,true);
+            }
+            else if (settings.system == 'demonlord'){
+                displayElement(`#conditionDnd5eWrapper`,false);
+                displayElement(`#conditionPf2eWrapper`,false);
+                displayElement(`#demonlordWrapper`,true);
+                displayElement(`#onClickWrapper`,false);
+            }
         }
-        else if (returnValue.value == 2){
+        else if (returnValue.value == 'function'){
             displayElement(`#func`,true);
             displayElement(`#combatant`,false);
         }
     }
     else if (returnValue.key == 'combatTrackerFunction'){
-        if (returnValue.value == 5)
+        if (returnValue.value == 'turnDisplay')
             displayElement(`#turnDisplay`,true);
         else 
             displayElement(`#turnDisplay`,false);
     }
 ///////////////////////////////////////////////////////////////////////////
     else if (returnValue.key == 'macroMode'){
-        if (returnValue.value == 2){
-            if (macroBoardMode == 1) {
+        if (returnValue.value == 'macroBoard'){
+            if (macroBoardMode == 'offset') {
                 displayElement('#macroOffsetStuff',true);
                 displayElement('#macroTriggerStuff',false);
                 displayElement(`#backgroundContainer`,false);
@@ -482,7 +613,7 @@ $SD.on('piDataChanged', (returnValue) => {
     }
     else if (returnValue.key == 'macroBoardMode'){
         macroBoardMode = returnValue.value;
-        if (returnValue.value == 0) {
+        if (returnValue.value == 'triggerMacro') {
             displayElement('#macroOffsetStuff',false);
             displayElement('#macroTriggerStuff',true);
             displayElement(`#backgroundContainer`,false);
@@ -495,15 +626,21 @@ $SD.on('piDataChanged', (returnValue) => {
     }
     /////////////////////////////////////////////////////////////////////////////
     else if (returnValue.key == 'playlistMode'){
-        if (returnValue.value < 2){ //Track/playlist
+        if (returnValue.value == 'stopAll') {  //Stop all
+            displayElement(`#playlistModeType`,false);
+            displayElement(`#playlistOffsetWrapper`,false);
+            displayElement(`#playlistPlayWrapper`,false);
+            displayElement(`#ringColorWrapper`,false);
+        }
+        else { //Track/playlist
             displayElement('#playlistModeType',true)
             displayElement(`#ringColorWrapper`,true);
-            if (playlistType == 1){ //Offset
+            if (playlistType == 'offset'){ //Offset
                 displayElement(`#playlistOffsetWrapper`,true);
                 displayElement(`#playlistPlayWrapper`,false);
             }
             else {  //Play/stop
-                if (returnValue.value == 0) //Playlist
+                if (returnValue.value == 'playlist') //Playlist
                     displayElement(`#trackNrContainer`,false);
                 else    //Track
                     displayElement(`#trackNrContainer`,true);
@@ -511,17 +648,12 @@ $SD.on('piDataChanged', (returnValue) => {
                 displayElement(`#playlistPlayWrapper`,true);
             }
         }
-        else {  //Stop all
-            displayElement(`#playlistModeType`,false);
-            displayElement(`#playlistOffsetWrapper`,false);
-            displayElement(`#playlistPlayWrapper`,false);
-            displayElement(`#ringColorWrapper`,false);
-        }
+        
     }
     else if (returnValue.key == 'playlistType'){    //Track/Playlist
         playlistType = returnValue.key;
         displayElement(`#ringColorWrapper`,true);
-        if (returnValue.value == 1){    //Offset
+        if (returnValue.value == 'offset'){    //Offset
             displayElement(`#playlistOffsetWrapper`,true);
             displayElement(`#playlistPlayWrapper`,false);
         }
@@ -532,17 +664,17 @@ $SD.on('piDataChanged', (returnValue) => {
     }
     /////////////////////////////////////////////////////////////////////////
     else if (returnValue.key == 'soundboardMode'){
-        if (returnValue.value == 0){    //play sound
+        if (returnValue.value == 'playSound'){    //play sound
             displayElement(`#playContainer`,true);
             displayElement(`#offsetContainer`,false);
             displayElement(`#ringColorWrapper`,false);
         }
-        else if (returnValue.value == 1){    //offset
+        else if (returnValue.value == 'offset'){    //offset
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,true);
             displayElement(`#ringColorWrapper`,true);
         }
-        else if (returnValue.value == 2){    //stop all sounds
+        else if (returnValue.value == 'stopAll'){    //stop all sounds
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,false);
             displayElement(`#ringColorWrapper`,false);
@@ -550,7 +682,7 @@ $SD.on('piDataChanged', (returnValue) => {
     }
     /////////////////////////////////////////////////////////////
     else if (returnValue.key == 'otherMode'){
-        if (returnValue.value == 0){    //pause
+        if (returnValue.value == 'pause'){    //pause
             displayElement(`#pauseContainer`,true);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -560,7 +692,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
         }
-        else if (returnValue.value == 1){   //scene selection
+        else if (returnValue.value == 'sceneSelect'){   //scene selection
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,true);
             displayElement(`#controlContainer`,false);
@@ -569,7 +701,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#sidebarContainer`,false);
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
-            if (sceneMode == 0){
+            if (sceneMode == 'visible'){
                 displayElement(`#visibleSceneContainer`,true);
                 displayElement(`#anySceneContainer`,false);
             }
@@ -578,7 +710,7 @@ $SD.on('piDataChanged', (returnValue) => {
                 displayElement(`#anySceneContainer`,true);
             }
         }
-        else if (returnValue.value == 2){   //control buttons
+        else if (returnValue.value == 'controlButtons'){   //control buttons
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,true);
@@ -597,17 +729,17 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#lightingControlsContainer`,false);
             displayElement(`#soundControlsContainer`,false);
             displayElement(`#journalNotesContainer`,false);
-            if (controlMode == 0) displayElement(`#displayedControlsContainer`,true);
-            else if (controlMode == 1) displayElement(`#basicControlsContainer`,true);
-            else if (controlMode == 2) displayElement(`#measurementControlsContainer`,true);
-            else if (controlMode == 3) displayElement(`#tileControlContainer`,true);
-            else if (controlMode == 4) displayElement(`#drawingToolsContainer`,true);
-            else if (controlMode == 5) displayElement(`#wallControlsContainer`,true);
-            else if (controlMode == 6) displayElement(`#lightingControlsContainer`,true);
-            else if (controlMode == 7) displayElement(`#soundControlsContainer`,true);
-            else if (controlMode == 8) displayElement(`#journalNotesContainer`,true);
+            if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
+            else if (controlMode == 'token') displayElement(`#basicControlsContainer`,true);
+            else if (controlMode == 'measure') displayElement(`#measurementControlsContainer`,true);
+            else if (controlMode == 'tiles') displayElement(`#tileControlContainer`,true);
+            else if (controlMode == 'drawings') displayElement(`#drawingToolsContainer`,true);
+            else if (controlMode == 'walls') displayElement(`#wallControlsContainer`,true);
+            else if (controlMode == 'lighting') displayElement(`#lightingControlsContainer`,true);
+            else if (controlMode == 'sounds') displayElement(`#soundControlsContainer`,true);
+            else if (controlMode == 'notes') displayElement(`#journalNotesContainer`,true);
         }
-        else if (returnValue.value == 3){   //darkness
+        else if (returnValue.value == 'darkness'){   //darkness
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -616,12 +748,12 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#sidebarContainer`,false);
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
-            if (darknessMode == 2)
+            if (darknessMode == 'display')
                 displayElement(`#darknessVal`,false);
             else   
                 displayElement(`#darknessVal`,true); 
         }
-        else if (returnValue.value == 4){   //roll table
+        else if (returnValue.value == 'rollTables'){   //roll table
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -630,7 +762,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#compendiumContainer`,false);
             displayElement(`#rollTableContainer`,true);
         }
-        else if (returnValue.value == 5){   //sidebar
+        else if (returnValue.value == 'sidebarTab'){   //sidebar
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -640,7 +772,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,true);
         }
-        else if (returnValue.value == 6 || returnValue.value == 7){
+        else if (returnValue.value == 'compendium' || returnValue.value == 'journal'){
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -653,7 +785,7 @@ $SD.on('piDataChanged', (returnValue) => {
     }
     else if (returnValue.key == 'sceneFunction'){
         sceneMode = returnValue.value;
-        if (sceneMode == 0){
+        if (sceneMode == 'visible'){
             displayElement(`#visibleSceneContainer`,true);
             displayElement(`#anySceneContainer`,false);
         }
@@ -673,19 +805,19 @@ $SD.on('piDataChanged', (returnValue) => {
         displayElement(`#lightingControlsContainer`,false);
         displayElement(`#soundControlsContainer`,false);
         displayElement(`#journalNotesContainer`,false);
-        if (controlMode == 0 || controlMode == 1) displayElement(`#displayedControlsContainer`,true);
-        else if (controlMode == 2) displayElement(`#basicControlsContainer`,true);
-        else if (controlMode == 3) displayElement(`#measurementControlsContainer`,true);
-        else if (controlMode == 4) displayElement(`#tileControlContainer`,true);
-        else if (controlMode == 5) displayElement(`#drawingToolsContainer`,true);
-        else if (controlMode == 6) displayElement(`#wallControlsContainer`,true);
-        else if (controlMode == 7) displayElement(`#lightingControlsContainer`,true);
-        else if (controlMode == 8) displayElement(`#soundControlsContainer`,true);
-        else if (controlMode == 9) displayElement(`#journalNotesContainer`,true);
+        if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
+        else if (controlMode == 'token') displayElement(`#basicControlsContainer`,true);
+        else if (controlMode == 'measure') displayElement(`#measurementControlsContainer`,true);
+        else if (controlMode == 'tiles') displayElement(`#tileControlContainer`,true);
+        else if (controlMode == 'drawings') displayElement(`#drawingToolsContainer`,true);
+        else if (controlMode == 'walls') displayElement(`#wallControlsContainer`,true);
+        else if (controlMode == 'lighting') displayElement(`#lightingControlsContainer`,true);
+        else if (controlMode == 'sounds') displayElement(`#soundControlsContainer`,true);
+        else if (controlMode == 'notes') displayElement(`#journalNotesContainer`,true);
     }
     else if (returnValue.key == 'darknessFunction'){
         darknessMode = returnValue.value;
-        if (darknessMode == 2)
+        if (darknessMode == 'display')
                 displayElement(`#darknessVal`,false);
             else   
                 displayElement(`#darknessVal`,true);
