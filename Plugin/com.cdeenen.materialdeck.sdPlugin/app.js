@@ -41,6 +41,7 @@ function connected(jsn) {
     actions[4] = 'com.cdeenen.materialdeck.playlist'; 
     actions[5] = 'com.cdeenen.materialdeck.soundboard';
     actions[6] = 'com.cdeenen.materialdeck.other';
+    actions[7] = 'com.cdeenen.materialdeck.external';
 
     
 
@@ -323,6 +324,11 @@ function convertSettings(jsn){
             else count--;
             settings.condition = condition;
             settings.conditionPF2E = condition;
+        }
+        else if (settings.system == 'demonlord'){
+            count++;
+            if (settings.onClickDemonlord == undefined) settings.onClickDemonlord = settings.onClick;
+            else count--;
         }
     }
     else if (actn == 'move'){

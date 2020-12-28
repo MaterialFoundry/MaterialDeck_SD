@@ -90,6 +90,19 @@
       "Tooltip": "Other functions.",
       "UUID": "com.cdeenen.materialdeck.other",
       "PropertyInspectorPath": "PropertyInspector/other.html"
+    },
+    {
+      "Name": "External Modules",
+      "Icon": "action/images/external/external",
+      "States": [
+        {
+          "Image": "action/images/external/external",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "External Modules.",
+      "UUID": "com.cdeenen.materialdeck.external",
+      "PropertyInspectorPath": "PropertyInspector/external.html"
     }
   ], 
   "SDKVersion": 2,
@@ -102,7 +115,7 @@
   "Name": "Material Deck", 
   "Icon": "vtt", 
   "URL": "https://github.com/CDeenen/MaterialDeck_SD", 
-  "Version": "1.1.0",
+  "Version": "1.2.0",
   "OS": [
     {
         "Platform": "mac", 

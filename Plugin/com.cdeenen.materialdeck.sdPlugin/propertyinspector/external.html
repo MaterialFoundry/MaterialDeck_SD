@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover">
+    <meta name=apple-mobile-web-app-capable content=yes>
+    <meta name=apple-mobile-web-app-status-bar-style content=black>
+    <title>com.cdeenen.materialdeck External Modules Property Inspector</title>
+    <link rel="stylesheet" href="css/sdpi.css">
+  </head>
+  <body>
+    <div class="sdpi-wrapper" id="wrapper" style="display:none">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Mode</div>
+        <select class="sdpi-item-value select" id="module" type="select">
+          <option value='fxmaster'>Fx Master</option>
+          <option value='custom'>Custom</option>
+        </select>
+      </div>
+
+    <div class="wrapper" id="fxMasterWrapper" style="display:none">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Type</div>
+        <select class="sdpi-item-value select" id="fxMasterType" type="select">
+          <option value='weatherControls'>Weather Controls</option>
+          <option value='colorize'>Colorize Effects</option>
+          <option value='filters'>Filters</option>
+          <option value='clear'>Clear All</option>
+        </select>
+      </div>
+      <div class="wrapper" id="weatherControlsWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Effect</div>
+          <select class="sdpi-item-value select" id="weatherEffect" type="select">
+            <option value='leaves'>Autumn Leaves</option>
+            <option value='rain'>Rain</option>
+            <option value='snow'>Snow</option>
+            <option value='snowstorm'>Snowstorm</option>
+            <option value='bubbles'>Bubbles</option>
+            <option value='clouds'>Clouds</option>
+            <option value='embers'>Embers</option>
+            <option value='rainsimple'>Rain without splash</option>
+            <option value='stars'>Stars</option>
+            <option value='crows'>Crows</option>
+            <option value='bats'>Bats</option>
+            <option value='fog'>Fog</option>
+            <option value='raintop'>Topdown Rain</option>
+            <option value='birds'>Birds</option>
+          </select> 
+        </div>
+
+        <div type="range" class="sdpi-item">
+          <div class="sdpi-item-label">Density</div>
+          <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="densitySlider">
+        </div>
+
+        <div type="range" class="sdpi-item">
+          <div class="sdpi-item-label">Speed</div>
+          <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="speedSlider">
+        </div>
+
+        <div type="range" class="sdpi-item">
+          <div class="sdpi-item-label">Direction</div>
+          <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="directionSlider">
+        </div>
+
+        <div type="range" class="sdpi-item">
+          <div class="sdpi-item-label">Scale</div>
+          <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="scaleSlider">
+        </div>
+
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Color Enable</div>
+          <input class="sdpi-item-value" id="fxWeatherEnColor" type="checkbox">
+          <label for="fxWeatherEnColor"><span></span></label>
+        </div>
+
+        <div type="range" class="sdpi-item">
+          <div class="sdpi-item-label">Color</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="fxMasterWeatherColor" value="#000000">
+          </div>
+        </div>
+      </div>
+
+      <div class="wrapper" id="colorizeWrapper" style="display:none">
+        <div type="range" class="sdpi-item">
+          <div class="sdpi-item-label">Color</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="fxMasterColorizeColor" value="#000000">
+          </div>
+        </div>
+      </div>
+      
+      <div class="wrapper" id="filterWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Effect</div>
+          <select class="sdpi-item-value select" id="fxMasterFilter" type="select">
+            <option value='underwater'>Underwater Filter</option>
+            <option value='predator'>Predator Filter</option>
+            <option value='oldfilm'>Old Film Filter</option>
+            <option value='bloom'>Bloom Filter</option>
+          </select> 
+        </div>
+      </div> 
+
+
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Name</div>
+        <input class="sdpi-item-value" id="displayFxMasterName" type="checkbox">
+        <label for="displayFxMasterName"><span></span></label>
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Icon</div>
+        <input class="sdpi-item-value" id="displayFxMasterIcon" type="checkbox">
+        <label for="displayFxMasterIcon"><span></span></label>
+      </div>
+    </div>
+      
+    
+    
+
+    <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
+    <script src="js/common.js"></script>
+    <script src="js/common_pi.js"></script>
+    <script src="js/index_pi.js"></script>
+  </body>
+</html>

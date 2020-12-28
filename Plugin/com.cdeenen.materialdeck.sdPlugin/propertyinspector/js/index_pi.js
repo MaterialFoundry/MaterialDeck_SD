@@ -320,7 +320,6 @@ const updateUI = (pl) => {
     }
 ////////////////////////////////////////////////////////
     const otherMode = document.querySelector(`#otherMode`);
-    console.log(pl);
     if (otherMode){
         if (pl.otherMode == 'pause'){    //pause
             displayElement(`#pauseContainer`,true);
@@ -385,7 +384,7 @@ const updateUI = (pl) => {
         }
         else if (pl.otherMode == 'darkness'){   //darkness
             darknessMode = pl.darknessFunction;
-            if (darknessMode == undefined) darknessMode = 'display';
+            if (darknessMode == undefined) darknessMode = 'value';
             displayElement(`#pauseContainer`,false);
             displayElement(`#sceneContainer`,false);
             displayElement(`#controlContainer`,false);
@@ -394,7 +393,7 @@ const updateUI = (pl) => {
             displayElement(`#sidebarContainer`,false);
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
-            if (darknessMode == 'display')
+            if (darknessMode == 'disp')
                 displayElement(`#darknessVal`,false);
             else   
                 displayElement(`#darknessVal`,true); 
@@ -430,6 +429,25 @@ const updateUI = (pl) => {
             displayElement(`#ringColorWrapper`,false);
         }
     }
+
+    ////////////////////////////////////////////////////////
+    const module = document.querySelector(`#module`);
+    //console.log(module,pl);
+    if (pl.module == undefined || pl.module == 'fxmaster'){
+        displayElement(`#fxMasterWrapper`,true);
+        if (pl.fxMasterType == undefined || pl.fxMasterType == 'weatherControls')
+            displayElement(`#weatherControlsWrapper`,true);
+        else if (pl.fxMasterType == 'colorize')
+            displayElement(`#colorizeWrapper`,true);
+        else if (pl.fxMasterType == 'filters')
+            displayElement(`#filterWrapper`,true);
+    }
+    else if (pl.module == 'custom') {
+        displayElement(`#fxMasterWrapper`,false);
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////
     
     const wrapper = document.querySelector(`#wrapper`);
     wrapper.style = '';
@@ -493,7 +511,6 @@ $SD.on('piDataChanged', (returnValue) => {
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
     if (returnValue.key == 'onClick'){
-        console.log(system,settings);
         if (returnValue.value == 'condition') displayElement(`#conditionWrapper`,true);
         else displayElement(`#conditionWrapper`,false);
         if (settings.system == 'dnd5e' || system == 'dnd3.5e'){
@@ -648,7 +665,6 @@ $SD.on('piDataChanged', (returnValue) => {
                 displayElement(`#playlistPlayWrapper`,true);
             }
         }
-        
     }
     else if (returnValue.key == 'playlistType'){    //Track/Playlist
         playlistType = returnValue.key;
@@ -748,7 +764,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#sidebarContainer`,false);
             displayElement(`#compendiumContainer`,false);
             displayElement(`#ringColorWrapper`,false);
-            if (darknessMode == 'display')
+            if (darknessMode == 'disp')
                 displayElement(`#darknessVal`,false);
             else   
                 displayElement(`#darknessVal`,true); 
@@ -817,10 +833,34 @@ $SD.on('piDataChanged', (returnValue) => {
     }
     else if (returnValue.key == 'darknessFunction'){
         darknessMode = returnValue.value;
-        if (darknessMode == 'display')
+        if (darknessMode == 'disp')
                 displayElement(`#darknessVal`,false);
             else   
                 displayElement(`#darknessVal`,true);
+    }
+
+    //////////////////////////////////////////////////////////
+    else if (returnValue.key == 'module'){
+        //console.log('settings',settings)
+        if (returnValue.value == 'fxmaster'){
+            displayElement(`#customWrapper`,false);
+            displayElement(`#fxMasterWrapper`,true);
+            displayElement(`#weatherControlsWrapper`,false);
+            displayElement(`#colorizeWrapper`,false);
+            displayElement(`#filterWrapper`,false);
+            const type = (settings.fxMasterType == undefined) ? 'weatherControls' : settings.fxMasterType;
+            if (type == 'weatherControls') displayElement(`#weatherControlsWrapper`,true);
+            else if (type == 'colorize') displayElement(`#colorizeWrapper`,true);
+            else if (type == 'filters') displayElement(`#filterWrapper`,true);
+        }
+    }
+    else if (returnValue.key == 'fxMasterType') {
+        displayElement(`#weatherControlsWrapper`,false);
+        displayElement(`#colorizeWrapper`,false);
+        displayElement(`#filterWrapper`,false);
+        if (returnValue.value == 'weatherControls') displayElement(`#weatherControlsWrapper`,true);
+        else if (returnValue.value == 'colorize') displayElement(`#colorizeWrapper`,true);
+        else if (returnValue.value == 'filters') displayElement(`#filterWrapper`,true);
     }
 
     /* SAVE THE VALUE TO SETTINGS */
@@ -852,7 +892,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName'){
+        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName' || sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);
