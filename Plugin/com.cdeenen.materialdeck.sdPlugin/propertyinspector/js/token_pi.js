@@ -104,20 +104,54 @@ $SD.on('sendToPropertyInspector', jsn => {
 
 const updateUI = (pl) => {
     console.log("pl",pl);
+ 
+    const system = settings.system ? settings.system : 'dnd5e';
+    const onClick = settings.onClick ? settings.onClick : 'none';
+    let stats = settings.stats ? settings.stats : 'none';
+    if (system == 'demonlord') stats = settings.statsDemonlord ? settings.statsDemonlord : 'none';
+    
     //console.log('settings',settings)
     
-    const mode = settings.mode ? settings.mode : 'canvas';
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        const type = settings.type ? settings.type : 'move';
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+    displayElement(`#dnd5eWrapper`,false);
+    displayElement(`#conditionDnd5eWrapper`,false);
+    displayElement(`#dnd35eWrapper`,false);
+    displayElement(`#pf2eWrapper`,false);
+    displayElement(`#conditionWrapper`,false);
+    displayElement(`#conditionPf2eWrapper`,false);
+    displayElement(`#onClickWrapper`,false);
+    displayElement(`#demonlordWrapper`,false);
+    displayElement(`#onClickDemonWrapper`,false);
+    displayElement(`#conditionDemonlordWrapper`,false);
+    displayElement(`#visionWrapper`,false);
+
+    if (system == 'dnd5e'){
+        displayElement(`#dnd5eWrapper`,true);
+        displayElement(`#conditionDnd5eWrapper`,true);
+        displayElement(`#onClickWrapper`,true);
+    }
+    else if (system == 'dnd3.5e' || system == 'pf1e'){
+        displayElement(`#conditionDnd5eWrapper`,true);
+        displayElement(`#dnd35eWrapper`,true);
+        displayElement(`#onClickWrapper`,true);
+    }
+    else if (system == 'pf2e'){
+        displayElement(`#pf2eWrapper`,true);
+        displayElement(`#conditionPf2eWrapper`,true);
+        displayElement(`#onClickWrapper`,true);
+    }
+    else if (system == 'demonlord'){
+        displayElement(`#demonlordWrapper`,true);
+        displayElement(`#onClickDemonWrapper`,true);
+        displayElement(`#conditionDemonlordWrapper`,true);
     }
 
+    if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
+    else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
+
+    if (stats == 'custom') displayElement(`#customContainer`,true);
+    else displayElement(`#customContainer`,false);
+    
+    
     ////////////////////////////////////////////////////////////////////////////////
     
     const wrapper = document.querySelector(`#wrapper`);
@@ -181,20 +215,55 @@ $SD.on('piDataChanged', (returnValue) => {
     var element;
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
-    
-    let mode = settings.mode ? settings.mode : 'canvas';
-    if (returnValue.key == 'mode') mode = returnValue.value;
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        let type = settings.type ? settings.type : 'move';
-        if (returnValue.key == 'type') type = returnValue.value;
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+    //console.log('settings',settings);
+
+    let system = settings.system ? settings.system : 'dnd5e';
+    let onClick = settings.onClick ? settings.onClick : 'none';
+    let stats = settings.stats ? settings.stats : 'none';
+    if (system == 'demonlord') stats = settings.statsDemonlord ? settings.statsDemonlord : 'none';
+
+    if (returnValue.key == 'system') system = returnValue.value;
+    else if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
+    else if (returnValue.key == 'onClick' || returnValue.key == 'onClickDemonlord') onClick = returnValue.value;
+
+    displayElement(`#dnd5eWrapper`,false);
+    displayElement(`#conditionDnd5eWrapper`,false);
+    displayElement(`#dnd35eWrapper`,false);
+    displayElement(`#pf2eWrapper`,false);
+    displayElement(`#conditionWrapper`,false);
+    displayElement(`#conditionPf2eWrapper`,false);
+    displayElement(`#onClickWrapper`,false);
+    displayElement(`#demonlordWrapper`,false);
+    displayElement(`#onClickDemonWrapper`,false);
+    displayElement(`#conditionDemonlordWrapper`,false);
+    displayElement(`#visionWrapper`,false);
+
+    if (system == 'dnd5e'){
+        displayElement(`#dnd5eWrapper`,true);
+        displayElement(`#conditionDnd5eWrapper`,true);
+        displayElement(`#onClickWrapper`,true);
     }
+    else if (system == 'dnd3.5e' || system == 'pf1e'){
+        displayElement(`#conditionDnd5eWrapper`,true);
+        displayElement(`#dnd35eWrapper`,true);
+        displayElement(`#onClickWrapper`,true);
+    }
+    else if (system == 'pf2e'){
+        displayElement(`#pf2eWrapper`,true);
+        displayElement(`#conditionPf2eWrapper`,true);
+        displayElement(`#onClickWrapper`,true);
+    }
+    else if (system == 'demonlord'){
+        displayElement(`#demonlordWrapper`,true);
+        displayElement(`#onClickDemonWrapper`,true);
+        displayElement(`#conditionDemonlordWrapper`,true);
+    }
+
+    if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
+    else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
+
+    if (stats == 'custom') displayElement(`#customContainer`,true);
+    else displayElement(`#customContainer`,false);
 
     /* SAVE THE VALUE TO SETTINGS */
     saveSettings(returnValue);
@@ -225,7 +294,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName' || sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon'){
+        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);

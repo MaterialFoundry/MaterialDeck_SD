@@ -102,23 +102,64 @@ $SD.on('sendToPropertyInspector', jsn => {
     }
 });
 
+let macroBoardMode = 0;
+let playlistType = 0;
+let sceneMode = 0;
+let darknessMode = 0;
+let controlMode = 0;
+let system = 'dnd5e';
+
 const updateUI = (pl) => {
     console.log("pl",pl);
-    //console.log('settings',settings)
     
-    const mode = settings.mode ? settings.mode : 'canvas';
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        const type = settings.type ? settings.type : 'move';
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
-    }
+    const mode = settings.combatTrackerMode ? settings.combatTrackerMode : 'combatants';
+    //console.log('settings',settings)
 
-    ////////////////////////////////////////////////////////////////////////////////
+    displayElement(`#funcWrapper`,false);
+    displayElement(`#combatantWrapper`,false);
+
+    if (mode == 'combatants' || mode == 'currentCombatant'){
+        const system = settings.system ? settings.system : 'dnd5e';
+        let stats = settings.stats ? settings.stats : 'none';
+        if (system == 'demonlord') stats = settings.statsDemonlord ? settings.statsDemonlord : 'none';
+        displayElement(`#combatantWrapper`,true);
+        displayElement(`#combatantNrSel`,false);
+        displayElement(`#dnd5eWrapper`,false);
+        displayElement(`#dnd35eWrapper`,false);
+        displayElement(`#pf2eWrapper`,false);
+        displayElement(`#demonlordWrapper`,false);
+        displayElement(`#onClickWrapper`,false);
+        displayElement(`#onClickDemonWrapper`,false);
+
+        if (mode == 'combatants') displayElement(`#combatantNrSel`,true);
+
+        if (stats == 'custom') displayElement(`#customContainer`,true);
+        else displayElement(`#customContainer`,false);
+
+        if (system == 'dnd5e'){
+            displayElement(`#dnd5eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+        }
+        else if (system == 'dnd3.5e' || system == 'pf1e'){
+            displayElement(`#dnd35eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+        }
+        else if (system == 'pf2e'){
+            displayElement(`#pf2eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+        }
+        else if (system == 'demonlord'){
+            displayElement(`#demonlordWrapper`,true);
+            displayElement(`#onClickDemonWrapper`,true);
+        }
+    }
+    else if (mode == 'function'){
+        displayElement(`#funcWrapper`,true);
+        displayElement(`#turnDisplay`,false);
+        const func = settings.combatTrackerFunction ? settings.combatTrackerFunction : 'startStop';
+        if (func == 'turnDisplay')
+            displayElement(`#turnDisplay`,true);
+    }
     
     const wrapper = document.querySelector(`#wrapper`);
     wrapper.style = '';
@@ -182,18 +223,59 @@ $SD.on('piDataChanged', (returnValue) => {
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
     
-    let mode = settings.mode ? settings.mode : 'canvas';
-    if (returnValue.key == 'mode') mode = returnValue.value;
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        let type = settings.type ? settings.type : 'move';
-        if (returnValue.key == 'type') type = returnValue.value;
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+    let mode = settings.combatTrackerMode ? settings.combatTrackerMode : 'combatants';
+    if (returnValue.key == 'combatTrackerMode') mode = returnValue.value;
+    //console.log('settings',settings)
+
+    displayElement(`#funcWrapper`,false);
+    displayElement(`#combatantWrapper`,false);
+
+    if (mode == 'combatants' || mode == 'currentCombatant'){
+        let system = settings.system ? settings.system : 'dnd5e';
+        if (returnValue.key == 'system') system = returnValue.value;
+        let stats = settings.stats ? settings.stats : 'none';
+        if (returnValue.key == 'stats') stats = returnValue.value;
+        if (system == 'demonlord') {
+            stats = settings.statsDemonlord ? settings.statsDemonlord : 'none';
+            if (returnValue.key == 'statsDemonlord') stats = returnValue.value;
+        }
+        displayElement(`#combatantWrapper`,true);
+        displayElement(`#combatantNrSel`,false);
+        displayElement(`#dnd5eWrapper`,false);
+        displayElement(`#dnd35eWrapper`,false);
+        displayElement(`#pf2eWrapper`,false);
+        displayElement(`#demonlordWrapper`,false);
+        displayElement(`#onClickWrapper`,false);
+        displayElement(`#onClickDemonWrapper`,false);
+
+        if (mode == 'combatants') displayElement(`#combatantNrSel`,true);
+
+        if (stats == 'custom') displayElement(`#customContainer`,true);
+        else displayElement(`#customContainer`,false);
+
+        if (system == 'dnd5e'){
+            displayElement(`#dnd5eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+        }
+        else if (system == 'dnd3.5e' || system == 'pf1e'){
+            displayElement(`#dnd35eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+        }
+        else if (system == 'pf2e'){
+            displayElement(`#pf2eWrapper`,true);
+            displayElement(`#onClickWrapper`,true);
+        }
+        else if (system == 'demonlord'){
+            displayElement(`#demonlordWrapper`,true);
+            displayElement(`#onClickDemonWrapper`,true);
+        }
+    }
+    else if (mode == 'function'){
+        displayElement(`#funcWrapper`,true);
+        displayElement(`#turnDisplay`,false);
+        const func = settings.combatTrackerFunction ? settings.combatTrackerFunction : 'startStop';
+        if (func == 'turnDisplay')
+            displayElement(`#turnDisplay`,true);
     }
 
     /* SAVE THE VALUE TO SETTINGS */

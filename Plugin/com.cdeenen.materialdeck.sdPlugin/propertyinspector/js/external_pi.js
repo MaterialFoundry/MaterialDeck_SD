@@ -104,19 +104,30 @@ $SD.on('sendToPropertyInspector', jsn => {
 
 const updateUI = (pl) => {
     console.log("pl",pl);
+    var element;
+    const module = settings.module ? settings.module : 'fxmaster';
+    const fxMasterType = settings.fxMasterType ? settings.fxMasterType : 'weatherControls';
+
     //console.log('settings',settings)
-    
-    const mode = settings.mode ? settings.mode : 'canvas';
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        const type = settings.type ? settings.type : 'move';
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+
+    displayElement(`#fxMasterWrapper`,false);
+    displayElement('#gmScreenWrapper',false);
+
+    if (module == 'fxmaster'){
+        displayElement(`#fxMasterWrapper`,true);
+        if (fxMasterType == 'weatherControls')
+            displayElement(`#weatherControlsWrapper`,true);
+        else if (fxMasterType == 'colorize')
+            displayElement(`#colorizeWrapper`,true);
+        else if (fxMasterType == 'filters')
+            displayElement(`#filterWrapper`,true);
     }
+    else if (module == 'gmscreen')
+        displayElement('#gmScreenWrapper',true);
+    else if (module == 'custom') {
+        
+    }
+
 
     ////////////////////////////////////////////////////////////////////////////////
     
@@ -181,19 +192,33 @@ $SD.on('piDataChanged', (returnValue) => {
     var element;
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
-    
-    let mode = settings.mode ? settings.mode : 'canvas';
-    if (returnValue.key == 'mode') mode = returnValue.value;
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        let type = settings.type ? settings.type : 'move';
-        if (returnValue.key == 'type') type = returnValue.value;
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+
+    let module = settings.module ? settings.module : 'fxmaster';
+    let fxMasterType = settings.fxMasterType ? settings.fxMasterType : 'weatherControls';
+
+    if (returnValue.key == 'module') module = returnValue.value;
+    else if (returnValue.key == 'fxMasterType') fxMasterType = returnValue.value;
+
+    displayElement(`#fxMasterWrapper`,false);
+    displayElement(`#weatherControlsWrapper`,false);
+    displayElement(`#colorizeWrapper`,false);
+    displayElement(`#filterWrapper`,false);
+    displayElement('#gmScreenWrapper',false);
+
+    //console.log(module,pl);
+    if (module == 'fxmaster'){
+        displayElement(`#fxMasterWrapper`,true);
+        if (fxMasterType == 'weatherControls')
+            displayElement(`#weatherControlsWrapper`,true);
+        else if (fxMasterType == 'colorize')
+            displayElement(`#colorizeWrapper`,true);
+        else if (fxMasterType == 'filters')
+            displayElement(`#filterWrapper`,true);
+    }
+    else if (module == 'gmscreen')
+        displayElement('#gmScreenWrapper',true);
+    else if (module == 'custom') {
+        
     }
 
     /* SAVE THE VALUE TO SETTINGS */
@@ -225,7 +250,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName' || sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon'){
+        if (sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon' || sdpi_collection.key == 'displayGmScreenName' || sdpi_collection.key == 'displayGmScreenIcon'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);

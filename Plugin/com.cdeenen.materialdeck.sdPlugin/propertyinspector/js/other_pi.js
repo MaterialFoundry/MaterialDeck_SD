@@ -104,19 +104,67 @@ $SD.on('sendToPropertyInspector', jsn => {
 
 const updateUI = (pl) => {
     console.log("pl",pl);
+    const mode = settings.otherMode ? settings.otherMode : 'pause';
     //console.log('settings',settings)
     
-    const mode = settings.mode ? settings.mode : 'canvas';
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        const type = settings.type ? settings.type : 'move';
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+    displayElement(`#pauseContainer`,false);
+    displayElement(`#controlContainer`,false);
+    displayElement(`#darknessContainer`,false);
+    displayElement(`#rollDiceContainer`,false);
+    displayElement(`#rollTableContainer`,false);
+    displayElement(`#sidebarContainer`,false);
+    displayElement(`#compendiumContainer`,false);
+    displayElement(`#ringColorWrapper`,false);
+    displayElement(`#chatMessageContainer`,false);
+
+    if (mode == 'pause'){    //pause
+        displayElement(`#pauseContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
     }
+    else if (mode == 'controlButtons'){   //control buttons
+        const controlMode = settings.control ? settings.control : 'dispControls';
+        displayElement(`#controlContainer`,true);
+        displayElement(`#displayedControlsContainer`,false);
+        displayElement(`#basicControlsContainer`,false);
+        displayElement(`#measurementControlsContainer`,false);
+        displayElement(`#tileControlContainer`,false);
+        displayElement(`#drawingToolsContainer`,false);
+        displayElement(`#wallControlsContainer`,false);
+        displayElement(`#lightingControlsContainer`,false);
+        displayElement(`#soundControlsContainer`,false);
+        displayElement(`#journalNotesContainer`,false);
+        if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
+        else if (controlMode == 'token') displayElement(`#basicControlsContainer`,true);
+        else if (controlMode == 'measure') displayElement(`#measurementControlsContainer`,true);
+        else if (controlMode == 'tiles') displayElement(`#tileControlContainer`,true);
+        else if (controlMode == 'drawings') displayElement(`#drawingToolsContainer`,true);
+        else if (controlMode == 'walls') displayElement(`#wallControlsContainer`,true);
+        else if (controlMode == 'lighting') displayElement(`#lightingControlsContainer`,true);
+        else if (controlMode == 'sounds') displayElement(`#soundControlsContainer`,true);
+        else if (controlMode == 'notes') displayElement(`#journalNotesContainer`,true);
+    }
+    else if (mode == 'darkness'){   //darkness
+        const darknessFunction = settings.darknessFunction ? settings.darknessFunction : 'value';
+        displayElement(`#darknessContainer`,true);
+        if (darknessFunction == 'disp')
+            displayElement(`#darknessVal`,false);
+        else   
+            displayElement(`#darknessVal`,true); 
+    }
+    else if (mode == 'rollDice')    //roll dice
+        displayElement(`#rollDiceContainer`,true);
+    else if (mode == 'rollTables')   //roll table
+        displayElement(`#rollTableContainer`,true);
+    else if (mode == 'sidebarTab'){   //sidebar
+        displayElement(`#sidebarContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
+    }
+    else if (mode == 'compendium' || mode == 'journal')   //open compendium or journal
+        displayElement(`#compendiumContainer`,true);
+    else if (mode == 'chatMessage')
+        displayElement(`#chatMessageContainer`,true);
+    
+    
 
     ////////////////////////////////////////////////////////////////////////////////
     
@@ -178,23 +226,70 @@ function displayElement(element,display){
  */
 
 $SD.on('piDataChanged', (returnValue) => {
-    var element;
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
+
+    let mode = settings.otherMode ? settings.otherMode : 'pause';
+    if (returnValue.key == 'otherMode') mode = returnValue.value;
     
-    let mode = settings.mode ? settings.mode : 'canvas';
-    if (returnValue.key == 'mode') mode = returnValue.value;
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        let type = settings.type ? settings.type : 'move';
-        if (returnValue.key == 'type') type = returnValue.value;
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+    displayElement(`#pauseContainer`,false);
+    displayElement(`#controlContainer`,false);
+    displayElement(`#darknessContainer`,false);
+    displayElement(`#rollDiceContainer`,false);
+    displayElement(`#rollTableContainer`,false);
+    displayElement(`#sidebarContainer`,false);
+    displayElement(`#compendiumContainer`,false);
+    displayElement(`#ringColorWrapper`,false);
+    displayElement(`#chatMessageContainer`,false);
+
+    if (mode == 'pause'){    //pause
+        displayElement(`#pauseContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
     }
+    else if (mode == 'controlButtons'){   //control buttons
+        let controlMode = settings.control ? settings.control : 'dispControls';
+        if (returnValue.key == 'control') controlMode = returnValue.value;
+        displayElement(`#controlContainer`,true);
+        displayElement(`#displayedControlsContainer`,false);
+        displayElement(`#basicControlsContainer`,false);
+        displayElement(`#measurementControlsContainer`,false);
+        displayElement(`#tileControlContainer`,false);
+        displayElement(`#drawingToolsContainer`,false);
+        displayElement(`#wallControlsContainer`,false);
+        displayElement(`#lightingControlsContainer`,false);
+        displayElement(`#soundControlsContainer`,false);
+        displayElement(`#journalNotesContainer`,false);
+        if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
+        else if (controlMode == 'token') displayElement(`#basicControlsContainer`,true);
+        else if (controlMode == 'measure') displayElement(`#measurementControlsContainer`,true);
+        else if (controlMode == 'tiles') displayElement(`#tileControlContainer`,true);
+        else if (controlMode == 'drawings') displayElement(`#drawingToolsContainer`,true);
+        else if (controlMode == 'walls') displayElement(`#wallControlsContainer`,true);
+        else if (controlMode == 'lighting') displayElement(`#lightingControlsContainer`,true);
+        else if (controlMode == 'sounds') displayElement(`#soundControlsContainer`,true);
+        else if (controlMode == 'notes') displayElement(`#journalNotesContainer`,true);
+    }
+    else if (mode == 'darkness'){   //darkness
+        let darknessFunction = settings.darknessFunction ? settings.darknessFunction : 'value';
+        if (returnValue.key == 'darknessFunction') darknessFunction = returnValue.value;
+        displayElement(`#darknessContainer`,true);
+        if (darknessFunction == 'disp')
+            displayElement(`#darknessVal`,false);
+        else   
+            displayElement(`#darknessVal`,true); 
+    }
+    else if (mode == 'rollDice')    //roll dice
+        displayElement(`#rollDiceContainer`,true);
+    else if (mode == 'rollTables')   //roll table
+        displayElement(`#rollTableContainer`,true);
+    else if (mode == 'sidebarTab'){   //sidebar
+        displayElement(`#sidebarContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
+    }
+    else if (mode == 'compendium' || mode == 'journal')   //open compendium or journal
+        displayElement(`#compendiumContainer`,true);
+    else if (mode == 'chatMessage')
+        displayElement(`#chatMessageContainer`,true);
 
     /* SAVE THE VALUE TO SETTINGS */
     saveSettings(returnValue);
@@ -225,7 +320,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName' || sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon'){
+        if (sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayDiceName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);

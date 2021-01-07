@@ -11,10 +11,10 @@
   <body>
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
       <div class="sdpi-item">
-        <div class="sdpi-item-label">Mode</div>
+        <div class="sdpi-item-label">Module</div>
         <select class="sdpi-item-value select" id="module" type="select">
           <option value='fxmaster'>Fx Master</option>
-          <option value='custom'>Custom</option>
+          <option value='gmscreen'>GM Screen</option>
         </select>
       </div>
 
@@ -116,13 +116,29 @@
         <label for="displayFxMasterIcon"><span></span></label>
       </div>
     </div>
-      
-    
-    
 
+    <div class="wrapper" id="gmScreenWrapper" style="display:none">
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Name</div>
+        <input class="sdpi-item-value" id="displayGmScreenName" type="checkbox">
+        <label for="displayGmScreenName"><span></span></label>
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Icon</div>
+        <input class="sdpi-item-value" id="displayGmScreenIcon" type="checkbox">
+        <label for="displayGmScreenIcon"><span></span></label>
+      </div>
+      <div type="range" class="sdpi-item">
+        <div class="sdpi-item-label">Background</div>
+        <div class="sdpi-item-value">
+            <input type="color" id="gmScreenBackground" value="#000000">
+        </div>
+      </div>
+    </div>
+      
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
-    <script src="js/index_pi.js"></script>
+    <script src="js/external_pi.js"></script>
   </body>
 </html>

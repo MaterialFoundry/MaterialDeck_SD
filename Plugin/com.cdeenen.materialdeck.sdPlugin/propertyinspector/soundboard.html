@@ -19,6 +19,10 @@
         </select>
       </div>
       <div class="spdi-wrapper" id="playContainer" style="">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Sound Nr</div>
+          <input class="sdpi-item-value" id="soundNr" value="0">
+        </div>
         <div type="checkbox" class="sdpi-item">
           <div class="sdpi-item-label">Display Name</div>
           <input class="sdpi-item-value" id="displayName" type="checkbox">
@@ -29,10 +33,6 @@
           <input class="sdpi-item-value" id="displayIcon" type="checkbox">
           <label for="displayIcon"><span></span></label>
         </div>
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Sound Nr</div>
-          <input class="sdpi-item-value" id="soundNr" value="0">
-        </div>
       </div>
       <div class="spdi-wrapper" id="offsetContainer" style="display:none">
         <div class="sdpi-item">
@@ -41,24 +41,30 @@
         </div>  
       </div>
       <div class="spdi-wrapper" id="ringColorWrapper" style="">
-        <div class="sdpi-item" id="onColorContainer">
+        <div type="range" class="sdpi-item" id="onColorContainer">
           <div class="sdpi-item-label">On Color</div>
-          <input class="sdpi-item-value" id="onRing" value="#00FF00">
+          <div class="sdpi-item-value">
+              <input type="color" id="onRing" value="#00FF00">
+          </div>
         </div>
-        <div class="sdpi-item" id="offColorContainer">
+        <div type="range" class="sdpi-item" id="offColorContainer">
           <div class="sdpi-item-label">Off Color</div>
-          <input class="sdpi-item-value" id="offRing" value="#000000">
+          <div class="sdpi-item-value">
+              <input type="color" id="offRing" value="#000000">
+          </div>
         </div>
       </div>
-      <div class="sdpi-item" id="backgroundContainer">
+      <div type="range" class="sdpi-item" id="backgroundContainer">
         <div class="sdpi-item-label">Background</div>
-        <input class="sdpi-item-value" id="background" value="#000000">
+        <div class="sdpi-item-value">
+            <input type="color" id="background" value="#000000">
+        </div>
       </div>
     </div>
 
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
-    <script src="js/index_pi.js"></script>
+    <script src="js/soundboard_pi.js"></script>
   </body>
 </html>

@@ -14,13 +14,14 @@
         <div class="sdpi-item-label">Mode</div>
         <select class="sdpi-item-value select" id="otherMode" type="select">
           <option value='pause'>Pause Game</option>
-          <option value='sceneSelect'>Scene Selection</option>
           <option value='controlButtons'>Control Buttons</option>
           <option value='darkness'>Darkness Control</option>
+          <option value='rollDice'>Roll Dice</option>
           <option value='rollTables'>Roll Tables</option>
           <option value='sidebarTab'>Open Sidebar Tab</option>
           <option value='compendium'>Open Compendium</option>
           <option value='journal'>Open Journal</option>
+          <option value='chatMessage'>Send Chat Message</option>
         </select>
       </div>
 
@@ -32,42 +33,6 @@
             <option value='resume'>Resume Game</option>
             <option value='toggle'>Toggle Pause</option>
           </select>
-        </div>
-      </div>
-
-      <div class="spdi-wrapper" id="sceneContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Function</div>
-          <select class="sdpi-item-value select" id="sceneFunction" type="select">
-            <option value='visible'>Visible Scenes</option>
-            <option value='any'>Any Scene</option>
-          </select>
-        </div>
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">View Function</div>
-          <select class="sdpi-item-value select" id="sceneViewFunction" type="select">
-            <option value=0>View</option>
-            <option value=1>Activate</option>
-            <option value=2>View/Activate if viewed</option>
-          </select>
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displaySceneName" type="checkbox">
-          <label for="displaySceneName"><span></span></label>
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Icon</div>
-          <input class="sdpi-item-value" id="displaySceneIcon" type="checkbox">
-          <label for="displaySceneIcon"><span></span></label>
-        </div>
-        <div class="sdpi-item" id="visibleSceneContainer" style="display:none">
-          <div class="sdpi-item-label">Scene Nr</div>
-          <input class="sdpi-item-value" id="sceneNr" value="1">
-        </div>
-        <div class="sdpi-item" id="anySceneContainer" style="display:none">
-          <div class="sdpi-item-label">Scene Name</div>
-          <input class="sdpi-item-value" id="sceneName" value="">
         </div>
       </div>
 
@@ -212,6 +177,26 @@
           <input class="sdpi-item-value" id="darknessValue" value="0">
         </div>
       </div>
+
+      <div class="spdi-wrapper" id="rollDiceContainer" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Function</div>
+          <select class="sdpi-item-value select" id="rollDiceFunction" type="select">
+            <option value='public'>Public Roll</option>
+            <option value='private'>Private Roll</option>
+            <option value='sd'>Display on Stream Deck</option>
+          </select>
+        </div>
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Formula</div>
+          <input class="sdpi-item-value" id="rollDiceFormula" value="1d20 + 7">
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayDiceName" type="checkbox">
+          <label for="displayDiceName"><span></span></label>
+        </div> 
+      </div>
       
       <div class="spdi-wrapper" id="rollTableContainer" style="display:none">
         <div class="sdpi-item">
@@ -279,25 +264,38 @@
         </div> 
       </div>
 
-      <div class="spdi-wrapper" id="ringColorWrapper" style="">
-        <div class="sdpi-item" id="onColorContainer">
-          <div class="sdpi-item-label">On Color</div>
-          <input class="sdpi-item-value" id="onRing" value="#00FF00">
-        </div>
-        <div class="sdpi-item" id="offColorContainer">
-          <div class="sdpi-item-label">Off Color</div>
-          <input class="sdpi-item-value" id="offRing" value="#000000">
+      <div class="spdi-wrapper" id="chatMessageContainer" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Message</div>
+          <input class="sdpi-item-value" id="chatMessage" value="">
         </div>
       </div>
-      <div class="sdpi-item" id="backgroundContainer">
+
+      <div class="spdi-wrapper" id="ringColorWrapper" style="">
+        <div type="range" class="sdpi-item" id="onColorContainer">
+          <div class="sdpi-item-label">On Color</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="onRing" value="#00FF00">
+          </div>
+        </div>
+        <div type="range" class="sdpi-item" id="offColorContainer">
+          <div class="sdpi-item-label">Off Color</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="offRing" value="#000000">
+          </div>
+        </div>
+      </div>
+      <div type="range" class="sdpi-item" id="backgroundContainer">
         <div class="sdpi-item-label">Background</div>
-        <input class="sdpi-item-value" id="background" value="#000000">
+        <div class="sdpi-item-value">
+            <input type="color" id="background" value="#000000">
+        </div>
       </div>
     </div>
 
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
-    <script src="js/index_pi.js"></script>
+    <script src="js/other_pi.js"></script>
   </body>
 </html>

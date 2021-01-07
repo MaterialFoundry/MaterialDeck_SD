@@ -42,7 +42,7 @@ function connected(jsn) {
     actions[5] = 'com.cdeenen.materialdeck.soundboard';
     actions[6] = 'com.cdeenen.materialdeck.other';
     actions[7] = 'com.cdeenen.materialdeck.external';
-
+    actions[8] = 'com.cdeenen.materialdeck.scene';
     
 
     for (let i=0; i<actions.length; i++){
@@ -587,6 +587,10 @@ function convertSettings(jsn){
         else if (sidebarTab == 10) sidebarTab = 'collapse';
         else count--;
         settings.sidebarTab = sidebarTab;
+
+        //if (mode == 'sceneSelect'){
+            //console.log('settings',settings)
+        //}
     }
     if (count > 0){
         $SD.api.setSettings(jsn.context, settings);
@@ -656,8 +660,12 @@ function sendToSDWS(msg) {
         if (event == 'setStateCustom'){
             //setState(msg);
         }
-        else if (event == 'setIcon'){
-           
+        else if (event == 'setBufferImage'){
+            findInImageBuffer(data);
+        }
+        else if (event == 'setImage'){
+            $SD.connection.send(msg);
+            addToImageBuffer(data.payload);
         }
         else 
             $SD.connection.send(msg);
@@ -667,6 +675,33 @@ function sendToSDWS(msg) {
 /////////////////////////////////////////////////////////////////////
 //Other functions
 /////////////////////////////////////////////////////////////////////
+
+imageBuffer = [];
+for (let i=0; i<500; i++) imageBuffer[i] = undefined;
+
+function addToImageBuffer(data){
+    const newData = {
+        id: data.id,
+        img: data.image,
+    }
+    imageBuffer[data.nr]=newData;
+}
+
+function findInImageBuffer(data){
+    if (imageBuffer[data.payload.nr].id == data.payload.id){
+        const json = {
+            event: "setImage",
+            context: data.context,
+            payload: {
+                image: "" + imageBuffer[data.payload.nr].img,
+                target: 0
+            }
+        }
+        $SD.connection.send(JSON.stringify(json));
+    }
+}
+
+
 
 function setContext(coordinates = {column:0,row:0},msg){
     const num = coordinates.column + coordinates.row*8;

@@ -104,21 +104,27 @@ $SD.on('sendToPropertyInspector', jsn => {
 
 const updateUI = (pl) => {
     console.log("pl",pl);
+
     //console.log('settings',settings)
     
-    const mode = settings.mode ? settings.mode : 'canvas';
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        const type = settings.type ? settings.type : 'move';
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+    const sceneFunction = settings.sceneFunction ? settings.sceneFunction : 'visible';
+    displayElement(`#sceneContainer`,true);
+    displayElement(`#ringColorWrapper`,true);
+    displayElement(`#visibleSceneContainer`,false);
+    displayElement(`#anySceneContainer`,false);
+    displayElement(`#sceneOffsetContainer`,false);
+    displayElement(`#sceneViewFunctionContainer`,true);
+    if (sceneFunction == 'visible' || sceneFunction == 'dir')
+        displayElement(`#visibleSceneContainer`,true);
+    else if (sceneFunction == 'any')
+        displayElement(`#anySceneContainer`,true);
+    else if (sceneFunction == 'offset') {
+        displayElement(`#sceneOffsetContainer`,true);
+        displayElement(`#sceneViewFunctionContainer`,false);
     }
-
-    ////////////////////////////////////////////////////////////////////////////////
+    else
+        displayElement(`#sceneViewFunctionContainer`,false);
+    
     
     const wrapper = document.querySelector(`#wrapper`);
     wrapper.style = '';
@@ -178,23 +184,27 @@ function displayElement(element,display){
  */
 
 $SD.on('piDataChanged', (returnValue) => {
-    var element;
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
-    
-    let mode = settings.mode ? settings.mode : 'canvas';
-    if (returnValue.key == 'mode') mode = returnValue.value;
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        let type = settings.type ? settings.type : 'move';
-        if (returnValue.key == 'type') type = returnValue.value;
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+
+    let sceneFunction = settings.sceneFunction ? settings.sceneFunction : 'visible';
+    if (returnValue.key == 'sceneFunction') sceneFunction = returnValue.value;
+    displayElement(`#sceneContainer`,true);
+    displayElement(`#ringColorWrapper`,true);
+    displayElement(`#visibleSceneContainer`,false);
+    displayElement(`#anySceneContainer`,false);
+    displayElement(`#sceneOffsetContainer`,false);
+    displayElement(`#sceneViewFunctionContainer`,true);
+    if (sceneFunction == 'visible' || sceneFunction == 'dir')
+        displayElement(`#visibleSceneContainer`,true);
+    else if (sceneFunction == 'any')
+        displayElement(`#anySceneContainer`,true);
+    else if (sceneFunction == 'offset') {
+        displayElement(`#sceneOffsetContainer`,true);
+        displayElement(`#sceneViewFunctionContainer`,false);
     }
+    else
+        displayElement(`#sceneViewFunctionContainer`,false);
 
     /* SAVE THE VALUE TO SETTINGS */
     saveSettings(returnValue);
@@ -225,7 +235,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName' || sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon'){
+        if (sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayDiceName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);

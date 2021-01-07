@@ -18,7 +18,7 @@
           <option value='function'>Function</option>
         </select>
       </div>
-      <div id="func" style="display:none">
+      <div class="wrapper" id="funcWrapper" style="display:none">
         <div class="sdpi-item">
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="combatTrackerFunction" type="select">
@@ -42,19 +42,10 @@
             <label for="displayRound"><span></span></label>
           </div>
         </div>
+        
       </div>
-      <div id="combatant" style="">
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displayName" type="checkbox">
-          <label for="displayName"><span></span></label>
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Icon</div>
-          <input class="sdpi-item-value" id="displayIcon" type="checkbox">
-          <label for="displayIcon"><span></span></label>
-        </div>
-
+      <div class="wrapper" id="combatantWrapper" style="">
+        
         <div class="sdpi-item">
           <div class="sdpi-item-label">System</div>
           <select class="sdpi-item-value select" id="system" type="select">
@@ -70,6 +61,7 @@
           <div class="sdpi-item-label">Stats</div>
           <select class="sdpi-item-value select" id="stats" type="select">
             <option value='none'>None</option>
+            <option value='custom'>Custom</option>
             <option value='HP'>HP</option>
             <option value='TempHP'>Temp HP</option>
             <option value='AC'>AC</option>
@@ -84,6 +76,7 @@
           <div class="sdpi-item-label">Stats</div>
           <select class="sdpi-item-value select" id="stats" type="select">
             <option value='none'>None</option>
+            <option value='custom'>Custom</option>
             <option value='HP'>HP</option>
             <option value='TempHP'>Temp HP</option>
             <option value='AC'>AC</option>
@@ -96,6 +89,7 @@
           <div class="sdpi-item-label">Stats</div>
           <select class="sdpi-item-value select" id="stats" type="select">
             <option value='none'>None</option>
+            <option value='custom'>Custom</option>
             <option value='HP'>HP</option>
             <option value='TempHP'>Temp HP</option>
             <option value='AC'>AC</option>
@@ -105,55 +99,84 @@
           </select>
         </div>
 
-        <div class="sdpi-item" id="demonlordWrapper" style="display:none">
-          <div class="sdpi-item-label">Stats</div>
-          <select class="sdpi-item-value select" id="stats" type="select">
-            <option value='none'>None</option>
-            <option value='HP'>HP</option>
-            <option value='TempHP'>Temp HP</option>
-            <option value='AC'>AC</option>
-            <option value='ShieldHP'>Shield HP</option>
-            <option value='Speed'>Speed</option>
-            <option value='Init'>Initiative</option>
-          </select>
-
-          <div class="sdpi-item-label">On Click</div>
-          <select class="sdpi-item-value select" id="onClick" type="select">
-            <option value='doNothing'>Do Nothing</option>
-            <option value ='select'>Select Token</option>
-            <option value='center'>Center on Token</option>
-            <option value='centerSelect'>Center on Token and Select Token</option>
-            <option value='charSheet'>Open Character Sheet</option>
-            <option value='tokenConfig'>Open Token Config</option>
-            <option value='initiative'>Toggle Initiative</option>
-          </select>
+        <div class="wrapper" id="demonlordWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Stats</div>
+            <select class="sdpi-item-value select" id="statsDemonlord" type="select">
+              <option value='none'>None</option>
+              <option value='custom'>Custom</option>
+              <option value='HP'>HP</option>
+              <option value='TempHP'>Temp HP</option>
+              <option value='AC'>AC</option>
+              <option value='ShieldHP'>Shield HP</option>
+              <option value='Speed'>Speed</option>
+              <option value='Init'>Initiative</option>
+            </select>
+          </div>
         </div>
         
-        <div class="sdpi-item" id="onClickWrapper" style="">
-          <div class="sdpi-item-label">On Click</div>
-          <select class="sdpi-item-value select" id="onClick" type="select">
-            <option value='doNothing'>Do Nothing</option>
-            <option value ='select'>Select Token</option>
-            <option value='center'>Center on Token</option>
-            <option value='centerSelect'>Center on Token and Select Token</option>
-            <option value='charSheet'>Open Character Sheet</option>
-            <option value='tokenConfig'>Open Token Config</option>
-          </select>
+        <div class="sdpi-item" id="customContainer" style="display:none">
+          <div class="sdpi-item-label">Custom</div>
+          <input class="sdpi-item-value" id="custom" value="">
         </div>
+
+        <div class="wrapper" id="onClickWrapper" style="">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">On Click</div>
+            <select class="sdpi-item-value select" id="onClick" type="select">
+              <option value='doNothing'>Do Nothing</option>
+              <option value ='select'>Select Token</option>
+              <option value='center'>Center on Token</option>
+              <option value='centerSelect'>Center on Token and Select Token</option>
+              <option value='charSheet'>Open Character Sheet</option>
+              <option value='tokenConfig'>Open Token Config</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="wrapper" id="onClickDemonWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">On Click</div>
+            <select class="sdpi-item-value select" id="onClickDemonlord" type="select">
+              <option value='doNothing'>Do Nothing</option>
+              <option value ='select'>Select Token</option>
+              <option value='center'>Center on Token</option>
+              <option value='centerSelect'>Center on Token and Select Token</option>
+              <option value='charSheet'>Open Character Sheet</option>
+              <option value='tokenConfig'>Open Token Config</option>
+              <option value='initiative'>Toggle Initiative</option>
+            </select>
+            </div>
+        </div>
+
         <div class="sdpi-item" id="combatantNrSel" stype="display:none">
           <div class="sdpi-item-label">Combatant Nr</div>
           <input class="sdpi-item-value" id="combatantNr" value="1">
         </div>
+
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayName" type="checkbox">
+          <label for="displayName"><span></span></label>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="displayIcon" type="checkbox">
+          <label for="displayIcon"><span></span></label>
+        </div>
       </div>
-      <div class="sdpi-item" id="backgroundContainer">
+
+      <div type="range" class="sdpi-item" id="backgroundContainer">
         <div class="sdpi-item-label">Background</div>
-        <input class="sdpi-item-value" id="background" value="#000000">
+        <div class="sdpi-item-value">
+            <input type="color" id="background" value="#000000">
+        </div>
       </div>
     </div>
 
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
-    <script src="js/index_pi.js"></script>
+    <script src="js/combattracker_pi.js"></script>
   </body>
 </html>

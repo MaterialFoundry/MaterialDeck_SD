@@ -10,17 +10,6 @@
   </head>
   <body>
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
-        <input class="sdpi-item-value" id="displayName" type="checkbox">
-        <label for="displayName"><span></span></label>
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
-        <input class="sdpi-item-value" id="displayIcon" type="checkbox">
-        <label for="displayIcon"><span></span></label>
-      </div>
-
       <div class="sdpi-item">
         <div class="sdpi-item-label">System</div>
         <select class="sdpi-item-value select" id="system" type="select">
@@ -36,6 +25,7 @@
         <div class="sdpi-item-label">Stats</div>
         <select class="sdpi-item-value select" id="stats" type="select">
           <option value='none'>None</option>
+          <option value='custom'>Custom</option>
           <option value='HP'>HP</option>
           <option value='TempHP'>Temp HP</option>
           <option value='AC'>AC</option>
@@ -50,6 +40,7 @@
         <div class="sdpi-item-label">Stats</div>
         <select class="sdpi-item-value select" id="stats" type="select">
           <option value='none'>None</option>
+          <option value='custom'>Custom</option>
           <option value='HP'>HP</option>
           <option value='TempHP'>Temp HP</option>
           <option value='AC'>AC</option>
@@ -62,6 +53,7 @@
         <div class="sdpi-item-label">Stats</div>
         <select class="sdpi-item-value select" id="stats" type="select">
           <option value='none'>None</option>
+          <option value='custom'>Custom</option>
           <option value='HP'>HP</option>
           <option value='TempHP'>Temp HP</option>
           <option value='AC'>AC</option>
@@ -71,11 +63,12 @@
         </select>
       </div>
     
-      <div class="sdpi-wrapper" id="demonlordWrapper" style="display:none">
+      <div class="wrapper" id="demonlordWrapper" style="display:none">
         <div class="sdpi-item">
           <div class="sdpi-item-label">Stats</div>
-          <select class="sdpi-item-value select" id="stats" type="select">
+          <select class="sdpi-item-value select" id="statsDemonlord" type="select">
             <option value='none'>None</option>
+            <option value='custom'>Custom</option>
             <option value='HP'>HP</option>
             <option value='TempHP'>Temp HP</option>
             <option value='AC'>AC</option>
@@ -84,6 +77,14 @@
             <option value='Init'>Initiative</option>
           </select>
         </div>
+      </div>
+
+      <div class="sdpi-item" id="customContainer" style="display:none">
+        <div class="sdpi-item-label">Custom</div>
+        <input class="sdpi-item-value" id="custom" value="">
+      </div>
+
+      <div class="wrapper" id="onClickDemonWrapper" style="display:none">
         <div class="sdpi-item">
           <div class="sdpi-item-label">On Click</div>
           <select class="sdpi-item-value select" id="onClickDemonlord" type="select">
@@ -96,11 +97,11 @@
             <option value='target'>Target Token</option>
             <option value='condition'>Toggle Condition</option>
             <option value='initiative'>Toggle Initiative</option>
+            <option value='vision'>Set Vision</option>
           </select>
         </div>
       </div>
     
-
       <div class="sdpi-item" id="onClickWrapper" style="">
         <div class="sdpi-item-label">On Click</div>
         <select class="sdpi-item-value select" id="onClick" type="select">
@@ -112,10 +113,11 @@
           <option value='combatState'>Toggle Combat State</option>
           <option value='target'>Target Token</option>
           <option value='condition'>Toggle Condition</option>
+          <option value='vision'>Set Vision</option>
         </select>
       </div>
       
-      <div class="sdpi-wrapper" id="conditionWrapper" style="">
+      <div class="wrapper" id="conditionWrapper" style="">
         <div class="sdpi-item" id="conditionDnd5eWrapper" style="">
           <div class="sdpi-item-label">Condition</div>
           <select class="sdpi-item-value select" id="condition" type="select">
@@ -255,15 +257,94 @@
           </select>
         </div>
       </div>
-      <div class="sdpi-item" id="backgroundContainer">
+
+      <div class="wrapper"  id="visionWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Dim Vision</div>
+            <input class="sdpi-item-value" id="dimVision" value="">
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Bright Vision</div>
+            <input class="sdpi-item-value" id="brightVision" value="">
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Sight Angle</div>
+            <input class="sdpi-item-value" id="sightAngle" value="">
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Dim Light Radius</div>
+            <input class="sdpi-item-value" id="dimRadius" value="">
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Bright Light Radius</div>
+            <input class="sdpi-item-value" id="brightRadius" value="">
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Emission Angle</div>
+            <input class="sdpi-item-value" id="emissionAngle" value="">
+          </div>
+          <div type="range" class="sdpi-item">
+            <div class="sdpi-item-label">Light Color</div>
+            <div class="sdpi-item-value">
+                <input type="color" id="lightColor" value="#000000">
+            </div>
+          </div>
+          <div type="range" class="sdpi-item">
+            <div class="sdpi-item-label">Color Intensity</div>
+            <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="colorIntensity">
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Animation Type</div>
+            <select class="sdpi-item-value select" id="animationType" type="select">
+              <option value='none'>None</option>
+              <option value='torch'>Torch</option>
+              <option value='pulse'>Pulse</option>
+              <option value='chroma'>Chroma</option>
+              <option value='wave'>Pulsing Wave</option>
+              <option value='fog'>Swirling Fog</option>
+              <option value='sunburst'>Sunburst</option>
+              <option value='dome'>Light Dome</option>
+              <option value='emenation'>Mysterious Emanation</option>
+              <option value='hexa'>Hexa Dome</option>
+              <option value='ghost'>Ghostly Light</option>
+              <option value='energy'>Energy Field</option>
+              <option value='roiling'>Roiling Mass (Darkness)</option>
+              <option value='hole'>Black Hole (Darkness)</option>
+            </select>
+        </div>
+          <div type="range" class="sdpi-item">
+            <div class="sdpi-item-label">Animation Speed</div>
+            <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="animationSpeed">
+          </div>
+          <div type="range" class="sdpi-item">
+            <div class="sdpi-item-label">Animation Intensity</div>
+            <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="animationIntensity">
+          </div>
+      </div>
+      
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Name</div>
+        <input class="sdpi-item-value" id="displayName" type="checkbox">
+        <label for="displayName"><span></span></label>
+      </div>
+      
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Icon</div>
+        <input class="sdpi-item-value" id="displayIcon" type="checkbox">
+        <label for="displayIcon"><span></span></label>
+      </div>
+
+      <div type="range" class="sdpi-item">
         <div class="sdpi-item-label">Background</div>
-        <input class="sdpi-item-value" id="background" value="#000000">
+        <div class="sdpi-item-value">
+            <input type="color" id="background" value="#000000">
+        </div>
       </div>
     </div>    
 
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
-    <script src="js/index_pi.js"></script>
+    <script src="js/token_pi.js"></script>
   </body>
 </html>

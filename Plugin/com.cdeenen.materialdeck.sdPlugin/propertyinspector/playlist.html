@@ -32,11 +32,6 @@
         </div>
       </div>
       <div class="spdi-wrapper" id="playlistPlayWrapper" style="">
-        <div type="checkbox" class="sdpi-item" id="displayPlName">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displayName" type="checkbox">
-          <label for="displayName"><span></span></label>
-        </div>
         <div class="sdpi-item" id="playlistNrContainer">
           <div class="sdpi-item-label">Playlist Nr</div>
           <input class="sdpi-item-value" id="playlistNr" value=1>
@@ -45,20 +40,31 @@
           <div class="sdpi-item-label">Track Nr</div>
           <input class="sdpi-item-value" id="trackNr" value=1>
         </div>
+        <div type="checkbox" class="sdpi-item" id="displayPlName">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayName" type="checkbox">
+          <label for="displayName"><span></span></label>
+        </div>
       </div>
       <div class="spdi-wrapper" id="ringColorWrapper" style="">
-        <div class="sdpi-item" id="onColorContainer">
+        <div type="range" class="sdpi-item" id="onColorContainer">
           <div class="sdpi-item-label">On Color</div>
-          <input class="sdpi-item-value" id="onRing" value="#00FF00">
+          <div class="sdpi-item-value">
+              <input type="color" id="onRing" value="#00FF00">
+          </div>
         </div>
-        <div class="sdpi-item" id="offColorContainer">
+        <div type="range" class="sdpi-item" id="offColorContainer">
           <div class="sdpi-item-label">Off Color</div>
-          <input class="sdpi-item-value" id="offRing" value="#000000">
+          <div class="sdpi-item-value">
+              <input type="color" id="offRing" value="#000000">
+          </div>
         </div>
       </div>
-      <div class="sdpi-item" id="backgroundContainer">
+      <div type="range" class="sdpi-item" id="backgroundContainer">
         <div class="sdpi-item-label">Background</div>
-        <input class="sdpi-item-value" id="background" value="#000000">
+        <div class="sdpi-item-value">
+            <input type="color" id="background" value="#000000">
+        </div>
       </div>
     </div>
 

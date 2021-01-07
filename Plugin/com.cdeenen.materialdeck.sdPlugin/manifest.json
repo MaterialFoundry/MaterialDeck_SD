@@ -1,6 +1,71 @@
 {
   "Actions": [
     {
+      "Name": "Combat Tracker",
+      "Icon": "action/images/combattracker/combattracker",
+      "States": [
+        {
+          "Image": "action/images/combattracker/combattracker",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Combat tracker.",
+      "UUID": "com.cdeenen.materialdeck.combattracker",
+      "PropertyInspectorPath": "PropertyInspector/combattracker.html"
+    },
+    {
+      "Name": "External Modules",
+      "Icon": "action/images/external/external",
+      "States": [
+        {
+          "Image": "action/images/external/external",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "External Modules.",
+      "UUID": "com.cdeenen.materialdeck.external",
+      "PropertyInspectorPath": "PropertyInspector/external.html"
+    },
+    {
+      "Name": "Macro",
+      "Icon": "action/images/macro/macro",
+      "States": [
+        {
+          "Image": "action/images/macro/macro",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Trigger a macro.",
+      "UUID": "com.cdeenen.materialdeck.macro",
+      "PropertyInspectorPath": "PropertyInspector/macro.html"
+    },
+    {
+      "Name": "Move",
+      "Icon": "action/images/move/center",
+      "States": [
+        {
+          "Image": "action/images/move/center",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Move the canvas or the selected token.",
+      "UUID": "com.cdeenen.materialdeck.move",
+      "PropertyInspectorPath": "PropertyInspector/move.html"
+    },
+    {
+      "Name": "Other",
+      "Icon": "action/images/other/other",
+      "States": [
+        {
+          "Image": "action/images/other/other",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Other functions.",
+      "UUID": "com.cdeenen.materialdeck.other",
+      "PropertyInspectorPath": "PropertyInspector/other.html"
+    },
+    {
       "Name": "Playlist",
       "Icon": "action/images/playlist/play",
       "States": [
@@ -12,6 +77,19 @@
       "Tooltip": "Playlist Control.",
       "UUID": "com.cdeenen.materialdeck.playlist",
       "PropertyInspectorPath": "PropertyInspector/playlist.html"
+    },
+    {
+      "Name": "Scene",
+      "Icon": "action/images/scene/scene",
+      "States": [
+        {
+          "Image": "action/images/scene/scene",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Scenes.",
+      "UUID": "com.cdeenen.materialdeck.scene",
+      "PropertyInspectorPath": "PropertyInspector/scene.html"
     },
     {
       "Name": "Soundboard",
@@ -38,71 +116,6 @@
       "Tooltip": "Displays selected token information.",
       "UUID": "com.cdeenen.materialdeck.token",
       "PropertyInspectorPath": "PropertyInspector/token.html"
-    },
-    {
-      "Name": "Move",
-      "Icon": "action/images/move/center",
-      "States": [
-        {
-          "Image": "action/images/move/center",
-          "TitleAlignment": "middle"
-        }
-      ],
-      "Tooltip": "Move the canvas or the selected token.",
-      "UUID": "com.cdeenen.materialdeck.move",
-      "PropertyInspectorPath": "PropertyInspector/move.html"
-    },
-    {
-      "Name": "Macro",
-      "Icon": "action/images/macro/macro",
-      "States": [
-        {
-          "Image": "action/images/macro/macro",
-          "TitleAlignment": "middle"
-        }
-      ],
-      "Tooltip": "Trigger a macro.",
-      "UUID": "com.cdeenen.materialdeck.macro",
-      "PropertyInspectorPath": "PropertyInspector/macro.html"
-    },
-    {
-      "Name": "Combat Tracker",
-      "Icon": "action/images/combattracker/combattracker",
-      "States": [
-        {
-          "Image": "action/images/combattracker/combattracker",
-          "TitleAlignment": "middle"
-        }
-      ],
-      "Tooltip": "Combat tracker.",
-      "UUID": "com.cdeenen.materialdeck.combattracker",
-      "PropertyInspectorPath": "PropertyInspector/combattracker.html"
-    },
-    {
-      "Name": "Other",
-      "Icon": "action/images/other/other",
-      "States": [
-        {
-          "Image": "action/images/other/other",
-          "TitleAlignment": "middle"
-        }
-      ],
-      "Tooltip": "Other functions.",
-      "UUID": "com.cdeenen.materialdeck.other",
-      "PropertyInspectorPath": "PropertyInspector/other.html"
-    },
-    {
-      "Name": "External Modules",
-      "Icon": "action/images/external/external",
-      "States": [
-        {
-          "Image": "action/images/external/external",
-          "TitleAlignment": "middle"
-        }
-      ],
-      "Tooltip": "External Modules.",
-      "UUID": "com.cdeenen.materialdeck.external",
-      "PropertyInspectorPath": "PropertyInspector/external.html"
     }
   ], 
   "SDKVersion": 2,
@@ -115,7 +128,7 @@
   "Name": "Material Deck", 
   "Icon": "vtt", 
   "URL": "https://github.com/CDeenen/MaterialDeck_SD", 
-  "Version": "1.2.0",
+  "Version": "1.2.1",
   "OS": [
     {
         "Platform": "mac", 

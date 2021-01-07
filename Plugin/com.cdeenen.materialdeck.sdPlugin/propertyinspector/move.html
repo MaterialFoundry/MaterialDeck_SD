@@ -17,31 +17,61 @@
           <option value='selectedToken'>Selected Token</option>
         </select>
       </div>
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Direction</div>
-        <select class="sdpi-item-value select" id="dir">
-          <option value='center'>Center</option>
-          <option value='up'>Up</option>
-          <option value='down'>Down</option>
-          <option value='right'>Right</option>
-          <option value='left'>Left</option>
-          <option value='upRight'>Up+Right</option>
-          <option value='upLeft'>Up+Left</option>
-          <option value='downRight'>Down+Right</option>
-          <option value='downLeft'>Down+Left</option>
-          <option value='zoomIn'>Zoom In</option>
-          <option value='zoomOut'>Zoom Out</option>
-        </select>
+
+      <div class='wrapper' id='tokenWrapper' style='display:none'> 
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Type</div>
+          <select class="sdpi-item-value select" id="type">
+            <option value='move'>Move</option>
+            <option value='rotate'>Rotate</option>
+          </select>
+        </div>
       </div>
-      <div class="sdpi-item" id="backgroundContainer">
+
+      <div class='wrapper' id='dirWrapper' style='display:none'> 
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Direction</div>
+          <select class="sdpi-item-value select" id="dir">
+            <option value='center'>Center</option>
+            <option value='up'>Up</option>
+            <option value='down'>Down</option>
+            <option value='right'>Right</option>
+            <option value='left'>Left</option>
+            <option value='upRight'>Up+Right</option>
+            <option value='upLeft'>Up+Left</option>
+            <option value='downRight'>Down+Right</option>
+            <option value='downLeft'>Down+Left</option>
+            <option value='zoomIn'>Zoom In</option>
+            <option value='zoomOut'>Zoom Out</option>
+          </select>
+        </div>
+      </div>
+
+      <div class='wrapper' id='rotWrapper' style='display:none'>  
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Rotation</div>
+          <select class="sdpi-item-value select" id="rot">
+            <option value='to'>Rotate to value</option>
+            <option value='by'>Rotate by value</option>
+          </select>
+        </div>
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Value (deg)</div>
+          <input class="sdpi-item-value" id="rotValue" value="0">
+        </div>
+      </div>
+
+      <div type="range" class="sdpi-item" id="backgroundContainer">
         <div class="sdpi-item-label">Background</div>
-        <input class="sdpi-item-value" id="background" value="#000000">
+        <div class="sdpi-item-value">
+            <input type="color" id="background" value="#000000">
+        </div>
       </div>
     </div>
 
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
-    <script src="js/index_pi.js"></script>
+    <script src="js/move_pi.js"></script>
   </body>
 </html>

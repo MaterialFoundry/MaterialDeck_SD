@@ -102,20 +102,27 @@ $SD.on('sendToPropertyInspector', jsn => {
     }
 });
 
+let macroBoardMode = 0;
+let playlistType = 0;
+let sceneMode = 0;
+let darknessMode = 0;
+let controlMode = 0;
+let system = 'dnd5e';
+
 const updateUI = (pl) => {
     console.log("pl",pl);
+
     //console.log('settings',settings)
-    
-    const mode = settings.mode ? settings.mode : 'canvas';
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        const type = settings.type ? settings.type : 'move';
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+    const mode = settings.soundboardMode ? settings.soundboardMode : 'playSound';
+    displayElement(`#playContainer`,false);
+    displayElement(`#offsetContainer`,false);
+    displayElement(`#ringColorWrapper`,false);
+
+    if ( mode == 'playSound')    //play sound
+        displayElement(`#playContainer`,true);
+    else if ( mode == 'offset'){    //offset
+        displayElement(`#offsetContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -182,18 +189,19 @@ $SD.on('piDataChanged', (returnValue) => {
     console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     console.log(returnValue);
     
-    let mode = settings.mode ? settings.mode : 'canvas';
-    if (returnValue.key == 'mode') mode = returnValue.value;
-    displayElement(`#dirWrapper`,false);
-    displayElement(`#rotWrapper`,false);
-    displayElement(`#tokenWrapper`,false);
-    if (mode == 'canvas') displayElement(`#dirWrapper`,true);
-    else if (mode == 'selectedToken'){
-        displayElement(`#tokenWrapper`,true);
-        let type = settings.type ? settings.type : 'move';
-        if (returnValue.key == 'type') type = returnValue.value;
-        if (type == 'move') displayElement(`#dirWrapper`,true);
-        else displayElement(`#rotWrapper`,true);
+    let mode = settings.soundboardMode ? settings.soundboardMode : 'playSound';
+    if (returnValue.key == 'soundboardMode') mode = returnValue.value;
+    console.log(mode)
+    
+    displayElement(`#playContainer`,false);
+    displayElement(`#offsetContainer`,false);
+    displayElement(`#ringColorWrapper`,false);
+
+    if ( mode == 'playSound')    //play sound
+        displayElement(`#playContainer`,true);
+    else if ( mode == 'offset'){    //offset
+        displayElement(`#offsetContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
     }
 
     /* SAVE THE VALUE TO SETTINGS */
