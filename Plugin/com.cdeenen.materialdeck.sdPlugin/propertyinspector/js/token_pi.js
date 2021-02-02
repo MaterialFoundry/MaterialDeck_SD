@@ -123,6 +123,8 @@ const updateUI = (pl) => {
     displayElement(`#onClickDemonWrapper`,false);
     displayElement(`#conditionDemonlordWrapper`,false);
     displayElement(`#visionWrapper`,false);
+    displayElement('#wildcardWrapper',false);
+    displayElement('#customOnClickWrapper',false);
 
     if (system == 'dnd5e'){
         displayElement(`#dnd5eWrapper`,true);
@@ -147,6 +149,8 @@ const updateUI = (pl) => {
 
     if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
     else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
+    else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
+    else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
 
     if (stats == 'custom') displayElement(`#customContainer`,true);
     else displayElement(`#customContainer`,false);
@@ -237,6 +241,8 @@ $SD.on('piDataChanged', (returnValue) => {
     displayElement(`#onClickDemonWrapper`,false);
     displayElement(`#conditionDemonlordWrapper`,false);
     displayElement(`#visionWrapper`,false);
+    displayElement('#wildcardWrapper',false);
+    displayElement('#customOnClickWrapper',false);
 
     if (system == 'dnd5e'){
         displayElement(`#dnd5eWrapper`,true);
@@ -261,6 +267,8 @@ $SD.on('piDataChanged', (returnValue) => {
 
     if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
     else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
+    else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
+    else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
 
     if (stats == 'custom') displayElement(`#customContainer`,true);
     else displayElement(`#customContainer`,false);

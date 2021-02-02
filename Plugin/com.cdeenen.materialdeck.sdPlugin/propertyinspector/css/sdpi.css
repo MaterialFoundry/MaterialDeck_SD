@@ -91,18 +91,18 @@ hr, hr2 {
 option,
 input,
 select,
+textarea,
 button {
   font-size: 10pt;
   font-weight: var(--sdpi-fontweight);
   letter-spacing: var(--sdpi-letterspacing);
 }
 
-
-
 .win .sdpi-item-value,
 .win option,
 .win input,
 .win select,
+.win textarea,
 .win button {
   font-size: 11px;
   font-style: normal;

@@ -80,8 +80,9 @@
       </div>
 
       <div class="sdpi-item" id="customContainer" style="display:none">
-        <div class="sdpi-item-label">Custom</div>
-        <input class="sdpi-item-value" id="custom" value="">
+        <div class="sdpi-item-label">Custom Formula</div>
+        <textarea class="sdpi-item-value" rows="3" cols="1" id="custom" style="word-break: break-word;">
+        </textarea>
       </div>
 
       <div class="wrapper" id="onClickDemonWrapper" style="display:none">
@@ -98,6 +99,8 @@
             <option value='condition'>Toggle Condition</option>
             <option value='initiative'>Toggle Initiative</option>
             <option value='vision'>Set Vision</option>
+            <option value='wildcard'>Set Token Wildcard Image</option>
+            <option value='custom'>Custom</option>
           </select>
         </div>
       </div>
@@ -114,7 +117,32 @@
           <option value='target'>Target Token</option>
           <option value='condition'>Toggle Condition</option>
           <option value='vision'>Set Vision</option>
+          <option value='wildcard'>Set Token Wildcard Image</option>
+          <option value='custom'>Custom</option>
         </select>
+      </div>
+
+      <div class="wrapper" id="wildcardWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Wildcard Image</div>
+          <select class="sdpi-item-value select" id="wildcardMethod" type="select">
+            <option value='iterate'>Iterate image</option>
+            <option value='set'>Set image</option>
+            <option value='offset'>Offset</option>
+          </select>
+        </div>
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Value</div>
+          <input class="sdpi-item-value" id="wildcardValue" value="1">
+        </div>
+      </div>
+
+      <div class="wrapper" id="customOnClickWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Formula</div>
+          <textarea class="sdpi-item-value" rows="6" cols="1" id="customOnClickFormula" style="word-break: break-word;">
+          </textarea>
+        </div> 
       </div>
       
       <div class="wrapper" id="conditionWrapper" style="">

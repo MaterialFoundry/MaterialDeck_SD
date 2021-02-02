@@ -128,7 +128,7 @@
   "Name": "Material Deck", 
   "Icon": "vtt", 
   "URL": "https://github.com/CDeenen/MaterialDeck_SD", 
-  "Version": "1.2.1",
+  "Version": "1.2.2",
   "OS": [
     {
         "Platform": "mac", 
