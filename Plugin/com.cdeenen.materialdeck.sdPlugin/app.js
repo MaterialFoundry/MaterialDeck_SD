@@ -20,6 +20,8 @@ let ip = "localhost";       //Ip address of the websocket server
 let port = "3001";                //Port of the websocket server
 let sdCon = false;
 
+let gameSystem = 'dnd5e';
+
 let buttonContext = [];
 for (let i=0; i<23; i++){
     buttonContext[i] = undefined;
@@ -55,7 +57,40 @@ function connected(jsn) {
        //     console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js]propertyInspectorDidAppear:');
        // });
     }
+
+    var json = {
+        event: "getGlobalSettings",
+        context: $SD.uuid
+    };
+    $SD.connection.send(JSON.stringify(json)); 
+    console.log("request global settings")
 };
+
+$SD.on('com.cdeenen.materialdeck.token.propertyInspectorDidAppear', jsn => {
+    var json = {
+        action: jsn.action,
+        event: "sendToPropertyInspector",
+        context: jsn.context,
+        payload: {gameSystem:gameSystem}
+    };
+    $SD.connection.send(JSON.stringify(json)); 
+});
+
+$SD.on('com.cdeenen.materialdeck.combattracker.propertyInspectorDidAppear', jsn => {
+    var json = {
+        action: jsn.action,
+        event: "sendToPropertyInspector",
+        context: jsn.context,
+        payload: {gameSystem:gameSystem}
+    };
+    $SD.connection.send(JSON.stringify(json)); 
+});
+
+$SD.on('didReceiveGlobalSettings', jsn => {
+    const system = jsn.payload.settings.gameSystem;
+    if (system != undefined) gameSystem = system;
+    console.log('Stored game system: ',system);
+});
 
 function checkConnection(){
 
@@ -77,9 +112,9 @@ const action = {
 
         const action = jsn.action.replace("com.cdeenen.materialdeck.", "");
 
-        if (jsn.event == 'willAppear'){
-            jsn.payload.settings=convertSettings(jsn);
-        }
+        //if (jsn.event == 'willAppear'){
+        //    jsn.payload.settings=convertSettings(jsn);
+        //}
         
        // if (action == 'token'){
             const msg = {
@@ -90,7 +125,8 @@ const action = {
                 action: action,
                 event: jsn.event,
                 context: jsn.context,
-                payload: jsn.payload
+                payload: jsn.payload,
+                version: $SD.applicationInfo.plugin.version
             }
             sendToServer(msg);
         //}
@@ -620,8 +656,10 @@ function connectToServerWS() {
   
     // Initalise Node.js WebSocket connection.
     serverWS.addEventListener('open', () => {
-        if (sdCon)
-            serverWS.send(JSON.stringify({ target: 'server', source: "SD"}));
+        if (sdCon) {
+            serverWS.send(JSON.stringify({ target: 'server', source: "SD", version: $SD.applicationInfo.plugin.version}));
+            //serverWS.send(JSON.stringify({ target: 'MD', source: "SD", type:"version", version: $SD.applicationInfo.plugin.version}));
+        }
         console.log('Connection to Node.js server successful.');
     }, { once: true });
   
@@ -637,6 +675,17 @@ function connectToServerWS() {
         if (data.target != 'SD') return;
         if (data.type == 'init'){
             sendContext();
+            //$SD.api.setGameSystem(data.system);
+            gameSystem=data.system;
+            console.log("Game System: ",gameSystem);
+
+            var json = {
+                event: "setGlobalSettings",
+                context: $SD.uuid,
+                payload: {gameSystem:gameSystem}
+            };
+            $SD.connection.send(JSON.stringify(json)); 
+            if (sdCon) serverWS.send(JSON.stringify({ target: 'MD', source: "SD", type:"version", version: $SD.applicationInfo.plugin.version}));
         }
         else
             sendToSDWS(e.data); 
@@ -656,7 +705,7 @@ function sendToSDWS(msg) {
         const data = JSON.parse(msg);
         const event = data.event;
         const context = data.context;
-        //console.log(data);
+
         if (event == 'setStateCustom'){
             //setState(msg);
         }

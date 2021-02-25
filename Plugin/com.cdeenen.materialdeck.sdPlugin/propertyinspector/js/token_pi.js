@@ -1,4 +1,4 @@
-/* global addDynamicStyles, $SD, Utils */
+/* global addDynamicStyles, $SD, Utils, $TEST */
 /* eslint-disable no-extra-boolean-cast */
 /* eslint-disable no-else-return */
 
@@ -35,6 +35,8 @@ let sdpiWrapper = document.querySelector('.sdpi-wrapper');
 
 let settings;
 
+let system = 'dnd5e';
+
  /**
   * The 'connected' event is the first event sent to Property Inspector, after it's instance
   * is registered with Stream Deck software. It carries the current websocket, settings,
@@ -43,6 +45,7 @@ let settings;
   */
 
 $SD.on('connected', (jsn) => {
+    console.log(jsn);
     /**
      * The passed 'applicationInfo' object contains various information about your
      * computer, Stream Deck version and OS-settings (e.g. colors as set in your
@@ -81,76 +84,241 @@ $SD.on('connected', (jsn) => {
 
 $SD.on('sendToPropertyInspector', jsn => {
     const pl = jsn.payload;
-    /**
-     *  This is an example, how you could show an error to the user
-     */
-     if (pl.hasOwnProperty('error')) {
-        sdpiWrapper.innerHTML = `<div class="sdpi-item">
-            <details class="message caution">
-            <summary class="${pl.hasOwnProperty('info') ? 'pointer' : ''}">${pl.error}</summary>
-                ${pl.hasOwnProperty('info') ? pl.info : ''}
-            </details>
-        </div>`;
-    } else {
 
-        /**
-         *
-         * Do something with the data sent from the plugin
-         * e.g. update some elements in the Property Inspector's UI.
-         *
-         */
+    if (pl.gameSystem != undefined) 
+        system = pl.gameSystem;
+
+    console.log("Game system: ",system);
+
+    let statsElement = document.getElementById(`stats`);
+    let onClickElement = document.getElementById(`onClick`);
+    let conditionElement = document.getElementById('condition');
+    
+    let newStatOptions = [];
+    let newOnClickOptions = [];
+    let newConditionOptions = [];
+
+    if (system == 'D35E') {
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'TempHP', name:'Temp HP'});
+        newStatOptions.push({value:'AC', name:'AC'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+
+        newConditionOptions.push({value:'dead', name:'Dead'});
+        newConditionOptions.push({value:'blind', name:'Blind'});
+        newConditionOptions.push({value:'dazzled', name:'Dazzled'});
+        newConditionOptions.push({value:'deaf', name:'Deaf'});
+        newConditionOptions.push({value:'entangled', name:'Entangled'});
+        newConditionOptions.push({value:'fatigued', name:'Fatigued'});
+        newConditionOptions.push({value:'exhausted', name:'Exhausted'});
+        newConditionOptions.push({value:'grappled', name:'Grappled'});
+        newConditionOptions.push({value:'helpless', name:'Helpless'});
+        newConditionOptions.push({value:'paralyzed', name:'Paralyzed'});
+        newConditionOptions.push({value:'pinned', name:'Pinned'});
+        newConditionOptions.push({value:'fear', name:'Fear'});
+        newConditionOptions.push({value:'sickened', name:'Sickened'});
+        newConditionOptions.push({value:'stunned', name:'Stunned'});
+        newConditionOptions.push({value:'shaken', name:'Shaken'});
     }
+    else if (system == 'pf1') {
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'TempHP', name:'Temp HP'});
+        newStatOptions.push({value:'AC', name:'AC'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+
+        newConditionOptions.push({value:'dead', name:'Dead'});
+        newConditionOptions.push({value:'bleed', name:'Bleed'});
+        newConditionOptions.push({value:'blind', name:'Blind'});
+        newConditionOptions.push({value:'confused', name:'Confused'});
+        newConditionOptions.push({value:'dazzled', name:'Dazzled'});
+        newConditionOptions.push({value:'deaf', name:'Deaf'});
+        newConditionOptions.push({value:'entangled', name:'Entangled'});
+        newConditionOptions.push({value:'fatigued', name:'Fatigued'});
+        newConditionOptions.push({value:'exhausted', name:'Exhausted'});
+        newConditionOptions.push({value:'grappled', name:'Grappled'});
+        newConditionOptions.push({value:'helpless', name:'Helpless'});
+        newConditionOptions.push({value:'incorporeal', name:'Incorporeal'});
+        newConditionOptions.push({value:'invisible', name:'Invisible'});
+        newConditionOptions.push({value:'paralyzed', name:'Paralyzed'});
+        newConditionOptions.push({value:'pinned', name:'Pinned'});
+        newConditionOptions.push({value:'prone', name:'Prone'});
+        newConditionOptions.push({value:'staggered', name:'Staggered'});
+        newConditionOptions.push({value:'stunned', name:'Stunned'});
+        newConditionOptions.push({value:'shaken', name:'Shaken'});
+        newConditionOptions.push({value:'frightened', name:'Frightened'});
+        newConditionOptions.push({value:'panicked', name:'Panicked'});
+        newConditionOptions.push({value:'sickened', name:'Sickened'});
+        newConditionOptions.push({value:'nauseated', name:'Nauseated'});
+        newConditionOptions.push({value:'dazed', name:'Dazed'});
+    }
+    else if (system == 'pf2e') {
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'TempHP', name:'Temp HP'});
+        newStatOptions.push({value:'AC', name:'AC'});
+        newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+
+        newConditionOptions.push({value:'blinded', name:'Blinded'});
+        newConditionOptions.push({value:'broken', name:'Broken'});
+        newConditionOptions.push({value:'clumsy', name:'Clumsy'});
+        newConditionOptions.push({value:'concealed', name:'Concealed'});
+        newConditionOptions.push({value:'confused', name:'Confused'});
+        newConditionOptions.push({value:'controlled', name:'Controlled'});
+        newConditionOptions.push({value:'dazzled', name:'Dazzled'});
+        newConditionOptions.push({value:'deafened', name:'Deafened'});
+        newConditionOptions.push({value:'doomed', name:'Doomed'});
+        newConditionOptions.push({value:'drained', name:'Drained'});
+        newConditionOptions.push({value:'dying', name:'Drying'});
+        newConditionOptions.push({value:'encumbered', name:'Encumbered'});
+        newConditionOptions.push({value:'enfeebled', name:'Enfeebled'});
+        newConditionOptions.push({value:'fascinated', name:'Fascinated'});
+        newConditionOptions.push({value:'fatigued', name:'Fatigued'});
+        newConditionOptions.push({value:'flatFooted', name:'Flat Footed'});
+        newConditionOptions.push({value:'fleeing', name:'Fleeing'});
+        newConditionOptions.push({value:'frightened', name:'Frightened'});
+        newConditionOptions.push({value:'grabbed', name:'Grabbed'});
+        newConditionOptions.push({value:'immobilized', name:'Immobilized'});
+        newConditionOptions.push({value:'invisible', name:'Invisible'});
+        newConditionOptions.push({value:'paralyzed', name:'Paralyzed'});
+        newConditionOptions.push({value:'persistentDamage', name:'Persistent Damage'});
+        newConditionOptions.push({value:'petrified', name:'Petrified'});
+        newConditionOptions.push({value:'prone', name:'Prone'});
+        newConditionOptions.push({value:'quickened', name:'Quickened'});
+        newConditionOptions.push({value:'restrained', name:'Restrained'});
+        newConditionOptions.push({value:'sickened', name:'Sickened'});
+        newConditionOptions.push({value:'slowed', name:'Slowed'});
+        newConditionOptions.push({value:'stunned', name:'Stunned'});
+        newConditionOptions.push({value:'stupified', name:'Stupified'});
+        newConditionOptions.push({value:'unconscious', name:'Unconscious'});
+        newConditionOptions.push({value:'wounded', name:'Wounded'});
+    }
+    else if (system == 'demonlord') {
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'AC', name:'Defense'});
+        newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+
+        newOnClickOptions.push({value:'initiative',name:'Toggle Initiative'});
+
+        newConditionOptions.push({value:'asleep', name:'Asleep'});
+        newConditionOptions.push({value:'blinded', name:'Blinded'});
+        newConditionOptions.push({value:'charmed', name:'Charmed'});
+        newConditionOptions.push({value:'compelled', name:'Compelled'});
+        newConditionOptions.push({value:'dazed', name:'Dazed'});
+        newConditionOptions.push({value:'deafened', name:'Deafened'});
+        newConditionOptions.push({value:'defenseless', name:'Defenseless'});
+        newConditionOptions.push({value:'diseased', name:'Diseased'});
+        newConditionOptions.push({value:'fatigued', name:'Fatigued'});
+        newConditionOptions.push({value:'frightened', name:'Frightened'});
+        newConditionOptions.push({value:'horrified', name:'Horrified'});
+        newConditionOptions.push({value:'grabbed', name:'Grabbed'});
+        newConditionOptions.push({value:'immobilized', name:'Immobilized'});
+        newConditionOptions.push({value:'impaired', name:'Impaired'});
+        newConditionOptions.push({value:'poisoned', name:'Poisoned'});
+        newConditionOptions.push({value:'prone', name:'Prone'});
+        newConditionOptions.push({value:'slowed', name:'Slowed'});
+        newConditionOptions.push({value:'stunned', name:'Stunned'});
+        newConditionOptions.push({value:'surprised', name:'Surprised'});
+        newConditionOptions.push({value:'unconscious', name:'Unconscious'});
+        newConditionOptions.push({value:'injured', name:'Injured'});
+    }
+    else { //default/dnd5e
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'TempHP', name:'Temp HP'});
+        newStatOptions.push({value:'AC', name:'AC'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+        newStatOptions.push({value:'PassivePerception', name:'Passive Perception'});
+        newStatOptions.push({value:'PassiveInvestigation', name:'Passive Investigation'});
+
+        newConditionOptions.push({value:'dead', name:'Dead'});
+        newConditionOptions.push({value:'unconscious', name:'Unconscious'});
+        newConditionOptions.push({value:'sleep', name:'Asleep'});
+        newConditionOptions.push({value:'stun', name:'Stunned'});
+        newConditionOptions.push({value:'prone', name:'Prone'});
+        newConditionOptions.push({value:'restrain', name:'Restrained'});
+        newConditionOptions.push({value:'paralysis', name:'Paralyzed'});
+        newConditionOptions.push({value:'fly', name:'Flying'});
+        newConditionOptions.push({value:'blind', name:'Blind'});
+        newConditionOptions.push({value:'deaf', name:'Deaf'});
+        newConditionOptions.push({value:'silence', name:'Silenced'});
+        newConditionOptions.push({value:'fear', name:'Afraid'});
+        newConditionOptions.push({value:'burning', name:'Burning'});
+        newConditionOptions.push({value:'frozen', name:'Frozen'});
+        newConditionOptions.push({value:'shock', name:'Shocked'});
+        newConditionOptions.push({value:'corrode', name:'Corroding'});
+        newConditionOptions.push({value:'bleeding', name:'Bleeding'});
+        newConditionOptions.push({value:'disease', name:'Diseased'});
+        newConditionOptions.push({value:'poison', name:'Poisoned'});
+        newConditionOptions.push({value:'radiation', name:'Radioactive'});
+        newConditionOptions.push({value:'regen', name:'Regeneration'});
+        newConditionOptions.push({value:'degen', name:'Degeneration'});
+        newConditionOptions.push({value:'upgrade', name:'Empowered'});
+        newConditionOptions.push({value:'downgrade', name:'Weakened'});
+        newConditionOptions.push({value:'target', name:'Targeted'});
+        newConditionOptions.push({value:'eye', name:'Marked'});
+        newConditionOptions.push({value:'curse', name:'Cursed'});
+        newConditionOptions.push({value:'bless', name:'Blessed'});
+        newConditionOptions.push({value:'fireShield', name:'Fire Shield'});
+        newConditionOptions.push({value:'coldShield', name:'Ice Shield'});
+        newConditionOptions.push({value:'magicShield', name:'Magic Shield'});
+        newConditionOptions.push({value:'holyShield', name:'Holy Shield'});
+    }
+
+    for (let option of newStatOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        statsElement.appendChild(newOption);
+    }
+
+    for (let option of newOnClickOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        onClickElement.appendChild(newOption);
+    }
+
+    for (let option of newConditionOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        conditionElement.appendChild(newOption);
+    }
+
+    const statsSelection = settings.stats ? settings.stats : 'none';
+    statsElement.value = statsSelection;
+
+    const onClickSelection = settings.onClick ? settings.onClick : 'doNothing';
+    onClickElement.value = onClickSelection;
+
+    const conditionSelection = settings.condition ? settings.condition : 'removeAll';
+    conditionElement.value = conditionSelection;
 });
+
 
 const updateUI = (pl) => {
     console.log("pl",pl);
- 
-    const system = settings.system ? settings.system : 'dnd5e';
+    
     const onClick = settings.onClick ? settings.onClick : 'none';
-    let stats = settings.stats ? settings.stats : 'none';
-    if (system == 'demonlord') stats = settings.statsDemonlord ? settings.statsDemonlord : 'none';
+    const stats = settings.stats ? settings.stats : 'none';
     
     //console.log('settings',settings)
-    
-    displayElement(`#dnd5eWrapper`,false);
-    displayElement(`#conditionDnd5eWrapper`,false);
-    displayElement(`#dnd35eWrapper`,false);
-    displayElement(`#pf2eWrapper`,false);
     displayElement(`#conditionWrapper`,false);
-    displayElement(`#conditionPf2eWrapper`,false);
-    displayElement(`#onClickWrapper`,false);
-    displayElement(`#demonlordWrapper`,false);
-    displayElement(`#onClickDemonWrapper`,false);
-    displayElement(`#conditionDemonlordWrapper`,false);
     displayElement(`#visionWrapper`,false);
     displayElement('#wildcardWrapper',false);
     displayElement('#customOnClickWrapper',false);
-
-    if (system == 'dnd5e'){
-        displayElement(`#dnd5eWrapper`,true);
-        displayElement(`#conditionDnd5eWrapper`,true);
-        displayElement(`#onClickWrapper`,true);
-    }
-    else if (system == 'dnd3.5e' || system == 'pf1e'){
-        displayElement(`#conditionDnd5eWrapper`,true);
-        displayElement(`#dnd35eWrapper`,true);
-        displayElement(`#onClickWrapper`,true);
-    }
-    else if (system == 'pf2e'){
-        displayElement(`#pf2eWrapper`,true);
-        displayElement(`#conditionPf2eWrapper`,true);
-        displayElement(`#onClickWrapper`,true);
-    }
-    else if (system == 'demonlord'){
-        displayElement(`#demonlordWrapper`,true);
-        displayElement(`#onClickDemonWrapper`,true);
-        displayElement(`#conditionDemonlordWrapper`,true);
-    }
+    displayElement('#cubConditionWrapper',false);
 
     if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
     else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
     else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
     else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
+    else if (onClick == 'cubCondition') displayElement('#cubConditionWrapper',true);
 
     if (stats == 'custom') displayElement(`#customContainer`,true);
     else displayElement(`#customContainer`,false);
@@ -221,54 +389,23 @@ $SD.on('piDataChanged', (returnValue) => {
     console.log(returnValue);
     //console.log('settings',settings);
 
-    let system = settings.system ? settings.system : 'dnd5e';
     let onClick = settings.onClick ? settings.onClick : 'none';
     let stats = settings.stats ? settings.stats : 'none';
-    if (system == 'demonlord') stats = settings.statsDemonlord ? settings.statsDemonlord : 'none';
 
-    if (returnValue.key == 'system') system = returnValue.value;
-    else if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
+    if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
     else if (returnValue.key == 'onClick' || returnValue.key == 'onClickDemonlord') onClick = returnValue.value;
 
-    displayElement(`#dnd5eWrapper`,false);
-    displayElement(`#conditionDnd5eWrapper`,false);
-    displayElement(`#dnd35eWrapper`,false);
-    displayElement(`#pf2eWrapper`,false);
-    displayElement(`#conditionWrapper`,false);
-    displayElement(`#conditionPf2eWrapper`,false);
-    displayElement(`#onClickWrapper`,false);
-    displayElement(`#demonlordWrapper`,false);
-    displayElement(`#onClickDemonWrapper`,false);
-    displayElement(`#conditionDemonlordWrapper`,false);
     displayElement(`#visionWrapper`,false);
     displayElement('#wildcardWrapper',false);
     displayElement('#customOnClickWrapper',false);
-
-    if (system == 'dnd5e'){
-        displayElement(`#dnd5eWrapper`,true);
-        displayElement(`#conditionDnd5eWrapper`,true);
-        displayElement(`#onClickWrapper`,true);
-    }
-    else if (system == 'dnd3.5e' || system == 'pf1e'){
-        displayElement(`#conditionDnd5eWrapper`,true);
-        displayElement(`#dnd35eWrapper`,true);
-        displayElement(`#onClickWrapper`,true);
-    }
-    else if (system == 'pf2e'){
-        displayElement(`#pf2eWrapper`,true);
-        displayElement(`#conditionPf2eWrapper`,true);
-        displayElement(`#onClickWrapper`,true);
-    }
-    else if (system == 'demonlord'){
-        displayElement(`#demonlordWrapper`,true);
-        displayElement(`#onClickDemonWrapper`,true);
-        displayElement(`#conditionDemonlordWrapper`,true);
-    }
+    displayElement('#cubConditionWrapper',false);
+    displayElement(`#conditionWrapper`,false);
 
     if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
     else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
     else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
     else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
+    else if (onClick == 'cubCondition') displayElement('#cubConditionWrapper',true);
 
     if (stats == 'custom') displayElement(`#customContainer`,true);
     else displayElement(`#customContainer`,false);

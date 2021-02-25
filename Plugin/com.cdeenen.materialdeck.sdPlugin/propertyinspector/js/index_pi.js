@@ -367,7 +367,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName' || sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon'){
+        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displayUses'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);

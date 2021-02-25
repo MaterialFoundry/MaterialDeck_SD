@@ -15,6 +15,11 @@
         <select class="sdpi-item-value select" id="module" type="select">
           <option value='fxmaster'>Fx Master</option>
           <option value='gmscreen'>GM Screen</option>
+          <option value='triggerHappy'>Trigger Happy</option>
+          <option value='sharedVision'>Shared Vision</option>
+          <option value='lockView'>Lock View</option>
+          <option value='notYourTurn'>Not Your Turn!</option>
+          <option value='mookAI'>Mook AI</option>
         </select>
       </div>
 
@@ -133,6 +138,114 @@
         <div class="sdpi-item-value">
             <input type="color" id="gmScreenBackground" value="#000000">
         </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="triggerHappyWrapper" style="display:none">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Mode</div>
+        <select class="sdpi-item-value select" id="triggerHappyMode" type="select">
+          <option value='toggle'>Toggle Triggers</option>
+          <option value='enable'>Enable Triggers</option>
+          <option value='disable'>Disable Triggers</option>
+        </select> 
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Name</div>
+        <input class="sdpi-item-value" id="displayTriggerHappyName" type="checkbox">
+        <label for="displayTriggerHappyName"><span></span></label>
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Icon</div>
+        <input class="sdpi-item-value" id="displayTriggerHappyIcon" type="checkbox">
+        <label for="displayTriggerHappyIcon"><span></span></label>
+      </div>
+    </div>
+
+    <div class="wrapper" id="sharedVisionWrapper" style="display:none">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Mode</div>
+        <select class="sdpi-item-value select" id="sharedVisionMode" type="select">
+          <option value='toggle'>Toggle Global Shared Vision</option>
+          <option value='enable'>Enable Global Shared Vision</option>
+          <option value='disable'>Disable Global Shared Vision</option>
+        </select> 
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Name</div>
+        <input class="sdpi-item-value" id="sharedVisionName" type="checkbox">
+        <label for="sharedVisionName"><span></span></label>
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Icon</div>
+        <input class="sdpi-item-value" id="sharedVisionIcon" type="checkbox">
+        <label for="sharedVisionIcon"><span></span></label>
+      </div>
+    </div>
+
+    <div class="wrapper" id="mookWrapper" style="display:none">
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Name</div>
+        <input class="sdpi-item-value" id="mookName" type="checkbox">
+        <label for="mookName"><span></span></label>
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Icon</div>
+        <input class="sdpi-item-value" id="mookIcon" type="checkbox">
+        <label for="mookIcon"><span></span></label>
+      </div>
+    </div>
+
+    <div class="wrapper" id="notYourTurnWrapper" style="display:none">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Mode</div>
+        <select class="sdpi-item-value select" id="notYourTurnMode" type="select">
+          <option value='toggle'>Toggle Combat Movement Block</option>
+          <option value='enable'>Enable Combat Movement Block</option>
+          <option value='disable'>Disable Combat Movement Block</option>
+          <option value='toggleNonCombat'>Toggle Non-Combat Movement Block</option>
+          <option value='enableNonCombat'>Enable Non-Combat Movement Block</option>
+          <option value='disableNonCombat'>Disable Non-Combat Movement Block</option>
+        </select> 
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Name</div>
+        <input class="sdpi-item-value" id="notYourTurnName" type="checkbox">
+        <label for="notYourTurnName"><span></span></label>
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Icon</div>
+        <input class="sdpi-item-value" id="notYourTurnIcon" type="checkbox">
+        <label for="notYourTurnIcon"><span></span></label>
+      </div>
+    </div>
+
+    <div class="wrapper" id="lockViewWrapper" style="display:none">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Mode</div>
+        <select class="sdpi-item-value select" id="lockViewMode" type="select">
+          <option value='panLock'>Pan Lock</option>
+          <option value='zoomLock'>Zoom Lock</option>
+          <option value='boundingBox'>Bounding Box</option>
+        </select> 
+      </div>
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Toggle</div>
+        <select class="sdpi-item-value select" id="lockViewToggle" type="select">
+          <option value='toggle'>Toggle</option>
+          <option value='enable'>Enable</option>
+          <option value='disable'>Disable</option>
+        </select> 
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Name</div>
+        <input class="sdpi-item-value" id="lockViewName" type="checkbox">
+        <label for="lockViewName"><span></span></label>
+      </div>
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Icon</div>
+        <input class="sdpi-item-value" id="lockViewIcon" type="checkbox">
+        <label for="lockViewIcon"><span></span></label>
       </div>
     </div>
       

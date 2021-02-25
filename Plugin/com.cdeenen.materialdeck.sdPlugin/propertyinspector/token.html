@@ -11,72 +11,11 @@
   <body>
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
       <div class="sdpi-item">
-        <div class="sdpi-item-label">System</div>
-        <select class="sdpi-item-value select" id="system" type="select">
-          <option value='dnd5e'>DnD 5e</option>
-          <option value='dnd3.5e'>DnD 3.5e</option>
-          <option value='pf1e'>Pathfinder 1e</option>
-          <option value='pf2e'>Pathfinder 2e</option>
-          <option value='demonlord'>Shadow of the Demon Lord</option>
-        </select>
-      </div>
-
-      <div class="sdpi-item" id="dnd5eWrapper" style="">
         <div class="sdpi-item-label">Stats</div>
         <select class="sdpi-item-value select" id="stats" type="select">
           <option value='none'>None</option>
           <option value='custom'>Custom</option>
-          <option value='HP'>HP</option>
-          <option value='TempHP'>Temp HP</option>
-          <option value='AC'>AC</option>
-          <option value='Speed'>Speed</option>
-          <option value='Init'>Initiative</option>
-          <option value='PassivePerception'>Passive Perception</option>
-          <option value='PassiveInvestigation'>Passive Investigation</option>
         </select>
-      </div>
-
-      <div class="sdpi-item" id="dnd35eWrapper" style="display:none">
-        <div class="sdpi-item-label">Stats</div>
-        <select class="sdpi-item-value select" id="stats" type="select">
-          <option value='none'>None</option>
-          <option value='custom'>Custom</option>
-          <option value='HP'>HP</option>
-          <option value='TempHP'>Temp HP</option>
-          <option value='AC'>AC</option>
-          <option value='Speed'>Speed</option>
-          <option value='Init'>Initiative</option>
-        </select>
-      </div>
-
-      <div class="sdpi-item" id="pf2eWrapper" style="display:none">
-        <div class="sdpi-item-label">Stats</div>
-        <select class="sdpi-item-value select" id="stats" type="select">
-          <option value='none'>None</option>
-          <option value='custom'>Custom</option>
-          <option value='HP'>HP</option>
-          <option value='TempHP'>Temp HP</option>
-          <option value='AC'>AC</option>
-          <option value='ShieldHP'>Shield HP</option>
-          <option value='Speed'>Speed</option>
-          <option value='Init'>Initiative</option>
-        </select>
-      </div>
-    
-      <div class="wrapper" id="demonlordWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Stats</div>
-          <select class="sdpi-item-value select" id="statsDemonlord" type="select">
-            <option value='none'>None</option>
-            <option value='custom'>Custom</option>
-            <option value='HP'>HP</option>
-            <option value='TempHP'>Temp HP</option>
-            <option value='AC'>AC</option>
-            <option value='ShieldHP'>Shield HP</option>
-            <option value='Speed'>Speed</option>
-            <option value='Init'>Initiative</option>
-          </select>
-        </div>
       </div>
 
       <div class="sdpi-item" id="customContainer" style="display:none">
@@ -85,40 +24,21 @@
         </textarea>
       </div>
 
-      <div class="wrapper" id="onClickDemonWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">On Click</div>
-          <select class="sdpi-item-value select" id="onClickDemonlord" type="select">
-            <option value='doNothing'>Do Nothing</option>
-            <option value='center'>Center on Token</option>
-            <option value='charSheet'>Open Character Sheet</option>
-            <option value='tokenConfig'>Open Token Config</option>
-            <option value='visibility'>Toggle Visiblity</option>
-            <option value='combatState'>Toggle Combat State</option>
-            <option value='target'>Target Token</option>
-            <option value='condition'>Toggle Condition</option>
-            <option value='initiative'>Toggle Initiative</option>
-            <option value='vision'>Set Vision</option>
-            <option value='wildcard'>Set Token Wildcard Image</option>
-            <option value='custom'>Custom</option>
-          </select>
-        </div>
-      </div>
-    
       <div class="sdpi-item" id="onClickWrapper" style="">
         <div class="sdpi-item-label">On Click</div>
         <select class="sdpi-item-value select" id="onClick" type="select">
           <option value='doNothing'>Do Nothing</option>
+          <option value='custom'>Custom</option>
           <option value='center'>Center on Token</option>
           <option value='charSheet'>Open Character Sheet</option>
           <option value='tokenConfig'>Open Token Config</option>
           <option value='visibility'>Toggle Visiblity</option>
           <option value='combatState'>Toggle Combat State</option>
           <option value='target'>Target Token</option>
-          <option value='condition'>Toggle Condition</option>
           <option value='vision'>Set Vision</option>
-          <option value='wildcard'>Set Token Wildcard Image</option>
-          <option value='custom'>Custom</option>
+          <option value='wildcard'>Set Token Wildcard Image</option> 
+          <option value='condition'>Toggle Condition</option>
+          <option value='cubCondition'>Toggle CUB Condition</option>
         </select>
       </div>
 
@@ -146,143 +66,18 @@
       </div>
       
       <div class="wrapper" id="conditionWrapper" style="">
-        <div class="sdpi-item" id="conditionDnd5eWrapper" style="">
+        <div class="sdpi-item">
           <div class="sdpi-item-label">Condition</div>
           <select class="sdpi-item-value select" id="condition" type="select">
             <option value='removeAll'>Remove All</option>
-            <option value='dead'>Dead</option>
-            <option value='unconscious'>Unconscious</option>
-            <option value='sleep'>Asleep</option>
-            <option value='stun'>Stunned</option>
-            <option value='prone'>Prone</option>
-            <option value='restrain'>Restrained</option>
-            <option value='paralysis'>Paralyzed</option>
-            <option value='fly'>Flying</option>
-            <option value='blind'>Blind</option>
-            <option value='deaf'>Deaf</option>
-            <option value='silence'>Silenced</option>
-            <option value='fear'>Afraid</option>
-            <option value='burning'>Burning</option>
-            <option value='frozen'>Frozen</option>
-            <option value='shock'>Shocked</option>
-            <option value='corrode'>Corroding</option>
-            <option value='bleeding'>Bleeding</option>
-            <option value='disease'>Diseased</option>
-            <option value='poison'>Poisoned</option>
-            <option value='radiation'>Radioactive</option>
-            <option value='regen'>Regeneration</option>
-            <option value='degen'>Degeneration</option>
-            <option value='upgrade'>Empowered</option>
-            <option value='downgrade'>Weakened</option>
-            <option value='target'>Targeted</option>
-            <option value='eye'>Marked</option>
-            <option value='curse'>Cursed</option>
-            <option value='bless'>Blessed</option>
-            <option value='fireShield'>Fire Shield</option>
-            <option value='coldShield'>Ice Shield</option>
-            <option value='magicShield'>Magic Shiled</option>
-            <option value='holyShield'>Holy Shield</option>
           </select>
         </div>
+      </div>
 
-        <div class="sdpi-item" id="conditionPf2eWrapper" style="display:none">
-          <div class="sdpi-item-label">Condition</div>
-          <select class="sdpi-item-value select" id="conditionPF2E" type="select">
-            <option value='removeAll'>Remove All</option>
-            <option value='blinded'>Blinded</option>
-            <option value='broken'>Broken</option>
-            <option value='clumsy'>Clumsy</option>
-            <option value='concealed'>Concealed</option>
-            <option value='confused'>Confused</option>
-            <option value='controlled'>Controlled</option>
-            <option value='dazzled'>Dazzled</option>
-            <option value='deafened'>Deafened</option>
-            <option value='doomed'>Doomed</option>
-            <option value='drained'>Drained</option>
-            <option value='dying'>Dying</option>
-            <option value='endumbered'>Encumbered</option>
-            <option value='enfeebled'>Enfeebled</option>
-            <option value='fascinated'>Fascinated</option>
-            <option value='fatigued'>Fatigued</option>
-            <option value='flatFooted'>FlatFooted</option>
-            <option value='fleeing'>Fleeing</option>
-            <option value='frightened'>Frightened</option>
-            <option value='grabbed'>Grabbed</option>
-            <option value='immobilized'>Immobilized</option>
-            <option value='invisible'>Invisible</option>
-            <option value='paralyzed'>Paralyzed</option>
-            <option value='persistentDamage'>Persistent Damage</option>
-            <option value='petrified'>Petrified</option>
-            <option value='prone'>Prone</option>
-            <option value='quickened'>Quickened</option>
-            <option value='restrained'>Restrained</option>
-            <option value='sickened'>Sickened</option>
-            <option value='slowed'>Slowed</option>
-            <option value='stunned'>Stunned</option>
-            <option value='stupefied'>Stupefied</option>
-            <option value='unconscious'>Unconscious</option>
-            <option value='wounded'>Wounded</option>
-          </select>
-        </div>
-
-        <div class="sdpi-item" id="conditionDemonlordWrapper" style="display:none">
-          <div class="sdpi-item-label">Condition</div>
-          <select class="sdpi-item-value select" id="conditionDemonlord" type="select">
-            <option value='removeAll'>Remove All</option>
-            <option value='dead'>Dead</option>
-            <option value='unconscious'>Unconscious</option>
-            <option value='sleep'>Asleep</option>
-            <option value='stun'>Stunned</option>
-            <option value='prone'>Prone</option>
-            <option value='restrain'>Restrained</option>
-            <option value='paralysis'>Paralyzed</option>
-            <option value='fly'>Flying</option>
-            <option value='blind'>Blind</option>
-            <option value='deaf'>Deaf</option>
-            <option value='silence'>Silenced</option>
-            <option value='fear'>Afraid</option>
-            <option value='burning'>Burning</option>
-            <option value='frozen'>Frozen</option>
-            <option value='shock'>Shocked</option>
-            <option value='corrode'>Corroding</option>
-            <option value='bleeding'>Bleeding</option>
-            <option value='disease'>Diseased</option>
-            <option value='poison'>Poisoned</option>
-            <option value='radiation'>Radioactive</option>
-            <option value='regen'>Regeneration</option>
-            <option value='degen'>Degeneration</option>
-            <option value='upgrade'>Empowered</option>
-            <option value='downgrade'>Weakened</option>
-            <option value='target'>Targeted</option>
-            <option value='eye'>Marked</option>
-            <option value='curse'>Cursed</option>
-            <option value='bless'>Blessed</option>
-            <option value='fireShield'>Fire Shield</option>
-            <option value='coldShield'>Ice Shield</option>
-            <option value='magicShield'>Magic Shiled</option>
-            <option value='holyShield'>Holy Shield</option>
-            <option value='asleep'>Asleep</option>
-            <option value='blinded'>Blinded</option>
-            <option value='charmed'>Charmed</option>
-            <option value='compelled'>Compelled</option>
-            <option value='dazed'>Dazed</option>
-            <option value='deafened'>Deafened</option>
-            <option value='defenseless'>Defenseless</option>
-            <option value='diseased'>Diseased</option>
-            <option value='fatigued'>Fatigued</option>
-            <option value='frightened'>Frightened</option>
-            <option value='horrified'>Horrified</option>
-            <option value='grabbed'>Grabbed</option>
-            <option value='immobilized'>Immobilized</option>
-            <option value='impaired'>Impaired</option>
-            <option value='poisoned'>Poisoned</option>
-            <option value='prone'>Prone</option>
-            <option value='slowed'>Slowed</option>
-            <option value='stunned'>Stunned</option>
-            <option value='surprised'>Surprised</option>
-            <option value='unconscious'>Unconscious</option>
-            <option value='blood'>Blood</option>
-          </select>
+      <div class="wrapper" id="cubConditionWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Condition Name</div>
+          <input class="sdpi-item-value" id="cubConditionName" value="">
         </div>
       </div>
 
@@ -351,13 +146,13 @@
       </div>
       
       <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
+        <div class="sdpi-item-label">Display Token Name</div>
         <input class="sdpi-item-value" id="displayName" type="checkbox">
         <label for="displayName"><span></span></label>
       </div>
       
       <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
+        <div class="sdpi-item-label">Display Token Icon</div>
         <input class="sdpi-item-value" id="displayIcon" type="checkbox">
         <label for="displayIcon"><span></span></label>
       </div>

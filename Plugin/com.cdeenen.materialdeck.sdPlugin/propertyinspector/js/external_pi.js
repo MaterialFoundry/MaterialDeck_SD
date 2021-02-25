@@ -112,6 +112,11 @@ const updateUI = (pl) => {
 
     displayElement(`#fxMasterWrapper`,false);
     displayElement('#gmScreenWrapper',false);
+    displayElement('#triggerHappyWrapper',false);
+    displayElement('#sharedVisionWrapper',false);
+    displayElement('#mookWrapper',false);
+    displayElement('#notYourTurnWrapper',false);
+    displayElement('#lockViewWrapper',false);
 
     if (module == 'fxmaster'){
         displayElement(`#fxMasterWrapper`,true);
@@ -124,6 +129,16 @@ const updateUI = (pl) => {
     }
     else if (module == 'gmscreen')
         displayElement('#gmScreenWrapper',true);
+    else if (module == 'triggerHappy')
+        displayElement('#triggerHappyWrapper',true);
+    else if (module == 'sharedVision')
+        displayElement('#sharedVisionWrapper',true);
+    else if (module == 'mookAI')
+        displayElement('#mookWrapper',true);
+    else if (module == 'notYourTurn')
+        displayElement('#notYourTurnWrapper',true);
+    else if (module == 'lockView')
+        displayElement('#lockViewWrapper',true);
     else if (module == 'custom') {
         
     }
@@ -204,6 +219,11 @@ $SD.on('piDataChanged', (returnValue) => {
     displayElement(`#colorizeWrapper`,false);
     displayElement(`#filterWrapper`,false);
     displayElement('#gmScreenWrapper',false);
+    displayElement('#triggerHappyWrapper',false);
+    displayElement('#sharedVisionWrapper',false);
+    displayElement('#mookWrapper',false);
+    displayElement('#notYourTurnWrapper',false);
+    displayElement('#lockViewWrapper',false);
 
     //console.log(module,pl);
     if (module == 'fxmaster'){
@@ -217,6 +237,16 @@ $SD.on('piDataChanged', (returnValue) => {
     }
     else if (module == 'gmscreen')
         displayElement('#gmScreenWrapper',true);
+    else if (module == 'triggerHappy')
+        displayElement('#triggerHappyWrapper',true);
+    else if (module == 'sharedVision')
+        displayElement('#sharedVisionWrapper',true);
+    else if (module == 'mookAI')
+        displayElement('#mookWrapper',true);
+    else if (module == 'notYourTurn')
+        displayElement('#notYourTurnWrapper',true);
+    else if (module == 'lockView')
+        displayElement('#lockViewWrapper',true);
     else if (module == 'custom') {
         
     }
@@ -250,7 +280,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon' || sdpi_collection.key == 'displayGmScreenName' || sdpi_collection.key == 'displayGmScreenIcon'){
+        if (sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon' || sdpi_collection.key == 'displayGmScreenName' || sdpi_collection.key == 'displayGmScreenIcon' || sdpi_collection.key == 'displayTriggerHappyName' || sdpi_collection.key == 'displayTriggerHappyIcon' || sdpi_collection.key == 'sharedVisionName' || sdpi_collection.key == 'sharedVisionIcon' || sdpi_collection.key == 'notYourTurnName' || sdpi_collection.key == 'notYourTurnIcon' || sdpi_collection.key == 'lockViewName' || sdpi_collection.key == 'lockViewIcon'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);

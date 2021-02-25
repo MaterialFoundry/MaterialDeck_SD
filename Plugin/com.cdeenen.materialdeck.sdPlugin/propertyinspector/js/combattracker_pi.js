@@ -81,25 +81,78 @@ $SD.on('connected', (jsn) => {
 
 $SD.on('sendToPropertyInspector', jsn => {
     const pl = jsn.payload;
-    /**
-     *  This is an example, how you could show an error to the user
-     */
-     if (pl.hasOwnProperty('error')) {
-        sdpiWrapper.innerHTML = `<div class="sdpi-item">
-            <details class="message caution">
-            <summary class="${pl.hasOwnProperty('info') ? 'pointer' : ''}">${pl.error}</summary>
-                ${pl.hasOwnProperty('info') ? pl.info : ''}
-            </details>
-        </div>`;
-    } else {
 
-        /**
-         *
-         * Do something with the data sent from the plugin
-         * e.g. update some elements in the Property Inspector's UI.
-         *
-         */
+    if (pl.gameSystem != undefined) 
+        system = pl.gameSystem;
+
+    console.log("Game system: ",system);
+
+    let statsElement = document.getElementById(`stats`);
+    let onClickElement = document.getElementById(`onClick`);
+    
+    let newStatOptions = [];
+    let newOnClickOptions = [];
+
+    if (system == 'D35E') {
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'TempHP', name:'Temp HP'});
+        newStatOptions.push({value:'AC', name:'AC'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
     }
+    else if (system == 'pf1') {
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'TempHP', name:'Temp HP'});
+        newStatOptions.push({value:'AC', name:'AC'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+    }
+    else if (system == 'pf2e') {
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'TempHP', name:'Temp HP'});
+        newStatOptions.push({value:'AC', name:'AC'});
+        newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+    }
+    else if (system == 'demonlord') {
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'AC', name:'Defense'});
+        newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+
+        newOnClickOptions.push({value:'initiative',name:'Toggle Initiative'});
+    }
+    else { //default/dnd5e
+        newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'TempHP', name:'Temp HP'});
+        newStatOptions.push({value:'AC', name:'AC'});
+        newStatOptions.push({value:'Speed', name:'Speed'});
+        newStatOptions.push({value:'Init', name:'Initiative'});
+        newStatOptions.push({value:'PassivePerception', name:'Passive Perception'});
+        newStatOptions.push({value:'PassiveInvestigation', name:'Passive Investigation'});
+    }
+
+    for (let option of newStatOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        statsElement.appendChild(newOption);
+    }
+
+    for (let option of newOnClickOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        onClickElement.appendChild(newOption);
+    }
+
+    const statsSelection = settings.stats ? settings.stats : 'none';
+    statsElement.value = statsSelection;
+
+    const onClickSelection = settings.onClick ? settings.onClick : 'doNothing';
+    onClickElement.value = onClickSelection;
 });
 
 let macroBoardMode = 0;

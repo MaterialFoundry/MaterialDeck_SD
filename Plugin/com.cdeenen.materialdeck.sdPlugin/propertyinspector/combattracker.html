@@ -23,6 +23,7 @@
           <div class="sdpi-item-label">Function</div>
           <select class="sdpi-item-value select" id="combatTrackerFunction" type="select">
             <option value='startStop'>Start/Stop Combat</option>
+            <option value='endTurn'>End Turn</option>
             <option value='nextTurn'>Next Turn</option>
             <option value='prevTurn'>Previous Turn</option>
             <option value='nextRound'>Next Round</option>
@@ -45,74 +46,13 @@
         
       </div>
       <div class="wrapper" id="combatantWrapper" style="">
-        
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">System</div>
-          <select class="sdpi-item-value select" id="system" type="select">
-            <option value='dnd5e'>DnD 5e</option>
-            <option value='dnd3.5e'>DnD 3.5e</option>
-            <option value='pf1e'>Pathfinder 1e</option>
-            <option value='pf2e'>Pathfinder 2e</option>
-            <option value='demonlord'>Shadow of the Demon Lord</option>
-          </select>
-        </div>
 
-        <div class="sdpi-item" id="dnd5eWrapper" style="">
+        <div class="sdpi-item" style="">
           <div class="sdpi-item-label">Stats</div>
           <select class="sdpi-item-value select" id="stats" type="select">
             <option value='none'>None</option>
             <option value='custom'>Custom</option>
-            <option value='HP'>HP</option>
-            <option value='TempHP'>Temp HP</option>
-            <option value='AC'>AC</option>
-            <option value='Speed'>Speed</option>
-            <option value='Init'>Initiative</option>
-            <option value='PassivePerception'>Passive Perception</option>
-            <option value='PassiveInvestigation'>Passive Investigation</option>
           </select>
-        </div>
-  
-        <div class="sdpi-item" id="dnd35eWrapper" style="display:none">
-          <div class="sdpi-item-label">Stats</div>
-          <select class="sdpi-item-value select" id="stats" type="select">
-            <option value='none'>None</option>
-            <option value='custom'>Custom</option>
-            <option value='HP'>HP</option>
-            <option value='TempHP'>Temp HP</option>
-            <option value='AC'>AC</option>
-            <option value='Speed'>Speed</option>
-            <option value='Init'>Initiative</option>
-          </select>
-        </div>
-  
-        <div class="sdpi-item" id="pf2eWrapper" style="display:none">
-          <div class="sdpi-item-label">Stats</div>
-          <select class="sdpi-item-value select" id="stats" type="select">
-            <option value='none'>None</option>
-            <option value='custom'>Custom</option>
-            <option value='HP'>HP</option>
-            <option value='TempHP'>Temp HP</option>
-            <option value='AC'>AC</option>
-            <option value='ShieldHP'>Shield HP</option>
-            <option value='Speed'>Speed</option>
-            <option value='Init'>Initiative</option>
-          </select>
-        </div>
-
-        <div class="wrapper" id="demonlordWrapper" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Stats</div>
-            <select class="sdpi-item-value select" id="statsDemonlord" type="select">
-              <option value='none'>None</option>
-              <option value='custom'>Custom</option>
-              <option value='HP'>HP</option>
-              <option value='TempHP'>Temp HP</option>
-              <option value='AC'>AC</option>
-              <option value='ShieldHP'>Shield HP</option>
-              <option value='Speed'>Speed</option>
-              <option value='Init'>Initiative</option>
-            </select>
-          </div>
         </div>
         
         <div class="sdpi-item" id="customContainer" style="display:none">
@@ -132,21 +72,6 @@
               <option value='tokenConfig'>Open Token Config</option>
             </select>
           </div>
-        </div>
-
-        <div class="wrapper" id="onClickDemonWrapper" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">On Click</div>
-            <select class="sdpi-item-value select" id="onClickDemonlord" type="select">
-              <option value='doNothing'>Do Nothing</option>
-              <option value ='select'>Select Token</option>
-              <option value='center'>Center on Token</option>
-              <option value='centerSelect'>Center on Token and Select Token</option>
-              <option value='charSheet'>Open Character Sheet</option>
-              <option value='tokenConfig'>Open Token Config</option>
-              <option value='initiative'>Toggle Initiative</option>
-            </select>
-            </div>
         </div>
 
         <div class="sdpi-item" id="combatantNrSel" stype="display:none">

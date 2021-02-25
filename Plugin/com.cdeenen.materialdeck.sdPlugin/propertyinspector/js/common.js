@@ -9,6 +9,7 @@
   vars-on-top: 0
 */
 console.log("starting common.js")
+
 // don't change this to let or const, because we rely on var's hoisting
 // eslint-disable-next-line no-use-before-define, no-var
 var $localizedStrings = $localizedStrings || {},
@@ -1057,7 +1058,6 @@ const SDApi = {
     /** COMMON */
 
     common: {
-
         getSettings: function (context, payload) {
             SDApi.send(context, 'getSettings', {});
         },
