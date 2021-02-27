@@ -10,6 +10,25 @@
   </head>
   <body>
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
+
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Token</div>
+        <select class="sdpi-item-value select" id="selection" type="select">
+          <option value='selected'>Selected Token</option>
+          <option value='tokenName'>Token Name</option>
+          <option value='actorName'>Actor Name</option>
+          <option value='tokenId'>Token Id</option>
+          <option value='actorId'>Actor Id</option>
+        </select>
+      </div>
+
+      <div class="wrapper"  id="tokenNameWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label" id='tokenNameLabel'>Name</div>
+          <input class="sdpi-item-value" id="tokenName" value="">
+        </div>
+      </div>
+
       <div class="sdpi-item">
         <div class="sdpi-item-label">Stats</div>
         <select class="sdpi-item-value select" id="stats" type="select">
@@ -29,7 +48,9 @@
         <select class="sdpi-item-value select" id="onClick" type="select">
           <option value='doNothing'>Do Nothing</option>
           <option value='custom'>Custom</option>
+          <option value='select'>Select Token</option>
           <option value='center'>Center on Token</option>
+          <option value='centerSelect'>Center on Token and Select Token</option>
           <option value='charSheet'>Open Character Sheet</option>
           <option value='tokenConfig'>Open Token Config</option>
           <option value='visibility'>Toggle Visiblity</option>

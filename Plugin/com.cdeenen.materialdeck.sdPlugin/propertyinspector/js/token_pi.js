@@ -306,6 +306,7 @@ const updateUI = (pl) => {
     
     const onClick = settings.onClick ? settings.onClick : 'none';
     const stats = settings.stats ? settings.stats : 'none';
+    const selection = settings.selection ? settings.selection : 'selected';
     
     //console.log('settings',settings)
     displayElement(`#conditionWrapper`,false);
@@ -313,6 +314,13 @@ const updateUI = (pl) => {
     displayElement('#wildcardWrapper',false);
     displayElement('#customOnClickWrapper',false);
     displayElement('#cubConditionWrapper',false);
+    displayElement('#tokenNameWrapper',false);
+
+    if (selection != 'selected') displayElement('#tokenNameWrapper',true);
+    if (selection == 'tokenId' || selection == 'actorId') {
+        element = document.querySelector('#tokenNameLabel');
+        if (element != null) element.innerHTML = 'Id';
+    }
 
     if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
     else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
@@ -391,15 +399,23 @@ $SD.on('piDataChanged', (returnValue) => {
 
     let onClick = settings.onClick ? settings.onClick : 'none';
     let stats = settings.stats ? settings.stats : 'none';
+    let selection = settings.selection ? settings.selection: 'selected';
 
     if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
     else if (returnValue.key == 'onClick' || returnValue.key == 'onClickDemonlord') onClick = returnValue.value;
+    else if (returnValue.key == 'selection') selection = returnValue.value;
 
     displayElement(`#visionWrapper`,false);
     displayElement('#wildcardWrapper',false);
     displayElement('#customOnClickWrapper',false);
     displayElement('#cubConditionWrapper',false);
     displayElement(`#conditionWrapper`,false);
+    displayElement('#tokenNameWrapper',false);
+
+    if (selection != 'selected') displayElement('#tokenNameWrapper',true);
+    element = document.querySelector('#tokenNameLabel');
+    if (element != null && (selection == 'tokenId' || selection == 'actorId')) element.innerHTML = 'Id';
+    else if (element != null && (selection == 'tokenName' || selection == 'actorName')) element.innerHTML = 'Name';
 
     if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
     else if (onClick == 'vision') displayElement(`#visionWrapper`,true);

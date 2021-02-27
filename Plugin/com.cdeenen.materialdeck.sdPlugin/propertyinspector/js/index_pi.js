@@ -140,26 +140,29 @@ const updateUI = (pl) => {
     ////////////////////////////////////////////////////////////////////
     const playlist = document.querySelector(`#playlistMode`);
     if (playlist){
-        playlistType = pl.playlistType;
-        if (pl.playlistMode == 'stopAll') {
-            displayElement(`#playlistModeType`,false);
-            displayElement(`#playlistOffsetWrapper`,false);
-            displayElement(`#playlistPlayWrapper`,false);
-            displayElement(`#ringColorWrapper`,false);
+        playlistType = settings.playlistType ? settings.playlistType : 'playStop';
+        playlistMode = settings.playlistMode ? settings.playlistMode : 'playlist';
+
+        displayElement(`#playlistModeType`,false);
+        displayElement(`#playlistOffsetWrapper`,false);
+        displayElement(`#playlistPlayWrapper`,false);
+        displayElement(`#ringColorWrapper`,false);
+        displayElement(`#offsetName`,false);
+        displayElement(`#trackNrContainer`,false);
+        displayElement(`#stopAllWrapper`,false);
+
+        if (playlistMode == 'stopAll') {
+            displayElement(`#stopAllWrapper`,true);
         }
         else {
-            displayElement('#playlistModeType',true)
-            displayElement(`#ringColorWrapper`,true);
-            if (playlistType == 'offset'){
+            displayElement('#playlistModeType',true);
+            if (playlistType != 'relativeOffset') displayElement(`#ringColorWrapper`,true);
+            if (playlistType == 'offset' || playlistType == 'relativeOffset'){
                 displayElement(`#playlistOffsetWrapper`,true);
-                displayElement(`#playlistPlayWrapper`,false);
+                if (playlistMode == 'playlist') displayElement(`#offsetName`,true);
             }
             else {
-                if (pl.playlistMode == 'playlist')
-                    displayElement(`#trackNrContainer`,false);
-                else
-                    displayElement(`#trackNrContainer`,true);
-                displayElement(`#playlistOffsetWrapper`,false);
+                if (playlistMode == 'track') displayElement(`#trackNrContainer`,true);
                 displayElement(`#playlistPlayWrapper`,true);
             }
         } 
@@ -172,7 +175,7 @@ const updateUI = (pl) => {
             displayElement(`#offsetContainer`,false);
             displayElement(`#ringColorWrapper`,false);
         }
-        else if (pl.soundboardMode == 'offset'){    //offset
+        else if (pl.soundboardMode == 'offset' || playlistType == 'relativeOffset'){    //offset
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,true);
             displayElement(`#ringColorWrapper`,true);
@@ -283,42 +286,39 @@ $SD.on('piDataChanged', (returnValue) => {
         }
     }
     /////////////////////////////////////////////////////////////////////////////
-    else if (returnValue.key == 'playlistMode'){
-        if (returnValue.value == 'stopAll') {  //Stop all
-            displayElement(`#playlistModeType`,false);
-            displayElement(`#playlistOffsetWrapper`,false);
-            displayElement(`#playlistPlayWrapper`,false);
-            displayElement(`#ringColorWrapper`,false);
+    
+    else if (returnValue.key == 'playlistMode' || returnValue.key == 'playlistType') {
+        let playlistMode = (returnValue.key == 'playlistMode') ? returnValue.value : settings.playlistMode;
+        let playlistType = (returnValue.key == 'playlistType') ? returnValue.value : settings.playlistType;
+        if (playlistMode == undefined) playlistMode = 'playlist';
+        if (playlistType == undefined) playlistType = 'playStop';
+        console.log('mode',playlistMode)
+        displayElement(`#playlistModeType`,false);
+        displayElement(`#playlistOffsetWrapper`,false);
+        displayElement(`#playlistPlayWrapper`,false);
+        displayElement(`#ringColorWrapper`,false);
+        displayElement(`#offsetName`,false);
+        displayElement(`#trackNrContainer`,false);
+        displayElement(`#stopAllWrapper`,false);
+
+        if (playlistMode == 'stopAll') {
+            displayElement(`#stopAllWrapper`,true);
         }
-        else { //Track/playlist
+        else {
             displayElement('#playlistModeType',true)
-            displayElement(`#ringColorWrapper`,true);
-            if (playlistType == 'offset'){ //Offset
+            if (playlistType != 'relativeOffset') displayElement(`#ringColorWrapper`,true);
+            if (playlistType == 'offset' || playlistType == 'relativeOffset'){
                 displayElement(`#playlistOffsetWrapper`,true);
-                displayElement(`#playlistPlayWrapper`,false);
+                if (playlistMode == 'playlist') displayElement(`#offsetName`,true);
             }
-            else {  //Play/stop
-                if (returnValue.value == 'playlist') //Playlist
-                    displayElement(`#trackNrContainer`,false);
-                else    //Track
-                    displayElement(`#trackNrContainer`,true);
-                displayElement(`#playlistOffsetWrapper`,false);
+            else {
+                if (playlistMode == 'track') displayElement(`#trackNrContainer`,true);
                 displayElement(`#playlistPlayWrapper`,true);
             }
-        }
+        } 
     }
-    else if (returnValue.key == 'playlistType'){    //Track/Playlist
-        playlistType = returnValue.key;
-        displayElement(`#ringColorWrapper`,true);
-        if (returnValue.value == 'offset'){    //Offset
-            displayElement(`#playlistOffsetWrapper`,true);
-            displayElement(`#playlistPlayWrapper`,false);
-        }
-        else {  //Play/stop
-            displayElement(`#playlistOffsetWrapper`,false);
-            displayElement(`#playlistPlayWrapper`,true);
-        }
-    }
+
+    
     /////////////////////////////////////////////////////////////////////////
     else if (returnValue.key == 'soundboardMode'){
         if (returnValue.value == 'playSound'){    //play sound
@@ -326,7 +326,7 @@ $SD.on('piDataChanged', (returnValue) => {
             displayElement(`#offsetContainer`,false);
             displayElement(`#ringColorWrapper`,false);
         }
-        else if (returnValue.value == 'offset'){    //offset
+        else if (returnValue.value == 'offset' || returnValue.value == 'relativeOffset'){    //offset
             displayElement(`#playContainer`,false);
             displayElement(`#offsetContainer`,true);
             displayElement(`#ringColorWrapper`,true);
@@ -367,7 +367,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displayUses'){
+        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displayUses' || sdpi_collection.key == 'displayOffsetName' || sdpi_collection.key == 'displayPlaylistName'){
             console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             console.log('setSettings....', settings);

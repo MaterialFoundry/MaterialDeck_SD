@@ -22,13 +22,19 @@
         <div class="sdpi-item-label">Type</div>
         <select class="sdpi-item-value select" id="playlistType" type="select">
           <option value='playStop'>Play/Stop</option>
-          <option value='offset'>Offset</option>
+          <option value='offset'>Absolute Offset</option>
+          <option value='relativeOffset'>Relative Offset</option>
         </select>
       </div>
       <div class="spdi-wrapper" id="playlistOffsetWrapper" style="display:none">
         <div class="sdpi-item" id="offsetContainer">
           <div class="sdpi-item-label">Offset</div>
           <input class="sdpi-item-value" id="offset" value=0>
+        </div>
+        <div type="checkbox" id="offsetName" class="sdpi-item">
+          <div class="sdpi-item-label">Display Offset Target Name</div>
+          <input class="sdpi-item-value" id="displayOffsetName" type="checkbox">
+          <label for="displayOffsetName"><span></span></label>
         </div>
       </div>
       <div class="spdi-wrapper" id="playlistPlayWrapper" style="">
@@ -46,6 +52,15 @@
           <label for="displayName"><span></span></label>
         </div>
       </div>
+
+      <div class="spdi-wrapper" id="stopAllWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Display Current Playlist</div>
+          <input class="sdpi-item-value" id="displayPlaylistName" type="checkbox">
+          <label for="displayPlaylistName"><span></span></label>
+        </div>
+      </div>
+
       <div class="spdi-wrapper" id="ringColorWrapper" style="">
         <div type="range" class="sdpi-item" id="onColorContainer">
           <div class="sdpi-item-label">On Color</div>
