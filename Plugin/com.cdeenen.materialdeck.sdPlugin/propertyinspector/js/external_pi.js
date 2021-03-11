@@ -252,7 +252,6 @@ $SD.on('piDataChanged', (returnValue) => {
     displayElement('#aboutTimeAdvanceWrapper',false);
     displayElement('#aboutTimeRingWrapper',false);
 
-    if (debugEn) console.log(module,pl);
     if (module == 'fxmaster'){
         displayElement(`#fxMasterWrapper`,true);
         if (fxMasterType == 'weatherControls')

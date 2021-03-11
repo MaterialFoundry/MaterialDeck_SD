@@ -11,7 +11,7 @@
   * and other information about the current environmet in a JSON object
   * You can use it to subscribe to events you want to use in your plugin.
   */
-const debugEn = true;
+//const debugEn = true;
 if (debugEn) console.log("Material Deck - app.js")
 //window.$SD = StreamDeck.getInstance();
 //window.$SD.api = SDApi;
