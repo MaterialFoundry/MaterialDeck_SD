@@ -51,7 +51,6 @@ $SD.on('connected', (jsn) => {
      * drawing proper highlight-colors or progressbars.
      */
 
-    console.log("connected");
     addDynamicStyles($SD.applicationInfo.colors, 'connectSocket');
 
     /**
@@ -84,8 +83,6 @@ $SD.on('sendToPropertyInspector', jsn => {
 
     if (pl.gameSystem != undefined) 
         system = pl.gameSystem;
-
-    console.log("Game system: ",system);
 
     let statsElement = document.getElementById(`stats`);
     let onClickElement = document.getElementById(`onClick`);
@@ -163,10 +160,10 @@ let controlMode = 0;
 let system = 'dnd5e';
 
 const updateUI = (pl) => {
-    console.log("pl",pl);
+    if(debugEn) console.log("pl",pl);
     
     const mode = settings.combatTrackerMode ? settings.combatTrackerMode : 'combatants';
-    //console.log('settings',settings)
+    if(debugEn) console.log('settings',settings)
 
     displayElement(`#funcWrapper`,false);
     displayElement(`#combatantWrapper`,false);
@@ -220,7 +217,7 @@ const updateUI = (pl) => {
     Object.keys(pl).map(e => {
         if (e && e != '') {
             const foundElement = document.querySelector(`#${e}`);
-            console.log(`searching for: #${e}`, 'found:', foundElement);
+           // console.log(`searching for: #${e}`, 'found:', foundElement);
             if (foundElement && foundElement.type !== 'file') {
                 if (foundElement.type == 'checkbox')
                     foundElement.checked = pl[e];
@@ -273,12 +270,11 @@ function displayElement(element,display){
 
 $SD.on('piDataChanged', (returnValue) => {
     var element;
-    console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
-    console.log(returnValue);
+    if(debugEn) console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     
     let mode = settings.combatTrackerMode ? settings.combatTrackerMode : 'combatants';
     if (returnValue.key == 'combatTrackerMode') mode = returnValue.value;
-    //console.log('settings',settings)
+    if(debugEn) console.log('settings',settings)
 
     displayElement(`#funcWrapper`,false);
     displayElement(`#combatantWrapper`,false);
@@ -358,18 +354,18 @@ $SD.on('piDataChanged', (returnValue) => {
  function saveSettings(sdpi_collection) {
 
     if (typeof sdpi_collection !== 'object') return;
-    console.log("collection",sdpi_collection);
+    if(debugEn) console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
         if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName' || sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon'){
-            console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
+            if(debugEn) console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
-            console.log('setSettings....', settings);
+            if(debugEn) console.log('setSettings....', settings);
             $SD.api.setSettings($SD.uuid, settings);
         }
         else if (sdpi_collection.value && sdpi_collection.value !== undefined) {
-            console.log(sdpi_collection.key, " => ", sdpi_collection.value);
+           // console.log(sdpi_collection.key, " => ", sdpi_collection.value);
             settings[sdpi_collection.key] = sdpi_collection.value;
-            console.log('setSettings....', settings);
+            if(debugEn) console.log('setSettings....', settings);
             $SD.api.setSettings($SD.uuid, settings);
         }
     }
@@ -388,7 +384,7 @@ $SD.on('piDataChanged', (returnValue) => {
   */
 
  function sendValueToPlugin(value, prop) {
-    console.log("sendValueToPlugin", value, prop);
+    if(debugEn) console.log("sendValueToPlugin", value, prop);
     if ($SD.connection && $SD.connection.readyState === 1) {
         const json = {
             action: $SD.actionInfo['action'],
@@ -497,7 +493,7 @@ function prepareDOMElements(baseElement) {
                 $SD.api.openUrl($SD.uuid, path);
             };
         } else {
-            console.log(`${value} is not a supported url`);
+            if(debugEn) console.log(`${value} is not a supported url`);
         }
     });
 }
@@ -668,5 +664,5 @@ window.addEventListener('beforeunload', function(e) {
 });
 
 function gotCallbackFromWindow(parameter) {
-    console.log(parameter);
+    if(debugEn) console.log(parameter);
 }

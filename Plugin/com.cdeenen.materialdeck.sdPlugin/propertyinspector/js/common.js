@@ -8,7 +8,8 @@
   no-var: 0,
   vars-on-top: 0
 */
-console.log("starting common.js")
+const debugEn = true;
+if (debugEn) console.log("starting common.js")
 
 // don't change this to let or const, because we rely on var's hoisting
 // eslint-disable-next-line no-use-before-define, no-var
@@ -31,7 +32,7 @@ debugLog = setDebugOutput(debug);
 // Create a wrapper to allow passing JSON to the socket
 WebSocket.prototype.sendJSON = function (jsn, log) {
     if (log) {
-        console.log('SendJSON', this, jsn);
+        if (debugEn) console.log('SendJSON', this, jsn);
     }
     // if (this.readyState) {
     this.send(JSON.stringify(jsn));
@@ -598,27 +599,27 @@ Utils.onChange = function (object, callback) {
     const handler = {
         get (target, property, receiver) {
             try {
-                console.log('get via Proxy: ', property, target, receiver);
+                if (debugEn) console.log('get via Proxy: ', property, target, receiver);
                 return new Proxy(target[property], handler);
             } catch (err) {
-                console.log('get via Reflect: ', err, property, target, receiver);
+                if (debugEn) console.log('get via Reflect: ', err, property, target, receiver);
                 return Reflect.get(target, property, receiver);
             }
         },
         set (target, property, value, receiver) {
-            console.log('Utils.onChange:set1:', target, property, value, receiver);
+            if (debugEn) console.log('Utils.onChange:set1:', target, property, value, receiver);
             // target[property] = value;
             const b = Reflect.set(target, property, value);
-            console.log('Utils.onChange:set2:', target, property, value, receiver);
+            if (debugEn) console.log('Utils.onChange:set2:', target, property, value, receiver);
             return b;
         },
         defineProperty (target, property, descriptor) {
-            console.log('Utils.onChange:defineProperty:', target, property, descriptor);
+            if (debugEn) console.log('Utils.onChange:defineProperty:', target, property, descriptor);
             callback(target, property, descriptor);
             return Reflect.defineProperty(target, property, descriptor);
         },
         deleteProperty (target, property) {
-            console.log('Utils.onChange:deleteProperty:', target, property);
+            if (debugEn) console.log('Utils.onChange:deleteProperty:', target, property);
             callback(target, property);
             return Reflect.deleteProperty(target, property);
         }
@@ -639,9 +640,9 @@ Utils.observeArray = function (object, callback) {
             }
         },
         set (target, property, value, receiver) {
-            console.log('XXXUtils.observeArray:set1:', target, property, value, array);
+            if (debugEn) console.log('XXXUtils.observeArray:set1:', target, property, value, array);
             target[property] = value;
-            console.log('XXXUtils.observeArray:set2:', target, property, value, array);
+            if (debugEn) console.log('XXXUtils.observeArray:set2:', target, property, value, array);
         },
         defineProperty (target, property, descriptor) {
             callback(target, property, descriptor);
@@ -817,11 +818,11 @@ const StreamDeck = (function () {
                 var jsonObj = Utils.parseJson(evt.data),
                     m;
 
-                // console.log('[STREAMDECK] websocket.onmessage ... ', jsonObj.event, jsonObj);
+                if (debugEn) console.log('[STREAMDECK] websocket.onmessage ... ', jsonObj.event, jsonObj);
 
                 if (!jsonObj.hasOwnProperty('action')) {
                     m = jsonObj.event;
-                    // console.log('%c%s', 'color: white; background: red; font-size: 12px;', '[common.js]onmessage:', m);
+                    if (debugEn) console.log('%c%s', 'color: white; background: red; font-size: 12px;', '[common.js]onmessage:', m);
                 } else {
                     switch (inMessageType) {
                     case 'registerPlugin':
@@ -831,7 +832,7 @@ const StreamDeck = (function () {
                         m = 'sendToPropertyInspector';
                         break;
                     default:
-                        console.log('%c%s', 'color: white; background: red; font-size: 12px;', '[STREAMDECK] websocket.onmessage +++++++++  PROBLEM ++++++++');
+                        if (debugEn) console.log('%c%s', 'color: white; background: red; font-size: 12px;', '[STREAMDECK] websocket.onmessage +++++++++  PROBLEM ++++++++');
                         console.warn('UNREGISTERED MESSAGETYPE:', inMessageType);
                     }
                 }
@@ -946,7 +947,7 @@ const ELGEvents = {
 
 const SDApi = {
     send: function (context, fn, payload, debug) {
-        console.log("send")
+        if (debugEn) console.log("send")
         /** Combine the passed JSON with the name of the event and it's context
          * If the payload contains 'event' or 'context' keys, it will overwrite existing 'event' or 'context'.
          * This function is non-mutating and thereby creates a new object containing
@@ -956,12 +957,12 @@ const SDApi = {
 
         /** Check, if we have a connection, and if, send the JSON payload */
         if (debug) {
-            console.log('-----SDApi.send-----');
-            console.log('context', context);
-            console.log(pl);
-            console.log(payload.payload);
-            console.log(JSON.stringify(payload.payload));
-            console.log('-------');
+            if (debugEn) console.log('-----SDApi.send-----');
+            if (debugEn) console.log('context', context);
+            if (debugEn) console.log(pl);
+            if (debugEn) console.log(payload.payload);
+            if (debugEn) console.log(JSON.stringify(payload.payload));
+            if (debugEn) console.log('-------');
         }
         $SD.connection && $SD.connection.sendJSON(pl);
 
@@ -978,7 +979,7 @@ const SDApi = {
                 'setSettings'
             ].indexOf(fn) === -1
         ) {
-            // console.log("send.sendToPropertyInspector", payload);
+             if (debugEn) console.log("send.sendToPropertyInspector", payload);
             // this.sendToPropertyInspector(context, typeof payload.payload==='object' ? JSON.stringify(payload.payload) : JSON.stringify({'payload':payload.payload}), pl['action']);
         }
     },
@@ -1004,7 +1005,7 @@ const SDApi = {
         },
 
         setTitle: function (context, title, target) {
-            console.log('setTitle')
+            if (debugEn) console.log('setTitle')
             SDApi.send(context, 'setTitle', {
                 payload: {
                     title: '' + title || '',
@@ -1063,7 +1064,7 @@ const SDApi = {
         },
 
         setSettings: function (context, payload) {
-            console.log("settings",payload)
+            if (debugEn) console.log("settings",payload)
             SDApi.send(context, 'setSettings', {
                 payload: payload
             });
@@ -1105,8 +1106,8 @@ const SDApi = {
         },
 
         test: function () {
-            console.log(this);
-            console.log(SDApi);
+            if (debugEn) console.log(this);
+            if (debugEn) console.log(SDApi);
         },
 
         debugPrint: function (context, inString) {
@@ -1128,7 +1129,7 @@ const SDApi = {
                     $SD.connection && $SD.connection.sendJSON(payload);
                 }
             }
-            console.log(this, fn, typeof this[fn], this[fn]());
+            if (debugEn) console.log(this, fn, typeof this[fn], this[fn]());
         }
 
     }
@@ -1141,8 +1142,8 @@ const SDApi = {
 const SDDebug = {
     logger: function (name, fn) {
         const logEvent = jsn => {
-            console.log('____SDDebug.logger.logEvent');
-            console.log(jsn);
+            if (debugEn) console.log('____SDDebug.logger.logEvent');
+            if (debugEn) console.log(jsn);
             debugLog('-->> Received Obj:', jsn);
             debugLog('jsonObj', jsn);
             debugLog('event', jsn['event']);

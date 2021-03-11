@@ -14,11 +14,29 @@
         <div class="sdpi-item-label">Mode</div>
         <select class="sdpi-item-value select" id="mode">
           <option value='canvas'>Canvas</option>
-          <option value='selectedToken'>Selected Token</option>
+          <option value='selectedToken'>Token</option>
         </select>
       </div>
 
       <div class='wrapper' id='tokenWrapper' style='display:none'> 
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Token</div>
+          <select class="sdpi-item-value select" id="selection" type="select">
+            <option value='selected'>Selected Token</option>
+            <option value='tokenName'>Token Name</option>
+            <option value='actorName'>Actor Name</option>
+            <option value='tokenId'>Token Id</option>
+            <option value='actorId'>Actor Id</option>
+          </select>
+        </div>
+
+        <div class="wrapper"  id="tokenNameWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label" id='tokenNameLabel'>Name</div>
+            <input class="sdpi-item-value" id="tokenName" value="">
+          </div>
+        </div>
+
         <div class="sdpi-item">
           <div class="sdpi-item-label">Type</div>
           <select class="sdpi-item-value select" id="type">

@@ -45,7 +45,7 @@ let system = 'dnd5e';
   */
 
 $SD.on('connected', (jsn) => {
-    console.log(jsn);
+    if (debugEn) console.log(jsn);
     /**
      * The passed 'applicationInfo' object contains various information about your
      * computer, Stream Deck version and OS-settings (e.g. colors as set in your
@@ -54,7 +54,7 @@ $SD.on('connected', (jsn) => {
      * drawing proper highlight-colors or progressbars.
      */
 
-    console.log("connected");
+    if (debugEn) console.log("connected");
     addDynamicStyles($SD.applicationInfo.colors, 'connectSocket');
 
     /**
@@ -88,22 +88,29 @@ $SD.on('sendToPropertyInspector', jsn => {
     if (pl.gameSystem != undefined) 
         system = pl.gameSystem;
 
-    console.log("Game system: ",system);
+    if (debugEn) console.log("Game system: ",system);
 
     let statsElement = document.getElementById(`stats`);
+    let abilityElement = document.getElementById(`ability`);
     let onClickElement = document.getElementById(`onClick`);
     let conditionElement = document.getElementById('condition');
     
     let newStatOptions = [];
+    let newAbilityScores = [];
     let newOnClickOptions = [];
     let newConditionOptions = [];
 
+
     if (system == 'D35E') {
         newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'HPbox', name:'HP (box)'});
         newStatOptions.push({value:'TempHP', name:'Temp HP'});
         newStatOptions.push({value:'AC', name:'AC'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
+        newStatOptions.push({value:'Ability', name:'Ability Scores'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
+        newStatOptions.push({value:'Prof', name:'Proficiency'});
 
         newConditionOptions.push({value:'dead', name:'Dead'});
         newConditionOptions.push({value:'blind', name:'Blind'});
@@ -123,10 +130,14 @@ $SD.on('sendToPropertyInspector', jsn => {
     }
     else if (system == 'pf1') {
         newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'HPbox', name:'HP (box)'});
         newStatOptions.push({value:'TempHP', name:'Temp HP'});
         newStatOptions.push({value:'AC', name:'AC'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
+        newStatOptions.push({value:'Ability', name:'Ability Scores'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
+        newStatOptions.push({value:'Prof', name:'Proficiency'});
 
         newConditionOptions.push({value:'dead', name:'Dead'});
         newConditionOptions.push({value:'bleed', name:'Bleed'});
@@ -155,11 +166,15 @@ $SD.on('sendToPropertyInspector', jsn => {
     }
     else if (system == 'pf2e') {
         newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'HPbox', name:'HP (box)'});
         newStatOptions.push({value:'TempHP', name:'Temp HP'});
         newStatOptions.push({value:'AC', name:'AC'});
         newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
+        newStatOptions.push({value:'Ability', name:'Ability Scores'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
+        newStatOptions.push({value:'Prof', name:'Proficiency'});
 
         newConditionOptions.push({value:'blinded', name:'Blinded'});
         newConditionOptions.push({value:'broken', name:'Broken'});
@@ -197,10 +212,14 @@ $SD.on('sendToPropertyInspector', jsn => {
     }
     else if (system == 'demonlord') {
         newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'HPbox', name:'HP (box)'});
         newStatOptions.push({value:'AC', name:'Defense'});
         newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
+        newStatOptions.push({value:'Ability', name:'Ability Scores'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
+        newStatOptions.push({value:'Prof', name:'Proficiency'});
 
         newOnClickOptions.push({value:'initiative',name:'Toggle Initiative'});
 
@@ -228,12 +247,17 @@ $SD.on('sendToPropertyInspector', jsn => {
     }
     else { //default/dnd5e
         newStatOptions.push({value:'HP', name:'HP'});
+        newStatOptions.push({value:'HPbox', name:'HP (box)'});
         newStatOptions.push({value:'TempHP', name:'Temp HP'});
         newStatOptions.push({value:'AC', name:'AC'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
+        newStatOptions.push({value:'Ability', name:'Ability Scores'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
+        newStatOptions.push({value:'AbilitySave', name:'Ability Score Save'});
         newStatOptions.push({value:'PassivePerception', name:'Passive Perception'});
         newStatOptions.push({value:'PassiveInvestigation', name:'Passive Investigation'});
+        newStatOptions.push({value:'Prof', name:'Proficiency'});
 
         newConditionOptions.push({value:'dead', name:'Dead'});
         newConditionOptions.push({value:'unconscious', name:'Unconscious'});
@@ -269,11 +293,34 @@ $SD.on('sendToPropertyInspector', jsn => {
         newConditionOptions.push({value:'holyShield', name:'Holy Shield'});
     }
 
+    if (system == 'demonlord') {
+        newAbilityScores.push({value:'strength',name:'Strength'});
+        newAbilityScores.push({value:'agility',name:'Agility'});
+        newAbilityScores.push({value:'intellect',name:'Intellect'});
+        newAbilityScores.push({value:'will',name:'Will'});
+        newAbilityScores.push({value:'perception',name:'Perception'});
+    }
+    else {
+        newAbilityScores.push({value:'str',name:'Strength'});
+        newAbilityScores.push({value:'dex',name:'Dexterity'});
+        newAbilityScores.push({value:'con',name:'Constitution'});
+        newAbilityScores.push({value:'int',name:'Intelligence'});
+        newAbilityScores.push({value:'wis',name:'Wisdom'});
+        newAbilityScores.push({value:'cha',name:'Charisma'});
+    }
+
     for (let option of newStatOptions) {
         let newOption = document.createElement('option');
         newOption.value = option.value;
         newOption.innerHTML = option.name;
         statsElement.appendChild(newOption);
+    }
+
+    for (let option of newAbilityScores) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        abilityElement.appendChild(newOption);
     }
 
     for (let option of newOnClickOptions) {
@@ -293,6 +340,9 @@ $SD.on('sendToPropertyInspector', jsn => {
     const statsSelection = settings.stats ? settings.stats : 'none';
     statsElement.value = statsSelection;
 
+    const abilitySelection = settings.ability ? settings.ability : 'str';
+    abilityElement.value = abilitySelection;
+
     const onClickSelection = settings.onClick ? settings.onClick : 'doNothing';
     onClickElement.value = onClickSelection;
 
@@ -302,19 +352,21 @@ $SD.on('sendToPropertyInspector', jsn => {
 
 
 const updateUI = (pl) => {
-    console.log("pl",pl);
+    if (debugEn) console.log("pl",pl);
     
     const onClick = settings.onClick ? settings.onClick : 'none';
     const stats = settings.stats ? settings.stats : 'none';
     const selection = settings.selection ? settings.selection : 'selected';
     
-    //console.log('settings',settings)
+    if (debugEn) console.log('settings',settings)
     displayElement(`#conditionWrapper`,false);
     displayElement(`#visionWrapper`,false);
     displayElement('#wildcardWrapper',false);
     displayElement('#customOnClickWrapper',false);
     displayElement('#cubConditionWrapper',false);
     displayElement('#tokenNameWrapper',false);
+    displayElement(`#abilityContainer`,false);
+    displayElement(`#customContainer`,false);
 
     if (selection != 'selected') displayElement('#tokenNameWrapper',true);
     if (selection == 'tokenId' || selection == 'actorId') {
@@ -329,7 +381,7 @@ const updateUI = (pl) => {
     else if (onClick == 'cubCondition') displayElement('#cubConditionWrapper',true);
 
     if (stats == 'custom') displayElement(`#customContainer`,true);
-    else displayElement(`#customContainer`,false);
+    else if (stats == 'Ability' || stats == 'AbilityMod' || stats == 'AbilitySave') displayElement(`#abilityContainer`,true);
     
     
     ////////////////////////////////////////////////////////////////////////////////
@@ -340,7 +392,7 @@ const updateUI = (pl) => {
     Object.keys(pl).map(e => {
         if (e && e != '') {
             const foundElement = document.querySelector(`#${e}`);
-            console.log(`searching for: #${e}`, 'found:', foundElement);
+            if (debugEn) console.log(`searching for: #${e}`, 'found:', foundElement);
             if (foundElement && foundElement.type !== 'file') {
                 if (foundElement.type == 'checkbox')
                     foundElement.checked = pl[e];
@@ -393,9 +445,8 @@ function displayElement(element,display){
 
 $SD.on('piDataChanged', (returnValue) => {
     var element;
-    console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
-    console.log(returnValue);
-    //console.log('settings',settings);
+    if (debugEn) console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
+    if (debugEn) console.log('settings',settings);
 
     let onClick = settings.onClick ? settings.onClick : 'none';
     let stats = settings.stats ? settings.stats : 'none';
@@ -411,6 +462,8 @@ $SD.on('piDataChanged', (returnValue) => {
     displayElement('#cubConditionWrapper',false);
     displayElement(`#conditionWrapper`,false);
     displayElement('#tokenNameWrapper',false);
+    displayElement(`#abilityContainer`,false);
+    displayElement(`#customContainer`,false);
 
     if (selection != 'selected') displayElement('#tokenNameWrapper',true);
     element = document.querySelector('#tokenNameLabel');
@@ -424,7 +477,7 @@ $SD.on('piDataChanged', (returnValue) => {
     else if (onClick == 'cubCondition') displayElement('#cubConditionWrapper',true);
 
     if (stats == 'custom') displayElement(`#customContainer`,true);
-    else displayElement(`#customContainer`,false);
+    else if (stats == 'Ability' || stats == 'AbilityMod' || stats == 'AbilitySave') displayElement(`#abilityContainer`,true);
 
     /* SAVE THE VALUE TO SETTINGS */
     saveSettings(returnValue);
@@ -453,18 +506,18 @@ $SD.on('piDataChanged', (returnValue) => {
  function saveSettings(sdpi_collection) {
 
     if (typeof sdpi_collection !== 'object') return;
-    console.log("collection",sdpi_collection);
+    if (debugEn) console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
         if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon'){
-            console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
+            if (debugEn) console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
-            console.log('setSettings....', settings);
+            if (debugEn) console.log('setSettings....', settings);
             $SD.api.setSettings($SD.uuid, settings);
         }
         else if (sdpi_collection.value && sdpi_collection.value !== undefined) {
-            console.log(sdpi_collection.key, " => ", sdpi_collection.value);
+            if (debugEn) console.log(sdpi_collection.key, " => ", sdpi_collection.value);
             settings[sdpi_collection.key] = sdpi_collection.value;
-            console.log('setSettings....', settings);
+            if (debugEn) console.log('setSettings....', settings);
             $SD.api.setSettings($SD.uuid, settings);
         }
     }
@@ -483,7 +536,7 @@ $SD.on('piDataChanged', (returnValue) => {
   */
 
  function sendValueToPlugin(value, prop) {
-    console.log("sendValueToPlugin", value, prop);
+    if (debugEn) console.log("sendValueToPlugin", value, prop);
     if ($SD.connection && $SD.connection.readyState === 1) {
         const json = {
             action: $SD.actionInfo['action'],
@@ -592,7 +645,7 @@ function prepareDOMElements(baseElement) {
                 $SD.api.openUrl($SD.uuid, path);
             };
         } else {
-            console.log(`${value} is not a supported url`);
+            if (debugEn) console.log(`${value} is not a supported url`);
         }
     });
 }
@@ -763,5 +816,5 @@ window.addEventListener('beforeunload', function(e) {
 });
 
 function gotCallbackFromWindow(parameter) {
-    console.log(parameter);
+    if (debugEn) console.log(parameter);
 }

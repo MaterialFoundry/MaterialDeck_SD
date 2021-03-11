@@ -51,7 +51,7 @@ $SD.on('connected', (jsn) => {
      * drawing proper highlight-colors or progressbars.
      */
 
-    console.log("connected");
+    if (debugEn) console.log("connected");
     addDynamicStyles($SD.applicationInfo.colors, 'connectSocket');
 
     /**
@@ -103,12 +103,13 @@ $SD.on('sendToPropertyInspector', jsn => {
 });
 
 const updateUI = (pl) => {
-    console.log("pl",pl);
+    if (debugEn) console.log("pl",pl);
     var element;
     const module = settings.module ? settings.module : 'fxmaster';
     const fxMasterType = settings.fxMasterType ? settings.fxMasterType : 'weatherControls';
-
-    //console.log('settings',settings)
+    const aboutTimeOnClick = settings.aboutTimeOnClick ? settings.aboutTimeOnClick : 'none';
+    const aboutTimeActive = settings.aboutTimeActive;
+    if (debugEn) console.log('settings',settings)
 
     displayElement(`#fxMasterWrapper`,false);
     displayElement('#gmScreenWrapper',false);
@@ -117,6 +118,10 @@ const updateUI = (pl) => {
     displayElement('#mookWrapper',false);
     displayElement('#notYourTurnWrapper',false);
     displayElement('#lockViewWrapper',false);
+    displayElement('#aboutTimeWrapper',false);
+    displayElement('#aboutTimeStartStopWrapper',false);
+    displayElement('#aboutTimeAdvanceWrapper',false);
+    displayElement('#aboutTimeRingWrapper',false);
 
     if (module == 'fxmaster'){
         displayElement(`#fxMasterWrapper`,true);
@@ -139,6 +144,20 @@ const updateUI = (pl) => {
         displayElement('#notYourTurnWrapper',true);
     else if (module == 'lockView')
         displayElement('#lockViewWrapper',true);
+    else if (module == 'aboutTime') {
+        displayElement('#aboutTimeWrapper',true);
+        if (aboutTimeOnClick == 'startStop')
+            displayElement('#aboutTimeStartStopWrapper',true);
+        else if (aboutTimeOnClick == 'advance') {
+            displayElement('#aboutTimeAdvanceWrapper',true);
+            document.querySelector('#advanceModeLabel').innerHTML="Advance";
+        }
+        else if (aboutTimeOnClick == 'recede') {
+            displayElement('#aboutTimeAdvanceWrapper',true);
+            document.querySelector('#advanceModeLabel').innerHTML="Recede";
+        }
+        if (aboutTimeActive) displayElement('#aboutTimeRingWrapper',true);
+    }
     else if (module == 'custom') {
         
     }
@@ -152,7 +171,7 @@ const updateUI = (pl) => {
     Object.keys(pl).map(e => {
         if (e && e != '') {
             const foundElement = document.querySelector(`#${e}`);
-            console.log(`searching for: #${e}`, 'found:', foundElement);
+            if (debugEn) console.log(`searching for: #${e}`, 'found:', foundElement);
             if (foundElement && foundElement.type !== 'file') {
                 if (foundElement.type == 'checkbox')
                     foundElement.checked = pl[e];
@@ -205,14 +224,18 @@ function displayElement(element,display){
 
 $SD.on('piDataChanged', (returnValue) => {
     var element;
-    console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
-    console.log(returnValue);
+    if (debugEn) console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
+    if (debugEn) console.log(returnValue);
 
     let module = settings.module ? settings.module : 'fxmaster';
     let fxMasterType = settings.fxMasterType ? settings.fxMasterType : 'weatherControls';
-
+    let aboutTimeOnClick = settings.aboutTimeOnClick ? settings.aboutTimeOnClick : 'none';
+    let aboutTimeActive = settings.aboutTimeActive;
+    
     if (returnValue.key == 'module') module = returnValue.value;
     else if (returnValue.key == 'fxMasterType') fxMasterType = returnValue.value;
+    else if (returnValue.key == 'aboutTimeOnClick') aboutTimeOnClick = returnValue.value;
+    else if (returnValue.key == 'aboutTimeActive') aboutTimeActive = returnValue.checked;
 
     displayElement(`#fxMasterWrapper`,false);
     displayElement(`#weatherControlsWrapper`,false);
@@ -224,8 +247,12 @@ $SD.on('piDataChanged', (returnValue) => {
     displayElement('#mookWrapper',false);
     displayElement('#notYourTurnWrapper',false);
     displayElement('#lockViewWrapper',false);
+    displayElement('#aboutTimeWrapper',false);
+    displayElement('#aboutTimeStartStopWrapper',false);
+    displayElement('#aboutTimeAdvanceWrapper',false);
+    displayElement('#aboutTimeRingWrapper',false);
 
-    //console.log(module,pl);
+    if (debugEn) console.log(module,pl);
     if (module == 'fxmaster'){
         displayElement(`#fxMasterWrapper`,true);
         if (fxMasterType == 'weatherControls')
@@ -247,6 +274,20 @@ $SD.on('piDataChanged', (returnValue) => {
         displayElement('#notYourTurnWrapper',true);
     else if (module == 'lockView')
         displayElement('#lockViewWrapper',true);
+    else if (module == 'aboutTime') {
+        displayElement('#aboutTimeWrapper',true);
+        if (aboutTimeOnClick == 'startStop')
+            displayElement('#aboutTimeStartStopWrapper',true);
+        else if (aboutTimeOnClick == 'advance') {
+            displayElement('#aboutTimeAdvanceWrapper',true);
+            document.querySelector('#advanceModeLabel').innerHTML="Advance";
+        }
+        else if (aboutTimeOnClick == 'recede') {
+            displayElement('#aboutTimeAdvanceWrapper',true);
+            document.querySelector('#advanceModeLabel').innerHTML="Recede";
+        }
+        if (aboutTimeActive) displayElement('#aboutTimeRingWrapper',true);   
+    } 
     else if (module == 'custom') {
         
     }
@@ -278,18 +319,18 @@ $SD.on('piDataChanged', (returnValue) => {
  function saveSettings(sdpi_collection) {
 
     if (typeof sdpi_collection !== 'object') return;
-    console.log("collection",sdpi_collection);
+    if (debugEn) console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon' || sdpi_collection.key == 'displayGmScreenName' || sdpi_collection.key == 'displayGmScreenIcon' || sdpi_collection.key == 'displayTriggerHappyName' || sdpi_collection.key == 'displayTriggerHappyIcon' || sdpi_collection.key == 'sharedVisionName' || sdpi_collection.key == 'sharedVisionIcon' || sdpi_collection.key == 'notYourTurnName' || sdpi_collection.key == 'notYourTurnIcon' || sdpi_collection.key == 'lockViewName' || sdpi_collection.key == 'lockViewIcon'){
-            console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
+        if (sdpi_collection.key == 'fxWeatherEnColor' || sdpi_collection.key == 'displayFxMasterName' || sdpi_collection.key == 'displayFxMasterIcon' || sdpi_collection.key == 'displayGmScreenName' || sdpi_collection.key == 'displayGmScreenIcon' || sdpi_collection.key == 'displayTriggerHappyName' || sdpi_collection.key == 'displayTriggerHappyIcon' || sdpi_collection.key == 'sharedVisionName' || sdpi_collection.key == 'sharedVisionIcon' || sdpi_collection.key == 'notYourTurnName' || sdpi_collection.key == 'notYourTurnIcon' || sdpi_collection.key == 'lockViewName' || sdpi_collection.key == 'lockViewIcon' || sdpi_collection.key == 'aboutTimeActive'){
+            if (debugEn) console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
-            console.log('setSettings....', settings);
+            if (debugEn) console.log('setSettings....', settings);
             $SD.api.setSettings($SD.uuid, settings);
         }
         else if (sdpi_collection.value && sdpi_collection.value !== undefined) {
-            console.log(sdpi_collection.key, " => ", sdpi_collection.value);
+            if (debugEn) console.log(sdpi_collection.key, " => ", sdpi_collection.value);
             settings[sdpi_collection.key] = sdpi_collection.value;
-            console.log('setSettings....', settings);
+            if (debugEn) console.log('setSettings....', settings);
             $SD.api.setSettings($SD.uuid, settings);
         }
     }
@@ -308,7 +349,7 @@ $SD.on('piDataChanged', (returnValue) => {
   */
 
  function sendValueToPlugin(value, prop) {
-    console.log("sendValueToPlugin", value, prop);
+    if (debugEn) console.log("sendValueToPlugin", value, prop);
     if ($SD.connection && $SD.connection.readyState === 1) {
         const json = {
             action: $SD.actionInfo['action'],
@@ -417,7 +458,7 @@ function prepareDOMElements(baseElement) {
                 $SD.api.openUrl($SD.uuid, path);
             };
         } else {
-            console.log(`${value} is not a supported url`);
+            if (debugEn) console.log(`${value} is not a supported url`);
         }
     });
 }
@@ -588,5 +629,5 @@ window.addEventListener('beforeunload', function(e) {
 });
 
 function gotCallbackFromWindow(parameter) {
-    console.log(parameter);
+    if (debugEn) console.log(parameter);
 }

@@ -51,7 +51,7 @@ $SD.on('connected', (jsn) => {
      * drawing proper highlight-colors or progressbars.
      */
 
-    console.log("connected");
+    if (debugEn) console.log("connected");
     addDynamicStyles($SD.applicationInfo.colors, 'connectSocket');
 
     /**
@@ -110,9 +110,9 @@ let controlMode = 0;
 let system = 'dnd5e';
 
 const updateUI = (pl) => {
-    console.log("pl",pl);
+    if (debugEn) console.log("pl",pl);
 
-    //console.log('settings',settings)
+    //if (debugEn) console.log('settings',settings)
     
     const macro = document.querySelector(`#macroMode`);
     if (macro){
@@ -195,7 +195,7 @@ const updateUI = (pl) => {
     Object.keys(pl).map(e => {
         if (e && e != '') {
             const foundElement = document.querySelector(`#${e}`);
-            console.log(`searching for: #${e}`, 'found:', foundElement);
+            if (debugEn) console.log(`searching for: #${e}`, 'found:', foundElement);
             if (foundElement && foundElement.type !== 'file') {
                 if (foundElement.type == 'checkbox')
                     foundElement.checked = pl[e];
@@ -248,8 +248,7 @@ function displayElement(element,display){
 
 $SD.on('piDataChanged', (returnValue) => {
     var element;
-    console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
-    console.log(returnValue);
+    if (debugEn) console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
     
     if (returnValue.key == 'macroMode'){
         if (returnValue.value == 'macroBoard'){
@@ -292,7 +291,7 @@ $SD.on('piDataChanged', (returnValue) => {
         let playlistType = (returnValue.key == 'playlistType') ? returnValue.value : settings.playlistType;
         if (playlistMode == undefined) playlistMode = 'playlist';
         if (playlistType == undefined) playlistType = 'playStop';
-        console.log('mode',playlistMode)
+
         displayElement(`#playlistModeType`,false);
         displayElement(`#playlistOffsetWrapper`,false);
         displayElement(`#playlistPlayWrapper`,false);
@@ -365,18 +364,18 @@ $SD.on('piDataChanged', (returnValue) => {
  function saveSettings(sdpi_collection) {
 
     if (typeof sdpi_collection !== 'object') return;
-    console.log("collection",sdpi_collection);
+    if (debugEn) console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
         if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displayUses' || sdpi_collection.key == 'displayOffsetName' || sdpi_collection.key == 'displayPlaylistName'){
-            console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
+            if (debugEn) console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
-            console.log('setSettings....', settings);
+            if (debugEn) console.log('setSettings....', settings);
             $SD.api.setSettings($SD.uuid, settings);
         }
         else if (sdpi_collection.value && sdpi_collection.value !== undefined) {
-            console.log(sdpi_collection.key, " => ", sdpi_collection.value);
+            if (debugEn) console.log(sdpi_collection.key, " => ", sdpi_collection.value);
             settings[sdpi_collection.key] = sdpi_collection.value;
-            console.log('setSettings....', settings);
+            if (debugEn) console.log('setSettings....', settings);
             $SD.api.setSettings($SD.uuid, settings);
         }
     }
@@ -395,7 +394,7 @@ $SD.on('piDataChanged', (returnValue) => {
   */
 
  function sendValueToPlugin(value, prop) {
-    console.log("sendValueToPlugin", value, prop);
+    if (debugEn) console.log("sendValueToPlugin", value, prop);
     if ($SD.connection && $SD.connection.readyState === 1) {
         const json = {
             action: $SD.actionInfo['action'],
@@ -504,7 +503,7 @@ function prepareDOMElements(baseElement) {
                 $SD.api.openUrl($SD.uuid, path);
             };
         } else {
-            console.log(`${value} is not a supported url`);
+            if (debugEn) console.log(`${value} is not a supported url`);
         }
     });
 }
@@ -675,5 +674,5 @@ window.addEventListener('beforeunload', function(e) {
 });
 
 function gotCallbackFromWindow(parameter) {
-    console.log(parameter);
+    if (debugEn) console.log(parameter);
 }

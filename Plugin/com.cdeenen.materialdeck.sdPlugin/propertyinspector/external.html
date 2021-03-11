@@ -20,6 +20,7 @@
           <option value='lockView'>Lock View</option>
           <option value='notYourTurn'>Not Your Turn!</option>
           <option value='mookAI'>Mook AI</option>
+          <option value='aboutTime'>About Time</option>
         </select>
       </div>
 
@@ -246,6 +247,101 @@
         <div class="sdpi-item-label">Display Icon</div>
         <input class="sdpi-item-value" id="lockViewIcon" type="checkbox">
         <label for="lockViewIcon"><span></span></label>
+      </div>
+    </div>
+
+    <div class="wrapper" id="aboutTimeWrapper" style="display:none">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Display Time</div>
+        <select class="sdpi-item-value select" id="aboutTimeDisplayTime" type="select">
+          <option value='none'>Do Not Display</option>
+          <option value='hours24h'>Hours (24H)</option>
+          <option value='hours12h'>Hours (12H)</option>
+          <option value='minutes'>Minutes</option>
+          <option value='seconds'>Seconds</option>
+          <option value='compact24h'>H:M (24H)</option>
+          <option value='compact12h'>H:M (12H)</option>
+          <option value='full24h'>H:M:S (24H)</option>
+          <option value='full12h'>H:M:S (12H)</option>
+          <option value='clock'>Display Clock</option>
+        </select> 
+      </div>
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Display Date</div>
+        <select class="sdpi-item-value select" id="aboutTimeDisplayDate" type="select">
+          <option value='none'>Do Not Display</option>
+          <option value='day'>Day</option>
+          <option value='dayName'>Day (name)</option>
+          <option value='month'>Month</option>
+          <option value='monthName'>Month (name)</option>
+          <option value='year'>Year</option>
+          <option value='small'>D:M</option>
+          <option value='smallInv'>M:D</option>
+          <option value='full'>D:M:Y</option>
+          <option value='fullInv'>M:D:Y</option>
+          <option value='textDay'>Full Text With Day</option>
+          <option value='text'>Full Text Without Day</option>
+        </select> 
+      </div>
+
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">On Click</div>
+        <select class="sdpi-item-value select" id="aboutTimeOnClick" type="select">
+          <option value='none'>Do Nothing</option>
+          <option value='startStop'>Start/Stop the Clock</option>
+          <option value='advance'>Advance the Time</option>
+          <option value='recede'>Recede the Time</option>
+        </select> 
+      </div>
+
+      <div class="wrapper" id="aboutTimeStartStopWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Start/Stop</div>
+          <select class="sdpi-item-value select" id="aboutTimeStartStopMode" type="select">
+            <option value='toggle'>Toggle</option>
+            <option value='start'>Start</option>
+            <option value='stop'>Stop</option>
+          </select> 
+        </div>
+      </div>
+
+      <div class="wrapper" id="aboutTimeAdvanceWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label" id="advanceModeLabel">Advance</div>
+          <select class="sdpi-item-value select" id="aboutTimeAdvanceMode" type="select">
+            <option value='dawn'>To Dawn</option>
+            <option value='noon'>To Noon</option>
+            <option value='dusk'>To Dusk</option>
+            <option value='midnight'>To Midnight</option>
+            <option value='1s'>1 Second</option>
+            <option value='30s'>30 Seconds</option>
+            <option value='1m'>1 Minute</option>
+            <option value='5m'>5 Minutes</option>
+            <option value='15m'>15 Minutes</option>
+            <option value='1h'>1 Hour</option>
+          </select> 
+        </div>
+      </div>
+
+      <div type="checkbox" class="sdpi-item">
+        <div class="sdpi-item-label">Display Running</div>
+        <input class="sdpi-item-value" id="aboutTimeActive" type="checkbox">
+        <label for="aboutTimeActive"><span></span></label>
+      </div>
+
+      <div class="wrapper" id="aboutTimeRingWrapper" style="display:none">
+        <div type="range" class="sdpi-item" id="onColorContainer">
+          <div class="sdpi-item-label">On Color</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="aboutTimeOnRing" value="#00FF00">
+          </div>
+        </div>
+        <div type="range" class="sdpi-item" id="offColorContainer">
+          <div class="sdpi-item-label">Off Color</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="aboutTimeOffRing" value="#000000">
+          </div>
+        </div>
       </div>
     </div>
       
