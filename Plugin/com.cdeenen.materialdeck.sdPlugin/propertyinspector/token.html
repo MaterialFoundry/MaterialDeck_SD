@@ -45,8 +45,24 @@
 
       <div class="wrapper" id="abilityContainer" style="display:none">
         <div class="sdpi-item">
-          <div class="sdpi-item-label">Ability Score</div>
+          <div class="sdpi-item-label">Ability</div>
           <select class="sdpi-item-value select" id="ability" type="select">
+          </select>
+        </div>
+      </div>
+
+      <div class="wrapper" id="saveContainer" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Save</div>
+          <select class="sdpi-item-value select" id="save" type="select">
+          </select>
+        </div>
+      </div>
+
+      <div class="wrapper" id="skillContainer" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Skill</div>
+          <select class="sdpi-item-value select" id="skill" type="select">
           </select>
         </div>
       </div>
@@ -68,6 +84,8 @@
           <option value='wildcard'>Set Token Wildcard Image</option> 
           <option value='condition'>Toggle Condition</option>
           <option value='cubCondition'>Toggle CUB Condition</option>
+          <option value='macro'>Call Macro</option>
+          <option value='roll'>Dice Roll</option>
         </select>
       </div>
 
@@ -107,6 +125,75 @@
         <div class="sdpi-item">
           <div class="sdpi-item-label">Condition Name</div>
           <input class="sdpi-item-value" id="cubConditionName" value="">
+        </div>
+      </div>
+
+      <div class="wrapper" id="macroWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Macro Mode</div>
+          <select class="sdpi-item-value select" id="macroMode" type="select">
+            <option value='hotbar'>Hotbar</option>
+            <option value='visibleHotbar'>Visible Hotbar</option>
+            <option value='customHotbar'>Custom Hotbar (external module)</option>
+            <option value='macroBoard'>Macro Board</option>
+            <option value='name'>By Name</option>
+          </select>
+        </div>
+
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Macro Target</div>
+          <select class="sdpi-item-value select" id="macroTarget" type="select">
+            <option value='any'>Any</option>
+            <option value='token'>This Token/Actor</option>
+          </select>
+        </div>
+
+        <div class="sdpi-item">
+          <div class="sdpi-item-label" id="macroNumberLabel">Macro Number</div>
+          <input class="sdpi-item-value" id="macroId" value="">
+        </div>
+
+        <div class="wrapper" id="macroArgsWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Furnace Arguments</div>
+            <input class="sdpi-item-value" id="macroArgs" value="">
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="wrapper" id="rollWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Roll</div>
+          <select class="sdpi-item-value select" id="roll" type="select">
+            <option value='ability'>Ability Check</option>
+            <option value='save'>Saving Throw</option>
+            <option value='skill'>Skill Check</option>
+          </select>
+        </div>
+
+        <div class="wrapper" id="rollAbilityContainer" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Ability</div>
+            <select class="sdpi-item-value select" id="rollAbility" type="select">
+            </select>
+          </div>
+        </div>
+
+        <div class="wrapper" id="rollSaveContainer" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Save</div>
+            <select class="sdpi-item-value select" id="rollSave" type="select">
+            </select>
+          </div>
+        </div>
+
+        <div class="wrapper" id="rollSkillContainer" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Skill</div>
+            <select class="sdpi-item-value select" id="rollSkill" type="select">
+            </select>
+          </div>
         </div>
       </div>
 

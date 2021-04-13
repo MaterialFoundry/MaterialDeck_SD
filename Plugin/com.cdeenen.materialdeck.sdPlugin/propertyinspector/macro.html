@@ -17,8 +17,10 @@
           <option value='visibleHotbar'>Visible Hotbar</option>
           <option value='customHotbar'>Custom Hotbar (external module)</option>
           <option value='macroBoard'>Macro Board</option>
+          <option value='name'>By Name</option>
         </select>
       </div>
+      
       <div class="sdpi-item" id="macroBoardModeWrapper">
         <div class="sdpi-item-label">Type</div>
         <select class="sdpi-item-value select" id="macroBoardMode" type="select">
@@ -26,12 +28,29 @@
           <option value='offset'>Offset</option>
         </select>
       </div>
+
       <div class="spdi-wrapper" id="macroTriggerStuff" style="display:none">
         <div class="sdpi-item" id="macroNumberContainer">
-          <div class="sdpi-item-label">Macro Number</div>
+          <div class="sdpi-item-label" id="macroNumberLabel">Macro Number</div>
           <input class="sdpi-item-value" id="macroNumber" value="0">
         </div>
       </div>
+
+      <div class="wrapper" id="macroArgsWrapper" style="display:none">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Furnace Arguments</div>
+          <input class="sdpi-item-value" id="macroArgs" value="">
+        </div>
+      </div>
+
+      <div class="spdi-wrapper" id="macroOffsetStuff" style="display:none">
+        <div class="sdpi-item" id="macroOffsetAmount">
+          <div class="sdpi-item-label">Offset</div>
+          <input class="sdpi-item-value" id="macroOffset" value="0">
+        </div>
+        
+      </div>
+
       <div type="checkbox" class="sdpi-item" id="displayMacroName">
         <div class="sdpi-item-label">Display Name</div>
         <input class="sdpi-item-value" id="displayName" type="checkbox">
@@ -47,11 +66,8 @@
         <input class="sdpi-item-value" id="displayUses" type="checkbox">
         <label for="displayUses"><span></span></label>
       </div>
-      <div class="spdi-wrapper" id="macroOffsetStuff" style="display:none">
-        <div class="sdpi-item" id="macroOffsetAmount">
-          <div class="sdpi-item-label">Offset</div>
-          <input class="sdpi-item-value" id="macroOffset" value="0">
-        </div>
+      
+      <div class="spdi-wrapper" id="ringColorWrapper" style="display:none">
         <div type="range" class="sdpi-item" id="onColorContainer">
           <div class="sdpi-item-label">On Color</div>
           <div class="sdpi-item-value">
@@ -65,7 +81,8 @@
           </div>
         </div>
       </div>
-      
+
+
       <div type="range" class="sdpi-item" id="backgroundContainer">
         <div class="sdpi-item-label">Background</div>
         <div class="sdpi-item-value">
@@ -77,6 +94,6 @@
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
-    <script src="js/index_pi.js"></script>
+    <script src="js/macro_pi.js"></script>
   </body>
 </html>

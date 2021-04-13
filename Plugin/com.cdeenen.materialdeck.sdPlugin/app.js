@@ -86,6 +86,16 @@ $SD.on('com.cdeenen.materialdeck.combattracker.propertyInspectorDidAppear', jsn 
     $SD.connection.send(JSON.stringify(json)); 
 });
 
+$SD.on('com.cdeenen.materialdeck.other.propertyInspectorDidAppear', jsn => {
+    var json = {
+        action: jsn.action,
+        event: "sendToPropertyInspector",
+        context: jsn.context,
+        payload: {gameSystem:gameSystem}
+    };
+    $SD.connection.send(JSON.stringify(json)); 
+});
+
 $SD.on('didReceiveGlobalSettings', jsn => {
     const system = jsn.payload.settings.gameSystem;
     if (system != undefined) gameSystem = system;

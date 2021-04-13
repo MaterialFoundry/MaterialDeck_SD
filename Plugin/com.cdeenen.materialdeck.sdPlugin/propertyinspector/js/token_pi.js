@@ -92,13 +92,22 @@ $SD.on('sendToPropertyInspector', jsn => {
 
     let statsElement = document.getElementById(`stats`);
     let abilityElement = document.getElementById(`ability`);
+    let rollAbilityElement = document.getElementById(`rollAbility`);
     let onClickElement = document.getElementById(`onClick`);
     let conditionElement = document.getElementById('condition');
+    let rollSkillElement = document.getElementById('rollSkill');
+    let rollElement = document.getElementById('roll');
+    let saveElement = document.getElementById('save');
+    let rollSaveElement = document.getElementById('rollSave');
+    let skillElement = document.getElementById('skill');
     
     let newStatOptions = [];
     let newAbilityScores = [];
     let newOnClickOptions = [];
     let newConditionOptions = [];
+    let newSkillOptions = [];
+    let newRollOptions = [];
+    let newSaveOptions = [];
 
 
     if (system == 'D35E') {
@@ -108,8 +117,10 @@ $SD.on('sendToPropertyInspector', jsn => {
         newStatOptions.push({value:'AC', name:'AC'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
-        newStatOptions.push({value:'Ability', name:'Ability Scores'});
-        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
+        newStatOptions.push({value:'Ability', name:'Ability Score'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifier'});
+        newStatOptions.push({value:'Save', name:'Saving Throw Modifier'});
+        newStatOptions.push({value:'Skill', name:'Skill Modifier'});
         newStatOptions.push({value:'Prof', name:'Proficiency'});
 
         newConditionOptions.push({value:'dead', name:'Dead'});
@@ -127,6 +138,61 @@ $SD.on('sendToPropertyInspector', jsn => {
         newConditionOptions.push({value:'sickened', name:'Sickened'});
         newConditionOptions.push({value:'stunned', name:'Stunned'});
         newConditionOptions.push({value:'shaken', name:'Shaken'});
+
+        newRollOptions.push({value:'initiative', name:'Initiative'});
+        newRollOptions.push({value:'grapple', name:'Grapple'});
+        newRollOptions.push({value:'bab', name:'Base Attack Bonus'});
+        newRollOptions.push({value:'melee', name:'Melee'});
+        newRollOptions.push({value:'ranged', name:'Ranged'});
+
+        newSkillOptions.push({value:'apr', name:'Appraise'});
+        newSkillOptions.push({value:'aut', name:'Autohypnosis'});
+        newSkillOptions.push({value:'blc', name:'Balance'});
+        newSkillOptions.push({value:'blf', name:'Bluff'});
+        newSkillOptions.push({value:'clm', name:'Climb'});
+        newSkillOptions.push({value:'coc', name:'Concentration'});
+        newSkillOptions.push({value:'crf', name:'Craft'});
+        newSkillOptions.push({value:'dsc', name:'Decipher Script'});
+        newSkillOptions.push({value:'dip', name:'Diplomacy'});
+        newSkillOptions.push({value:'dev', name:'Disable Device'});
+        newSkillOptions.push({value:'dis', name:'Disguise'});
+        newSkillOptions.push({value:'esc', name:'Escape Artist'});
+        newSkillOptions.push({value:'fog', name:'Forgery'});
+        newSkillOptions.push({value:'gif', name:'Gather Information'});
+        newSkillOptions.push({value:'han', name:'Handle Animal'});
+        newSkillOptions.push({value:'hea', name:'Heal'});
+        newSkillOptions.push({value:'hid', name:'Hide'});
+        newSkillOptions.push({value:'int', name:'Intimidate'});
+        newSkillOptions.push({value:'jmp', name:'Jump'});
+        newSkillOptions.push({value:'kar', name:'Knowledge (Arcana)'});
+        newSkillOptions.push({value:'kdu', name:'Knowledge (Dungeoneering)'});
+        newSkillOptions.push({value:'ken', name:'Knowledge (Engineering)'});
+        newSkillOptions.push({value:'kge', name:'Knowledge (Geography)'});
+        newSkillOptions.push({value:'khi', name:'Knowledge (History)'});
+        newSkillOptions.push({value:'klo', name:'Knowledge (Local)'});
+        newSkillOptions.push({value:'kna', name:'Knowledge (Nature)'});
+        newSkillOptions.push({value:'kno', name:'Knowledge (Nobility)'});
+        newSkillOptions.push({value:'kpl', name:'Knowledge (Planes)'});
+        newSkillOptions.push({value:'kps', name:'Knowledge (Psionics)'});
+        newSkillOptions.push({value:'kre', name:'Knowledge (Religion)'});
+        newSkillOptions.push({value:'lis', name:'Listen'});
+        newSkillOptions.push({value:'mos', name:'Move Silently'});
+        newSkillOptions.push({value:'opl', name:'Open Lock'});
+        newSkillOptions.push({value:'prf', name:'Perform'});
+        newSkillOptions.push({value:'pro', name:'Profession'});
+        newSkillOptions.push({value:'psi', name:'Psicraft'});
+        newSkillOptions.push({value:'rid', name:'Ride'});
+        newSkillOptions.push({value:'src', name:'Search'});
+        newSkillOptions.push({value:'sen', name:'Sense Motive'});
+        newSkillOptions.push({value:'slt', name:'Slight of Hand'});
+        newSkillOptions.push({value:'spl', name:'Spellcraft'});
+        newSkillOptions.push({value:'spt', name:'Spot'});
+        newSkillOptions.push({value:'sur', name:'Survival'});
+        newSkillOptions.push({value:'swm', name:'Swim'});
+        newSkillOptions.push({value:'tmb', name:'Tumble'});
+        newSkillOptions.push({value:'umd', name:'Use Magic Device'});
+        newSkillOptions.push({value:'upd', name:'Use Psionic Device'});
+        newSkillOptions.push({value:'uro', name:'Use Rope'});
     }
     else if (system == 'pf1') {
         newStatOptions.push({value:'HP', name:'HP'});
@@ -135,8 +201,10 @@ $SD.on('sendToPropertyInspector', jsn => {
         newStatOptions.push({value:'AC', name:'AC'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
-        newStatOptions.push({value:'Ability', name:'Ability Scores'});
-        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
+        newStatOptions.push({value:'Ability', name:'Ability Score'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifier'});
+        newStatOptions.push({value:'Save', name:'Saving Throw Modifier'});
+        newStatOptions.push({value:'Skill', name:'Skill Modifier'});
         newStatOptions.push({value:'Prof', name:'Proficiency'});
 
         newConditionOptions.push({value:'dead', name:'Dead'});
@@ -163,6 +231,50 @@ $SD.on('sendToPropertyInspector', jsn => {
         newConditionOptions.push({value:'sickened', name:'Sickened'});
         newConditionOptions.push({value:'nauseated', name:'Nauseated'});
         newConditionOptions.push({value:'dazed', name:'Dazed'});
+
+        newRollOptions.push({value:'initiative', name:'Initiative'});
+        newRollOptions.push({value:'cmb', name:'Combat Maneuver Bonus'});
+        newRollOptions.push({value:'bab', name:'Base Attack Bonus'});
+        newRollOptions.push({value:'attack', name:'Attack'});
+        newRollOptions.push({value:'defenses', name:'Defenses'});
+
+        newSkillOptions.push({value:'acr', name:'Acrobatics'});
+        newSkillOptions.push({value:'apr', name:'Appraise'});
+        newSkillOptions.push({value:'art', name:'Artistry'});
+        newSkillOptions.push({value:'blf', name:'Bluff'});
+        newSkillOptions.push({value:'clm', name:'Climb'});
+        newSkillOptions.push({value:'crf', name:'Craft'});
+        newSkillOptions.push({value:'dip', name:'Diplomacy'});
+        newSkillOptions.push({value:'dev', name:'Disable Device'});
+        newSkillOptions.push({value:'dis', name:'Disguise'});
+        newSkillOptions.push({value:'esc', name:'Escape Artist'});
+        newSkillOptions.push({value:'fly', name:'Fly'});
+        newSkillOptions.push({value:'han', name:'Handle Animal'});
+        newSkillOptions.push({value:'hea', name:'Heal'});
+        newSkillOptions.push({value:'int', name:'Intimidate'});
+        newSkillOptions.push({value:'kar', name:'Knowledge (Arcana)'});
+        newSkillOptions.push({value:'kdu', name:'Knowledge (Dungeoneering)'});
+        newSkillOptions.push({value:'ken', name:'Knowledge (Engineering)'});
+        newSkillOptions.push({value:'kge', name:'Knowledge (Geography)'});
+        newSkillOptions.push({value:'khi', name:'Knowledge (History)'});
+        newSkillOptions.push({value:'klo', name:'Knowledge (Local)'});
+        newSkillOptions.push({value:'kna', name:'Knowledge (Nature)'});
+        newSkillOptions.push({value:'kno', name:'Knowledge (Nobility)'});
+        newSkillOptions.push({value:'kpl', name:'Knowledge (Planes)'});
+        newSkillOptions.push({value:'kre', name:'Knowledge (Religion)'});
+        newSkillOptions.push({value:'lin', name:'Linguistics'});
+        newSkillOptions.push({value:'lor', name:'Lore'});
+        newSkillOptions.push({value:'per', name:'Perception'});
+        newSkillOptions.push({value:'prf', name:'Perform'});
+        newSkillOptions.push({value:'pro', name:'Profession'});
+        newSkillOptions.push({value:'rid', name:'Ride'});
+        newSkillOptions.push({value:'sen', name:'Sense Motive'});
+        newSkillOptions.push({value:'slt', name:'Slight of Hand'});
+        newSkillOptions.push({value:'spl', name:'Spellcraft'});
+        newSkillOptions.push({value:'ste', name:'Stealth'});
+        newSkillOptions.push({value:'sur', name:'Survival'});
+        newSkillOptions.push({value:'swm', name:'Swim'});
+        newSkillOptions.push({value:'umd', name:'Use Magic Device'});
     }
     else if (system == 'pf2e') {
         newStatOptions.push({value:'HP', name:'HP'});
@@ -172,8 +284,10 @@ $SD.on('sendToPropertyInspector', jsn => {
         newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
-        newStatOptions.push({value:'Ability', name:'Ability Scores'});
-        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
+        newStatOptions.push({value:'Ability', name:'Ability Score'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifier'});
+        newStatOptions.push({value:'Save', name:'Saving Throw Modifier'});
+        newStatOptions.push({value:'Skill', name:'Skill Modifier'});
         newStatOptions.push({value:'Prof', name:'Proficiency'});
 
         newConditionOptions.push({value:'blinded', name:'Blinded'});
@@ -209,17 +323,34 @@ $SD.on('sendToPropertyInspector', jsn => {
         newConditionOptions.push({value:'stupified', name:'Stupified'});
         newConditionOptions.push({value:'unconscious', name:'Unconscious'});
         newConditionOptions.push({value:'wounded', name:'Wounded'});
+
+        newRollOptions.push({value:'initiative', name:'Initiative'});
+
+        newSkillOptions.push({value:'acr', name:'Acrobatics'});
+        newSkillOptions.push({value:'arc', name:'Arcana'});
+        newSkillOptions.push({value:'ath', name:'Athletics'});
+        newSkillOptions.push({value:'cra', name:'Crafting'});
+        newSkillOptions.push({value:'dec', name:'Deception'});
+        newSkillOptions.push({value:'dip', name:'Diplomacy'});
+        newSkillOptions.push({value:'inv', name:'Intimidation'});
+        newSkillOptions.push({value:'med', name:'Medicine'});
+        newSkillOptions.push({value:'nat', name:'Nature'});
+        newSkillOptions.push({value:'occ', name:'Occultism'});
+        newSkillOptions.push({value:'prf', name:'Performance'});
+        newSkillOptions.push({value:'rel', name:'Religion'});
+        newSkillOptions.push({value:'soc', name:'Society'});
+        newSkillOptions.push({value:'ste', name:'Stealth'});
+        newSkillOptions.push({value:'sur', name:'Survival'});
+        newSkillOptions.push({value:'thi', name:'Thievery'});
     }
     else if (system == 'demonlord') {
         newStatOptions.push({value:'HP', name:'HP'});
         newStatOptions.push({value:'HPbox', name:'HP (box)'});
         newStatOptions.push({value:'AC', name:'Defense'});
-        newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
-        newStatOptions.push({value:'Ability', name:'Ability Scores'});
-        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
-        newStatOptions.push({value:'Prof', name:'Proficiency'});
+        newStatOptions.push({value:'Ability', name:'Ability Score'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifier'});
 
         newOnClickOptions.push({value:'initiative',name:'Toggle Initiative'});
 
@@ -252,9 +383,10 @@ $SD.on('sendToPropertyInspector', jsn => {
         newStatOptions.push({value:'AC', name:'AC'});
         newStatOptions.push({value:'Speed', name:'Speed'});
         newStatOptions.push({value:'Init', name:'Initiative'});
-        newStatOptions.push({value:'Ability', name:'Ability Scores'});
-        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifiers'});
-        newStatOptions.push({value:'AbilitySave', name:'Ability Score Save'});
+        newStatOptions.push({value:'Ability', name:'Ability Score'});
+        newStatOptions.push({value:'AbilityMod', name:'Ability Score Modifier'});
+        newStatOptions.push({value:'Save', name:'Saving Throw Modifier'});
+        newStatOptions.push({value:'Skill', name:'Skill Modifier'});
         newStatOptions.push({value:'PassivePerception', name:'Passive Perception'});
         newStatOptions.push({value:'PassiveInvestigation', name:'Passive Investigation'});
         newStatOptions.push({value:'Prof', name:'Proficiency'});
@@ -291,6 +423,28 @@ $SD.on('sendToPropertyInspector', jsn => {
         newConditionOptions.push({value:'coldShield', name:'Ice Shield'});
         newConditionOptions.push({value:'magicShield', name:'Magic Shield'});
         newConditionOptions.push({value:'holyShield', name:'Holy Shield'});
+
+        newRollOptions.push({value:'initiative', name:'Initiative'});
+        newRollOptions.push({value:'deathSave', name:'Death Save'});
+
+        newSkillOptions.push({value:'acr', name:'Acrobatics'});
+        newSkillOptions.push({value:'ani', name:'Animal Handling'});
+        newSkillOptions.push({value:'arc', name:'Arcana'});
+        newSkillOptions.push({value:'ath', name:'Athletics'});
+        newSkillOptions.push({value:'dec', name:'Deception'});
+        newSkillOptions.push({value:'his', name:'History'});
+        newSkillOptions.push({value:'ins', name:'Insight'});
+        newSkillOptions.push({value:'inv', name:'Intimidation'});
+        newSkillOptions.push({value:'itm', name:'Investigation'});
+        newSkillOptions.push({value:'med', name:'Medicine'});
+        newSkillOptions.push({value:'nat', name:'Nature'});
+        newSkillOptions.push({value:'prc', name:'Perception'});
+        newSkillOptions.push({value:'prf', name:'Performance'});
+        newSkillOptions.push({value:'per', name:'Persuasion'});
+        newSkillOptions.push({value:'rel', name:'Religion'});
+        newSkillOptions.push({value:'slt', name:'Slight of Hand'});
+        newSkillOptions.push({value:'ste', name:'Stealth'});
+        newSkillOptions.push({value:'sur', name:'Survival'});
     }
 
     if (system == 'demonlord') {
@@ -307,6 +461,17 @@ $SD.on('sendToPropertyInspector', jsn => {
         newAbilityScores.push({value:'int',name:'Intelligence'});
         newAbilityScores.push({value:'wis',name:'Wisdom'});
         newAbilityScores.push({value:'cha',name:'Charisma'});
+
+        if (system == 'dnd5e') {
+            for (let score of newAbilityScores) {
+                newSaveOptions.push(score);
+            }
+        }
+        else if (system == 'D35E' || system == 'pf1' || system == 'pf2e') {
+            newSaveOptions.push({value:'fort',name:'Fortitude'});
+            newSaveOptions.push({value:'ref',name:'Reflex'});
+            newSaveOptions.push({value:'will',name:'Will'});
+        }
     }
 
     for (let option of newStatOptions) {
@@ -323,6 +488,13 @@ $SD.on('sendToPropertyInspector', jsn => {
         abilityElement.appendChild(newOption);
     }
 
+    for (let option of newAbilityScores) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        rollAbilityElement.appendChild(newOption);
+    }
+
     for (let option of newOnClickOptions) {
         let newOption = document.createElement('option');
         newOption.value = option.value;
@@ -337,17 +509,80 @@ $SD.on('sendToPropertyInspector', jsn => {
         conditionElement.appendChild(newOption);
     }
 
+    for (let option of newSkillOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        skillElement.appendChild(newOption);
+    }
+
+    for (let option of newSkillOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        rollSkillElement.appendChild(newOption);
+    }
+
+    for (let option of newRollOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        rollElement.appendChild(newOption);
+    }
+
+    for (let option of newSaveOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        saveElement.appendChild(newOption);
+    }
+
+    for (let option of newSaveOptions) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        rollSaveElement.appendChild(newOption);
+    }
+
     const statsSelection = settings.stats ? settings.stats : 'none';
     statsElement.value = statsSelection;
 
     const abilitySelection = settings.ability ? settings.ability : 'str';
     abilityElement.value = abilitySelection;
 
+    const rollAbilitySelection = settings.rollAbility ? settings.rollAbility : 'str';
+    rollAbilityElement.value = rollAbilitySelection;
+
+    
+
     const onClickSelection = settings.onClick ? settings.onClick : 'doNothing';
     onClickElement.value = onClickSelection;
 
     const conditionSelection = settings.condition ? settings.condition : 'removeAll';
     conditionElement.value = conditionSelection;
+
+    let skillSelection = settings.rollSkill;
+    if (skillSelection == undefined) {
+        if (system == 'dnd5e' || system == 'pf2e') skillSelection = 'acr';
+        else if (system == 'D35E' || system == 'pf1') skillSelection = 'apr'
+    }
+    conditionElement.value = conditionSelection;
+
+    const rollSelection = settings.roll ? settings.roll : 'ability';
+    rollElement.value = rollSelection;
+
+    let saveSelection = settings.save;
+    if (saveSelection == undefined) {
+        if (system == 'dnd5e') saveSelection = 'str';
+    }
+    saveElement.value = saveSelection;
+
+    let rollSaveSelection = settings.rollSave;
+    if (rollSaveSelection == undefined) {
+        if (system == 'dnd5e') rollSaveSelection = 'str';
+        else if (system == 'D35E') rollSaveSelection = 'fort';
+    }
+    rollSaveElement.value = rollSaveSelection;
 });
 
 
@@ -357,6 +592,8 @@ const updateUI = (pl) => {
     const onClick = settings.onClick ? settings.onClick : 'none';
     const stats = settings.stats ? settings.stats : 'none';
     const selection = settings.selection ? settings.selection : 'selected';
+    const macroMode = settings.macroMode ? settings.macroMode : 'hotbar';
+    const roll = settings.roll ? settings.roll : 'ability';
     
     if (debugEn) console.log('settings',settings)
     displayElement(`#conditionWrapper`,false);
@@ -366,7 +603,14 @@ const updateUI = (pl) => {
     displayElement('#cubConditionWrapper',false);
     displayElement('#tokenNameWrapper',false);
     displayElement(`#abilityContainer`,false);
+    displayElement(`#saveContainer`,false);
     displayElement(`#customContainer`,false);
+    displayElement('#macroWrapper',false);
+    displayElement('#rollWrapper',false);
+    displayElement('#rollAbilityContainer',false);
+    displayElement('#rollSkillContainer',false);
+    displayElement(`#rollSaveContainer`,false);
+    displayElement('#skillContainer',false);
 
     if (selection != 'selected') displayElement('#tokenNameWrapper',true);
     if (selection == 'tokenId' || selection == 'actorId') {
@@ -379,9 +623,26 @@ const updateUI = (pl) => {
     else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
     else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
     else if (onClick == 'cubCondition') displayElement('#cubConditionWrapper',true);
+    else if (onClick == 'macro') {
+        displayElement('#macroWrapper',true);
+        if (macroMode == 'name') {
+            displayElement('#macroArgsWrapper',true);
+            element = document.querySelector('#macroNumberLabel');
+            if (element != null) element.innerHTML = 'Macro Name';
+        }
+        else displayElement('#macroArgsWrapper',false);
+    }
+    else if (onClick == 'roll') {
+        displayElement('#rollWrapper',true);
+        if (roll == 'ability') displayElement('#rollAbilityContainer',true);
+        else if (roll == 'save') displayElement(`#rollSaveContainer`,true);
+        else if (roll == 'skill') displayElement('#rollSkillContainer',true);
+    }
 
     if (stats == 'custom') displayElement(`#customContainer`,true);
-    else if (stats == 'Ability' || stats == 'AbilityMod' || stats == 'AbilitySave') displayElement(`#abilityContainer`,true);
+    else if (stats == 'Ability' || stats == 'AbilityMod') displayElement(`#abilityContainer`,true);
+    else if (stats == 'Save') displayElement(`#saveContainer`,true);
+    else if (stats == 'Skill') displayElement(`#skillContainer`,true);
     
     
     ////////////////////////////////////////////////////////////////////////////////
@@ -451,10 +712,14 @@ $SD.on('piDataChanged', (returnValue) => {
     let onClick = settings.onClick ? settings.onClick : 'none';
     let stats = settings.stats ? settings.stats : 'none';
     let selection = settings.selection ? settings.selection: 'selected';
+    let macroMode = settings.macroMode ? settings.macroMode : 'hotbar';
+    let roll = settings.roll ? settings.roll : 'ability';
 
     if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
     else if (returnValue.key == 'onClick' || returnValue.key == 'onClickDemonlord') onClick = returnValue.value;
     else if (returnValue.key == 'selection') selection = returnValue.value;
+    else if (returnValue.key == 'macroMode') macroMode = returnValue.value;
+    else if (returnValue.key == 'roll') roll = returnValue.value;
 
     displayElement(`#visionWrapper`,false);
     displayElement('#wildcardWrapper',false);
@@ -463,7 +728,14 @@ $SD.on('piDataChanged', (returnValue) => {
     displayElement(`#conditionWrapper`,false);
     displayElement('#tokenNameWrapper',false);
     displayElement(`#abilityContainer`,false);
+    displayElement(`#saveContainer`,false);
     displayElement(`#customContainer`,false);
+    displayElement('#macroWrapper',false);
+    displayElement('#rollWrapper',false);
+    displayElement('#rollAbilityContainer',false);
+    displayElement('#rollSkillContainer',false);
+    displayElement(`#rollSaveContainer`,false);
+    displayElement('#skillContainer',false);
 
     if (selection != 'selected') displayElement('#tokenNameWrapper',true);
     element = document.querySelector('#tokenNameLabel');
@@ -475,9 +747,30 @@ $SD.on('piDataChanged', (returnValue) => {
     else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
     else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
     else if (onClick == 'cubCondition') displayElement('#cubConditionWrapper',true);
+    else if (onClick == 'macro') {
+        displayElement('#macroWrapper',true);
+        if (macroMode == 'name') {
+            displayElement('#macroArgsWrapper',true);
+            element = document.querySelector('#macroNumberLabel');
+            if (element != null) element.innerHTML = 'Macro Name';
+        }
+        else {
+            displayElement('#macroArgsWrapper',false);
+            element = document.querySelector('#macroNumberLabel');
+            if (element != null) element.innerHTML = 'Macro Number';
+        }
+    }
+    else if (onClick == 'roll') {
+        displayElement('#rollWrapper',true);
+        if (roll == 'ability') displayElement('#rollAbilityContainer',true);
+        else if (roll == 'save') displayElement(`#rollSaveContainer`,true);
+        else if (roll == 'skill') displayElement('#rollSkillContainer',true);
+    }
 
     if (stats == 'custom') displayElement(`#customContainer`,true);
-    else if (stats == 'Ability' || stats == 'AbilityMod' || stats == 'AbilitySave') displayElement(`#abilityContainer`,true);
+    else if (stats == 'Ability' || stats == 'AbilityMod') displayElement(`#abilityContainer`,true);
+    else if (stats == 'Save') displayElement(`#saveContainer`,true);
+    else if (stats == 'Skill') displayElement(`#skillContainer`,true);
 
     /* SAVE THE VALUE TO SETTINGS */
     saveSettings(returnValue);

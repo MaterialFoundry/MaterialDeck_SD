@@ -35,8 +35,6 @@ let sdpiWrapper = document.querySelector('.sdpi-wrapper');
 
 let settings;
 
-let system = 'dnd5e';
-
  /**
   * The 'connected' event is the first event sent to Property Inspector, after it's instance
   * is registered with Stream Deck software. It carries the current websocket, settings,
@@ -83,30 +81,6 @@ $SD.on('connected', (jsn) => {
 
 $SD.on('sendToPropertyInspector', jsn => {
     const pl = jsn.payload;
-
-    if (pl.gameSystem != undefined) 
-        system = pl.gameSystem;
-
-    if (debugEn) console.log("Game system: ",system);
-
-    let otherModeElement = document.getElementById(`otherMode`);
-
-    let newotherModeOptions = [];
-
-    if (system == "pf2e") {
-        newotherModeOptions.push({value:'compendiumBrowser',name:'Open Compendium Browser'});
-    }
-
-    for (let option of newotherModeOptions) {
-        let newOption = document.createElement('option');
-        newOption.value = option.value;
-        newOption.innerHTML = option.name;
-        otherModeElement.appendChild(newOption);
-    }
-
-    const otherModeSelection = settings.otherMode ? settings.otherMode : 'doNothing';
-    otherModeElement.value = otherModeSelection;
-
     /**
      *  This is an example, how you could show an error to the user
      */
@@ -128,71 +102,42 @@ $SD.on('sendToPropertyInspector', jsn => {
     }
 });
 
+let system = 'dnd5e';
+
 const updateUI = (pl) => {
     if (debugEn) console.log("pl",pl);
-    const mode = settings.otherMode ? settings.otherMode : 'pause';
     if (debugEn) console.log('settings',settings)
+
+    const macroMode = settings.macroMode ? settings.macroMode : 'hotbar';
+    const macroBoardMode = settings.macroBoardMode ? settings.macroBoardMode : 'triggerMacro';
     
-    displayElement(`#pauseContainer`,false);
-    displayElement(`#controlContainer`,false);
-    displayElement(`#darknessContainer`,false);
-    displayElement(`#rollDiceContainer`,false);
-    displayElement(`#rollTableContainer`,false);
-    displayElement(`#sidebarContainer`,false);
-    displayElement(`#compendiumContainer`,false);
+    displayElement(`#macroBoardModeWrapper`,false);
+    displayElement(`#macroOffsetStuff`,false);
+    displayElement(`#macroTriggerStuff`,false);
     displayElement(`#ringColorWrapper`,false);
-    displayElement(`#chatMessageContainer`,false);
+    displayElement(`#backgroundContainer`,false);
+    displayElement(`#macroArgsWrapper`,false);
 
-    if (mode == 'pause'){    //pause
-        displayElement(`#pauseContainer`,true);
-        displayElement(`#ringColorWrapper`,true);
+    if (macroMode == 'macroBoard') {
+        displayElement(`#macroBoardModeWrapper`,true);
+        if (macroBoardMode == 'triggerMacro') 
+            displayElement(`#macroTriggerStuff`,true);
+        else if (macroBoardMode == 'offset') {
+            displayElement(`#macroOffsetStuff`,true);
+            displayElement(`#ringColorWrapper`,true);
+            displayElement(`#backgroundContainer`,true);
+        }
     }
-    else if (mode == 'controlButtons'){   //control buttons
-        const controlMode = settings.control ? settings.control : 'dispControls';
-        displayElement(`#controlContainer`,true);
-        displayElement(`#displayedControlsContainer`,false);
-        displayElement(`#basicControlsContainer`,false);
-        displayElement(`#measurementControlsContainer`,false);
-        displayElement(`#tileControlContainer`,false);
-        displayElement(`#drawingToolsContainer`,false);
-        displayElement(`#wallControlsContainer`,false);
-        displayElement(`#lightingControlsContainer`,false);
-        displayElement(`#soundControlsContainer`,false);
-        displayElement(`#journalNotesContainer`,false);
-        if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
-        else if (controlMode == 'token') displayElement(`#basicControlsContainer`,true);
-        else if (controlMode == 'measure') displayElement(`#measurementControlsContainer`,true);
-        else if (controlMode == 'tiles') displayElement(`#tileControlContainer`,true);
-        else if (controlMode == 'drawings') displayElement(`#drawingToolsContainer`,true);
-        else if (controlMode == 'walls') displayElement(`#wallControlsContainer`,true);
-        else if (controlMode == 'lighting') displayElement(`#lightingControlsContainer`,true);
-        else if (controlMode == 'sounds') displayElement(`#soundControlsContainer`,true);
-        else if (controlMode == 'notes') displayElement(`#journalNotesContainer`,true);
+    else if (macroMode == 'name') {
+        displayElement(`#macroTriggerStuff`,true);
+        displayElement(`#macroArgsWrapper`,true);
+        element = document.querySelector('#macroNumberLabel');
+        if (element != null) element.innerHTML = 'Macro Name';
     }
-    else if (mode == 'darkness'){   //darkness
-        const darknessFunction = settings.darknessFunction ? settings.darknessFunction : 'value';
-        displayElement(`#darknessContainer`,true);
-        if (darknessFunction == 'disp')
-            displayElement(`#darknessVal`,false);
-        else   
-            displayElement(`#darknessVal`,true); 
+    else {
+        displayElement(`#macroTriggerStuff`,true);
+        displayElement(`#backgroundContainer`,true);
     }
-    else if (mode == 'rollDice')    //roll dice
-        displayElement(`#rollDiceContainer`,true);
-    else if (mode == 'rollTables')   //roll table
-        displayElement(`#rollTableContainer`,true);
-    else if (mode == 'sidebarTab'){   //sidebar
-        displayElement(`#sidebarContainer`,true);
-        displayElement(`#ringColorWrapper`,true);
-    }
-    else if (mode == 'compendium' || mode == 'journal')   //open compendium or journal
-        displayElement(`#compendiumContainer`,true);
-    else if (mode == 'chatMessage')
-        displayElement(`#chatMessageContainer`,true);
-    
-    
-
-    ////////////////////////////////////////////////////////////////////////////////
     
     const wrapper = document.querySelector(`#wrapper`);
     wrapper.style = '';
@@ -252,70 +197,42 @@ function displayElement(element,display){
  */
 
 $SD.on('piDataChanged', (returnValue) => {
+    var element;
     if (debugEn) console.log('%c%s', 'color: black; background: blue}; font-size: 15px;', 'piDataChanged');
-    if (debugEn) console.log(returnValue);
-
-    let mode = settings.otherMode ? settings.otherMode : 'pause';
-    if (returnValue.key == 'otherMode') mode = returnValue.value;
     
-    displayElement(`#pauseContainer`,false);
-    displayElement(`#controlContainer`,false);
-    displayElement(`#darknessContainer`,false);
-    displayElement(`#rollDiceContainer`,false);
-    displayElement(`#rollTableContainer`,false);
-    displayElement(`#sidebarContainer`,false);
-    displayElement(`#compendiumContainer`,false);
-    displayElement(`#ringColorWrapper`,false);
-    displayElement(`#chatMessageContainer`,false);
+    let macroMode = settings.macroMode ? settings.macroMode : 'hotbar';
+    let macroBoardMode = settings.macroBoardMode ? settings.macroBoardMode : 'triggerMacro';
+    
+    if (returnValue.key == 'macroMode') macroMode = returnValue.value;
+    else if (returnValue.key == 'macroBoardMode') macroBoardMode = returnValue.value;
 
-    if (mode == 'pause'){    //pause
-        displayElement(`#pauseContainer`,true);
-        displayElement(`#ringColorWrapper`,true);
+    displayElement(`#macroBoardModeWrapper`,false);
+    displayElement(`#macroOffsetStuff`,false);
+    displayElement(`#macroTriggerStuff`,false);
+    displayElement(`#ringColorWrapper`,false);
+    displayElement(`#backgroundContainer`,false);
+    displayElement(`#macroArgsWrapper`,false);
+
+    if (macroMode == 'macroBoard') {
+        displayElement(`#macroBoardModeWrapper`,true);
+        if (macroBoardMode == 'triggerMacro') 
+            displayElement(`#macroTriggerStuff`,true);
+        else if (macroBoardMode == 'offset') {
+            displayElement(`#macroOffsetStuff`,true);
+            displayElement(`#ringColorWrapper`,true);
+            displayElement(`#backgroundContainer`,true);
+        }
     }
-    else if (mode == 'controlButtons'){   //control buttons
-        let controlMode = settings.control ? settings.control : 'dispControls';
-        if (returnValue.key == 'control') controlMode = returnValue.value;
-        displayElement(`#controlContainer`,true);
-        displayElement(`#displayedControlsContainer`,false);
-        displayElement(`#basicControlsContainer`,false);
-        displayElement(`#measurementControlsContainer`,false);
-        displayElement(`#tileControlContainer`,false);
-        displayElement(`#drawingToolsContainer`,false);
-        displayElement(`#wallControlsContainer`,false);
-        displayElement(`#lightingControlsContainer`,false);
-        displayElement(`#soundControlsContainer`,false);
-        displayElement(`#journalNotesContainer`,false);
-        if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
-        else if (controlMode == 'token') displayElement(`#basicControlsContainer`,true);
-        else if (controlMode == 'measure') displayElement(`#measurementControlsContainer`,true);
-        else if (controlMode == 'tiles') displayElement(`#tileControlContainer`,true);
-        else if (controlMode == 'drawings') displayElement(`#drawingToolsContainer`,true);
-        else if (controlMode == 'walls') displayElement(`#wallControlsContainer`,true);
-        else if (controlMode == 'lighting') displayElement(`#lightingControlsContainer`,true);
-        else if (controlMode == 'sounds') displayElement(`#soundControlsContainer`,true);
-        else if (controlMode == 'notes') displayElement(`#journalNotesContainer`,true);
+    else if (macroMode == 'name') {
+        displayElement(`#macroTriggerStuff`,true);
+        displayElement(`#macroArgsWrapper`,true);
+        element = document.querySelector('#macroNumberLabel');
+        if (element != null) element.innerHTML = 'Macro Name';
     }
-    else if (mode == 'darkness'){   //darkness
-        let darknessFunction = settings.darknessFunction ? settings.darknessFunction : 'value';
-        if (returnValue.key == 'darknessFunction') darknessFunction = returnValue.value;
-        displayElement(`#darknessContainer`,true);
-        if (darknessFunction == 'disp')
-            displayElement(`#darknessVal`,false);
-        else   
-            displayElement(`#darknessVal`,true); 
+    else {
+        displayElement(`#macroTriggerStuff`,true);
+        displayElement(`#backgroundContainer`,true);
     }
-    else if (mode == 'rollDice')    //roll dice
-        displayElement(`#rollDiceContainer`,true);
-    else if (mode == 'rollTables')   //roll table
-        displayElement(`#rollTableContainer`,true);
-    else if (mode == 'sidebarTab'){   //sidebar
-        displayElement(`#sidebarContainer`,true);
-        displayElement(`#ringColorWrapper`,true);
-    }
-    else if (mode == 'compendium' || mode == 'journal')   //open compendium or journal
-        displayElement(`#compendiumContainer`,true);
-    else if (mode == 'chatMessage')
-        displayElement(`#chatMessageContainer`,true);
 
     /* SAVE THE VALUE TO SETTINGS */
     saveSettings(returnValue);
@@ -346,7 +263,7 @@ $SD.on('piDataChanged', (returnValue) => {
     if (typeof sdpi_collection !== 'object') return;
     if (debugEn) console.log("collection",sdpi_collection);
     if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
-        if (sdpi_collection.key == 'displaySceneIcon' || sdpi_collection.key == 'displaySceneName' || sdpi_collection.key == 'displayDiceName' || sdpi_collection.key == 'displayRollIcon' || sdpi_collection.key == 'displayRollName' || sdpi_collection.key == 'displaySidebarName' || sdpi_collection.key == 'displaySidebarIcon' || sdpi_collection.key == 'displayCompendiumName' || sdpi_collection.key == 'sidebarPopOut'){
+        if (sdpi_collection.key == 'displayName' || sdpi_collection.key == 'displayIcon' || sdpi_collection.key == 'displayUses' || sdpi_collection.key == 'displayOffsetName' || sdpi_collection.key == 'displayPlaylistName'){
             if (debugEn) console.log(sdpi_collection.key, " => ", sdpi_collection.checked);
             settings[sdpi_collection.key] = sdpi_collection.checked;
             if (debugEn) console.log('setSettings....', settings);
