@@ -142,6 +142,7 @@ const updateUI = (pl) => {
     displayElement(`#compendiumContainer`,false);
     displayElement(`#ringColorWrapper`,false);
     displayElement(`#chatMessageContainer`,false);
+    displayElement(`#rollOptionsContainer`,false);
 
     if (mode == 'pause'){    //pause
         displayElement(`#pauseContainer`,true);
@@ -189,6 +190,10 @@ const updateUI = (pl) => {
         displayElement(`#compendiumContainer`,true);
     else if (mode == 'chatMessage')
         displayElement(`#chatMessageContainer`,true);
+    else if (mode == 'rollOptions') {
+        displayElement(`#rollOptionsContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
+    }
     
     
 
@@ -267,6 +272,7 @@ $SD.on('piDataChanged', (returnValue) => {
     displayElement(`#compendiumContainer`,false);
     displayElement(`#ringColorWrapper`,false);
     displayElement(`#chatMessageContainer`,false);
+    displayElement(`#rollOptionsContainer`,false);
 
     if (mode == 'pause'){    //pause
         displayElement(`#pauseContainer`,true);
@@ -316,7 +322,11 @@ $SD.on('piDataChanged', (returnValue) => {
         displayElement(`#compendiumContainer`,true);
     else if (mode == 'chatMessage')
         displayElement(`#chatMessageContainer`,true);
-
+    else if (mode == 'rollOptions') {
+        displayElement(`#rollOptionsContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
+    }
+        
     /* SAVE THE VALUE TO SETTINGS */
     saveSettings(returnValue);
 

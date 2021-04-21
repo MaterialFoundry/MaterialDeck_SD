@@ -23,9 +23,8 @@ let sdCon = false;
 let gameSystem = 'dnd5e';
 
 let buttonContext = [];
-for (let i=0; i<32; i++){
-    buttonContext[i] = undefined;
-}
+let connectedDevices = 0;
+
 
 $SD.on('connected', (jsonObj) => connected(jsonObj));
 
@@ -65,6 +64,23 @@ function connected(jsn) {
     $SD.connection.send(JSON.stringify(json)); 
     if (debugEn) console.log("request global settings")
 };
+
+$SD.on('deviceDidConnect', jsn => {
+    const nrOfButtons = jsn.deviceInfo.size.columns * jsn.deviceInfo.size.rows;
+    
+    let context = [];
+    for (let i=0; i<nrOfButtons; i++){
+        context[i] = undefined;
+    }
+
+    buttonContext[connectedDevices] = {
+        device: jsn.device,
+        type: jsn.deviceInfo.type,
+        size: jsn.deviceInfo.size,
+        context: context
+    }
+    connectedDevices++;
+});
 
 $SD.on('com.cdeenen.materialdeck.token.propertyInspectorDidAppear', jsn => {
     var json = {
@@ -117,12 +133,12 @@ function disconnected(jsn){
 
 const action = {
     settings:{},
-    onEvent: function(jsn){
+    onEvent: async function(jsn){
         //if (debugEn) console.log(jsn);
 
         const action = jsn.action.replace("com.cdeenen.materialdeck.", "");
 
-        const msg = {
+        let msg = {
             target: "MD",
             source: 0,
             type: "data",
@@ -133,14 +149,27 @@ const action = {
             payload: jsn.payload,
             version: $SD.applicationInfo.plugin.version
         }
+        if (msg.payload.isInMultiAction != true)
+            await setContext(jsn.device,jsn.payload.coordinates,msg);
+        if (jsn.event == 'willDisappear')
+            clearContext(jsn.device,jsn.payload.coordinates);
+
+        for (i in buttonContext) {
+            if (buttonContext[i].device == jsn.device) {
+                msg.deviceIteration= i;
+                msg.size = buttonContext[i].size;
+                break;
+            }
+        }
         sendToServer(msg);
 
-        if (jsn.event == 'didReceiveSettings' || jsn.event == 'willAppear') {
-            if (msg.payload.isInMultiAction != true)
-                setContext(jsn.payload.coordinates,msg);
-        }
-        else if (jsn.event == 'willDisappear')
-            clearContext(jsn.payload.coordinates);
+        
+        
+
+            
+        
+
+        
     },
     onDidReceiveSettings: function(jsn) {
         if (debugEn) console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
@@ -276,6 +305,7 @@ function connectToServerWS() {
     serverWS.addEventListener('open', () => {
         if (sdCon) {
             serverWS.send(JSON.stringify({ target: 'server', source: "SD", version: $SD.applicationInfo.plugin.version}));
+
             //serverWS.send(JSON.stringify({ target: 'MD', source: "SD", type:"version", version: $SD.applicationInfo.plugin.version}));
         }
         if (debugEn) console.log('Connection to Node.js server successful.');
@@ -288,12 +318,13 @@ function connectToServerWS() {
     }, { once: true });
   
     serverWS.addEventListener('message', e => {
-        //if (debugEn) console.log(e.data);
+        if (debugEn) console.log('server event listener received: ',e.data);
+
         const data = JSON.parse(e.data);
         if (data.target != 'SD') return;
         if (data.type == 'init'){
             sendContext();
-            //$SD.api.setGameSystem(data.system);
+ 
             gameSystem=data.system;
             if (debugEn) console.log("Game System: ",gameSystem);
 
@@ -370,20 +401,35 @@ function findInImageBuffer(data){
 
 
 
-function setContext(coordinates = {column:0,row:0},msg){
-    const num = coordinates.column + coordinates.row*8;
-    buttonContext[num] = msg;
+function setContext(device, coordinates = {column:0,row:0},msg){
+    for (d of buttonContext) {
+        if (d.device == device) {
+            const num = coordinates.column + coordinates.row*d.size.columns;
+            d.context[num] = msg;
+            return;
+        }
+    }
 }
 
-function clearContext(coordinates = {column:0,row:0}){
-    const num = coordinates.column + coordinates.row*8;
-    buttonContext[num] = undefined;
+function clearContext(device,coordinates = {column:0,row:0}){
+    for (d of buttonContext) {
+        if (d.device == device) {
+            const num = coordinates.column + coordinates.row*d.size.columns;
+            d.context[num] = undefined;
+            return;
+        }
+    }
 }
 
 function sendContext(){
-    for (let i=0; i<buttonContext.length; i++){
-        if (buttonContext[i] != undefined)
-            sendToServer(buttonContext[i]);
+    for (d of buttonContext) {
+        for (let context of d.context) {
+            if (context != undefined) {
+                context.event = 'willAppear';
+                sendToServer(context);
+            }
+                
+        }
     }
 }
         

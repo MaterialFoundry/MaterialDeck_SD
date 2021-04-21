@@ -434,8 +434,8 @@ $SD.on('sendToPropertyInspector', jsn => {
         newSkillOptions.push({value:'dec', name:'Deception'});
         newSkillOptions.push({value:'his', name:'History'});
         newSkillOptions.push({value:'ins', name:'Insight'});
-        newSkillOptions.push({value:'inv', name:'Intimidation'});
-        newSkillOptions.push({value:'itm', name:'Investigation'});
+        newSkillOptions.push({value:'itm', name:'Intimidation'});
+        newSkillOptions.push({value:'inv', name:'Investigation'});
         newSkillOptions.push({value:'med', name:'Medicine'});
         newSkillOptions.push({value:'nat', name:'Nature'});
         newSkillOptions.push({value:'prc', name:'Perception'});
@@ -561,12 +561,19 @@ $SD.on('sendToPropertyInspector', jsn => {
     const conditionSelection = settings.condition ? settings.condition : 'removeAll';
     conditionElement.value = conditionSelection;
 
-    let skillSelection = settings.rollSkill;
+    let rollSkillSelection = settings.rollSkill;
+    if (rollSkillSelection == undefined) {
+        if (system == 'dnd5e' || system == 'pf2e') rollSkillSelection = 'acr';
+        else if (system == 'D35E' || system == 'pf1') rollSkillSelection = 'apr'
+    }
+    rollSkillElement.value = rollSkillSelection;
+
+    let skillSelection = settings.skill;
     if (skillSelection == undefined) {
         if (system == 'dnd5e' || system == 'pf2e') skillSelection = 'acr';
         else if (system == 'D35E' || system == 'pf1') skillSelection = 'apr'
     }
-    conditionElement.value = conditionSelection;
+    skillElement.value = skillSelection;
 
     const rollSelection = settings.roll ? settings.roll : 'ability';
     rollElement.value = rollSelection;
