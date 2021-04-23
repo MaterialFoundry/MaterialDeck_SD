@@ -21,34 +21,43 @@
         </select>
       </div>
       
-      <div class="sdpi-item" id="macroBoardModeWrapper">
-        <div class="sdpi-item-label">Type</div>
-        <select class="sdpi-item-value select" id="macroBoardMode" type="select">
-          <option value='triggerMacro'>Trigger Macro</option>
-          <option value='offset'>Offset</option>
-        </select>
+      <div class="spdi-wrapper" id="macroBoardModeWrapper" style="display:none">
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Type</div>
+            <select class="sdpi-item-value select" id="macroBoardMode" type="select">
+              <option value='triggerMacro'>Trigger Macro</option>
+              <option value='offset'>Offset</option>
+            </select>
+          </div>
+        </div>
       </div>
 
       <div class="spdi-wrapper" id="macroTriggerStuff" style="display:none">
-        <div class="sdpi-item" id="macroNumberContainer">
-          <div class="sdpi-item-label" id="macroNumberLabel">Macro Number</div>
-          <input class="sdpi-item-value" id="macroNumber" value="0">
+        <div class="sub1">
+          <div class="sdpi-item" id="macroNumberContainer">
+            <div class="sdpi-item-label" id="macroNumberLabel">Macro Number</div>
+            <input class="sdpi-item-value" id="macroNumber" value="0">
+          </div>
         </div>
       </div>
 
       <div class="wrapper" id="macroArgsWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Furnace Arguments</div>
-          <input class="sdpi-item-value" id="macroArgs" value="">
+        <div class="sub2">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Furnace Arguments</div>
+            <input class="sdpi-item-value" id="macroArgs" value="">
+          </div>
         </div>
       </div>
 
       <div class="spdi-wrapper" id="macroOffsetStuff" style="display:none">
-        <div class="sdpi-item" id="macroOffsetAmount">
-          <div class="sdpi-item-label">Offset</div>
-          <input class="sdpi-item-value" id="macroOffset" value="0">
+        <div class="sub2">
+          <div class="sdpi-item" id="macroOffsetAmount">
+            <div class="sdpi-item-label">Offset</div>
+            <input class="sdpi-item-value" id="macroOffset" value="0">
+          </div>
         </div>
-        
       </div>
 
       <div type="checkbox" class="sdpi-item" id="displayMacroName">
@@ -56,11 +65,13 @@
         <input class="sdpi-item-value" id="displayName" type="checkbox">
         <label for="displayName"><span></span></label>
       </div>
+
       <div type="checkbox" class="sdpi-item">
         <div class="sdpi-item-label">Display Icon</div>
         <input class="sdpi-item-value" id="displayIcon" type="checkbox">
         <label for="displayIcon"><span></span></label>
       </div>
+
       <div type="checkbox" class="sdpi-item">
         <div class="sdpi-item-label">Display Uses</div>
         <input class="sdpi-item-value" id="displayUses" type="checkbox">

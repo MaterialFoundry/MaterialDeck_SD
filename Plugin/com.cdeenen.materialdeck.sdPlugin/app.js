@@ -154,6 +154,17 @@ const action = {
         if (jsn.event == 'willDisappear')
             clearContext(jsn.device,jsn.payload.coordinates);
 
+        //Transition for new token icon settings
+        if (jsn.event == 'willAppear' && action == 'token') {
+            if (msg.payload.settings.icon == undefined){
+                console.log('test')
+                if (msg.payload.settings.displayIcon == false || msg.payload.settings.onClick == 'wildcard') msg.payload.settings.icon = 'stats';
+                if (msg.payload.settings.displayIcon == true) msg.payload.settings.icon = 'tokenIcon';
+                $SD.api.setSettings(jsn.context, msg.payload.settings);
+                console.log(msg.payload.settings)
+            }
+        }
+
         for (i in buttonContext) {
             if (buttonContext[i].device == jsn.device) {
                 msg.deviceIteration= i;
@@ -163,13 +174,6 @@ const action = {
         }
         sendToServer(msg);
 
-        
-        
-
-            
-        
-
-        
     },
     onDidReceiveSettings: function(jsn) {
         if (debugEn) console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
@@ -435,13 +439,7 @@ function sendContext(){
         
 
 function analyzeSettings(context,action,settings){
-    //if (debugEn) console.log(context,action,settings);
-    
- 
-   
-
-    
+    //if (debugEn) console.log(context,action,settings); 
 }
-
 
   

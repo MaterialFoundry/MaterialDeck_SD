@@ -18,46 +18,52 @@
           <option value='stopAll'>Stop All</option>
         </select>
       </div>
-      <div class="sdpi-item" id='playlistModeType'>
-        <div class="sdpi-item-label">Type</div>
-        <select class="sdpi-item-value select" id="playlistType" type="select">
-          <option value='playStop'>Play/Stop</option>
-          <option value='offset'>Absolute Offset</option>
-          <option value='relativeOffset'>Relative Offset</option>
-        </select>
-      </div>
-      <div class="spdi-wrapper" id="playlistOffsetWrapper" style="display:none">
-        <div class="sdpi-item" id="offsetContainer">
-          <div class="sdpi-item-label">Offset</div>
-          <input class="sdpi-item-value" id="offset" value=0>
+
+      <div class="sub1">
+        <div class="sdpi-item" id='playlistModeType'>
+          <div class="sdpi-item-label">Type</div>
+          <select class="sdpi-item-value select" id="playlistType" type="select">
+            <option value='playStop'>Play/Stop</option>
+            <option value='offset'>Absolute Offset</option>
+            <option value='relativeOffset'>Relative Offset</option>
+          </select>
         </div>
-        <div type="checkbox" id="offsetName" class="sdpi-item">
-          <div class="sdpi-item-label">Display Offset Target Name</div>
-          <input class="sdpi-item-value" id="displayOffsetName" type="checkbox">
-          <label for="displayOffsetName"><span></span></label>
+        
+        <div class="spdi-wrapper" id="playlistOffsetWrapper" style="display:none">
+          <div class="sdpi-item" id="offsetContainer">
+            <div class="sdpi-item-label">Offset</div>
+            <input class="sdpi-item-value" id="offset" value=0>
+          </div>
+          <div type="checkbox" id="offsetName" class="sdpi-item">
+            <div class="sdpi-item-label">Display Offset Target Name</div>
+            <input class="sdpi-item-value" id="displayOffsetName" type="checkbox">
+            <label for="displayOffsetName"><span></span></label>
+          </div>
         </div>
-      </div>
-      <div class="spdi-wrapper" id="playlistPlayWrapper" style="">
-        <div class="sdpi-item" id="playlistNrContainer">
-          <div class="sdpi-item-label">Playlist Nr</div>
-          <input class="sdpi-item-value" id="playlistNr" value=1>
-        </div>
-        <div class="sdpi-item" id="trackNrContainer" style="display:none">
-          <div class="sdpi-item-label">Track Nr</div>
-          <input class="sdpi-item-value" id="trackNr" value=1>
-        </div>
-        <div type="checkbox" class="sdpi-item" id="displayPlName">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displayName" type="checkbox">
-          <label for="displayName"><span></span></label>
+        <div class="spdi-wrapper" id="playlistPlayWrapper" style="">
+          <div class="sdpi-item" id="playlistNrContainer">
+            <div class="sdpi-item-label">Playlist Nr</div>
+            <input class="sdpi-item-value" id="playlistNr" value=1>
+          </div>
+          <div class="sdpi-item" id="trackNrContainer" style="display:none">
+            <div class="sdpi-item-label">Track Nr</div>
+            <input class="sdpi-item-value" id="trackNr" value=1>
+          </div>
+          <div type="checkbox" class="sdpi-item" id="displayPlName">
+            <div class="sdpi-item-label">Display Name</div>
+            <input class="sdpi-item-value" id="displayName" type="checkbox">
+            <label for="displayName"><span></span></label>
+          </div>
         </div>
       </div>
 
       <div class="spdi-wrapper" id="stopAllWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Display Current Playlist</div>
-          <input class="sdpi-item-value" id="displayPlaylistName" type="checkbox">
-          <label for="displayPlaylistName"><span></span></label>
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Display Current Playlist</div>
+            <input class="sdpi-item-value" id="displayPlaylistName" type="checkbox">
+            <label for="displayPlaylistName"><span></span></label>
+          </div>
         </div>
       </div>
 
@@ -86,6 +92,6 @@
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
-    <script src="js/index_pi.js"></script>
+    <script src="js/playlist_pi.js"></script>
   </body>
 </html>

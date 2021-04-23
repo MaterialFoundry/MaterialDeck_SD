@@ -1064,7 +1064,7 @@ const SDApi = {
         },
 
         setSettings: function (context, payload) {
-            if (debugEn) console.log("settings",payload)
+            if (debugEn) console.log("setSettings",payload)
             SDApi.send(context, 'setSettings', {
                 payload: payload
             });
@@ -1212,3 +1212,475 @@ const SOCKETERRORS = {
     '2': 'The connection is going through the closing handshake',
     '3': 'The connection has been closed or could not be opened'
 };
+
+
+
+function setElements(id) {
+    let selection;
+    let options = [1,2];
+
+    if (id == 'stats') {
+        options = getStats(system);
+        selection = settings.stats ? settings.stats : 'none';
+    }
+    else if (id == 'ability' || id == 'rollAbility') {
+        options = getAbilities(system);
+        selection = settings.ability ? settings.ability : 'str';
+    }
+    else if (id == 'onClick') {
+        options = getOnClick(system);
+        selection = settings.onClick ? settings.onClick : 'doNothing';
+    }
+    else if (id == 'condition') {
+        options = getConditions(system);
+        selection = settings.condition ? settings.condition : 'removeAll';
+    }
+    else if (id == 'skill' || id == 'rollSkill') {
+        options = getSkills(system);
+        selection = settings.rollSkill;
+        if (selection == undefined) {
+            if (system == 'dnd5e' || system == 'pf2e') selection = 'acr';
+            else if (system == 'D35E' || system == 'pf1') selection = 'apr'
+        }
+    }
+    else if (id == 'roll') {
+        options = getRolls(system);
+        selection = settings.roll ? settings.roll : 'ability';
+    }
+    else if (id == 'save' || id == 'rollSave') {
+        options = getSaves(system);
+        selection = settings.save;
+        if (selection == undefined) {
+            if (system == 'dnd5e') selection = 'str';
+            else selection == 'fort';
+        }
+    }
+
+    let element = document.getElementById(id);
+    for (let option of options) {
+        let newOption = document.createElement('option');
+        newOption.value = option.value;
+        newOption.innerHTML = option.name;
+        element.appendChild(newOption);
+    }
+    element.value = selection;
+}
+
+function getStats(system){
+    let stats = [];
+    if (system == 'D35E' || system == 'pf1') 
+        stats = [
+            {value:'HP', name:'HP'},
+            {value:'HPbox', name:'HP (box)'},
+            {value:'TempHP', name:'Temp HP'},
+            {value:'AC', name:'AC'},
+            {value:'Speed', name:'Speed'},
+            {value:'Init', name:'Initiative'},
+            {value:'Ability', name:'Ability Score'},
+            {value:'AbilityMod', name:'Ability Score Modifier'},
+            {value:'Save', name:'Saving Throw Modifier'},
+            {value:'Skill', name:'Skill Modifier'},
+            {value:'Prof', name:'Proficiency'}
+        ]
+    else if (system == 'pf2e')
+        stats = [
+            {value:'HP', name:'HP'},
+            {value:'HPbox', name:'HP (box)'},
+            {value:'TempHP', name:'Temp HP'},
+            {value:'AC', name:'AC'},
+            {value:'ShieldHP', name:'Shield HP'},
+            {value:'Speed', name:'Speed'},
+            {value:'Init', name:'Initiative'},
+            {value:'Ability', name:'Ability Score'},
+            {value:'AbilityMod', name:'Ability Score Modifier'},
+            {value:'Save', name:'Saving Throw Modifier'},
+            {value:'Skill', name:'Skill Modifier'},
+            {value:'Prof', name:'Proficiency'}
+        ]
+    else if (system == 'demonlord')
+        stats = [
+            {value:'HP', name:'HP'},
+            {value:'HPbox', name:'HP (box)'},
+            {value:'AC', name:'AC'},
+            {value:'Speed', name:'Speed'},
+            {value:'Init', name:'Initiative'},
+            {value:'Ability', name:'Ability Score'},
+            {value:'AbilityMod', name:'Ability Score Modifier'}
+        ]
+    else 
+        stats = [
+            {value:'HP', name:'HP'},
+            {value:'HPbox', name:'HP (box)'},
+            {value:'TempHP', name:'Temp HP'},
+            {value:'AC', name:'AC'},
+            {value:'Speed', name:'Speed'},
+            {value:'Init', name:'Initiative'},
+            {value:'Ability', name:'Ability Score'},
+            {value:'AbilityMod', name:'Ability Score Modifier'},
+            {value:'Save', name:'Saving Throw Modifier'},
+            {value:'Skill', name:'Skill Modifier'},
+            {value:'PassivePerception', name:'Passive Perception'},
+            {value:'PassiveInvestigation', name:'Passive Investigation'},
+            {value:'Prof', name:'Proficiency'}
+        ]
+    return stats;
+}
+
+function getAbilities(system){
+    let abilities = [];
+    if (system == 'demonlord')
+        abilities = [
+            {value:'strength',name:'Strength'},
+            {value:'agility',name:'Agility'},
+            {value:'intellect',name:'Intellect'},
+            {value:'will',name:'Will'},
+            {value:'perception',name:'Perception'}
+        ]
+    else
+        abilities = [
+            {value:'str',name:'Strength'},
+            {value:'dex',name:'Dexterity'},
+            {value:'con',name:'Constitution'},
+            {value:'int',name:'Intelligence'},
+            {value:'wis',name:'Wisdom'},
+            {value:'cha',name:'Charisma'}
+        ]
+    return abilities;
+}
+
+function getSaves(system){
+    let saves = [];
+    if (system == 'D35E' || system == 'pf1' || system == 'pf2e')
+        saves = [
+            {value:'fort',name:'Fortitude'},
+            {value:'ref',name:'Reflex'},
+            {value:'will',name:'Will'},
+        ]
+    else if (system == 'dnd5e')
+        saves = getAbilities(system);
+    return saves;
+}
+
+function getOnClick(system){
+    let onClick = [];
+    if (system == 'demonlord')
+        onClick = [
+            {value:'initiative',name:'Toggle Initiative'}
+        ];
+    return onClick;
+}
+
+function getConditions(system){
+    let conditions = [];
+    if (system == 'D35E') 
+        conditions = [
+            {value:'dead', name:'Dead'},
+            {value:'blind', name:'Blind'},
+            {value:'dazzled', name:'Dazzled'},
+            {value:'deaf', name:'Deaf'},
+            {value:'entangled', name:'Entangled'},
+            {value:'fatigued', name:'Fatigued'},
+            {value:'exhausted', name:'Exhausted'},
+            {value:'grappled', name:'Grappled'},
+            {value:'helpless', name:'Helpless'},
+            {value:'paralyzed', name:'Paralyzed'},
+            {value:'pinned', name:'Pinned'},
+            {value:'fear', name:'Fear'},
+            {value:'sickened', name:'Sickened'},
+            {value:'stunned', name:'Stunned'},
+            {value:'shaken', name:'Shaken'}
+        ]
+    else if (system == 'pf1') 
+        conditions = [
+            {value:'dead', name:'Dead'},
+            {value:'bleed', name:'Bleed'},
+            {value:'blind', name:'Blind'},
+            {value:'confused', name:'Confused'},
+            {value:'dazzled', name:'Dazzled'},
+            {value:'deaf', name:'Deaf'},
+            {value:'entangled', name:'Entangled'},
+            {value:'fatigued', name:'Fatigued'},
+            {value:'exhausted', name:'Exhausted'},
+            {value:'grappled', name:'Grappled'},
+            {value:'helpless', name:'Helpless'},
+            {value:'incorporeal', name:'Incorporeal'},
+            {value:'invisible', name:'Invisible'},
+            {value:'paralyzed', name:'Paralyzed'},
+            {value:'pinned', name:'Pinned'},
+            {value:'prone', name:'Prone'},
+            {value:'staggered', name:'Staggered'},
+            {value:'stunned', name:'Stunned'},
+            {value:'shaken', name:'Shaken'},
+            {value:'frightened', name:'Frightened'},
+            {value:'panicked', name:'Panicked'},
+            {value:'sickened', name:'Sickened'},
+            {value:'nauseated', name:'Nauseated'},
+            {value:'dazed', name:'Dazed'}
+        ]
+    else if (system == 'pf2e') 
+        conditions = [
+            {value:'blinded', name:'Blinded'},
+            {value:'broken', name:'Broken'},
+            {value:'clumsy', name:'Clumsy'},
+            {value:'concealed', name:'Concealed'},
+            {value:'confused', name:'Confused'},
+            {value:'controlled', name:'Controlled'},
+            {value:'dazzled', name:'Dazzled'},
+            {value:'deafened', name:'Deafened'},
+            {value:'doomed', name:'Doomed'},
+            {value:'drained', name:'Drained'},
+            {value:'dying', name:'Drying'},
+            {value:'encumbered', name:'Encumbered'},
+            {value:'enfeebled', name:'Enfeebled'},
+            {value:'fascinated', name:'Fascinated'},
+            {value:'fatigued', name:'Fatigued'},
+            {value:'flatFooted', name:'Flat Footed'},
+            {value:'fleeing', name:'Fleeing'},
+            {value:'frightened', name:'Frightened'},
+            {value:'grabbed', name:'Grabbed'},
+            {value:'immobilized', name:'Immobilized'},
+            {value:'invisible', name:'Invisible'},
+            {value:'paralyzed', name:'Paralyzed'},
+            {value:'persistentDamage', name:'Persistent Damage'},
+            {value:'petrified', name:'Petrified'},
+            {value:'prone', name:'Prone'},
+            {value:'quickened', name:'Quickened'},
+            {value:'restrained', name:'Restrained'},
+            {value:'sickened', name:'Sickened'},
+            {value:'slowed', name:'Slowed'},
+            {value:'stunned', name:'Stunned'},
+            {value:'stupified', name:'Stupified'},
+            {value:'unconscious', name:'Unconscious'},
+            {value:'wounded', name:'Wounded'}
+        ]
+    else if (system == 'demonlord') 
+        conditions = [
+            {value:'asleep', name:'Asleep'},
+            {value:'blinded', name:'Blinded'},
+            {value:'charmed', name:'Charmed'},
+            {value:'compelled', name:'Compelled'},
+            {value:'dazed', name:'Dazed'},
+            {value:'deafened', name:'Deafened'},
+            {value:'defenseless', name:'Defenseless'},
+            {value:'diseased', name:'Diseased'},
+            {value:'fatigued', name:'Fatigued'},
+            {value:'frightened', name:'Frightened'},
+            {value:'horrified', name:'Horrified'},
+            {value:'grabbed', name:'Grabbed'},
+            {value:'immobilized', name:'Immobilized'},
+            {value:'impaired', name:'Impaired'},
+            {value:'poisoned', name:'Poisoned'},
+            {value:'prone', name:'Prone'},
+            {value:'slowed', name:'Slowed'},
+            {value:'stunned', name:'Stunned'},
+            {value:'surprised', name:'Surprised'},
+            {value:'unconscious', name:'Unconscious'},
+            {value:'injured', name:'Injured'}
+        ]
+    else  //default/dnd5e
+        conditions = [
+            {value:'dead', name:'Dead'},
+            {value:'unconscious', name:'Unconscious'},
+            {value:'sleep', name:'Asleep'},
+            {value:'stun', name:'Stunned'},
+            {value:'prone', name:'Prone'},
+            {value:'restrain', name:'Restrained'},
+            {value:'paralysis', name:'Paralyzed'},
+            {value:'fly', name:'Flying'},
+            {value:'blind', name:'Blind'},
+            {value:'deaf', name:'Deaf'},
+            {value:'silence', name:'Silenced'},
+            {value:'fear', name:'Afraid'},
+            {value:'burning', name:'Burning'},
+            {value:'frozen', name:'Frozen'},
+            {value:'shock', name:'Shocked'},
+            {value:'corrode', name:'Corroding'},
+            {value:'bleeding', name:'Bleeding'},
+            {value:'disease', name:'Diseased'},
+            {value:'poison', name:'Poisoned'},
+            {value:'radiation', name:'Radioactive'},
+            {value:'regen', name:'Regeneration'},
+            {value:'degen', name:'Degeneration'},
+            {value:'upgrade', name:'Empowered'},
+            {value:'downgrade', name:'Weakened'},
+            {value:'target', name:'Targeted'},
+            {value:'eye', name:'Marked'},
+            {value:'curse', name:'Cursed'},
+            {value:'bless', name:'Blessed'},
+            {value:'fireShield', name:'Fire Shield'},
+            {value:'coldShield', name:'Ice Shield'},
+            {value:'magicShield', name:'Magic Shield'},
+            {value:'holyShield', name:'Holy Shield'}
+        ]  
+    return conditions;
+}
+
+function getSkills(system){
+    let skills = [];
+    if (system == 'D35E') 
+        skills = [
+            {value:'apr', name:'Appraise'},
+            {value:'aut', name:'Autohypnosis'},
+            {value:'blc', name:'Balance'},
+            {value:'blf', name:'Bluff'},
+            {value:'clm', name:'Climb'},
+            {value:'coc', name:'Concentration'},
+            {value:'crf', name:'Craft'},
+            {value:'dsc', name:'Decipher Script'},
+            {value:'dip', name:'Diplomacy'},
+            {value:'dev', name:'Disable Device'},
+            {value:'dis', name:'Disguise'},
+            {value:'esc', name:'Escape Artist'},
+            {value:'fog', name:'Forgery'},
+            {value:'gif', name:'Gather Information'},
+            {value:'han', name:'Handle Animal'},
+            {value:'hea', name:'Heal'},
+            {value:'hid', name:'Hide'},
+            {value:'int', name:'Intimidate'},
+            {value:'jmp', name:'Jump'},
+            {value:'kar', name:'Knowledge (Arcana)'},
+            {value:'kdu', name:'Knowledge (Dungeoneering)'},
+            {value:'ken', name:'Knowledge (Engineering)'},
+            {value:'kge', name:'Knowledge (Geography)'},
+            {value:'khi', name:'Knowledge (History)'},
+            {value:'klo', name:'Knowledge (Local)'},
+            {value:'kna', name:'Knowledge (Nature)'},
+            {value:'kno', name:'Knowledge (Nobility)'},
+            {value:'kpl', name:'Knowledge (Planes)'},
+            {value:'kps', name:'Knowledge (Psionics)'},
+            {value:'kre', name:'Knowledge (Religion)'},
+            {value:'lis', name:'Listen'},
+            {value:'mos', name:'Move Silently'},
+            {value:'opl', name:'Open Lock'},
+            {value:'prf', name:'Perform'},
+            {value:'pro', name:'Profession'},
+            {value:'psi', name:'Psicraft'},
+            {value:'rid', name:'Ride'},
+            {value:'src', name:'Search'},
+            {value:'sen', name:'Sense Motive'},
+            {value:'slt', name:'Slight of Hand'},
+            {value:'spl', name:'Spellcraft'},
+            {value:'spt', name:'Spot'},
+            {value:'sur', name:'Survival'},
+            {value:'swm', name:'Swim'},
+            {value:'tmb', name:'Tumble'},
+            {value:'umd', name:'Use Magic Device'},
+            {value:'upd', name:'Use Psionic Device'},
+            {value:'uro', name:'Use Rope'}
+        ]
+    else if (system == 'pf1') 
+        skills = [
+            {value:'acr', name:'Acrobatics'},
+            {value:'apr', name:'Appraise'},
+            {value:'art', name:'Artistry'},
+            {value:'blf', name:'Bluff'},
+            {value:'clm', name:'Climb'},
+            {value:'crf', name:'Craft'},
+            {value:'dip', name:'Diplomacy'},
+            {value:'dev', name:'Disable Device'},
+            {value:'dis', name:'Disguise'},
+            {value:'esc', name:'Escape Artist'},
+            {value:'fly', name:'Fly'},
+            {value:'han', name:'Handle Animal'},
+            {value:'hea', name:'Heal'},
+            {value:'int', name:'Intimidate'},
+            {value:'kar', name:'Knowledge (Arcana)'},
+            {value:'kdu', name:'Knowledge (Dungeoneering)'},
+            {value:'ken', name:'Knowledge (Engineering)'},
+            {value:'kge', name:'Knowledge (Geography)'},
+            {value:'khi', name:'Knowledge (History)'},
+            {value:'klo', name:'Knowledge (Local)'},
+            {value:'kna', name:'Knowledge (Nature)'},
+            {value:'kno', name:'Knowledge (Nobility)'},
+            {value:'kpl', name:'Knowledge (Planes)'},
+            {value:'kre', name:'Knowledge (Religion)'},
+            {value:'lin', name:'Linguistics'},
+            {value:'lor', name:'Lore'},
+            {value:'per', name:'Perception'},
+            {value:'prf', name:'Perform'},
+            {value:'pro', name:'Profession'},
+            {value:'rid', name:'Ride'},
+            {value:'sen', name:'Sense Motive'},
+            {value:'slt', name:'Slight of Hand'},
+            {value:'spl', name:'Spellcraft'},
+            {value:'ste', name:'Stealth'},
+            {value:'sur', name:'Survival'},
+            {value:'swm', name:'Swim'},
+            {value:'umd', name:'Use Magic Device'}    
+        ]
+    else if (system == 'pf2e') 
+        skills = [
+            {value:'acr', name:'Acrobatics'},
+            {value:'arc', name:'Arcana'},
+            {value:'ath', name:'Athletics'},
+            {value:'cra', name:'Crafting'},
+            {value:'dec', name:'Deception'},
+            {value:'dip', name:'Diplomacy'},
+            {value:'inv', name:'Intimidation'},
+            {value:'med', name:'Medicine'},
+            {value:'nat', name:'Nature'},
+            {value:'occ', name:'Occultism'},
+            {value:'prf', name:'Performance'},
+            {value:'rel', name:'Religion'},
+            {value:'soc', name:'Society'},
+            {value:'ste', name:'Stealth'},
+            {value:'sur', name:'Survival'},
+            {value:'thi', name:'Thievery'}
+        ]
+    else if (system == 'demonlord') {}
+
+    else  //default/dnd5e
+        skills = [
+            {value:'acr', name:'Acrobatics'},
+            {value:'ani', name:'Animal Handling'},
+            {value:'arc', name:'Arcana'},
+            {value:'ath', name:'Athletics'},
+            {value:'dec', name:'Deception'},
+            {value:'his', name:'History'},
+            {value:'ins', name:'Insight'},
+            {value:'itm', name:'Intimidation'},
+            {value:'inv', name:'Investigation'},
+            {value:'med', name:'Medicine'},
+            {value:'nat', name:'Nature'},
+            {value:'prc', name:'Perception'},
+            {value:'prf', name:'Performance'},
+            {value:'per', name:'Persuasion'},
+            {value:'rel', name:'Religion'},
+            {value:'slt', name:'Slight of Hand'},
+            {value:'ste', name:'Stealth'},
+            {value:'sur', name:'Survival'}
+        ]  
+    return skills;
+}
+
+function getRolls(system){
+    let rolls = [];
+    if (system == 'D35E') 
+        rolls = [
+            {value:'initiative', name:'Initiative'},
+            {value:'grapple', name:'Grapple'},
+            {value:'bab', name:'Base Attack Bonus'},
+            {value:'melee', name:'Melee'},
+            {value:'ranged', name:'Ranged'}
+        ]
+    else if (system == 'pf1') 
+        rolls = [
+            {value:'initiative', name:'Initiative'},
+            {value:'cmb', name:'Combat Maneuver Bonus'},
+            {value:'bab', name:'Base Attack Bonus'},
+            {value:'attack', name:'Attack'},
+            {value:'defenses', name:'Defenses'}
+        ]
+    else if (system == 'pf2e')
+        rolls = [
+            {value:'initiative', name:'Initiative'}
+        ]
+    else if (system == 'demonlord')
+        rolls = []
+    else 
+        rolls = [
+            {value:'initiative', name:'Initiative'},
+            {value:'deathSave', name:'Death Save'}
+        ]
+    return rolls;
+}

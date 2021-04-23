@@ -19,63 +19,73 @@
       </div>
 
       <div class='wrapper' id='tokenWrapper' style='display:none'> 
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Token</div>
-          <select class="sdpi-item-value select" id="selection" type="select">
-            <option value='selected'>Selected Token</option>
-            <option value='tokenName'>Token Name</option>
-            <option value='actorName'>Actor Name</option>
-            <option value='tokenId'>Token Id</option>
-            <option value='actorId'>Actor Id</option>
-          </select>
-        </div>
-
-        <div class="wrapper"  id="tokenNameWrapper" style="display:none">
+        <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label" id='tokenNameLabel'>Name</div>
-            <input class="sdpi-item-value" id="tokenName" value="">
+            <div class="sdpi-item-label">Token</div>
+            <select class="sdpi-item-value select" id="selection" type="select">
+              <option value='selected'>Selected Token</option>
+              <option value='tokenName'>Token Name</option>
+              <option value='actorName'>Actor Name</option>
+              <option value='tokenId'>Token Id</option>
+              <option value='actorId'>Actor Id</option>
+            </select>
           </div>
-        </div>
 
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Type</div>
-          <select class="sdpi-item-value select" id="type">
-            <option value='move'>Move</option>
-            <option value='rotate'>Rotate</option>
-          </select>
+          <div class="wrapper"  id="tokenNameWrapper" style="display:none">
+            <div class="sub2">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label" id='tokenNameLabel'>Name</div>
+                <input class="sdpi-item-value" id="tokenName" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Type</div>
+            <select class="sdpi-item-value select" id="type">
+              <option value='move'>Move</option>
+              <option value='rotate'>Rotate</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <div class='wrapper' id='dirWrapper' style='display:none'> 
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Direction</div>
-          <select class="sdpi-item-value select" id="dir">
-            <option value='center'>Center</option>
-            <option value='up'>Up</option>
-            <option value='down'>Down</option>
-            <option value='right'>Right</option>
-            <option value='left'>Left</option>
-            <option value='upRight'>Up+Right</option>
-            <option value='upLeft'>Up+Left</option>
-            <option value='downRight'>Down+Right</option>
-            <option value='downLeft'>Down+Left</option>
-            <option value='zoomIn'>Zoom In</option>
-            <option value='zoomOut'>Zoom Out</option>
-          </select>
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Direction</div>
+            <select class="sdpi-item-value select" id="dir">
+              <option value='center'>Center</option>
+              <option value='up'>Up</option>
+              <option value='down'>Down</option>
+              <option value='right'>Right</option>
+              <option value='left'>Left</option>
+              <option value='upRight'>Up+Right</option>
+              <option value='upLeft'>Up+Left</option>
+              <option value='downRight'>Down+Right</option>
+              <option value='downLeft'>Down+Left</option>
+              <option value='zoomIn'>Zoom In</option>
+              <option value='zoomOut'>Zoom Out</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <div class='wrapper' id='rotWrapper' style='display:none'>  
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Rotation</div>
-          <select class="sdpi-item-value select" id="rot">
-            <option value='to'>Rotate to value</option>
-            <option value='by'>Rotate by value</option>
-          </select>
-        </div>
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Value (deg)</div>
-          <input class="sdpi-item-value" id="rotValue" value="0">
+        <div class="sub1">
+          <div class="sub2">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Rotation</div>
+              <select class="sdpi-item-value select" id="rot">
+                <option value='to'>Rotate to value</option>
+                <option value='by'>Rotate by value</option>
+              </select>
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Value (deg)</div>
+              <input class="sdpi-item-value" id="rotValue" value="0">
+            </div>
+          </div>
         </div>
       </div>
 

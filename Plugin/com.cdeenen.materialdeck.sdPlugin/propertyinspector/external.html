@@ -25,321 +25,347 @@
       </div>
 
     <div class="wrapper" id="fxMasterWrapper" style="display:none">
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Type</div>
-        <select class="sdpi-item-value select" id="fxMasterType" type="select">
-          <option value='weatherControls'>Weather Controls</option>
-          <option value='colorize'>Colorize Effects</option>
-          <option value='filters'>Filters</option>
-          <option value='clear'>Clear All</option>
-        </select>
-      </div>
-      <div class="wrapper" id="weatherControlsWrapper" style="display:none">
+      <div class="sub1">
         <div class="sdpi-item">
-          <div class="sdpi-item-label">Effect</div>
-          <select class="sdpi-item-value select" id="weatherEffect" type="select">
-            <option value='leaves'>Autumn Leaves</option>
-            <option value='rain'>Rain</option>
-            <option value='snow'>Snow</option>
-            <option value='snowstorm'>Snowstorm</option>
-            <option value='bubbles'>Bubbles</option>
-            <option value='clouds'>Clouds</option>
-            <option value='embers'>Embers</option>
-            <option value='rainsimple'>Rain without splash</option>
-            <option value='stars'>Stars</option>
-            <option value='crows'>Crows</option>
-            <option value='bats'>Bats</option>
-            <option value='fog'>Fog</option>
-            <option value='raintop'>Topdown Rain</option>
-            <option value='birds'>Birds</option>
-          </select> 
+          <div class="sdpi-item-label">Type</div>
+          <select class="sdpi-item-value select" id="fxMasterType" type="select">
+            <option value='weatherControls'>Weather Controls</option>
+            <option value='colorize'>Colorize Effects</option>
+            <option value='filters'>Filters</option>
+            <option value='clear'>Clear All</option>
+          </select>
+        </div>
+        <div class="wrapper" id="weatherControlsWrapper" style="display:none">
+          <div class="sub2">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Effect</div>
+              <select class="sdpi-item-value select" id="weatherEffect" type="select">
+                <option value='leaves'>Autumn Leaves</option>
+                <option value='rain'>Rain</option>
+                <option value='snow'>Snow</option>
+                <option value='snowstorm'>Snowstorm</option>
+                <option value='bubbles'>Bubbles</option>
+                <option value='clouds'>Clouds</option>
+                <option value='embers'>Embers</option>
+                <option value='rainsimple'>Rain without splash</option>
+                <option value='stars'>Stars</option>
+                <option value='crows'>Crows</option>
+                <option value='bats'>Bats</option>
+                <option value='fog'>Fog</option>
+                <option value='raintop'>Topdown Rain</option>
+                <option value='birds'>Birds</option>
+              </select> 
+            </div>
+
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Density</div>
+              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="densitySlider">
+            </div>
+
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Speed</div>
+              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="speedSlider">
+            </div>
+
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Direction</div>
+              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="directionSlider">
+            </div>
+
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Scale</div>
+              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="scaleSlider">
+            </div>
+
+            <div type="checkbox" class="sdpi-item">
+              <div class="sdpi-item-label">Color Enable</div>
+              <input class="sdpi-item-value" id="fxWeatherEnColor" type="checkbox">
+              <label for="fxWeatherEnColor"><span></span></label>
+            </div>
+
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Color</div>
+              <div class="sdpi-item-value">
+                  <input type="color" id="fxMasterWeatherColor" value="#000000">
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div type="range" class="sdpi-item">
-          <div class="sdpi-item-label">Density</div>
-          <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="densitySlider">
+        <div class="wrapper" id="colorizeWrapper" style="display:none">
+          <div class="sub2">
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Color</div>
+              <div class="sdpi-item-value">
+                  <input type="color" id="fxMasterColorizeColor" value="#000000">
+              </div>
+            </div>
+          </div>
         </div>
+        
+        <div class="wrapper" id="filterWrapper" style="display:none">
+          <div class="sub2">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Effect</div>
+              <select class="sdpi-item-value select" id="fxMasterFilter" type="select">
+                <option value='underwater'>Underwater Filter</option>
+                <option value='predator'>Predator Filter</option>
+                <option value='oldfilm'>Old Film Filter</option>
+                <option value='bloom'>Bloom Filter</option>
+              </select> 
+            </div>
+          </div>
+        </div> 
 
-        <div type="range" class="sdpi-item">
-          <div class="sdpi-item-label">Speed</div>
-          <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="speedSlider">
-        </div>
-
-        <div type="range" class="sdpi-item">
-          <div class="sdpi-item-label">Direction</div>
-          <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="directionSlider">
-        </div>
-
-        <div type="range" class="sdpi-item">
-          <div class="sdpi-item-label">Scale</div>
-          <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="scaleSlider">
-        </div>
 
         <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Color Enable</div>
-          <input class="sdpi-item-value" id="fxWeatherEnColor" type="checkbox">
-          <label for="fxWeatherEnColor"><span></span></label>
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayFxMasterName" type="checkbox">
+          <label for="displayFxMasterName"><span></span></label>
         </div>
-
-        <div type="range" class="sdpi-item">
-          <div class="sdpi-item-label">Color</div>
-          <div class="sdpi-item-value">
-              <input type="color" id="fxMasterWeatherColor" value="#000000">
-          </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="displayFxMasterIcon" type="checkbox">
+          <label for="displayFxMasterIcon"><span></span></label>
         </div>
-      </div>
-
-      <div class="wrapper" id="colorizeWrapper" style="display:none">
-        <div type="range" class="sdpi-item">
-          <div class="sdpi-item-label">Color</div>
-          <div class="sdpi-item-value">
-              <input type="color" id="fxMasterColorizeColor" value="#000000">
-          </div>
-        </div>
-      </div>
-      
-      <div class="wrapper" id="filterWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Effect</div>
-          <select class="sdpi-item-value select" id="fxMasterFilter" type="select">
-            <option value='underwater'>Underwater Filter</option>
-            <option value='predator'>Predator Filter</option>
-            <option value='oldfilm'>Old Film Filter</option>
-            <option value='bloom'>Bloom Filter</option>
-          </select> 
-        </div>
-      </div> 
-
-
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
-        <input class="sdpi-item-value" id="displayFxMasterName" type="checkbox">
-        <label for="displayFxMasterName"><span></span></label>
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
-        <input class="sdpi-item-value" id="displayFxMasterIcon" type="checkbox">
-        <label for="displayFxMasterIcon"><span></span></label>
       </div>
     </div>
 
     <div class="wrapper" id="gmScreenWrapper" style="display:none">
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
-        <input class="sdpi-item-value" id="displayGmScreenName" type="checkbox">
-        <label for="displayGmScreenName"><span></span></label>
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
-        <input class="sdpi-item-value" id="displayGmScreenIcon" type="checkbox">
-        <label for="displayGmScreenIcon"><span></span></label>
-      </div>
-      <div type="range" class="sdpi-item">
-        <div class="sdpi-item-label">Background</div>
-        <div class="sdpi-item-value">
-            <input type="color" id="gmScreenBackground" value="#000000">
+      <div class="sub1">
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayGmScreenName" type="checkbox">
+          <label for="displayGmScreenName"><span></span></label>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="displayGmScreenIcon" type="checkbox">
+          <label for="displayGmScreenIcon"><span></span></label>
+        </div>
+        <div type="range" class="sdpi-item">
+          <div class="sdpi-item-label">Background</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="gmScreenBackground" value="#000000">
+          </div>
         </div>
       </div>
     </div>
 
     <div class="wrapper" id="triggerHappyWrapper" style="display:none">
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Mode</div>
-        <select class="sdpi-item-value select" id="triggerHappyMode" type="select">
-          <option value='toggle'>Toggle Triggers</option>
-          <option value='enable'>Enable Triggers</option>
-          <option value='disable'>Disable Triggers</option>
-        </select> 
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
-        <input class="sdpi-item-value" id="displayTriggerHappyName" type="checkbox">
-        <label for="displayTriggerHappyName"><span></span></label>
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
-        <input class="sdpi-item-value" id="displayTriggerHappyIcon" type="checkbox">
-        <label for="displayTriggerHappyIcon"><span></span></label>
+      <div class="sub1">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Mode</div>
+          <select class="sdpi-item-value select" id="triggerHappyMode" type="select">
+            <option value='toggle'>Toggle Triggers</option>
+            <option value='enable'>Enable Triggers</option>
+            <option value='disable'>Disable Triggers</option>
+          </select> 
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayTriggerHappyName" type="checkbox">
+          <label for="displayTriggerHappyName"><span></span></label>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="displayTriggerHappyIcon" type="checkbox">
+          <label for="displayTriggerHappyIcon"><span></span></label>
+        </div>
       </div>
     </div>
 
     <div class="wrapper" id="sharedVisionWrapper" style="display:none">
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Mode</div>
-        <select class="sdpi-item-value select" id="sharedVisionMode" type="select">
-          <option value='toggle'>Toggle Global Shared Vision</option>
-          <option value='enable'>Enable Global Shared Vision</option>
-          <option value='disable'>Disable Global Shared Vision</option>
-        </select> 
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
-        <input class="sdpi-item-value" id="sharedVisionName" type="checkbox">
-        <label for="sharedVisionName"><span></span></label>
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
-        <input class="sdpi-item-value" id="sharedVisionIcon" type="checkbox">
-        <label for="sharedVisionIcon"><span></span></label>
-      </div>
-    </div>
-
-    <div class="wrapper" id="mookWrapper" style="display:none">
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
-        <input class="sdpi-item-value" id="mookName" type="checkbox">
-        <label for="mookName"><span></span></label>
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
-        <input class="sdpi-item-value" id="mookIcon" type="checkbox">
-        <label for="mookIcon"><span></span></label>
-      </div>
-    </div>
-
-    <div class="wrapper" id="notYourTurnWrapper" style="display:none">
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Mode</div>
-        <select class="sdpi-item-value select" id="notYourTurnMode" type="select">
-          <option value='toggle'>Toggle Combat Movement Block</option>
-          <option value='enable'>Enable Combat Movement Block</option>
-          <option value='disable'>Disable Combat Movement Block</option>
-          <option value='toggleNonCombat'>Toggle Non-Combat Movement Block</option>
-          <option value='enableNonCombat'>Enable Non-Combat Movement Block</option>
-          <option value='disableNonCombat'>Disable Non-Combat Movement Block</option>
-        </select> 
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
-        <input class="sdpi-item-value" id="notYourTurnName" type="checkbox">
-        <label for="notYourTurnName"><span></span></label>
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
-        <input class="sdpi-item-value" id="notYourTurnIcon" type="checkbox">
-        <label for="notYourTurnIcon"><span></span></label>
+      <div class="sub1">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Mode</div>
+          <select class="sdpi-item-value select" id="sharedVisionMode" type="select">
+            <option value='toggle'>Toggle Global Shared Vision</option>
+            <option value='enable'>Enable Global Shared Vision</option>
+            <option value='disable'>Disable Global Shared Vision</option>
+          </select> 
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="sharedVisionName" type="checkbox">
+          <label for="sharedVisionName"><span></span></label>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="sharedVisionIcon" type="checkbox">
+          <label for="sharedVisionIcon"><span></span></label>
+        </div>
       </div>
     </div>
 
     <div class="wrapper" id="lockViewWrapper" style="display:none">
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Mode</div>
-        <select class="sdpi-item-value select" id="lockViewMode" type="select">
-          <option value='panLock'>Pan Lock</option>
-          <option value='zoomLock'>Zoom Lock</option>
-          <option value='boundingBox'>Bounding Box</option>
-        </select> 
+      <div class="sub1">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Mode</div>
+          <select class="sdpi-item-value select" id="lockViewMode" type="select">
+            <option value='panLock'>Pan Lock</option>
+            <option value='zoomLock'>Zoom Lock</option>
+            <option value='boundingBox'>Bounding Box</option>
+          </select> 
+        </div>
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Toggle</div>
+          <select class="sdpi-item-value select" id="lockViewToggle" type="select">
+            <option value='toggle'>Toggle</option>
+            <option value='enable'>Enable</option>
+            <option value='disable'>Disable</option>
+          </select> 
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="lockViewName" type="checkbox">
+          <label for="lockViewName"><span></span></label>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="lockViewIcon" type="checkbox">
+          <label for="lockViewIcon"><span></span></label>
+        </div>
+        </div>
+    </div>
+
+    <div class="wrapper" id="notYourTurnWrapper" style="display:none">
+      <div class="sub1">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Mode</div>
+          <select class="sdpi-item-value select" id="notYourTurnMode" type="select">
+            <option value='toggle'>Toggle Combat Movement Block</option>
+            <option value='enable'>Enable Combat Movement Block</option>
+            <option value='disable'>Disable Combat Movement Block</option>
+            <option value='toggleNonCombat'>Toggle Non-Combat Movement Block</option>
+            <option value='enableNonCombat'>Enable Non-Combat Movement Block</option>
+            <option value='disableNonCombat'>Disable Non-Combat Movement Block</option>
+          </select> 
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="notYourTurnName" type="checkbox">
+          <label for="notYourTurnName"><span></span></label>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="notYourTurnIcon" type="checkbox">
+          <label for="notYourTurnIcon"><span></span></label>
+        </div>
       </div>
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Toggle</div>
-        <select class="sdpi-item-value select" id="lockViewToggle" type="select">
-          <option value='toggle'>Toggle</option>
-          <option value='enable'>Enable</option>
-          <option value='disable'>Disable</option>
-        </select> 
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
-        <input class="sdpi-item-value" id="lockViewName" type="checkbox">
-        <label for="lockViewName"><span></span></label>
-      </div>
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
-        <input class="sdpi-item-value" id="lockViewIcon" type="checkbox">
-        <label for="lockViewIcon"><span></span></label>
+    </div>
+
+    <div class="wrapper" id="mookWrapper" style="display:none">
+      <div class="sub1">
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="mookName" type="checkbox">
+          <label for="mookName"><span></span></label>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="mookIcon" type="checkbox">
+          <label for="mookIcon"><span></span></label>
+        </div>
       </div>
     </div>
 
     <div class="wrapper" id="aboutTimeWrapper" style="display:none">
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Display Time</div>
-        <select class="sdpi-item-value select" id="aboutTimeDisplayTime" type="select">
-          <option value='none'>Do Not Display</option>
-          <option value='hours24h'>Hours (24H)</option>
-          <option value='hours12h'>Hours (12H)</option>
-          <option value='minutes'>Minutes</option>
-          <option value='seconds'>Seconds</option>
-          <option value='compact24h'>H:M (24H)</option>
-          <option value='compact12h'>H:M (12H)</option>
-          <option value='full24h'>H:M:S (24H)</option>
-          <option value='full12h'>H:M:S (12H)</option>
-          <option value='clock'>Display Clock</option>
-        </select> 
-      </div>
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">Display Date</div>
-        <select class="sdpi-item-value select" id="aboutTimeDisplayDate" type="select">
-          <option value='none'>Do Not Display</option>
-          <option value='day'>Day</option>
-          <option value='dayName'>Day (name)</option>
-          <option value='month'>Month</option>
-          <option value='monthName'>Month (name)</option>
-          <option value='year'>Year</option>
-          <option value='small'>D:M</option>
-          <option value='smallInv'>M:D</option>
-          <option value='full'>D:M:Y</option>
-          <option value='fullInv'>M:D:Y</option>
-          <option value='textDay'>Full Text With Day</option>
-          <option value='text'>Full Text Without Day</option>
-        </select> 
-      </div>
-
-      <div class="sdpi-item">
-        <div class="sdpi-item-label">On Click</div>
-        <select class="sdpi-item-value select" id="aboutTimeOnClick" type="select">
-          <option value='none'>Do Nothing</option>
-          <option value='startStop'>Start/Stop the Clock</option>
-          <option value='advance'>Advance the Time</option>
-          <option value='recede'>Recede the Time</option>
-        </select> 
-      </div>
-
-      <div class="wrapper" id="aboutTimeStartStopWrapper" style="display:none">
+      <div class="sub1">
         <div class="sdpi-item">
-          <div class="sdpi-item-label">Start/Stop</div>
-          <select class="sdpi-item-value select" id="aboutTimeStartStopMode" type="select">
-            <option value='toggle'>Toggle</option>
-            <option value='start'>Start</option>
-            <option value='stop'>Stop</option>
+          <div class="sdpi-item-label">Display Time</div>
+          <select class="sdpi-item-value select" id="aboutTimeDisplayTime" type="select">
+            <option value='none'>Do Not Display</option>
+            <option value='hours24h'>Hours (24H)</option>
+            <option value='hours12h'>Hours (12H)</option>
+            <option value='minutes'>Minutes</option>
+            <option value='seconds'>Seconds</option>
+            <option value='compact24h'>H:M (24H)</option>
+            <option value='compact12h'>H:M (12H)</option>
+            <option value='full24h'>H:M:S (24H)</option>
+            <option value='full12h'>H:M:S (12H)</option>
+            <option value='clock'>Display Clock</option>
           </select> 
         </div>
-      </div>
-
-      <div class="wrapper" id="aboutTimeAdvanceWrapper" style="display:none">
         <div class="sdpi-item">
-          <div class="sdpi-item-label" id="advanceModeLabel">Advance</div>
-          <select class="sdpi-item-value select" id="aboutTimeAdvanceMode" type="select">
-            <option value='dawn'>To Dawn</option>
-            <option value='noon'>To Noon</option>
-            <option value='dusk'>To Dusk</option>
-            <option value='midnight'>To Midnight</option>
-            <option value='1s'>1 Second</option>
-            <option value='30s'>30 Seconds</option>
-            <option value='1m'>1 Minute</option>
-            <option value='5m'>5 Minutes</option>
-            <option value='15m'>15 Minutes</option>
-            <option value='1h'>1 Hour</option>
+          <div class="sdpi-item-label">Display Date</div>
+          <select class="sdpi-item-value select" id="aboutTimeDisplayDate" type="select">
+            <option value='none'>Do Not Display</option>
+            <option value='day'>Day</option>
+            <option value='dayName'>Day (name)</option>
+            <option value='month'>Month</option>
+            <option value='monthName'>Month (name)</option>
+            <option value='year'>Year</option>
+            <option value='small'>D:M</option>
+            <option value='smallInv'>M:D</option>
+            <option value='full'>D:M:Y</option>
+            <option value='fullInv'>M:D:Y</option>
+            <option value='textDay'>Full Text With Day</option>
+            <option value='text'>Full Text Without Day</option>
           </select> 
         </div>
-      </div>
 
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Running</div>
-        <input class="sdpi-item-value" id="aboutTimeActive" type="checkbox">
-        <label for="aboutTimeActive"><span></span></label>
-      </div>
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">On Click</div>
+          <select class="sdpi-item-value select" id="aboutTimeOnClick" type="select">
+            <option value='none'>Do Nothing</option>
+            <option value='startStop'>Start/Stop the Clock</option>
+            <option value='advance'>Advance the Time</option>
+            <option value='recede'>Recede the Time</option>
+          </select> 
+        </div>
 
-      <div class="wrapper" id="aboutTimeRingWrapper" style="display:none">
-        <div type="range" class="sdpi-item" id="onColorContainer">
-          <div class="sdpi-item-label">On Color</div>
-          <div class="sdpi-item-value">
-              <input type="color" id="aboutTimeOnRing" value="#00FF00">
+        <div class="wrapper" id="aboutTimeStartStopWrapper" style="display:none">
+          <div class="sub1">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Start/Stop</div>
+              <select class="sdpi-item-value select" id="aboutTimeStartStopMode" type="select">
+                <option value='toggle'>Toggle</option>
+                <option value='start'>Start</option>
+                <option value='stop'>Stop</option>
+              </select> 
+            </div>
           </div>
         </div>
-        <div type="range" class="sdpi-item" id="offColorContainer">
-          <div class="sdpi-item-label">Off Color</div>
-          <div class="sdpi-item-value">
-              <input type="color" id="aboutTimeOffRing" value="#000000">
+
+        <div class="wrapper" id="aboutTimeAdvanceWrapper" style="display:none">
+          <div class="sub2">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label" id="advanceModeLabel">Advance</div>
+              <select class="sdpi-item-value select" id="aboutTimeAdvanceMode" type="select">
+                <option value='dawn'>To Dawn</option>
+                <option value='noon'>To Noon</option>
+                <option value='dusk'>To Dusk</option>
+                <option value='midnight'>To Midnight</option>
+                <option value='1s'>1 Second</option>
+                <option value='30s'>30 Seconds</option>
+                <option value='1m'>1 Minute</option>
+                <option value='5m'>5 Minutes</option>
+                <option value='15m'>15 Minutes</option>
+                <option value='1h'>1 Hour</option>
+              </select> 
+            </div>
+          </div>
+        </div>
+
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Running</div>
+          <input class="sdpi-item-value" id="aboutTimeActive" type="checkbox">
+          <label for="aboutTimeActive"><span></span></label>
+        </div>
+
+        <div class="wrapper" id="aboutTimeRingWrapper" style="display:none">
+          <div type="range" class="sdpi-item" id="onColorContainer">
+            <div class="sdpi-item-label">On Color</div>
+            <div class="sdpi-item-value">
+                <input type="color" id="aboutTimeOnRing" value="#00FF00">
+            </div>
+          </div>
+          <div type="range" class="sdpi-item" id="offColorContainer">
+            <div class="sdpi-item-label">Off Color</div>
+            <div class="sdpi-item-value">
+                <input type="color" id="aboutTimeOffRing" value="#000000">
+            </div>
           </div>
         </div>
       </div>

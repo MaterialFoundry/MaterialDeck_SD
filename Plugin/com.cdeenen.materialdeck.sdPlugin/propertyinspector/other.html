@@ -27,268 +27,198 @@
       </div>
 
       <div class="spdi-wrapper" id="pauseContainer" style="">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Function</div>
-          <select class="sdpi-item-value select" id="pauseFunction" type="select">
-            <option value='pause'>Pause Game</option>
-            <option value='resume'>Resume Game</option>
-            <option value='toggle'>Toggle Pause</option>
-          </select>
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Function</div>
+            <select class="sdpi-item-value select" id="pauseFunction" type="select">
+              <option value='pause'>Pause Game</option>
+              <option value='resume'>Resume Game</option>
+              <option value='toggle'>Toggle Pause</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <div class="spdi-wrapper" id="controlContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Control</div>
-          <select class="sdpi-item-value select" id="control" type="select">
-            <option value='dispControls'>Displayed Controls</option>
-            <option value='dispTools'>Displayed Tools</option>
-            <option value='token'>Basic Controls</option>
-            <option value='measure'>Measurement Controls</option>
-            <option value='tiles'>Tile Controls</option>
-            <option value='drawings'>Drawing Tools</option>
-            <option value='walls'>Wall Controls</option>
-            <option value='lighting'>Lighting Controls</option>
-            <option value='sounds'>Ambient Sound Controls</option>
-            <option value='notes'>Journal Notes</option>
-          </select>
-        </div>
-        <div class="spdi-wrapper" id="displayedControlsContainer" style="display:none">
+        <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Nr</div>
-            <input class="sdpi-item-value" id="controlNr" value="1">
-          </div>
-        </div>
-        <div class="spdi-wrapper" id="basicControlsContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Tool</div>
-            <select class="sdpi-item-value select" id="tool" type="select">
-              <option value='open'>Open Control</option>
-              <option value='select'>Select Tokens</option>
-              <option value='target'>Select Targets</option>
-              <option value='ruler'>Measure Distance</option>
+            <div class="sdpi-item-label">Control</div>
+            <select class="sdpi-item-value select" id="control" type="select">
+              <option value='dispControls'>Displayed Controls</option>
+              <option value='dispTools'>Displayed Tools</option>
+              <option value='token'>Basic Controls</option>
+              <option value='measure'>Measurement Controls</option>
+              <option value='tiles'>Tile Controls</option>
+              <option value='drawings'>Drawing Tools</option>
+              <option value='walls'>Wall Controls</option>
+              <option value='lighting'>Lighting Controls</option>
+              <option value='sounds'>Ambient Sound Controls</option>
+              <option value='notes'>Journal Notes</option>
             </select>
           </div>
-        </div>
-        <div class="spdi-wrapper" id="measurementControlsContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Tool</div>
-            <select class="sdpi-item-value select" id="tool" type="select">
-              <option value='open'>Open Control</option>
-              <option value='circle'>Circle Template</option>
-              <option value='cone'>Cone Template</option>
-              <option value='rect'>Rectangle Template</option>
-              <option value='ray'>Ray Template</option>
-              <option value='clear'>Clear Templates</option>
-            </select>
+
+          <div class="spdi-wrapper" id="displayedControlsContainer" style="display:none">
+            <div class="sub2">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Nr</div>
+                <input class="sdpi-item-value" id="controlNr" value="1">
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="spdi-wrapper" id="tileControlContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Tool</div>
-            <select class="sdpi-item-value select" id="tool" type="select">
-              <option value='open'>Open Control</option>
-              <option value='select'>Select Tiles</option>
-              <option value='place'>Place Tile</option>
-              <option value='browse'>Tile Browser</option>
-            </select>
+
+          <div class="spdi-wrapper" id="toolContainer" style="display:none">
+            <div class="sub2">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Tool</div>
+                <select class="sdpi-item-value select" id="tool" type="select">
+                  <option value='open'>Open Control</option>
+                </select>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="spdi-wrapper" id="drawingToolsContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Tool</div>
-            <select class="sdpi-item-value select" id="tool" type="select">
-              <option value='open'>Open Control</option>
-              <option value='select'>Select Drawings</option>
-              <option value='rect'>Draw Rectangle</option>
-              <option value='ellipse'>Draw Ellipse</option>
-              <option value='polygon'>Draw Polygon</option>
-              <option value='freehand'>Draw Freehand</option>
-              <option value='text'>Draw Text</option>
-              <option value='configure'>Configure Drawing</option>
-              <option value='clear'>Clear Drawings</option>
-            </select>
-          </div>
-        </div>
-        <div class="spdi-wrapper" id="wallControlsContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Tool</div>
-            <select class="sdpi-item-value select" id="tool" type="select">
-              <option value='open'>Open Control</option>
-              <option value='select'>Rectangular Select Walls</option>
-              <option value='walls'>Draw Walls</option>
-              <option value='terrain'>Terrain Walls</option>
-              <option value='invisible'>Invisible Walls</option>
-              <option value='ethereal'>Ethereal Walls</option>
-              <option value='doors'>Draw Doors</option>
-              <option value='secret'>Secret Doors</option>
-              <option value='cone'>Clone Walls</option>
-              <option value='snap'>Force Snap To Grid</option>
-              <option value='clear'>Clear Walls</option>
-            </select>
-          </div>
-        </div>
-        <div class="spdi-wrapper" id="lightingControlsContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Tool</div>
-            <select class="sdpi-item-value select" id="tool" type="select">
-              <option value='open'>Open Control</option>
-              <option value='light'>Draw Light Source</option>
-              <option value='day'>Transition to Daylight</option>
-              <option value='night'>Transition to Darkness</option>
-              <option value='reset'>Reset Fog of War</option>
-              <option value='clear'>Clear Lights</option>
-            </select>
-          </div>
-        </div>
-        <div class="spdi-wrapper" id="soundControlsContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Tool</div>
-            <select class="sdpi-item-value select" id="tool" type="select">
-              <option value='open'>Open Control</option>
-              <option value='sound'>Draw Ambient Sound</option>
-              <option value='clear'>Clear Sounds</option>
-            </select>
-          </div>
-        </div>
-        <div class="spdi-wrapper" id="journalNotesContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Tool</div>
-            <select class="sdpi-item-value select" id="tool" type="select">
-              <option value='open'>Open Control</option>
-              <option value='select'>Select Notes</option>
-              <option value='toggle'>Toggle Notes Display</option>
-              <option value='clear'>Clear Notes</option>
-            </select>
-          </div>
+  
         </div>
       </div>
 
       <div class="spdi-wrapper" id="darknessContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Function</div>
-          <select class="sdpi-item-value select" id="darknessFunction" type="select">
-            <option value='value'>Value</option>
-            <option value='incDec'>Increase/Decrease</option>
-            <option value='disp'>Display</option>
-          </select>
-        </div>
-        <div class="sdpi-item" id="darknessVal" style="display:none">
-          <div class="sdpi-item-label">Value</div>
-          <input class="sdpi-item-value" id="darknessValue" value="0">
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Function</div>
+            <select class="sdpi-item-value select" id="darknessFunction" type="select">
+              <option value='value'>Value</option>
+              <option value='incDec'>Increase/Decrease</option>
+              <option value='disp'>Display</option>
+            </select>
+          </div>
+          <div class="sdpi-item" id="darknessVal" style="display:none">
+            <div class="sdpi-item-label">Value</div>
+            <input class="sdpi-item-value" id="darknessValue" value="0">
+          </div>
         </div>
       </div>
 
       <div class="spdi-wrapper" id="rollDiceContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Function</div>
-          <select class="sdpi-item-value select" id="rollDiceFunction" type="select">
-            <option value='public'>Public Roll</option>
-            <option value='private'>Private Roll</option>
-            <option value='sd'>Display on Stream Deck</option>
-          </select>
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Function</div>
+            <select class="sdpi-item-value select" id="rollDiceFunction" type="select">
+              <option value='public'>Public Roll</option>
+              <option value='private'>Private Roll</option>
+              <option value='sd'>Display on Stream Deck</option>
+            </select>
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Formula</div>
+            <input class="sdpi-item-value" id="rollDiceFormula" value="1d20 + 7">
+          </div>
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Name</div>
+            <input class="sdpi-item-value" id="displayDiceName" type="checkbox">
+            <label for="displayDiceName"><span></span></label>
+          </div> 
         </div>
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Formula</div>
-          <input class="sdpi-item-value" id="rollDiceFormula" value="1d20 + 7">
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displayDiceName" type="checkbox">
-          <label for="displayDiceName"><span></span></label>
-        </div> 
       </div>
       
       <div class="spdi-wrapper" id="rollTableContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Function</div>
-          <select class="sdpi-item-value select" id="rolltableFunction" type="select">
-            <option value='open'>Open</option>
-            <option value='public'>Public Roll</option>
-            <option value='private'>Private Roll</option>
-          </select>
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Function</div>
+            <select class="sdpi-item-value select" id="rolltableFunction" type="select">
+              <option value='open'>Open</option>
+              <option value='public'>Public Roll</option>
+              <option value='private'>Private Roll</option>
+            </select>
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Name</div>
+            <input class="sdpi-item-value" id="rollTableName" value="">
+          </div>
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Name</div>
+            <input class="sdpi-item-value" id="displayRollName" type="checkbox">
+            <label for="displayRollName"><span></span></label>
+          </div> 
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Icon</div>
+            <input class="sdpi-item-value" id="displayRollIcon" type="checkbox">
+            <label for="displayRollIcon"><span></span></label>
+          </div> 
         </div>
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Name</div>
-          <input class="sdpi-item-value" id="rollTableName" value="">
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displayRollName" type="checkbox">
-          <label for="displayRollName"><span></span></label>
-        </div> 
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Icon</div>
-          <input class="sdpi-item-value" id="displayRollIcon" type="checkbox">
-          <label for="displayRollIcon"><span></span></label>
-        </div> 
       </div>
 
       <div class="spdi-wrapper" id="sidebarContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Sidebar</div>
-          <select class="sdpi-item-value select" id="sidebarTab" type="select">
-            <option value='chat'>Chat Log</option>
-            <option value='combat'>Combat Tracker</option>
-            <option value='scenes'>Scenes Directory</option>
-            <option value='actors'>Actors Directory</option>
-            <option value='items'>Items Directory</option>
-            <option value='journal'>Journal Entries</option>
-            <option value='tables'>Rollable Tables</option>
-            <option value='playlists'>Audio Playlist</option>
-            <option value='compendium'>Compendium Packs</option>
-            <option value='settings'>Game Settings</option>
-            <option value='collapse'>Collapse or Expand</option>
-          </select>
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Sidebar</div>
+            <select class="sdpi-item-value select" id="sidebarTab" type="select">
+              <option value='chat'>Chat Log</option>
+              <option value='combat'>Combat Tracker</option>
+              <option value='scenes'>Scenes Directory</option>
+              <option value='actors'>Actors Directory</option>
+              <option value='items'>Items Directory</option>
+              <option value='journal'>Journal Entries</option>
+              <option value='tables'>Rollable Tables</option>
+              <option value='playlists'>Audio Playlist</option>
+              <option value='compendium'>Compendium Packs</option>
+              <option value='settings'>Game Settings</option>
+              <option value='collapse'>Collapse or Expand</option>
+            </select>
+          </div>
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Pop Out</div>
+            <input class="sdpi-item-value" id="sidebarPopOut" type="checkbox">
+            <label for="sidebarPopOut"><span></span></label>
+          </div> 
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Name</div>
+            <input class="sdpi-item-value" id="displaySidebarName" type="checkbox">
+            <label for="displaySidebarName"><span></span></label>
+          </div> 
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Icon</div>
+            <input class="sdpi-item-value" id="displaySidebarIcon" type="checkbox">
+            <label for="displaySidebarIcon"><span></span></label>
+          </div> 
         </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Pop Out</div>
-          <input class="sdpi-item-value" id="sidebarPopOut" type="checkbox">
-          <label for="sidebarPopOut"><span></span></label>
-        </div> 
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displaySidebarName" type="checkbox">
-          <label for="displaySidebarName"><span></span></label>
-        </div> 
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Icon</div>
-          <input class="sdpi-item-value" id="displaySidebarIcon" type="checkbox">
-          <label for="displaySidebarIcon"><span></span></label>
-        </div> 
       </div>
 
       <div class="spdi-wrapper" id="compendiumContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Name</div>
-          <input class="sdpi-item-value" id="compendiumName" value="">
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Name</div>
+            <input class="sdpi-item-value" id="compendiumName" value="">
+          </div>
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Name</div>
+            <input class="sdpi-item-value" id="displayCompendiumName" type="checkbox">
+            <label for="displayCompendiumName"><span></span></label>
+          </div> 
         </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displayCompendiumName" type="checkbox">
-          <label for="displayCompendiumName"><span></span></label>
-        </div> 
       </div>
 
       <div class="spdi-wrapper" id="chatMessageContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Message</div>
-          <input class="sdpi-item-value" id="chatMessage" value="">
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Message</div>
+            <input class="sdpi-item-value" id="chatMessage" value="">
+          </div>
         </div>
       </div>
 
       <div class="spdi-wrapper" id="rollOptionsContainer" style="">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Function</div>
-          <select class="sdpi-item-value select" id="rollOptionFunction" type="select">
-            <option value='dialog'>Dialog Box</option>
-            <option value='normal'>Normal</option>
-            <option value='advantage'>Advantage</option>
-            <option value='disadvantage'>Disadvantage</option>
-          </select>
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Function</div>
+            <select class="sdpi-item-value select" id="rollOptionFunction" type="select">
+              <option value='dialog'>Dialog Box</option>
+              <option value='normal'>Normal</option>
+              <option value='advantage'>Advantage</option>
+              <option value='disadvantage'>Disadvantage</option>
+            </select>
+          </div>
         </div>
       </div>
-
+      
       <div class="spdi-wrapper" id="ringColorWrapper" style="">
         <div type="range" class="sdpi-item" id="onColorContainer">
           <div class="sdpi-item-label">On Color</div>

@@ -19,75 +19,80 @@
         </select>
       </div>
       <div class="wrapper" id="funcWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Function</div>
-          <select class="sdpi-item-value select" id="combatTrackerFunction" type="select">
-            <option value='startStop'>Start/Stop Combat</option>
-            <option value='endTurn'>End Turn</option>
-            <option value='nextTurn'>Next Turn</option>
-            <option value='prevTurn'>Previous Turn</option>
-            <option value='nextRound'>Next Round</option>
-            <option value='prevRound'>Previous Round</option>
-            <option value='turnDisplay'>Turn Display</option>
-          </select>
-        </div>
-        <div id="turnDisplay" style="display:none">
-          <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Display Turn</div>
-            <input class="sdpi-item-value" id="displayTurn" type="checkbox">
-            <label for="displayTurn"><span></span></label>
-          </div>
-          <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Display Round</div>
-            <input class="sdpi-item-value" id="displayRound" type="checkbox">
-            <label for="displayRound"><span></span></label>
-          </div>
-        </div>
-        
-      </div>
-      <div class="wrapper" id="combatantWrapper" style="">
-
-        <div class="sdpi-item" style="">
-          <div class="sdpi-item-label">Stats</div>
-          <select class="sdpi-item-value select" id="stats" type="select">
-            <option value='none'>None</option>
-            <option value='custom'>Custom</option>
-          </select>
-        </div>
-        
-        <div class="sdpi-item" id="customContainer" style="display:none">
-          <div class="sdpi-item-label">Custom</div>
-          <input class="sdpi-item-value" id="custom" value="">
-        </div>
-
-        <div class="wrapper" id="onClickWrapper" style="">
+        <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">On Click</div>
-            <select class="sdpi-item-value select" id="onClick" type="select">
-              <option value='doNothing'>Do Nothing</option>
-              <option value ='select'>Select Token</option>
-              <option value='center'>Center on Token</option>
-              <option value='centerSelect'>Center on Token and Select Token</option>
-              <option value='charSheet'>Open Character Sheet</option>
-              <option value='tokenConfig'>Open Token Config</option>
+            <div class="sdpi-item-label">Function</div>
+            <select class="sdpi-item-value select" id="combatTrackerFunction" type="select">
+              <option value='startStop'>Start/Stop Combat</option>
+              <option value='endTurn'>End Turn</option>
+              <option value='nextTurn'>Next Turn</option>
+              <option value='prevTurn'>Previous Turn</option>
+              <option value='nextRound'>Next Round</option>
+              <option value='prevRound'>Previous Round</option>
+              <option value='turnDisplay'>Turn Display</option>
             </select>
           </div>
+          <div id="turnDisplay" style="display:none">
+            <div class="sub2">
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Display Turn</div>
+                <input class="sdpi-item-value" id="displayTurn" type="checkbox">
+                <label for="displayTurn"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Display Round</div>
+                <input class="sdpi-item-value" id="displayRound" type="checkbox">
+                <label for="displayRound"><span></span></label>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="sdpi-item" id="combatantNrSel" stype="display:none">
-          <div class="sdpi-item-label">Combatant Nr</div>
-          <input class="sdpi-item-value" id="combatantNr" value="1">
-        </div>
+      <div class="wrapper" id="combatantWrapper" style="">
+        <div class="sub1">
+          <div class="sdpi-item" style="">
+            <div class="sdpi-item-label">Stats</div>
+            <select class="sdpi-item-value select" id="stats" type="select">
+              <option value='none'>None</option>
+              <option value='custom'>Custom</option>
+            </select>
+          </div>
+          
+          <div class="sdpi-item" id="customContainer" style="display:none">
+            <div class="sdpi-item-label">Custom</div>
+            <input class="sdpi-item-value" id="custom" value="">
+          </div>
 
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displayName" type="checkbox">
-          <label for="displayName"><span></span></label>
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Icon</div>
-          <input class="sdpi-item-value" id="displayIcon" type="checkbox">
-          <label for="displayIcon"><span></span></label>
+          <div class="wrapper" id="onClickWrapper" style="">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">On Click</div>
+              <select class="sdpi-item-value select" id="onClick" type="select">
+                <option value='doNothing'>Do Nothing</option>
+                <option value ='select'>Select Token</option>
+                <option value='center'>Center on Token</option>
+                <option value='centerSelect'>Center on Token and Select Token</option>
+                <option value='charSheet'>Open Character Sheet</option>
+                <option value='tokenConfig'>Open Token Config</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="sdpi-item" id="combatantNrSel" stype="display:none">
+            <div class="sdpi-item-label">Combatant Nr</div>
+            <input class="sdpi-item-value" id="combatantNr" value="1">
+          </div>
+
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Name</div>
+            <input class="sdpi-item-value" id="displayName" type="checkbox">
+            <label for="displayName"><span></span></label>
+          </div>
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Icon</div>
+            <input class="sdpi-item-value" id="displayIcon" type="checkbox">
+            <label for="displayIcon"><span></span></label>
+          </div>
         </div>
       </div>
 

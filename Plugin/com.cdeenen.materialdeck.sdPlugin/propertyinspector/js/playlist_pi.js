@@ -1,0 +1,35 @@
+function setUI(returnValue={key:null,value:null}) {
+    let playlistType = settings.playlistType ? settings.playlistType : 'playStop';
+    let playlistMode = settings.playlistMode ? settings.playlistMode : 'playlist';
+
+    if (returnValue.key == 'playlistType') playlistType = returnValue.value;
+    else if (returnValue.key == 'playlistMode') playlistMode = returnValue.value;
+
+    displayElement(`#playlistModeType`,false);
+    displayElement(`#playlistOffsetWrapper`,false);
+    displayElement(`#playlistPlayWrapper`,false);
+    displayElement(`#ringColorWrapper`,false);
+    displayElement(`#offsetName`,false);
+    displayElement(`#trackNrContainer`,false);
+    displayElement(`#stopAllWrapper`,false);
+
+    if (playlistMode == 'stopAll') {
+        displayElement(`#stopAllWrapper`,true);
+    }
+    else {
+        displayElement('#playlistModeType',true);
+        if (playlistType != 'relativeOffset') displayElement(`#ringColorWrapper`,true);
+        if (playlistType == 'offset' || playlistType == 'relativeOffset'){
+            displayElement(`#playlistOffsetWrapper`,true);
+            if (playlistMode == 'playlist') displayElement(`#offsetName`,true);
+        }
+        else {
+            if (playlistMode == 'track') displayElement(`#trackNrContainer`,true);
+            displayElement(`#playlistPlayWrapper`,true);
+        }
+    } 
+}
+
+function setSystemDependentElements() {
+
+}

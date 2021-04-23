@@ -23,9 +23,11 @@
       </div>
 
       <div class="wrapper"  id="tokenNameWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label" id='tokenNameLabel'>Name</div>
-          <input class="sdpi-item-value" id="tokenName" value="">
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label" id='tokenNameLabel'>Name</div>
+            <input class="sdpi-item-value" id="tokenName" value="">
+          </div>
         </div>
       </div>
 
@@ -42,33 +44,35 @@
         </select>
       </div>
 
-      <div class="sdpi-item" id="customContainer" style="display:none">
-        <div class="sdpi-item-label">Custom Formula</div>
-        <textarea class="sdpi-item-value" rows="3" cols="1" id="custom" style="word-break: break-word;">
-        </textarea>
-      </div>
-
-      <div class="wrapper" id="abilityContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Ability</div>
-          <select class="sdpi-item-value select" id="ability" type="select">
-          </select>
+      <div class="sub1">
+        <div class="sdpi-item" id="customContainer" style="display:none">
+          <div class="sdpi-item-label">Custom Formula</div>
+          <textarea class="sdpi-item-value" id="custom" style="word-break:break-word;" value="">
+          </textarea>
         </div>
-      </div>
 
-      <div class="wrapper" id="saveContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Save</div>
-          <select class="sdpi-item-value select" id="save" type="select">
-          </select>
+        <div class="wrapper" id="abilityContainer" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Ability</div>
+            <select class="sdpi-item-value select" id="ability" type="select">
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div class="wrapper" id="skillContainer" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Skill</div>
-          <select class="sdpi-item-value select" id="skill" type="select">
-          </select>
+        <div class="wrapper" id="saveContainer" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Save</div>
+            <select class="sdpi-item-value select" id="save" type="select">
+            </select>
+          </div>
+        </div>
+
+        <div class="wrapper" id="skillContainer" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Skill</div>
+            <select class="sdpi-item-value select" id="skill" type="select">
+            </select>
+          </div>
         </div>
       </div>
 
@@ -94,190 +98,208 @@
         </select>
       </div>
 
-      <div class="wrapper" id="wildcardWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Wildcard Image</div>
-          <select class="sdpi-item-value select" id="wildcardMethod" type="select">
-            <option value='iterate'>Iterate image</option>
-            <option value='set'>Set image</option>
-            <option value='offset'>Offset</option>
-          </select>
-        </div>
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Value</div>
-          <input class="sdpi-item-value" id="wildcardValue" value="1">
-        </div>
-      </div>
-
-      <div class="wrapper" id="customOnClickWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Formula</div>
-          <textarea class="sdpi-item-value" rows="6" cols="1" id="customOnClickFormula" style="word-break: break-word;">
-          </textarea>
-        </div> 
-      </div>
-      
-      <div class="wrapper" id="conditionWrapper" style="">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Condition</div>
-          <select class="sdpi-item-value select" id="condition" type="select">
-            <option value='removeAll'>Remove All</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="wrapper" id="cubConditionWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Condition Name</div>
-          <input class="sdpi-item-value" id="cubConditionName" value="">
-        </div>
-      </div>
-
-      <div class="wrapper" id="macroWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Macro Mode</div>
-          <select class="sdpi-item-value select" id="macroMode" type="select">
-            <option value='hotbar'>Hotbar</option>
-            <option value='visibleHotbar'>Visible Hotbar</option>
-            <option value='customHotbar'>Custom Hotbar (external module)</option>
-            <option value='macroBoard'>Macro Board</option>
-            <option value='name'>By Name</option>
-          </select>
-        </div>
-
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Macro Target</div>
-          <select class="sdpi-item-value select" id="macroTarget" type="select">
-            <option value='any'>Any</option>
-            <option value='token'>This Token/Actor</option>
-          </select>
-        </div>
-
-        <div class="sdpi-item">
-          <div class="sdpi-item-label" id="macroNumberLabel">Macro Number</div>
-          <input class="sdpi-item-value" id="macroId" value="">
-        </div>
-
-        <div class="wrapper" id="macroArgsWrapper" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Furnace Arguments</div>
-            <input class="sdpi-item-value" id="macroArgs" value="">
-          </div>
-        </div>
-        
-      </div>
-
-      <div class="wrapper" id="rollWrapper" style="display:none">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Roll</div>
-          <select class="sdpi-item-value select" id="roll" type="select">
-            <option value='ability'>Ability Check</option>
-            <option value='save'>Saving Throw</option>
-            <option value='skill'>Skill Check</option>
-          </select>
-        </div>
-
-        <div class="wrapper" id="rollAbilityContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Ability</div>
-            <select class="sdpi-item-value select" id="rollAbility" type="select">
-            </select>
-          </div>
-        </div>
-
-        <div class="wrapper" id="rollSaveContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Save</div>
-            <select class="sdpi-item-value select" id="rollSave" type="select">
-            </select>
-          </div>
-        </div>
-
-        <div class="wrapper" id="rollSkillContainer" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Skill</div>
-            <select class="sdpi-item-value select" id="rollSkill" type="select">
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div class="wrapper"  id="visionWrapper" style="display:none">
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Dim Vision</div>
-            <input class="sdpi-item-value" id="dimVision" value="">
-          </div>
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Bright Vision</div>
-            <input class="sdpi-item-value" id="brightVision" value="">
-          </div>
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Sight Angle</div>
-            <input class="sdpi-item-value" id="sightAngle" value="">
-          </div>
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Dim Light Radius</div>
-            <input class="sdpi-item-value" id="dimRadius" value="">
-          </div>
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Bright Light Radius</div>
-            <input class="sdpi-item-value" id="brightRadius" value="">
-          </div>
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Emission Angle</div>
-            <input class="sdpi-item-value" id="emissionAngle" value="">
-          </div>
-          <div type="range" class="sdpi-item">
-            <div class="sdpi-item-label">Light Color</div>
-            <div class="sdpi-item-value">
-                <input type="color" id="lightColor" value="#000000">
+      <div class="sub1">
+        <div class="wrapper" id="wildcardWrapper" style="display:none">
+          <div class="sub1">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Wildcard Image</div>
+              <select class="sdpi-item-value select" id="wildcardMethod" type="select">
+                <option value='iterate'>Iterate image</option>
+                <option value='set'>Set image</option>
+                <option value='offset'>Offset</option>
+              </select>
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Value</div>
+              <input class="sdpi-item-value" id="wildcardValue" value="1">
             </div>
           </div>
-          <div type="range" class="sdpi-item">
-            <div class="sdpi-item-label">Color Intensity</div>
-            <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="colorIntensity">
-          </div>
-          <div class="sdpi-item">
-            <div class="sdpi-item-label">Animation Type</div>
-            <select class="sdpi-item-value select" id="animationType" type="select">
-              <option value='none'>None</option>
-              <option value='torch'>Torch</option>
-              <option value='pulse'>Pulse</option>
-              <option value='chroma'>Chroma</option>
-              <option value='wave'>Pulsing Wave</option>
-              <option value='fog'>Swirling Fog</option>
-              <option value='sunburst'>Sunburst</option>
-              <option value='dome'>Light Dome</option>
-              <option value='emenation'>Mysterious Emanation</option>
-              <option value='hexa'>Hexa Dome</option>
-              <option value='ghost'>Ghostly Light</option>
-              <option value='energy'>Energy Field</option>
-              <option value='roiling'>Roiling Mass (Darkness)</option>
-              <option value='hole'>Black Hole (Darkness)</option>
-            </select>
         </div>
-          <div type="range" class="sdpi-item">
-            <div class="sdpi-item-label">Animation Speed</div>
-            <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="animationSpeed">
+
+        <div class="wrapper" id="customOnClickWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Formula</div>
+            <textarea class="sdpi-item-value" id="customOnClickFormula" style="word-break: break-word;">
+            </textarea>
+          </div> 
+        </div>
+        
+        <div class="wrapper" id="conditionWrapper" style="">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Condition</div>
+            <select class="sdpi-item-value select" id="condition" type="select">
+              <option value='removeAll'>Remove All</option>
+            </select>
           </div>
-          <div type="range" class="sdpi-item">
-            <div class="sdpi-item-label">Animation Intensity</div>
-            <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="animationIntensity">
+        </div>
+
+        <div class="wrapper" id="cubConditionWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Condition Name</div>
+            <input class="sdpi-item-value" id="cubConditionName" value="">
           </div>
+        </div>
+
+        <div class="wrapper" id="macroWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Macro Mode</div>
+            <select class="sdpi-item-value select" id="macroMode" type="select">
+              <option value='hotbar'>Hotbar</option>
+              <option value='visibleHotbar'>Visible Hotbar</option>
+              <option value='customHotbar'>Custom Hotbar (external module)</option>
+              <option value='macroBoard'>Macro Board</option>
+              <option value='name'>By Name</option>
+            </select>
+          </div>
+
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Macro Target</div>
+            <select class="sdpi-item-value select" id="macroTarget" type="select">
+              <option value='any'>Any</option>
+              <option value='token'>This Token/Actor</option>
+            </select>
+          </div>
+
+          <div class="sdpi-item">
+            <div class="sdpi-item-label" id="macroNumberLabel">Macro Number</div>
+            <input class="sdpi-item-value" id="macroId" value="">
+          </div>
+
+          <div class="wrapper" id="macroArgsWrapper" style="display:none">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Furnace Arguments</div>
+              <input class="sdpi-item-value" id="macroArgs" value="">
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="wrapper" id="rollWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Roll</div>
+            <select class="sdpi-item-value select" id="roll" type="select">
+              <option value='ability'>Ability Check</option>
+              <option value='save'>Saving Throw</option>
+              <option value='skill'>Skill Check</option>
+            </select>
+          </div>
+
+          <div class="wrapper" id="rollAbilityContainer" style="display:none">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Ability</div>
+              <select class="sdpi-item-value select" id="rollAbility" type="select">
+              </select>
+            </div>
+          </div>
+
+          <div class="wrapper" id="rollSaveContainer" style="display:none">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Save</div>
+              <select class="sdpi-item-value select" id="rollSave" type="select">
+              </select>
+            </div>
+          </div>
+
+          <div class="wrapper" id="rollSkillContainer" style="display:none">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Skill</div>
+              <select class="sdpi-item-value select" id="rollSkill" type="select">
+              </select>
+            </div>
+          </div>
+
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Roll Mode</div>
+            <select class="sdpi-item-value select" id="rollMode" type="select">
+              <option value='default'>Default</option>
+              <option value='normal'>Normal Roll</option>
+              <option value='advantage'>Advantage</option>
+              <option value='disadvantage'>Disadvantage</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="wrapper"  id="visionWrapper" style="display:none">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Dim Vision</div>
+              <input class="sdpi-item-value" id="dimVision" value="">
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Bright Vision</div>
+              <input class="sdpi-item-value" id="brightVision" value="">
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Sight Angle</div>
+              <input class="sdpi-item-value" id="sightAngle" value="">
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Dim Light Radius</div>
+              <input class="sdpi-item-value" id="dimRadius" value="">
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Bright Light Radius</div>
+              <input class="sdpi-item-value" id="brightRadius" value="">
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Emission Angle</div>
+              <input class="sdpi-item-value" id="emissionAngle" value="">
+            </div>
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Light Color</div>
+              <div class="sdpi-item-value">
+                  <input type="color" id="lightColor" value="#000000">
+              </div>
+            </div>
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Color Intensity</div>
+              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="colorIntensity">
+            </div>
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Animation Type</div>
+              <select class="sdpi-item-value select" id="animationType" type="select">
+                <option value='none'>None</option>
+                <option value='torch'>Torch</option>
+                <option value='pulse'>Pulse</option>
+                <option value='chroma'>Chroma</option>
+                <option value='wave'>Pulsing Wave</option>
+                <option value='fog'>Swirling Fog</option>
+                <option value='sunburst'>Sunburst</option>
+                <option value='dome'>Light Dome</option>
+                <option value='emenation'>Mysterious Emanation</option>
+                <option value='hexa'>Hexa Dome</option>
+                <option value='ghost'>Ghostly Light</option>
+                <option value='energy'>Energy Field</option>
+                <option value='roiling'>Roiling Mass (Darkness)</option>
+                <option value='hole'>Black Hole (Darkness)</option>
+              </select>
+          </div>
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Animation Speed</div>
+              <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="animationSpeed">
+            </div>
+            <div type="range" class="sdpi-item">
+              <div class="sdpi-item-label">Animation Intensity</div>
+              <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="animationIntensity">
+            </div>
+        </div>
       </div>
       
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Icon</div>
+        <select class="sdpi-item-value select" id="icon" type="select">
+          <option value='none'>None</option>
+          <option value='tokenIcon'>Token Icon</option>
+          <option value='actorIcon'>Actor Icon</option>
+          <option value='stats'>Default</option>
+        </select>
+      </div>
+
       <div type="checkbox" class="sdpi-item">
         <div class="sdpi-item-label">Display Token Name</div>
         <input class="sdpi-item-value" id="displayName" type="checkbox">
         <label for="displayName"><span></span></label>
       </div>
-      
-      <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Token Icon</div>
-        <input class="sdpi-item-value" id="displayIcon" type="checkbox">
-        <label for="displayIcon"><span></span></label>
-      </div>
-
+    
       <div type="range" class="sdpi-item">
         <div class="sdpi-item-label">Background</div>
         <div class="sdpi-item-value">
