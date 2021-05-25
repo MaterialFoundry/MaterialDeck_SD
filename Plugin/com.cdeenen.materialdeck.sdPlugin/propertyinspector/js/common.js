@@ -837,7 +837,7 @@ const StreamDeck = (function () {
                     }
                 }
 
-                if (m && m !== '')
+                if (m && m !== '') 
                     events.emit(m, jsonObj);
             };
 
@@ -885,7 +885,7 @@ function initializeControlCenterClient () {
 const ELGEvents = {
     eventEmitter: function (name, fn) {
         const eventList = new Map();
-
+        
         const on = (name, fn) => {
             if (!eventList.has(name)) eventList.set(name, ELGEvents.pubSub());
 
@@ -897,7 +897,7 @@ const ELGEvents = {
 
         const emit = (name, data) =>
             eventList.has(name) && eventList.get(name).pub(data);
-
+        
         return Object.freeze({ on, has, emit, eventList });
     },
 
@@ -1064,7 +1064,6 @@ const SDApi = {
         },
 
         setSettings: function (context, payload) {
-            if (debugEn) console.log("setSettings",payload)
             SDApi.send(context, 'setSettings', {
                 payload: payload
             });
@@ -1255,6 +1254,11 @@ function setElements(id) {
             else selection == 'fort';
         }
     }
+    else if (id == 'inventoryType') {
+        options = getItemTypes(system)
+        selection = settings.inventoryType;
+        if (selection == undefined) selection = 'any';
+    }
 
     let element = document.getElementById(id);
     for (let option of options) {
@@ -1264,6 +1268,7 @@ function setElements(id) {
         element.appendChild(newOption);
     }
     element.value = selection;
+    //console.log('element',id,options,element)
 }
 
 function getStats(system){
@@ -1684,3 +1689,83 @@ function getRolls(system){
         ]
     return rolls;
 }
+
+function getItemTypes(system){
+    let types = [];
+    if (system == 'D35E') 
+        types = [
+            {value:'weapon', name:'Weapons'},
+            {value:'equipment', name:'Armor/Equipment'},
+            {value:'consumable', name:'Consumables'},
+            {value:'gear', name:'Gear'},
+            {value:'ammo', name:'Ammunition'},
+            {value:'misc', name:'Miscellaneous'},
+            {value:'tradeGoods', name:'Trade Goods'},
+            {value:'container', name:'Containers'}
+        ]
+    else if (system == 'pf1') 
+        types = [
+            {value:'weapon', name:'Weapons'},
+            {value:'equipment', name:'Armor/Equipment'},
+            {value:'consumable', name:'Consumables'},
+            {value:'gear', name:'Gear'},
+            {value:'ammo', name:'Ammunition'},
+            {value:'misc', name:'Miscellaneous'},
+            {value:'tradeGoods', name:'Trade Goods'},
+            {value:'container', name:'Containers'}
+        ]
+    else if (system == 'pf2e')
+        types = [
+            {value:'weapon', name:'Weapons'},
+            {value:'armor', name:'Armor'},
+            {value:'equipment', name:'Equipment'},
+            {value:'consumable', name:'Consumables'},
+            {value:'treasure', name:'Treasure'}
+        ]
+    else if (system == 'demonlord')
+        types = [
+
+        ]
+    else 
+        types = [
+            {value:'weapon', name:'Weapons'},
+            {value:'equipment', name:'Equipment'},
+            {value:'consumable', name:'Consumables'},
+            {value:'tool', name:'Tools'},
+            {value:'backpack', name:'Containers'},
+            {value:'loot', name:'Loot'}
+        ]
+    return types;
+}
+
+function getFeatureTypes(system){
+    let types = [];
+    if (system == 'D35E') 
+        types = [
+
+        ]
+    else if (system == 'pf1') 
+        types = [
+ 
+        ]
+    else if (system == 'pf2e')
+        types = [
+
+        ]
+    else if (system == 'demonlord')
+        types = [
+
+        ]
+    else 
+        types = [
+            {value:'class', name:'Class'},
+            {value:'equipment', name:'Equipment'},
+            {value:'consumable', name:'Consumables'},
+            {value:'tool', name:'Tools'},
+            {value:'backpack', name:'Containers'},
+            {value:'loot', name:'Loot'}
+        ]
+    return types;
+}
+
+//{value:'', name:''},

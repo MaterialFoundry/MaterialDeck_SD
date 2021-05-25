@@ -3,6 +3,7 @@ function setUI(returnValue={key:null,value:null}) {
     if (returnValue.key == 'otherMode') mode = returnValue.value;
     
     displayElement(`#pauseContainer`,false);
+    displayElement(`#moveContainer`,false);
     displayElement(`#controlContainer`,false);
     displayElement(`#darknessContainer`,false);
     displayElement(`#rollDiceContainer`,false);
@@ -17,6 +18,9 @@ function setUI(returnValue={key:null,value:null}) {
         displayElement(`#pauseContainer`,true);
         displayElement(`#ringColorWrapper`,true);
     }
+    else if (mode == 'move') {  //move canvas
+        displayElement(`#moveContainer`,true);
+    }
     else if (mode == 'controlButtons'){   //control buttons
         let controlMode = settings.control ? settings.control : 'dispControls';
         if (returnValue.key == 'control') controlMode = returnValue.value;
@@ -26,7 +30,6 @@ function setUI(returnValue={key:null,value:null}) {
 
         if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
         else {
-            console.log('returnValue',returnValue)
             if (returnValue.key != 'tool') getTools(controlMode);
             if (returnValue.key != undefined && returnValue.key != 'dispControls' && returnValue.key != 'dispTools') {
                 const val = {
@@ -38,7 +41,6 @@ function setUI(returnValue={key:null,value:null}) {
                     type: 'select-one',
                     value: 'open'
                 }
-                console.log('saveTools')
                 saveSettings(val);
             }
             displayElement(`#toolContainer`,true);
@@ -94,7 +96,6 @@ function setSystemDependentElements() {
 
 function getTools(control) {
     let tools = [];
-console.log(control)
     if (control == 'token') {
         tools = [
             {value:'select',name:'Select Tokens'},

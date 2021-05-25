@@ -25,7 +25,6 @@ let gameSystem = 'dnd5e';
 let buttonContext = [];
 let connectedDevices = 0;
 
-
 $SD.on('connected', (jsonObj) => connected(jsonObj));
 
 function connected(jsn) {
@@ -36,14 +35,13 @@ function connected(jsn) {
     connectToServerWS();
     let actions = [];
     actions[0] = 'com.cdeenen.materialdeck.token';
-    actions[1] = 'com.cdeenen.materialdeck.move';
-    actions[2] = 'com.cdeenen.materialdeck.macro';
-    actions[3] = 'com.cdeenen.materialdeck.combattracker';
-    actions[4] = 'com.cdeenen.materialdeck.playlist'; 
-    actions[5] = 'com.cdeenen.materialdeck.soundboard';
-    actions[6] = 'com.cdeenen.materialdeck.other';
-    actions[7] = 'com.cdeenen.materialdeck.external';
-    actions[8] = 'com.cdeenen.materialdeck.scene';
+    actions[1] = 'com.cdeenen.materialdeck.macro';
+    actions[2] = 'com.cdeenen.materialdeck.combattracker';
+    actions[3] = 'com.cdeenen.materialdeck.playlist'; 
+    actions[4] = 'com.cdeenen.materialdeck.soundboard';
+    actions[5] = 'com.cdeenen.materialdeck.other';
+    actions[6] = 'com.cdeenen.materialdeck.external';
+    actions[7] = 'com.cdeenen.materialdeck.scene';
     
 
     for (let i=0; i<actions.length; i++){
@@ -52,6 +50,8 @@ function connected(jsn) {
         $SD.on(actions[i]+'.keyDown', (jsonObj) => action.onEvent(jsonObj));
         $SD.on(actions[i]+'.keyUp', (jsonObj) => action.onEvent(jsonObj));
         $SD.on(actions[i]+'.didReceiveSettings', (jsonObj) => action.onEvent(jsonObj));
+        $SD.on(actions[i]+'.sendToPlugin', (jsonObj) => action.onSendToPlugin(jsonObj));
+        
         //$SD.on(actions[i]+'.propertyInspectorDidAppear', (jsonObj) => {
        //     if (debugEn) console.log('%c%s', 'color: white; background: black; font-size: 13px;', '[app.js]propertyInspectorDidAppear:');
        // });
@@ -77,17 +77,33 @@ $SD.on('deviceDidConnect', jsn => {
         device: jsn.device,
         type: jsn.deviceInfo.type,
         size: jsn.deviceInfo.size,
-        context: context
+        context: context,
+        activeButtons: 0,
+        activeButtonsOld: 0,
+        pageSettings: {
+            tokenSelection: '',
+            tokenId: '',
+        }
     }
     connectedDevices++;
 });
 
 $SD.on('com.cdeenen.materialdeck.token.propertyInspectorDidAppear', jsn => {
+    
+    let device;
+    for (d of buttonContext) {
+        if (d.device == jsn.device) {
+            device = d;
+        }
+    }
     var json = {
         action: jsn.action,
         event: "sendToPropertyInspector",
         context: jsn.context,
-        payload: {gameSystem:gameSystem}
+        payload: {
+            gameSystem,
+            device
+        }
     };
     $SD.connection.send(JSON.stringify(json)); 
 });
@@ -134,9 +150,34 @@ function disconnected(jsn){
 const action = {
     settings:{},
     onEvent: async function(jsn){
-        //if (debugEn) console.log(jsn);
+        //console.log('onEvent',jsn);
 
         const action = jsn.action.replace("com.cdeenen.materialdeck.", "");
+
+        if (jsn.event == 'keyDown' && action == 'token' && jsn.payload != undefined && jsn.payload.settings.onClick == 'setPageWideToken') {
+            for (d of buttonContext) {
+                if (d.device == jsn.device) {
+                    d.pageSettings = {
+                        tokenSelection: jsn.payload.settings.pageTokenSelection,
+                        tokenId: jsn.payload.settings.pageTokenName
+                    }; 
+                    sendContextDevice(d);
+                }
+            }
+        }
+
+        if (jsn.payload.settings.pageWideToken) {
+            for (d of buttonContext) {
+                if (d.device == jsn.device) {
+                    const pageSettings = d.pageSettings;
+                    if (pageSettings.tokenSelection != "") {
+                        jsn.payload.settings.selection = pageSettings.tokenSelection;
+                        jsn.payload.settings.tokenName = pageSettings.tokenId;
+                    }
+                    
+                }
+            }
+        }
 
         let msg = {
             target: "MD",
@@ -157,13 +198,12 @@ const action = {
         //Transition for new token icon settings
         if (jsn.event == 'willAppear' && action == 'token') {
             if (msg.payload.settings.icon == undefined){
-                console.log('test')
                 if (msg.payload.settings.displayIcon == false || msg.payload.settings.onClick == 'wildcard') msg.payload.settings.icon = 'stats';
                 if (msg.payload.settings.displayIcon == true) msg.payload.settings.icon = 'tokenIcon';
                 $SD.api.setSettings(jsn.context, msg.payload.settings);
-                console.log(msg.payload.settings)
             }
         }
+
 
         for (i in buttonContext) {
             if (buttonContext[i].device == jsn.device) {
@@ -176,10 +216,10 @@ const action = {
 
     },
     onDidReceiveSettings: function(jsn) {
-        if (debugEn) console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
+        //console.log('%c%s', 'color: white; background: red; font-size: 15px;', '[app.js]onDidReceiveSettings:');
 
-        this.settings = Utils.getProp(jsn, 'payload.settings', {});
-        this.doSomeThing(this.settings, 'onDidReceiveSettings', 'orange');
+        //this.settings = Utils.getProp(jsn, 'payload.settings', {});
+        //this.doSomeThing(this.settings, 'onDidReceiveSettings', 'orange');
 
         /**
          * In this example we put a HTML-input element with id='mynameinput'
@@ -190,7 +230,7 @@ const action = {
          * the key.
          */
 
-         this.setTitle(jsn);
+         //this.setTitle(jsn);
     },
 
     /** 
@@ -230,16 +270,15 @@ const action = {
     },
 
     onSendToPlugin: function (jsn) {
-        //if (debugEn) console.log('onSendToPlugin',jsn)
-        /**
-         * this is a message sent directly from the Property Inspector 
-         * (e.g. some value, which is not saved to settings) 
-         * You can send this event from Property Inspector (see there for an example)
-         */ 
-
-        const sdpi_collection = Utils.getProp(jsn, 'payload.sdpi_collection', {});
-        if (sdpi_collection.value && sdpi_collection.value !== undefined) {
-            this.doSomeThing({ [sdpi_collection.key] : sdpi_collection.value }, 'onSendToPlugin', 'fuchsia');            
+        if (debugEn) console.log('onSendToPlugin',jsn)
+        
+        if (jsn.payload.pageSettings != undefined) {
+            for (d of buttonContext) {
+                if (d.device == jsn.payload.device) {
+                    d.pageSettings = jsn.payload.pageSettings;
+                    sendContextDevice(d);
+                }
+            }
         }
     },
 
@@ -249,11 +288,11 @@ const action = {
      */
 
     saveSettings: function (jsn, sdpi_collection) {
-        //if (debugEn) console.log('saveSettings:', jsn);
+        if (debugEn) console.log('saveSettings:', jsn);
         if (sdpi_collection.hasOwnProperty('key') && sdpi_collection.key != '') {
             if (sdpi_collection.value && sdpi_collection.value !== undefined) {
                 this.settings[sdpi_collection.key] = sdpi_collection.value;
-                //if (debugEn) console.log('setSettings....', this.settings);
+                if (debugEn) console.log('setSettings....', this.settings);
                 $SD.api.setSettings(jsn.context, this.settings);
             }
         }
@@ -284,7 +323,7 @@ const action = {
 
     doSomeThing: function(inJsonData, caller, tagColor) {
         if (debugEn) console.log('%c%s', `color: white; background: ${tagColor || 'grey'}; font-size: 15px;`, `[app.js]doSomeThing from: ${caller}`);
-        // if (debugEn) console.log(inJsonData);
+         if (debugEn) console.log(inJsonData);
     }, 
 };
 
@@ -346,10 +385,10 @@ function connectToServerWS() {
 }
 
 function sendToServer(msg){
-    //if (debugEn) console.log(serverWS);
+    if (debugEn) console.log(serverWS);
     if (serverWS && serverWS.readyState === 1){
         serverWS.send(JSON.stringify(msg));
-        //if (debugEn) console.log("send",JSON.stringify(msg));
+        if (debugEn) console.log("send",JSON.stringify(msg));
     }
 }
 
@@ -406,10 +445,23 @@ function findInImageBuffer(data){
 
 
 function setContext(device, coordinates = {column:0,row:0},msg){
+    
     for (d of buttonContext) {
         if (d.device == device) {
             const num = coordinates.column + coordinates.row*d.size.columns;
+            if (d.context[num] == undefined) {
+                d.activeButtonsOld = d.activeButtons;
+                d.activeButtons++;
+                if (d.pageSettings.tokenSelection == "" && msg.payload.settings.pageWideToken) {
+                    
+                    d.pageSettings = {
+                        tokenId: msg.payload.settings.tokenName,
+                        tokenSelection: msg.payload.settings.selection
+                    }
+                }
+            }
             d.context[num] = msg;
+            
             return;
         }
     }
@@ -420,6 +472,14 @@ function clearContext(device,coordinates = {column:0,row:0}){
         if (d.device == device) {
             const num = coordinates.column + coordinates.row*d.size.columns;
             d.context[num] = undefined;
+            d.activeButtonsOld = d.activeButtons;
+            d.activeButtons--;
+            if (d.activeButtons == 0) {
+                d.pageSettings = {
+                    tokenSelection: '',
+                    tokenId: '',
+                }
+            }
             return;
         }
     }
@@ -436,7 +496,22 @@ function sendContext(){
         }
     }
 }
-        
+
+function sendContextDevice(device) {
+    for (let context of device.context) {
+        if (context != undefined) {
+            if (context.payload.settings.pageWideToken) {
+                const pageSettings = device.pageSettings;
+                let settings = context.payload.settings;
+                settings.selection = pageSettings.tokenSelection;
+                settings.tokenName = pageSettings.tokenId;
+                $SD.api.setSettings(context.context, settings);
+            }
+            context.event = 'willAppear';
+            sendToServer(context);
+        }
+    }
+}
 
 function analyzeSettings(context,action,settings){
     //if (debugEn) console.log(context,action,settings); 

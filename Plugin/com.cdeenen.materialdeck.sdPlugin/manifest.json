@@ -40,19 +40,6 @@
       "PropertyInspectorPath": "PropertyInspector/macro.html"
     },
     {
-      "Name": "Move",
-      "Icon": "action/images/move/center",
-      "States": [
-        {
-          "Image": "action/images/move/center",
-          "TitleAlignment": "middle"
-        }
-      ],
-      "Tooltip": "Move the canvas or the selected token.",
-      "UUID": "com.cdeenen.materialdeck.move",
-      "PropertyInspectorPath": "PropertyInspector/move.html"
-    },
-    {
       "Name": "Other",
       "Icon": "action/images/other/other",
       "States": [
@@ -126,9 +113,9 @@
   "PropertyInspectorPath": "propertyinspector/index.html", 
   "Description": "Stream Deck plugin for the 'Material Deck' Foundry VTT module", 
   "Name": "Material Deck", 
-  "Icon": "vtt", 
+  "Icon": "MaterialFoundry", 
   "URL": "https://github.com/CDeenen/MaterialDeck_SD", 
-  "Version": "1.4.2",
+  "Version": "1.4.4",
   "OS": [
     {
         "Platform": "mac", 

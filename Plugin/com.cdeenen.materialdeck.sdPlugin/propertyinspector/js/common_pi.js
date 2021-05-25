@@ -19,6 +19,8 @@ var onchangeevt = 'onchange'; // 'oninput';
 let sdpiWrapper = document.querySelector('.sdpi-wrapper');
 
 let settings;
+let pageSettings = undefined;
+let parentSD;
 
 function displayElement(element,display){
   element = document.querySelector(element);
@@ -58,11 +60,21 @@ const updateUI = (pl) => {
 
  $SD.on('sendToPropertyInspector', jsn => {
   const pl = jsn.payload;
+  //console.log('plReceived',pl)
 
-  if (pl.gameSystem != undefined) 
-      system = pl.gameSystem;
+    if (pl.gameSystem != undefined) {
+        system = pl.gameSystem;
+        setSystemDependentElements();
+    }
+    if (pl.device != undefined) {
+       // console.log( 'setNewPageSettings',pl.device.pageSettings )
+        pageSettings = pl.device.pageSettings;
+        setUI(returnValue={key:'pageSettings',value:null})
+        //setPageSettings(pageSettings,parentSD);
+    }
+        
 
-  setSystemDependentElements();
+  
   
 });
 
@@ -143,6 +155,7 @@ $SD.on('piDataChanged', (returnValue) => {
      */
 
     settings = Utils.getProp(jsn, 'actionInfo.payload.settings', false);
+    //console.log('getSettings',jsn)
     if (settings) {
         updateUI(settings);
     }
