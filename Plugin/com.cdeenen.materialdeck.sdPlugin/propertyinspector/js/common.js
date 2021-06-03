@@ -1312,6 +1312,15 @@ function getStats(system){
             {value:'Ability', name:'Ability Score'},
             {value:'AbilityMod', name:'Ability Score Modifier'}
         ]
+    else if (system == "wfrp4e")
+        stats = [
+            {value: 'Fate', name: 'Fate'},
+            {value: 'Fortune', name: 'Fortune'},
+            {value: 'Wounds', name: 'Wounds'},
+            {value: 'Movement', name: 'Movement'},
+            {value: 'Resilence', name: 'Resilence'},
+            {value: 'Resolve', name: 'Resolve'},
+        ]
     else 
         stats = [
             {value:'HP', name:'HP'},
@@ -1341,6 +1350,8 @@ function getAbilities(system){
             {value:'will',name:'Will'},
             {value:'perception',name:'Perception'}
         ]
+    else if (system == 'wfrp4e')
+        ; //pass
     else
         abilities = [
             {value:'str',name:'Strength'},
@@ -1361,6 +1372,8 @@ function getSaves(system){
             {value:'ref',name:'Reflex'},
             {value:'will',name:'Will'},
         ]
+    else if (system == 'wfrp4e')
+        ; //pass
     else if (system == 'dnd5e')
         saves = getAbilities(system);
     return saves;
@@ -1481,6 +1494,21 @@ function getConditions(system){
             {value:'surprised', name:'Surprised'},
             {value:'unconscious', name:'Unconscious'},
             {value:'injured', name:'Injured'}
+        ]
+    else if (system == 'wfrp4e') 
+        conditions = [
+            {value:'ablaze', name:'Ablaze'},
+            {value:'bleeding', name:'Bleeding'},
+            {value:'blinded', name:'Blinded'},
+            {value:'broken', name:'Broken'},
+            {value:'deafened', name:'Deafened'},
+            {value:'entangled', name:'Entangled'},
+            {value:'fatigued', name:'fatigued'},
+            {value:'poison', name:'Poison'},
+            {value:'prone', name:'Prone'},
+            {value:'stunned', name:'Stunned'},
+            {value:'surprised', name:'Surprised'},
+            {value:'unconscious', name:'Unconscious'}
         ]
     else  //default/dnd5e
         conditions = [
@@ -1633,7 +1661,20 @@ function getSkills(system){
             {value:'thi', name:'Thievery'}
         ]
     else if (system == 'demonlord') {}
-
+    else if (system == 'wfrp4e') {
+        skills = [
+            {value: 'ag', name: 'Agility'},
+            {value: 'bs', name: 'Ballistic Skill'},
+            {value: 'dex', name: 'Dexterity'},
+            {value: 'fel', name: 'Fellowship'},
+            {value: 'i', name: 'Initiative'},
+            {value: 'int', name: 'Intelligence'},
+            {value: 's', name: 'Strength'},
+            {value: 't', name: 'Toughness'},
+            {value: 'wp', name: 'Willpower'},
+            {value: 'ws', name: 'Weapon Skill'}
+        ]
+    }
     else  //default/dnd5e
         skills = [
             {value:'acr', name:'Acrobatics'},
