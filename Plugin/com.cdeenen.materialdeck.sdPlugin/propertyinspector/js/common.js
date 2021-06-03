@@ -1732,6 +1732,7 @@ function getRolls(system){
 }
 
 function getItemTypes(system){
+    console.log("getItemType(" + system + ")")
     let types = [];
     if (system == 'D35E') 
         types = [
@@ -1766,6 +1767,11 @@ function getItemTypes(system){
     else if (system == 'demonlord')
         types = [
 
+        ]
+    else if (system == 'wfrp4e')
+        types = [
+            {value:'weapon', name: "Weapons"},
+            {value:'armour', name: "Armour"}
         ]
     else 
         types = [
