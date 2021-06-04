@@ -8,7 +8,7 @@
   no-var: 0,
   vars-on-top: 0
 */
-const debugEn = false;
+const debugEn = true;
 if (debugEn) console.log("starting common.js")
 
 // don't change this to let or const, because we rely on var's hoisting
@@ -1771,7 +1771,10 @@ function getItemTypes(system){
     else if (system == 'wfrp4e')
         types = [
             {value:'weapon', name: "Weapons"},
-            {value:'armour', name: "Armour"}
+            {value:'ammunition', name: "Ammunition"},
+            {value:'trapping', name: "Trapping"},
+            {value:'armour', name: "Armour"},
+            {value:'cargo', name: "Cargo"}
         ]
     else 
         types = [
