@@ -1325,6 +1325,7 @@ function getStats(system){
             {value: 'Movement', name: 'Movement'},
             {value: 'Resilence', name: 'Resilence'},
             {value: 'Resolve', name: 'Resolve'},
+            {value: 'Ability', name: 'Characteristics' } /* value is ability to conform to the interface */    
         ]
     else 
         stats = [
@@ -1355,8 +1356,19 @@ function getAbilities(system){
             {value:'will',name:'Will'},
             {value:'perception',name:'Perception'}
         ]
-    else if (system == 'wfrp4e')
-        ; //pass
+    else if (system == 'wfrp4e') /* bit of a bastardization here ... */
+        abilities = [
+            {value: 'ag', name: 'Agility'},
+            {value: 'bs', name: 'Ballistic Skill'},
+            {value: 'dex', name: 'Dexterity'},
+            {value: 'fel', name: 'Fellowship'},
+            {value: 'i', name: 'Initiative'},
+            {value: 'int', name: 'Intelligence'},
+            {value: 's', name: 'Strength'},
+            {value: 't', name: 'Toughness'},
+            {value: 'wp', name: 'Willpower'},
+            {value: 'ws', name: 'Weapon Skill'}
+        ]
     else
         abilities = [
             {value:'str',name:'Strength'},
@@ -1815,6 +1827,9 @@ function getFeatureTypes(system){
         {value:'class', name:'Class'},
         {value:'feat', name:'Abilities'}
     ]
+    else if (system == "wfrp4e") {
+        types = [ {value: 'skill', name: 'Skills'}]
+    }
     else 
         types = [
             {value:'class', name:'Class'},
