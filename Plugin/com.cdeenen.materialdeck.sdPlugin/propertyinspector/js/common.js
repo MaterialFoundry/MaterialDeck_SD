@@ -1259,6 +1259,11 @@ function setElements(id) {
         selection = settings.inventoryType;
         if (selection == undefined) selection = 'any';
     }
+    else if (id == 'featureType') {
+        options = getFeatureTypes(system)
+        selection = settings.inventoryType;
+        if (selection == undefined) selection = 'any';
+    }
 
     let element = document.getElementById(id);
     for (let option of options) {
@@ -1791,29 +1796,29 @@ function getItemTypes(system){
 function getFeatureTypes(system){
     let types = [];
     if (system == 'D35E') 
-        types = [
-
-        ]
+    types = [
+        {value:'class', name:'Class'},
+        {value:'feat', name:'Abilities'}
+    ]
     else if (system == 'pf1') 
-        types = [
- 
-        ]
+    types = [
+        {value:'class', name:'Class'},
+        {value:'feat', name:'Abilities'}
+    ]
     else if (system == 'pf2e')
-        types = [
-
-        ]
+    types = [
+        {value:'class', name:'Class'},
+        {value:'feat', name:'Abilities'}
+    ]
     else if (system == 'demonlord')
-        types = [
-
-        ]
+    types = [
+        {value:'class', name:'Class'},
+        {value:'feat', name:'Abilities'}
+    ]
     else 
         types = [
             {value:'class', name:'Class'},
-            {value:'equipment', name:'Equipment'},
-            {value:'consumable', name:'Consumables'},
-            {value:'tool', name:'Tools'},
-            {value:'backpack', name:'Containers'},
-            {value:'loot', name:'Loot'}
+            {value:'feat', name:'Abilities'}
         ]
     return types;
 }
