@@ -191,6 +191,7 @@ function setSystemDependentElements() {
     setElements('save');
     setElements('rollSave');
     setElements('inventoryType');
+    setElements('featureType');
 
     autoScaleElement('custom');
     autoScaleElement('customOnClickFormula');
