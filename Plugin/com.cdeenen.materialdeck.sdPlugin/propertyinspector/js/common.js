@@ -1261,7 +1261,7 @@ function setElements(id) {
     }
     else if (id == 'featureType') {
         options = getFeatureTypes(system)
-        selection = settings.inventoryType;
+        selection = settings.featureType;
         if (selection == undefined) selection = 'any';
     }
 
@@ -1808,25 +1808,25 @@ function getItemTypes(system){
 function getFeatureTypes(system){
     let types = [];
     if (system == 'D35E') 
-    types = [
-        {value:'class', name:'Class'},
-        {value:'feat', name:'Abilities'}
-    ]
+        types = [
+            {value:'class', name:'Class'},
+            {value:'feat', name:'Abilities'}
+        ]
     else if (system == 'pf1') 
-    types = [
-        {value:'class', name:'Class'},
-        {value:'feat', name:'Abilities'}
-    ]
+        types = [
+            {value:'class', name:'Class'},
+            {value:'feat', name:'Abilities'}
+        ]
     else if (system == 'pf2e')
-    types = [
-        {value:'class', name:'Class'},
-        {value:'feat', name:'Abilities'}
-    ]
+        types = [
+            {value:'class', name:'Class'},
+            {value:'feat', name:'Abilities'}
+        ]
     else if (system == 'demonlord')
-    types = [
-        {value:'class', name:'Class'},
-        {value:'feat', name:'Abilities'}
-    ]
+        types = [
+            {value:'class', name:'Class'},
+            {value:'feat', name:'Abilities'}
+        ]
     else if (system == "wfrp4e") {
         types = [ {value: 'skill', name: 'Skills'}]
     }
