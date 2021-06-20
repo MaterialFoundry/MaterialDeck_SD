@@ -1753,7 +1753,6 @@ function getRolls(system){
 }
 
 function getItemTypes(system){
-    console.log("getItemType(" + system + ")")
     let types = [];
     if (system == 'D35E') 
         types = [
@@ -1841,5 +1840,3 @@ function getFeatureTypes(system){
         ]
     return types;
 }
-
-//{value:'', name:''},
