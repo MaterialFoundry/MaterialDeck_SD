@@ -8,7 +8,7 @@
   no-var: 0,
   vars-on-top: 0
 */
-const debugEn = true;
+const debugEn = false;
 if (debugEn) console.log("starting common.js")
 
 // don't change this to let or const, because we rely on var's hoisting
@@ -1319,11 +1319,15 @@ function getStats(system){
         ]
     else if (system == "wfrp4e")
         stats = [
+            {value: 'Advantage', name: 'Advantage'},
+            {value: 'Corruption', name: 'Corruption'},
+            {value: 'CriticalWounds', name: 'Critical Wounds'},
+            {value: 'Encumbrance', name: 'Encumbrance'},
             {value: 'Fate', name: 'Fate'},
             {value: 'Fortune', name: 'Fortune'},
             {value: 'Wounds', name: 'Wounds'},
             {value: 'Movement', name: 'Movement'},
-            {value: 'Resilence', name: 'Resilence'},
+            {value: 'Resilience', name: 'Resilience'},
             {value: 'Resolve', name: 'Resolve'},
             {value: 'Ability', name: 'Characteristics' } /* value is ability to conform to the interface */    
         ]
