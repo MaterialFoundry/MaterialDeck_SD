@@ -1259,6 +1259,11 @@ function setElements(id) {
         selection = settings.inventoryType;
         if (selection == undefined) selection = 'any';
     }
+    else if (id == 'featureType') {
+        options = getFeatureTypes(system)
+        selection = settings.featureType;
+        if (selection == undefined) selection = 'any';
+    }
 
     let element = document.getElementById(id);
     for (let option of options) {
@@ -1312,6 +1317,20 @@ function getStats(system){
             {value:'Ability', name:'Ability Score'},
             {value:'AbilityMod', name:'Ability Score Modifier'}
         ]
+    else if (system == "wfrp4e")
+        stats = [
+            {value: 'Advantage', name: 'Advantage'},
+            {value: 'Corruption', name: 'Corruption'},
+            {value: 'CriticalWounds', name: 'Critical Wounds'},
+            {value: 'Encumbrance', name: 'Encumbrance'},
+            {value: 'Fate', name: 'Fate'},
+            {value: 'Fortune', name: 'Fortune'},
+            {value: 'Wounds', name: 'Wounds'},
+            {value: 'Movement', name: 'Movement'},
+            {value: 'Resilience', name: 'Resilience'},
+            {value: 'Resolve', name: 'Resolve'},
+            {value: 'Ability', name: 'Characteristics' } /* value is ability to conform to the interface */    
+        ]
     else 
         stats = [
             {value:'HP', name:'HP'},
@@ -1341,6 +1360,19 @@ function getAbilities(system){
             {value:'will',name:'Will'},
             {value:'perception',name:'Perception'}
         ]
+    else if (system == 'wfrp4e') /* bit of a bastardization here ... */
+        abilities = [
+            {value: 'ag', name: 'Agility'},
+            {value: 'bs', name: 'Ballistic Skill'},
+            {value: 'dex', name: 'Dexterity'},
+            {value: 'fel', name: 'Fellowship'},
+            {value: 'i', name: 'Initiative'},
+            {value: 'int', name: 'Intelligence'},
+            {value: 's', name: 'Strength'},
+            {value: 't', name: 'Toughness'},
+            {value: 'wp', name: 'Willpower'},
+            {value: 'ws', name: 'Weapon Skill'}
+        ]
     else
         abilities = [
             {value:'str',name:'Strength'},
@@ -1361,6 +1393,8 @@ function getSaves(system){
             {value:'ref',name:'Reflex'},
             {value:'will',name:'Will'},
         ]
+    else if (system == 'wfrp4e')
+        ; //pass
     else if (system == 'dnd5e')
         saves = getAbilities(system);
     return saves;
@@ -1481,6 +1515,21 @@ function getConditions(system){
             {value:'surprised', name:'Surprised'},
             {value:'unconscious', name:'Unconscious'},
             {value:'injured', name:'Injured'}
+        ]
+    else if (system == 'wfrp4e') 
+        conditions = [
+            {value:'ablaze', name:'Ablaze'},
+            {value:'bleeding', name:'Bleeding'},
+            {value:'blinded', name:'Blinded'},
+            {value:'broken', name:'Broken'},
+            {value:'deafened', name:'Deafened'},
+            {value:'entangled', name:'Entangled'},
+            {value:'fatigued', name:'fatigued'},
+            {value:'poison', name:'Poison'},
+            {value:'prone', name:'Prone'},
+            {value:'stunned', name:'Stunned'},
+            {value:'surprised', name:'Surprised'},
+            {value:'unconscious', name:'Unconscious'}
         ]
     else  //default/dnd5e
         conditions = [
@@ -1633,7 +1682,20 @@ function getSkills(system){
             {value:'thi', name:'Thievery'}
         ]
     else if (system == 'demonlord') {}
-
+    else if (system == 'wfrp4e') {
+        skills = [
+            {value: 'ag', name: 'Agility'},
+            {value: 'bs', name: 'Ballistic Skill'},
+            {value: 'dex', name: 'Dexterity'},
+            {value: 'fel', name: 'Fellowship'},
+            {value: 'i', name: 'Initiative'},
+            {value: 'int', name: 'Intelligence'},
+            {value: 's', name: 'Strength'},
+            {value: 't', name: 'Toughness'},
+            {value: 'wp', name: 'Willpower'},
+            {value: 'ws', name: 'Weapon Skill'}
+        ]
+    }
     else  //default/dnd5e
         skills = [
             {value:'acr', name:'Acrobatics'},
@@ -1726,6 +1788,14 @@ function getItemTypes(system){
         types = [
 
         ]
+    else if (system == 'wfrp4e')
+        types = [
+            {value:'weapon', name: "Weapons"},
+            {value:'ammunition', name: "Ammunition"},
+            {value:'trapping', name: "Trapping"},
+            {value:'armour', name: "Armour"},
+            {value:'cargo', name: "Cargo"}
+        ]
     else 
         types = [
             {value:'weapon', name:'Weapons'},
@@ -1742,30 +1812,31 @@ function getFeatureTypes(system){
     let types = [];
     if (system == 'D35E') 
         types = [
-
+            {value:'class', name:'Class'},
+            {value:'feat', name:'Abilities'}
         ]
     else if (system == 'pf1') 
         types = [
- 
+            {value:'class', name:'Class'},
+            {value:'feat', name:'Abilities'}
         ]
     else if (system == 'pf2e')
         types = [
-
+            {value:'class', name:'Class'},
+            {value:'feat', name:'Abilities'}
         ]
     else if (system == 'demonlord')
         types = [
-
+            {value:'class', name:'Class'},
+            {value:'feat', name:'Abilities'}
         ]
+    else if (system == "wfrp4e") {
+        types = [ {value: 'skill', name: 'Skills'}]
+    }
     else 
         types = [
             {value:'class', name:'Class'},
-            {value:'equipment', name:'Equipment'},
-            {value:'consumable', name:'Consumables'},
-            {value:'tool', name:'Tools'},
-            {value:'backpack', name:'Containers'},
-            {value:'loot', name:'Loot'}
+            {value:'feat', name:'Abilities'}
         ]
     return types;
 }
-
-//{value:'', name:''},
