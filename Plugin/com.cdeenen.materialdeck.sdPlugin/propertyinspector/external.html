@@ -21,6 +21,7 @@
           <option value='notYourTurn'>Not Your Turn!</option>
           <option value='mookAI'>Mook AI</option>
           <option value='aboutTime'>About Time</option>
+          <option value='soundscape'>Soundscape</option>
         </select>
       </div>
 
@@ -365,6 +366,126 @@
             <div class="sdpi-item-label">Off Color</div>
             <div class="sdpi-item-value">
                 <input type="color" id="aboutTimeOffRing" value="#000000">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="soundscapeWrapper" style="display:none">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Target</div>
+        <select class="sdpi-item-value select" id="soundscapeTarget" type="select">
+          <option value='mixer'>Mixer</option>
+          <option value='soundboard'>Soundboard</option>
+        </select> 
+      </div>
+
+      <div class="sub1">
+        <div class="wrapper" id="soundscapeMixerWrapper" style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Channel</div>
+            <input class="sdpi-item-value" id="soundscapeChannel" value="1">
+          </div>
+
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Mode</div>
+            <select class="sdpi-item-value select" id="soundscapeMixerMode" type="select">
+              <option value='startStopAll'>Start/Stop All</option>
+              <option value='startStop'>Start/Stop</option>
+              <option value='mute'>Toggle Mute</option>
+              <option value='solo'>Toggle Solo</option>
+              <option value='link'>Toggle Link</option>
+              <option value='volume'>Set Volume</option>
+            </select> 
+          </div>
+
+          <div class="wrapper" id="soundscapeMixerValueWrapper" style="display:none">
+            <div class="sub2">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Value Mode</div>
+                <select class="sdpi-item-value select" id="soundscapeMixerValueMode" type="select">
+                  <option value='incrementDecrement'>Increment/Decrement</option>
+                  <option value='set'>Set</option>
+                </select> 
+              </div>
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Value</div>
+                <input class="sdpi-item-value" id="soundscapeMixerValue" value="0">
+              </div>
+           
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Display Value</div>
+                <input class="sdpi-item-value" id="soundscapeDisplayMixerValue" type="checkbox">
+                <label for="soundscapeDisplayMixerValue"><span></span></label>
+              </div>
+            </div>
+          </div>
+
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Channel</div>
+            <input class="sdpi-item-value" id="soundscapeDisplayMixerChannel" type="checkbox">
+            <label for="soundscapeDisplayMixerChannel"><span></span></label>
+          </div>
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Name</div>
+            <input class="sdpi-item-value" id="soundscapeMixerName" type="checkbox">
+            <label for="soundscapeMixerName"><span></span></label>
+          </div>
+        </div>
+
+        <div class="wrapper" id="soundscapeSoundboardWrapper" style="display:none">
+          <div class="sdpi-item" id='soundscapeSounboardSoundWrapper' style="display:none">
+            <div class="sdpi-item-label">Sound</div>
+            <input class="sdpi-item-value" id="soundscapeChannel" value="1">
+          </div>
+
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Mode</div>
+            <select class="sdpi-item-value select" id="soundscapeSoundboardMode" type="select">
+              <option value='play'>Play Sound</option>
+              <option value='volume'>Set Volume</option>
+              <option value='stop'>Stop All</option>
+            </select> 
+          </div>
+
+          <div class="wrapper" id="soundscapeSoundboardValueWrapper" style="display:none">
+            <div class="sub2">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Value Mode</div>
+                <select class="sdpi-item-value select" id="soundscapeSoundboardValueMode" type="select">
+                  <option value='incrementDecrement'>Increment/Decrement</option>
+                  <option value='set'>Set</option>
+                </select> 
+              </div>
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Value</div>
+                <input class="sdpi-item-value" id="soundscapeSoundboardValue" value="0">
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Display Value</div>
+                <input class="sdpi-item-value" id="soundscapeDisplaySoundboardValue" type="checkbox">
+                <label for="soundscapeDisplaySoundboardValue"><span></span></label>
+              </div>
+            </div>
+            
+        </div>
+        <div class="wrapper"  id="soundscapeDisplayChannelWrapper" style="display:none">
+        
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label">Display Channel</div>
+            <input class="sdpi-item-value" id="soundscapeDisplayChannel" type="checkbox">
+            <label for="soundscapeDisplayChannel"><span></span></label>
+          </div>
+            <div type="checkbox" class="sdpi-item">
+              <div class="sdpi-item-label">Display Name</div>
+              <input class="sdpi-item-value" id="soundscapeSoundboardName" type="checkbox">
+              <label for="soundscapeSoundboardName"><span></span></label>
+            </div>
+            <div type="checkbox" class="sdpi-item">
+              <div class="sdpi-item-label">Display Icon</div>
+              <input class="sdpi-item-value" id="soundscapeSoundboardIcon" type="checkbox">
+              <label for="soundscapeSoundboardIcon"><span></span></label>
             </div>
           </div>
         </div>

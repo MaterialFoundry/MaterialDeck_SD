@@ -13,6 +13,7 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#ringColorWrapper`,false);
     displayElement(`#chatMessageContainer`,false);
     displayElement(`#rollOptionsContainer`,false);
+    displayElement(`#rollModeContainer`,false);
 
     if (mode == 'pause'){    //pause
         displayElement(`#pauseContainer`,true);
@@ -70,6 +71,10 @@ function setUI(returnValue={key:null,value:null}) {
         displayElement(`#chatMessageContainer`,true);
     else if (mode == 'rollOptions') {
         displayElement(`#rollOptionsContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
+    }
+    else if (mode == 'rollMode') {
+        displayElement(`#rollModeContainer`,true);
         displayElement(`#ringColorWrapper`,true);
     }
 }

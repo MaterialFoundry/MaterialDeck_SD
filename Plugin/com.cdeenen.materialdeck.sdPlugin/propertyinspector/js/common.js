@@ -1840,3 +1840,85 @@ function getFeatureTypes(system){
         ]
     return types;
 }
+
+/*
+function getDataElements(path) {
+    const split = path.split('/');
+    console.log('path',split)
+
+    let d = data.filter(e => e.action == split[0])[0];
+
+    return d.elements;
+}
+
+function getDataItem(path) {
+    const split = path.split('/');
+    console.log('path',split)
+
+    let d = data.filter(e => e.action == split[0])[0];
+    
+    for (let i=1; i<split.length; i++) {
+        console.log('d',i,d)
+        d = d.elements.filter(e => e.id == split[i])[0];
+        
+    }
+    console.log('d',d)
+    return d;
+}
+
+const data = [
+{
+    action: 'external',
+    elements: [
+        {
+            id:      'module',
+            label:   'Module',
+            type:    'select',
+            display: true,
+            options: [
+                { value: 'fxmaster',        label: 'Fx Master',         opens: ['external/fxMasterType'] },
+                { value: 'gmscreen',        label: 'GM Screen',         opens: [] },
+                { value: 'triggerHappy',    label: 'Trigger Happy',     opens: [] },
+                { value: 'sharedVision',    label: 'Shared Vision',     opens: [] },
+                { value: 'lockView',        label: 'Lock View',         opens: [] },
+                { value: 'notYourTurn',     label: 'Not Your Turn!',    opens: [] },
+                { value: 'mookAI',          label: 'Mook AI',           opens: [] },
+                { value: 'aboutTime',       label: 'About Time',        opens: [] },
+                { value: 'soundscape',      label: 'Soundscape',        opens: [] }
+            ]
+        },{
+            id:      'fxMasterType',
+            label:   'Type',
+            type:    'select',
+            display: false,
+            options: [
+                { value: 'weatherControls',  label: 'Weather Controls',  opens: [] },
+                { value: 'colorize',         label: 'Colorize Effects',  opens: [] },
+                { value: 'filters',          label: 'Filters',           opens: [] },
+                { value: 'clear',            label: 'Clear All',         opens: [] }
+            ]
+        },{
+            id:      'densitySlider',
+            label:   'Density',
+            type:    'range',
+            display: false,
+            min:     0,
+            max:     100,
+            value:   50
+        },{
+            id:      'fxWeatherEnColor',
+            label:   'Color Enable',
+            type:    'checkbox',
+            display: false,
+            checked: true
+        },{
+            id:      'fxWeatherColor',
+            label:   'Color',
+            type:    'color',
+            display: false,
+            value:   "#000000"
+        }
+    ]
+}
+]
+*/

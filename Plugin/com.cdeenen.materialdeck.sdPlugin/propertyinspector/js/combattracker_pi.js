@@ -51,11 +51,14 @@ function setUI(returnValue={key:null,value:null}) {
     }
     else if (mode == 'function'){
         displayElement(`#funcWrapper`,true);
+        displayElement(`#selectCombatantWrapper`,true);
         
         if (func == 'turnDisplay')
             displayElement(`#turnDisplay`,true);
         else
             displayElement(`#turnDisplay`,false);
+
+        if (func == 'turnDisplay' || func == 'startStop') displayElement(`#selectCombatantWrapper`,false);
     }
 }
 
