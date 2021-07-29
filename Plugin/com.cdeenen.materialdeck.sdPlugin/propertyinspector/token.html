@@ -44,6 +44,7 @@
           <option value='inventory'>Inventory</option>
           <option value='features'>Features</option>
           <option value='spellbook'>Spellbook</option>
+          <!-- <option value='actions'>Actions</option> -->
         </select>
       </div>
 
@@ -112,6 +113,7 @@
             <option value='vision'>Set Vision</option>
             <option value='wildcard'>Set Token Wildcard Image</option> 
             <option value='condition'>Toggle Condition</option>
+            <option value='valuedCondition'>Modify Valued Condition</option>
             <option value='cubCondition'>Toggle CUB Condition</option>
             <option value='macro'>Call Macro</option>
             <option value='roll'>Dice Roll</option>
@@ -210,6 +212,22 @@
             </div>
           </div>
 
+          <div class="wrapper" id="valuedConditionWrapper" style="">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Valued Condition</div>
+              <select class="sdpi-item-value select" id="valuedCondition" type="select">
+                <option value='removeAll'>Remove All</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="wrapper" id="valuedConditionDeltaWrapper" style="display:none">
+            <div class="sdpi-item">
+              <div class="sdpi-item-label">Value</div>
+              <input class="sdpi-item-value" id="valuedConditionDelta" value="">
+            </div>
+          </div>
+
           <div class="wrapper" id="cubConditionWrapper" style="display:none">
             <div class="sdpi-item">
               <div class="sdpi-item-label">Condition Name</div>
@@ -292,6 +310,8 @@
                 <option value='normal'>Normal Roll</option>
                 <option value='advantage'>Advantage</option>
                 <option value='disadvantage'>Disadvantage</option>
+                <option value='map1'>Multiattack Penalty #1</option>
+                <option value='map2'>Multiattack Penalty #2</option>
               </select>
             </div>
           </div>
@@ -401,6 +421,13 @@
             <option value='any'>Any</option>
           </select>
         </div>
+        <div class="wrapper" id='actionWrapper' style="display:none">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label">Type</div>
+            <select class="sdpi-item-value select" id="actionType" type="select">
+              <option value='any'>Any</option>
+            </select>
+          </div>
       </div>
 
       <div class="wrapper" id='spellWrapper' style="display:none">
@@ -418,6 +445,7 @@
             <option value='7'>7th Level</option>
             <option value='8'>8th Level</option>
             <option value='9'>9th Level</option>
+            <option value='10'>10th Level</option>
           </select>
         </div>
       </div>

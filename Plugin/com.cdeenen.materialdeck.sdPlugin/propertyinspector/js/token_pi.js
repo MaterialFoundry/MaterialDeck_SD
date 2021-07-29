@@ -20,6 +20,7 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#tokenWrapper`,false);
     displayElement(`#itemWrapper`,false);
     displayElement(`#conditionWrapper`,false);
+    displayElement(`#valuedConditionWrapper`,false);
     displayElement(`#visionWrapper`,false);
     displayElement('#wildcardWrapper',false);
     displayElement('#customOnClickWrapper',false);
@@ -38,6 +39,7 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#rotateWrapper`,false);
     displayElement(`#pageWideWrapper`,false);
     displayElement(`#pageTokenNameWrapper`,false);
+    // displayElement(`#actionWrapper`,false);
 
     if (returnValue.key == 'pageSettings') {
         
@@ -125,6 +127,10 @@ function setUI(returnValue={key:null,value:null}) {
         
         
         if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
+        else if (onClick == 'valuedCondition') {
+            displayElement(`#valuedConditionWrapper`,true);
+            displayElement(`#valuedConditionDeltaWrapper`,true)
+        }
         else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
         else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
         else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
@@ -174,6 +180,7 @@ function setUI(returnValue={key:null,value:null}) {
         if (mode == 'inventory') displayElement(`#inventoryWrapper`,true);
         else if (mode == 'features') displayElement(`#featureWrapper`,true);
         else if (mode == 'spellbook') displayElement(`#spellWrapper`,true);
+        // else if (mode == 'actions') displayElement(`#actionWrapper`,true);
     }
     
     
@@ -185,6 +192,7 @@ function setSystemDependentElements() {
     setElements('rollAbility');
     setElements('onClick');
     setElements('condition');
+    setElements('valuedCondition');
     setElements('rollSkill');
     setElements('skill');
     setElements('roll');
@@ -192,6 +200,7 @@ function setSystemDependentElements() {
     setElements('rollSave');
     setElements('inventoryType');
     setElements('featureType');
+    // setElements('actionType');
 
     autoScaleElement('custom');
     autoScaleElement('customOnClickFormula');
