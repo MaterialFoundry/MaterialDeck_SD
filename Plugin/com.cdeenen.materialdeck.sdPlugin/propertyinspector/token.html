@@ -112,8 +112,7 @@
             <option value='target'>Target Token</option>
             <option value='vision'>Set Vision</option>
             <option value='wildcard'>Set Token Wildcard Image</option> 
-            <option value='condition'>Toggle Condition</option>
-            <option value='valuedCondition'>Modify Valued Condition</option>
+            <option value='condition'>Handle Condition</option>
             <option value='cubCondition'>Toggle CUB Condition</option>
             <option value='macro'>Call Macro</option>
             <option value='roll'>Dice Roll</option>
@@ -210,22 +209,14 @@
                 <option value='removeAll'>Remove All</option>
               </select>
             </div>
-          </div>
-
-          <div class="wrapper" id="valuedConditionWrapper" style="">
-            <div class="sdpi-item">
-              <div class="sdpi-item-label">Valued Condition</div>
-              <select class="sdpi-item-value select" id="valuedCondition" type="select">
-                <option value='removeAll'>Remove All</option>
+            <div class='sdpi-item'>
+              <div class="sdpi-item-label">Condition Function</div>
+              <select class="sdpi-item-value select" id="conditionFunction" type="select">
+                <option value='toggle'>Toggle Condition</option>
+                <option value='increase'>Increase</option>
+                <option value='decrease'>Decrease</option>
               </select>
-            </div>
-          </div>
-
-          <div class="wrapper" id="valuedConditionDeltaWrapper" style="display:none">
-            <div class="sdpi-item">
-              <div class="sdpi-item-label">Value</div>
-              <input class="sdpi-item-value" id="valuedConditionDelta" value="">
-            </div>
+            </div>        
           </div>
 
           <div class="wrapper" id="cubConditionWrapper" style="display:none">

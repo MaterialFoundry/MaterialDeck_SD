@@ -7,7 +7,8 @@ function setUI(returnValue={key:null,value:null}) {
     let roll = settings.roll ? settings.roll : 'ability';
     let pageWideToken = settings.pageWideToken ? settings.pageWideToken : false;
     let pageTokenSelection = settings.pageTokenSelection ? settings.pageTokenSelection : false;
-
+    let conditionFunction = settings.conditionFunction ? settings.conditionFunction : 'toggle';
+    
     if (returnValue.key == 'tokenMode') mode = returnValue.value;
     else if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
     else if (returnValue.key == 'onClick' || returnValue.key == 'onClickDemonlord') onClick = returnValue.value;
@@ -20,7 +21,6 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#tokenWrapper`,false);
     displayElement(`#itemWrapper`,false);
     displayElement(`#conditionWrapper`,false);
-    displayElement(`#valuedConditionWrapper`,false);
     displayElement(`#visionWrapper`,false);
     displayElement('#wildcardWrapper',false);
     displayElement('#customOnClickWrapper',false);
@@ -127,10 +127,6 @@ function setUI(returnValue={key:null,value:null}) {
         
         
         if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
-        else if (onClick == 'valuedCondition') {
-            displayElement(`#valuedConditionWrapper`,true);
-            displayElement(`#valuedConditionDeltaWrapper`,true)
-        }
         else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
         else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
         else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
@@ -192,7 +188,6 @@ function setSystemDependentElements() {
     setElements('rollAbility');
     setElements('onClick');
     setElements('condition');
-    setElements('valuedCondition');
     setElements('rollSkill');
     setElements('skill');
     setElements('roll');

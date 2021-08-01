@@ -1234,10 +1234,6 @@ function setElements(id) {
         options = getConditions(system);
         selection = settings.condition ? settings.condition : 'removeAll';
     }
-    else if (id == 'valuedCondition') {
-        options = getValuedConditions(system);
-        selection = settings.valuedCondition ? settings.valuedCondition : 'removeAll';
-    }
     else if (id == 'skill' || id == 'rollSkill') {
         options = getSkills(system);
         selection = settings.rollSkill;
@@ -1309,7 +1305,8 @@ function getStats(system){
             {value:'AbilityMod', name:'Ability Score Modifier'},
             {value:'Save', name:'Saving Throw Modifier'},
             {value:'Skill', name:'Skill Modifier'},
-            {value:'Prof', name:'Proficiency'}
+            {value:'Prof', name:'Proficiency'},
+            {value:'Condition', name: 'Condition'}
         ]
     else if (system == 'demonlord')
         stats = [
@@ -1464,22 +1461,22 @@ function getConditions(system){
         conditions = [
             {value:'blinded', name:'Blinded'},
             {value:'broken', name:'Broken'},
-            // {value:'clumsy', name:'Clumsy'},
+            {value:'clumsy', name:'Clumsy'},
             {value:'concealed', name:'Concealed'},
             {value:'confused', name:'Confused'},
             {value:'controlled', name:'Controlled'},
             {value:'dazzled', name:'Dazzled'},
             {value:'deafened', name:'Deafened'},
-            // {value:'doomed', name:'Doomed'},
-            // {value:'drained', name:'Drained'},
-            // {value:'dying', name:'Drying'},
+            {value:'doomed', name:'Doomed'},
+            {value:'drained', name:'Drained'},
+            {value:'dying', name:'Drying'},
             {value:'encumbered', name:'Encumbered'},
-            // {value:'enfeebled', name:'Enfeebled'},
+            {value:'enfeebled', name:'Enfeebled'},
             {value:'fascinated', name:'Fascinated'},
             {value:'fatigued', name:'Fatigued'},
             {value:'flatFooted', name:'Flat Footed'},
             {value:'fleeing', name:'Fleeing'},
-            // {value:'frightened', name:'Frightened'},
+            {value:'frightened', name:'Frightened'},
             {value:'grabbed', name:'Grabbed'},
             {value:'immobilized', name:'Immobilized'},
             {value:'invisible', name:'Invisible'},
@@ -1489,12 +1486,12 @@ function getConditions(system){
             {value:'prone', name:'Prone'},
             {value:'quickened', name:'Quickened'},
             {value:'restrained', name:'Restrained'},
-            // {value:'sickened', name:'Sickened'},
-            // {value:'slowed', name:'Slowed'},
-            // {value:'stunned', name:'Stunned'},
-            // {value:'stupified', name:'Stupified'},
-            {value:'unconscious', name:'Unconscious'}
-            // {value:'wounded', name:'Wounded'}
+            {value:'sickened', name:'Sickened'},
+            {value:'slowed', name:'Slowed'},
+            {value:'stunned', name:'Stunned'},
+            {value:'stupified', name:'Stupified'},
+            {value:'unconscious', name:'Unconscious'},
+            {value:'wounded', name:'Wounded'}
         ]
     else if (system == 'demonlord') 
         conditions = [
@@ -1571,26 +1568,6 @@ function getConditions(system){
             {value:'holyShield', name:'Holy Shield'}
         ]  
     return conditions;
-}
-
-function getValuedConditions(system){
-    let valuedConditions = [];
-     if (system == 'pf2e') 
-        valuedConditions = [
-            {value:'clumsy', name:'Clumsy'},
-            {value:'doomed', name:'Doomed'},
-            {value:'drained', name:'Drained'},
-            {value:'dying', name:'Drying'},
-            {value:'enfeebled', name:'Enfeebled'},
-            {value:'frightened', name:'Frightened'},
-            {value:'sickened', name:'Sickened'},
-            {value:'slowed', name:'Slowed'},
-            {value:'stunned', name:'Stunned'},
-            {value:'stupified', name:'Stupified'},
-            {value:'wounded', name:'Wounded'}
-        ]
-      
-    return valuedConditions;
 }
 
 function getSkills(system){
