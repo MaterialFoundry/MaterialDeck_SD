@@ -7,7 +7,7 @@ function setUI(returnValue={key:null,value:null}) {
     let roll = settings.roll ? settings.roll : 'ability';
     let pageWideToken = settings.pageWideToken ? settings.pageWideToken : false;
     let pageTokenSelection = settings.pageTokenSelection ? settings.pageTokenSelection : false;
-    
+
     if (returnValue.key == 'tokenMode') mode = returnValue.value;
     else if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
     else if (returnValue.key == 'onClick' || returnValue.key == 'onClickDemonlord') onClick = returnValue.value;
@@ -15,7 +15,7 @@ function setUI(returnValue={key:null,value:null}) {
     else if (returnValue.key == 'macroMode') macroMode = returnValue.value;
     else if (returnValue.key == 'roll') roll = returnValue.value;
     else if (returnValue.key == 'pageTokenSelection') pageTokenSelection = returnValue.value;
-
+    
     if (debugEn) console.log('settings',settings)
     displayElement(`#tokenWrapper`,false);
     displayElement(`#itemWrapper`,false);
