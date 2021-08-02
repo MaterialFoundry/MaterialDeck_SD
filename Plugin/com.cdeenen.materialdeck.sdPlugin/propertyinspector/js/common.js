@@ -1828,9 +1828,15 @@ function getFeatureTypes(system){
         ]
     else if (system == 'pf2e')
         types = [
+            {value:'ancestry', name:'Ancestry'},
+            {value:'background', name: 'Background'},
             {value:'class', name:'Class'},
-            {value:'feat', name:'Abilities'},
-            {value:'action', name: 'Actions'}
+            {value:'feat', name:'Feats'},
+            {value:'action-any', name:'Actions - Any'},
+            {value:'action-def', name:'Actions - Defensive'},
+            {value:'action-int', name:'Actions - Interaction'},
+            {value:'action-off', name:'Actions - Offensive'},
+            {value:'strike', name:'Strikes'}
         ]
     else if (system == 'demonlord')
         types = [
@@ -1852,30 +1858,30 @@ function getSpellTypes(system) {
     let types = [];
     if (system == 'pf2e') 
         types = [
-            {value:'0', name: 'Cantrip'},
-            {value:'1', name: '1st Level'},
-            {value:'2', name: '2nd Level'},
-            {value:'3', name: '3rd Level'},
-            {value:'4', name: '4th Level'},
-            {value:'5', name: '5th Level'},
-            {value:'6', name: '6th Level'},
-            {value:'7', name: '7th Level'},
-            {value:'8', name: '8th Level'},
-            {value:'9', name: '9th Level'},
-            {value:'10', name: '10th Level'}
+            {value:'0', name:'Cantrip'},
+            {value:'1', name:'1st Level'},
+            {value:'2', name:'2nd Level'},
+            {value:'3', name:'3rd Level'},
+            {value:'4', name:'4th Level'},
+            {value:'5', name:'5th Level'},
+            {value:'6', name:'6th Level'},
+            {value:'7', name:'7th Level'},
+            {value:'8', name:'8th Level'},
+            {value:'9', name:'9th Level'},
+            {value:'10', name:'10th Level'}
         ]
     else
         types = [
-            {value:'0', name: 'Cantrip'},
-            {value:'1', name: '1st Level'},
-            {value:'2', name: '2nd Level'},
-            {value:'3', name: '3rd Level'},
-            {value:'4', name: '4th Level'},
-            {value:'5', name: '5th Level'},
-            {value:'6', name: '6th Level'},
-            {value:'7', name: '7th Level'},
-            {value:'8', name: '8th Level'},
-            {value:'9', name: '9th Level'}
+            {value:'0', name:'Cantrip'},
+            {value:'1', name:'1st Level'},
+            {value:'2', name:'2nd Level'},
+            {value:'3', name:'3rd Level'},
+            {value:'4', name:'4th Level'},
+            {value:'5', name:'5th Level'},
+            {value:'6', name:'6th Level'},
+            {value:'7', name:'7th Level'},
+            {value:'8', name:'8th Level'},
+            {value:'9', name:'9th Level'}
         ]
     return types;
 }

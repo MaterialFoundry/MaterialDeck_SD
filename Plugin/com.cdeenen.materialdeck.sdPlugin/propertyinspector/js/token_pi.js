@@ -7,7 +7,6 @@ function setUI(returnValue={key:null,value:null}) {
     let roll = settings.roll ? settings.roll : 'ability';
     let pageWideToken = settings.pageWideToken ? settings.pageWideToken : false;
     let pageTokenSelection = settings.pageTokenSelection ? settings.pageTokenSelection : false;
-    let conditionFunction = settings.conditionFunction ? settings.conditionFunction : 'toggle';
     
     if (returnValue.key == 'tokenMode') mode = returnValue.value;
     else if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
