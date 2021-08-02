@@ -15,7 +15,7 @@ function setUI(returnValue={key:null,value:null}) {
     else if (returnValue.key == 'macroMode') macroMode = returnValue.value;
     else if (returnValue.key == 'roll') roll = returnValue.value;
     else if (returnValue.key == 'pageTokenSelection') pageTokenSelection = returnValue.value;
-    
+
     if (debugEn) console.log('settings',settings)
     displayElement(`#tokenWrapper`,false);
     displayElement(`#itemWrapper`,false);
