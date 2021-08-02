@@ -1264,6 +1264,11 @@ function setElements(id) {
         selection = settings.featureType;
         if (selection == undefined) selection = 'any';
     }
+    else if (id == 'spellType') {
+        options = getSpellTypes(system)
+        selection = settings.spellType;
+        if (selection == undefined) selection = 'any';
+    }
 
     let element = document.getElementById(id);
     for (let option of options) {
@@ -1824,7 +1829,8 @@ function getFeatureTypes(system){
     else if (system == 'pf2e')
         types = [
             {value:'class', name:'Class'},
-            {value:'feat', name:'Abilities'}
+            {value:'feat', name:'Abilities'},
+            {value:'action', name: 'Actions'}
         ]
     else if (system == 'demonlord')
         types = [
@@ -1842,18 +1848,37 @@ function getFeatureTypes(system){
     return types;
 }
 
-// function getActionTypes(system){
-//     let types = [];
-//     if (system == 'pf2e')
-//         types = [
-//             {value:'melee', name:'Melee'},      //NPC attacks
-//             {value:'strike', name:'Strike'},    //PC attacks
-//             {value:'action', name:'Action'}     //Actions
-//         ]
-//     else
-//         types = [];
-//     return types;
-// }
+function getSpellTypes(system) {
+    let types = [];
+    if (system == 'pf2e') 
+        types = [
+            {value:'0', name: 'Cantrip'},
+            {value:'1', name: '1st Level'},
+            {value:'2', name: '2nd Level'},
+            {value:'3', name: '3rd Level'},
+            {value:'4', name: '4th Level'},
+            {value:'5', name: '5th Level'},
+            {value:'6', name: '6th Level'},
+            {value:'7', name: '7th Level'},
+            {value:'8', name: '8th Level'},
+            {value:'9', name: '9th Level'},
+            {value:'10', name: '10th Level'}
+        ]
+    else
+        types = [
+            {value:'0', name: 'Cantrip'},
+            {value:'1', name: '1st Level'},
+            {value:'2', name: '2nd Level'},
+            {value:'3', name: '3rd Level'},
+            {value:'4', name: '4th Level'},
+            {value:'5', name: '5th Level'},
+            {value:'6', name: '6th Level'},
+            {value:'7', name: '7th Level'},
+            {value:'8', name: '8th Level'},
+            {value:'9', name: '9th Level'}
+        ]
+    return types;
+}
 
 /*
 function getDataElements(path) {
