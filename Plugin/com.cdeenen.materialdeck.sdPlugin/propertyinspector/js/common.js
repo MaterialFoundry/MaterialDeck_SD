@@ -1311,7 +1311,8 @@ function getStats(system){
             {value:'Save', name:'Saving Throw Modifier'},
             {value:'Skill', name:'Skill Modifier'},
             {value:'Prof', name:'Proficiency'},
-            {value:'Condition', name: 'Condition'}
+            {value:'Condition', name: 'Condition'},
+            {value:'Perception', name: 'Perception'}
         ]
     else if (system == 'demonlord')
         stats = [
@@ -1474,7 +1475,7 @@ function getConditions(system){
             {value:'deafened', name:'Deafened'},
             {value:'doomed', name:'Doomed'},
             {value:'drained', name:'Drained'},
-            {value:'dying', name:'Drying'},
+            {value:'dying', name:'Dying'},
             {value:'encumbered', name:'Encumbered'},
             {value:'enfeebled', name:'Enfeebled'},
             {value:'fascinated', name:'Fascinated'},
@@ -1494,7 +1495,7 @@ function getConditions(system){
             {value:'sickened', name:'Sickened'},
             {value:'slowed', name:'Slowed'},
             {value:'stunned', name:'Stunned'},
-            {value:'stupified', name:'Stupified'},
+            {value:'stupefied', name:'Stupefied'},
             {value:'unconscious', name:'Unconscious'},
             {value:'wounded', name:'Wounded'}
         ]
@@ -1685,7 +1686,10 @@ function getSkills(system){
             {value:'soc', name:'Society'},
             {value:'ste', name:'Stealth'},
             {value:'sur', name:'Survival'},
-            {value:'thi', name:'Thievery'}
+            {value:'thi', name:'Thievery'},
+            {value:'lor_1', name:'Lore #1'},
+            {value:'lor_2', name:'Lore #2'},
+            {value:'lor_3', name:'Lore #3'}
         ]
     else if (system == 'demonlord') {}
     else if (system == 'wfrp4e') {
@@ -1746,7 +1750,8 @@ function getRolls(system){
         ]
     else if (system == 'pf2e')
         rolls = [
-            {value:'initiative', name:'Initiative'}
+            {value:'initiative', name:'Initiative'},
+            {value:'perception', name:'Perception'}
         ]
     else if (system == 'demonlord')
         rolls = []
