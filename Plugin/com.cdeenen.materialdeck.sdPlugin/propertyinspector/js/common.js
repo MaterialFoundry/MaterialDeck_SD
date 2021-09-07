@@ -1264,6 +1264,11 @@ function setElements(id) {
         selection = settings.featureType;
         if (selection == undefined) selection = 'any';
     }
+    else if (id == 'spellType') {
+        options = getSpellTypes(system)
+        selection = settings.spellType;
+        if (selection == undefined) selection = 'any';
+    }
 
     let element = document.getElementById(id);
     for (let option of options) {
@@ -1305,7 +1310,9 @@ function getStats(system){
             {value:'AbilityMod', name:'Ability Score Modifier'},
             {value:'Save', name:'Saving Throw Modifier'},
             {value:'Skill', name:'Skill Modifier'},
-            {value:'Prof', name:'Proficiency'}
+            {value:'Prof', name:'Proficiency'},
+            {value:'Condition', name: 'Condition'},
+            {value:'Perception', name: 'Perception'}
         ]
     else if (system == 'demonlord')
         stats = [
@@ -1468,7 +1475,7 @@ function getConditions(system){
             {value:'deafened', name:'Deafened'},
             {value:'doomed', name:'Doomed'},
             {value:'drained', name:'Drained'},
-            {value:'dying', name:'Drying'},
+            {value:'dying', name:'Dying'},
             {value:'encumbered', name:'Encumbered'},
             {value:'enfeebled', name:'Enfeebled'},
             {value:'fascinated', name:'Fascinated'},
@@ -1488,7 +1495,7 @@ function getConditions(system){
             {value:'sickened', name:'Sickened'},
             {value:'slowed', name:'Slowed'},
             {value:'stunned', name:'Stunned'},
-            {value:'stupified', name:'Stupified'},
+            {value:'stupefied', name:'Stupefied'},
             {value:'unconscious', name:'Unconscious'},
             {value:'wounded', name:'Wounded'}
         ]
@@ -1679,7 +1686,10 @@ function getSkills(system){
             {value:'soc', name:'Society'},
             {value:'ste', name:'Stealth'},
             {value:'sur', name:'Survival'},
-            {value:'thi', name:'Thievery'}
+            {value:'thi', name:'Thievery'},
+            {value:'lor_1', name:'Lore #1'},
+            {value:'lor_2', name:'Lore #2'},
+            {value:'lor_3', name:'Lore #3'}
         ]
     else if (system == 'demonlord') {}
     else if (system == 'wfrp4e') {
@@ -1740,7 +1750,8 @@ function getRolls(system){
         ]
     else if (system == 'pf2e')
         rolls = [
-            {value:'initiative', name:'Initiative'}
+            {value:'initiative', name:'Initiative'},
+            {value:'perception', name:'Perception'}
         ]
     else if (system == 'demonlord')
         rolls = []
@@ -1822,8 +1833,15 @@ function getFeatureTypes(system){
         ]
     else if (system == 'pf2e')
         types = [
+            {value:'ancestry', name:'Ancestry'},
+            {value:'background', name: 'Background'},
             {value:'class', name:'Class'},
-            {value:'feat', name:'Abilities'}
+            {value:'feat', name:'Feats'},
+            {value:'action-any', name:'Actions - Any'},
+            {value:'action-def', name:'Actions - Defensive'},
+            {value:'action-int', name:'Actions - Interaction'},
+            {value:'action-off', name:'Actions - Offensive'},
+            {value:'strike', name:'Strikes'}
         ]
     else if (system == 'demonlord')
         types = [
@@ -1837,6 +1855,38 @@ function getFeatureTypes(system){
         types = [
             {value:'class', name:'Class'},
             {value:'feat', name:'Abilities'}
+        ]
+    return types;
+}
+
+function getSpellTypes(system) {
+    let types = [];
+    if (system == 'pf2e') 
+        types = [
+            {value:'0', name:'Cantrip'},
+            {value:'1', name:'1st Level'},
+            {value:'2', name:'2nd Level'},
+            {value:'3', name:'3rd Level'},
+            {value:'4', name:'4th Level'},
+            {value:'5', name:'5th Level'},
+            {value:'6', name:'6th Level'},
+            {value:'7', name:'7th Level'},
+            {value:'8', name:'8th Level'},
+            {value:'9', name:'9th Level'},
+            {value:'10', name:'10th Level'}
+        ]
+    else
+        types = [
+            {value:'0', name:'Cantrip'},
+            {value:'1', name:'1st Level'},
+            {value:'2', name:'2nd Level'},
+            {value:'3', name:'3rd Level'},
+            {value:'4', name:'4th Level'},
+            {value:'5', name:'5th Level'},
+            {value:'6', name:'6th Level'},
+            {value:'7', name:'7th Level'},
+            {value:'8', name:'8th Level'},
+            {value:'9', name:'9th Level'}
         ]
     return types;
 }

@@ -192,6 +192,7 @@ function setSystemDependentElements() {
     setElements('rollSave');
     setElements('inventoryType');
     setElements('featureType');
+    setElements('spellType');
 
     autoScaleElement('custom');
     autoScaleElement('customOnClickFormula');
