@@ -8,7 +8,7 @@ let system = 'dnd5e';
  * or while their value changes 'onchange'.
  */
 
-var onchangeevt = 'onchange'; // 'oninput';
+ var onchangeevt = 'oninput'; // 'onchange';
 
 /**
  * cache the static SDPI-WRAPPER, which contains all your HTML elements.

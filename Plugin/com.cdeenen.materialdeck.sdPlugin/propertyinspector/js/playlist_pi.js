@@ -13,7 +13,7 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#trackNrContainer`,false);
     displayElement(`#stopAllWrapper`,false);
 
-    if (playlistMode == 'stopAll') {
+    if (playlistMode == 'stopAll' || playlistMode == 'pauseAll') {
         displayElement(`#stopAllWrapper`,true);
     }
     else {
