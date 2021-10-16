@@ -1324,6 +1324,16 @@ function getStats(system){
             {value:'Ability', name:'Ability Score'},
             {value:'AbilityMod', name:'Ability Score Modifier'}
         ]
+    else if (system == 'forbidden-lands')
+        stats = [
+            {value:'HP', name:'Strength'},
+            {value:'HPbox', name:'Strength (box)'},
+            {value:'Agility', name:'Agility'},
+            {value:'Wits', name:'Wits'},
+            {value:'Empathy', name:'Empathy'},
+            {value:'WillPower', name:'Will Power'},
+            {value:'AC', name:'Armor'}
+        ]
     else if (system == "wfrp4e")
         stats = [
             {value: 'Advantage', name: 'Advantage'},
@@ -1380,6 +1390,13 @@ function getAbilities(system){
             {value: 'wp', name: 'Willpower'},
             {value: 'ws', name: 'Weapon Skill'}
         ]
+    else if (system == 'forbidden-lands') /* bit of a bastardization here ... */
+        abilities = [
+            {value: 'strength', name: 'Strength'},
+            {value: 'agility', name: 'Agility'},
+            {value: 'wits', name: 'Wits'},
+            {value: 'empathy', name: 'Empathy'}
+        ]   
     else
         abilities = [
             {value:'str',name:'Strength'},
@@ -1403,6 +1420,8 @@ function getSaves(system){
     else if (system == 'wfrp4e')
         ; //pass
     else if (system == 'dnd5e')
+        saves = getAbilities(system);
+    else if (system == 'forbidden-lands')
         saves = getAbilities(system);
     return saves;
 }
@@ -1537,6 +1556,13 @@ function getConditions(system){
             {value:'stunned', name:'Stunned'},
             {value:'surprised', name:'Surprised'},
             {value:'unconscious', name:'Unconscious'}
+        ]
+    else if (system == 'wfrp4e') 
+        conditions = [
+            {value:'sleepy', name:'sleepy'},
+            {value:'thirsty', name:'thirsty'},
+            {value:'hungry', name:'hungry'},
+            {value:'cold', name:'cold'}
         ]
     else  //default/dnd5e
         conditions = [
@@ -1706,6 +1732,26 @@ function getSkills(system){
             {value: 'ws', name: 'Weapon Skill'}
         ]
     }
+    else if (system == 'forbidden-lands') {
+            skills = [
+                {value: 'might', name: 'Might'},
+                {value: 'endurance', name: 'Endurance'},
+                {value: 'melee', name: 'Melee'},
+                {value: 'crafting', name: 'Crafting'},
+                {value: 'stealth', name: 'Stealth'},
+                {value: 'sleight-of-hand', name: 'Sleight Of Hand'},
+                {value: 'move', name: 'Move'},
+                {value: 'marksmanship', name: 'Marksmanship'},
+                {value: 'scouting', name: 'Scouting'},
+                {value: 'lore', name: 'Lore'},
+                {value: 'survival', name: 'Survival'},
+                {value: 'insight', name: 'Insight'},
+                {value: 'manipulation', name: 'Manipulation'},
+                {value: 'performance', name: 'Performance'},
+                {value: 'healing', name: 'Healing'},
+                {value: 'animal-handling', name: 'Animal Handling'}
+            ]
+    }
     else  //default/dnd5e
         skills = [
             {value:'acr', name:'Acrobatics'},
@@ -1752,6 +1798,10 @@ function getRolls(system){
         rolls = [
             {value:'initiative', name:'Initiative'},
             {value:'perception', name:'Perception'}
+        ]
+        else if (system == 'forbidden-lands')
+        rolls = [
+            {value:'consumable', name:'Consumable'}
         ]
     else if (system == 'demonlord')
         rolls = []
@@ -1807,6 +1857,19 @@ function getItemTypes(system){
             {value:'armour', name: "Armour"},
             {value:'cargo', name: "Cargo"}
         ]
+    else if (system == 'forbidden-lands')
+        types = [
+            {value:'armor', name: "Armour"},
+            {value:'gear', name: "Gear"},
+            {value:'weapon', name: "Weapons"},
+            {value:'rawMaterial', name: "Raw Material"},
+            {value:'criticalInjury', name: "Critical Injury"},
+            {value:'spell', name: "spell"},
+            {value:'monsterAttack', name: "monsterAttack"},
+            {value:'monsterTalent', name: "monsterTalent"},
+            {value:'building', name: "building"},
+            {value:'hireling', name: "hireling"}
+        ]
     else 
         types = [
             {value:'weapon', name:'Weapons'},
@@ -1851,6 +1914,9 @@ function getFeatureTypes(system){
     else if (system == "wfrp4e") {
         types = [ {value: 'skill', name: 'Skills'}]
     }
+    else if (system == "forbidden-lands") {
+        types = []
+    }
     else 
         types = [
             {value:'class', name:'Class'},
@@ -1875,6 +1941,8 @@ function getSpellTypes(system) {
             {value:'9', name:'9th Level'},
             {value:'10', name:'10th Level'}
         ]
+    else if (system == 'forbidden-lands') 
+        types = []
     else
         types = [
             {value:'0', name:'Cantrip'},
