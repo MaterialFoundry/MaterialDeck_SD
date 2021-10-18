@@ -1806,7 +1806,8 @@ function getRolls(system){
             {value:'rollWater', name:'Roll Water'},
             {value:'rollArrows', name:'Roll Arrows'},
             {value:'rollTorches', name:'Roll Torches'},
-            {value:'rollArmor', name:'Roll Armor'}
+            {value:'rollArmor', name:'Roll Armor'},
+            {value:'monsterAttack', name:'Roll Monster Attack'}
         ]
     else if (system == 'demonlord')
         rolls = []
@@ -1867,13 +1868,7 @@ function getItemTypes(system){
             {value:'armor', name: "Armour"},
             {value:'gear', name: "Gear"},
             {value:'weapon', name: "Weapons"},
-            {value:'rawMaterial', name: "Raw Material"},
-            {value:'criticalInjury', name: "Critical Injury"},
-            {value:'spell', name: "spell"},
-            {value:'monsterAttack', name: "monsterAttack"},
-            {value:'monsterTalent', name: "monsterTalent"},
-            {value:'building', name: "building"},
-            {value:'hireling', name: "hireling"}
+            {value:'rawMaterial', name: "Raw Material"}
         ]
     else 
         types = [
