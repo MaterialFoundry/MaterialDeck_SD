@@ -1332,7 +1332,8 @@ function getStats(system){
             {value:'Wits', name:'Wits'},
             {value:'Empathy', name:'Empathy'},
             {value:'WillPower', name:'Will Power'},
-            {value:'AC', name:'Armor'}
+            {value:'AC', name:'Armor'},
+            {value:'Skill', name:'Skill'}
         ]
     else if (system == "wfrp4e")
         stats = [
