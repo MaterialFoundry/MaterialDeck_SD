@@ -1390,7 +1390,7 @@ function getAbilities(system){
             {value: 'wp', name: 'Willpower'},
             {value: 'ws', name: 'Weapon Skill'}
         ]
-    else if (system == 'forbidden-lands') /* bit of a bastardization here ... */
+    else if (system == 'forbidden-lands') 
         abilities = [
             {value: 'strength', name: 'Strength'},
             {value: 'agility', name: 'Agility'},
@@ -1801,7 +1801,11 @@ function getRolls(system){
         ]
         else if (system == 'forbidden-lands')
         rolls = [
-            {value:'consumable', name:'Consumable'}
+            {value:'rollFood', name:'Roll Food'},
+            {value:'rollWater', name:'Roll Water'},
+            {value:'rollArrows', name:'Roll Arrows'},
+            {value:'rollTorches', name:'Roll Torches'},
+            {value:'rollArmor', name:'Roll Armor'}
         ]
     else if (system == 'demonlord')
         rolls = []
