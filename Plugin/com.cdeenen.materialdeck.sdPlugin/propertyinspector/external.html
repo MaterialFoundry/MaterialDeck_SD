@@ -13,7 +13,7 @@
       <div class="sdpi-item">
         <div class="sdpi-item-label">Module</div>
         <select class="sdpi-item-value select" id="module" type="select">
-          <option value='fxmaster'>Fx Master</option>
+          <option value='fxmaster'>FXMaster</option>
           <option value='gmscreen'>GM Screen</option>
           <option value='triggerHappy'>Trigger Happy</option>
           <option value='sharedVision'>Shared Vision</option>
@@ -31,7 +31,6 @@
           <div class="sdpi-item-label">Type</div>
           <select class="sdpi-item-value select" id="fxMasterType" type="select">
             <option value='weatherControls'>Weather Controls</option>
-            <option value='colorize'>Colorize Effects</option>
             <option value='filters'>Filters</option>
             <option value='clear'>Clear All</option>
           </select>
@@ -60,22 +59,22 @@
 
             <div type="range" class="sdpi-item">
               <div class="sdpi-item-label">Density</div>
-              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="densitySlider">
+              <input type="range" class="sdpi-item-value" min="0.5" max="1" value="0.25"  step="0.1" id="densitySlider">
             </div>
 
             <div type="range" class="sdpi-item">
               <div class="sdpi-item-label">Speed</div>
-              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="speedSlider">
+              <input type="range" class="sdpi-item-value" min="0.1" max="5" value=1  step="0.1"  id="speedSlider">
             </div>
 
             <div type="range" class="sdpi-item">
               <div class="sdpi-item-label">Direction</div>
-              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="directionSlider">
+              <input type="range" class="sdpi-item-value" min="0" max="360" value=15  step="1"  id="directionSlider">
             </div>
 
             <div type="range" class="sdpi-item">
               <div class="sdpi-item-label">Scale</div>
-              <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="scaleSlider">
+              <input type="range" class="sdpi-item-value" min="0.1" max="5" value=1  step="0.1"  id="scaleSlider">
             </div>
 
             <div type="checkbox" class="sdpi-item">
@@ -93,28 +92,115 @@
           </div>
         </div>
 
-        <div class="wrapper" id="colorizeWrapper" style="display:none">
-          <div class="sub2">
-            <div type="range" class="sdpi-item">
-              <div class="sdpi-item-label">Color</div>
-              <div class="sdpi-item-value">
-                  <input type="color" id="fxMasterColorizeColor" value="#000000">
-              </div>
-            </div>
-          </div>
-        </div>
-        
         <div class="wrapper" id="filterWrapper" style="display:none">
           <div class="sub2">
             <div class="sdpi-item">
               <div class="sdpi-item-label">Effect</div>
               <select class="sdpi-item-value select" id="fxMasterFilter" type="select">
+                <option value='lightning'>Lightning</option>
                 <option value='underwater'>Underwater Filter</option>
                 <option value='predator'>Predator Filter</option>
-                <option value='oldfilm'>Old Film Filter</option>
+                <option value='color'>Color Filter</option>
                 <option value='bloom'>Bloom Filter</option>
+                <option value='oldfilm'>Old Film Filter</option>
               </select> 
             </div>
+          
+            <div class="wrapper" id="filterPeriodWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Period</div>
+                <input type="range" class="sdpi-item-value" min="100" max="2000" value="500"  step="1" id="fxMasterFilterPeriod">
+              </div>
+            </div>
+            <div class="wrapper" id="filterDurationWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Duration</div>
+                <input type="range" class="sdpi-item-value" min="100" max="2000" value="300"  step="1" id="fxMasterFilterDuration">
+              </div>
+            </div>
+            <div class="wrapper" id="filterBrightnessWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Brightness</div>
+                <input type="range" class="sdpi-item-value" min="0" max="4" value="1.3"  step="0.1" id="fxMasterFilterBrightness">
+              </div>
+            </div>
+            <div class="wrapper" id="filterSepiaWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Sepia</div>
+                <input type="range" class="sdpi-item-value" min="0" max="1" value="0.3"  step="0.1" id="fxMasterFilterSepia">
+              </div>
+            </div>
+            <div class="wrapper" id="filterNoiseWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Noise</div>
+                <input type="range" class="sdpi-item-value" min="0" max="1" value="0.1"  step="0.1" id="fxMasterFilterNoise">
+              </div>
+            </div>
+            <div class="wrapper" id="filterSpeedWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Speed</div>
+                <input type="range" class="sdpi-item-value" min="0" max="5" value="0.3"  step="0.1" id="fxMasterFilterSpeed">
+              </div>
+            </div>
+            <div class="wrapper" id="filterScaleWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Scale</div>
+                <input type="range" class="sdpi-item-value" min="0.1" max="10" value="4"  step="0.1" id="fxMasterFilterScale">
+              </div>
+            </div>
+            <div class="wrapper" id="filterBlurWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Blur</div>
+                <input type="range" class="sdpi-item-value" min="0" max="10" value="1"  step="1" id="fxMasterFilterBlur">
+              </div>
+            </div>
+            <div class="wrapper" id="filterBloomWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Bloom</div>
+                <input type="range" class="sdpi-item-value" min="0" max="1" value="0.1"  step="0.1" id="fxMasterFilterBloom">
+              </div>
+            </div>
+            <div class="wrapper" id="filterThresholdWrapper">
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Threshold</div>
+                <input type="range" class="sdpi-item-value" min="0" max="1" value="0.5"  step="0.1" id="fxMasterFilterThreshold">
+              </div>
+            </div>
+
+            <div class="wrapper" id="filterColorWrapper">
+
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Apply Tint</div>
+                <input class="sdpi-item-value" id="fxMasterFilterTint" type="checkbox">
+                <label for="fxMasterFilterTint"><span></span></label>
+              </div>
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Color</div>
+                <div class="sdpi-item-value">
+                    <input type="color" id="fxMasterFilterColor" value="#ffffff">
+                </div>
+              </div>
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Saturation</div>
+                <input type="range" class="sdpi-item-value" min="0" max="2" value="1"  step="0.1" id="fxMasterFilterSaturation">
+              </div>
+            
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Contrast</div>
+                <input type="range" class="sdpi-item-value" min="0" max="2" value="1"  step="0.1" id="fxMasterFilterContrast">
+              </div>
+            
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Brightness</div>
+                <input type="range" class="sdpi-item-value" min="0" max="2" value="1"  step="0.1" id="fxMasterFilterBrightness">
+              </div>
+            
+              <div type="range" class="sdpi-item">
+                <div class="sdpi-item-label">Gamma</div>
+                <input type="range" class="sdpi-item-value" min="0" max="2" value="1"  step="0.1" id="fxMasterFilterGamma">
+              </div>
+            </div>
+            
           </div>
         </div> 
 

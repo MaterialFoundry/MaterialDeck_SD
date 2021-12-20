@@ -1,6 +1,7 @@
 function setUI(returnValue={key:null,value:null}) {
     let module = settings.module ? settings.module : 'fxmaster';
     let fxMasterType = settings.fxMasterType ? settings.fxMasterType : 'weatherControls';
+    let fxMasterFilter = settings.fxMasterFilter ? settings.fxMasterFilter : 'lightning';
     let aboutTimeOnClick = settings.aboutTimeOnClick ? settings.aboutTimeOnClick : 'none';
     let aboutTimeActive = settings.aboutTimeActive;
     let soundscapeTarget = settings.soundscapeTarget ? settings.soundscapeTarget : 'mixer';
@@ -9,6 +10,7 @@ function setUI(returnValue={key:null,value:null}) {
     
     if (returnValue.key == 'module') module = returnValue.value;
     else if (returnValue.key == 'fxMasterType') fxMasterType = returnValue.value;
+    else if (returnValue.key == 'fxMasterFilter') fxMasterFilter = returnValue.value;
     else if (returnValue.key == 'aboutTimeOnClick') aboutTimeOnClick = returnValue.value;
     else if (returnValue.key == 'aboutTimeActive') aboutTimeActive = returnValue.checked;
     else if (returnValue.key == 'soundscapeTarget') soundscapeTarget = returnValue.value;
@@ -17,7 +19,6 @@ function setUI(returnValue={key:null,value:null}) {
 
     displayElement(`#fxMasterWrapper`,false);
     displayElement(`#weatherControlsWrapper`,false);
-    displayElement(`#colorizeWrapper`,false);
     displayElement(`#filterWrapper`,false);
     displayElement('#gmScreenWrapper',false);
     displayElement('#triggerHappyWrapper',false);
@@ -35,10 +36,46 @@ function setUI(returnValue={key:null,value:null}) {
         displayElement(`#fxMasterWrapper`,true);
         if (fxMasterType == 'weatherControls')
             displayElement(`#weatherControlsWrapper`,true);
-        else if (fxMasterType == 'colorize')
-            displayElement(`#colorizeWrapper`,true);
-        else if (fxMasterType == 'filters')
+        else if (fxMasterType == 'filters') {
+            console.log('check',fxMasterFilter)
             displayElement(`#filterWrapper`,true);
+            displayElement(`#filterPeriodWrapper`,false);
+            displayElement(`#filterDurationWrapper`,false);
+            displayElement(`#filterBrightnessWrapper`,false);
+            displayElement(`#filterNoiseWrapper`,false);
+            displayElement(`#filterSpeedWrapper`,false);
+            displayElement(`#filterScaleWrapper`,false);
+            displayElement(`#filterBlurWrapper`,false);
+            displayElement(`#filterBloomWrapper`,false);
+            displayElement(`#filterThresholdWrapper`,false);
+            displayElement(`#filterSepiaWrapper`,false);
+            displayElement(`#filterColorWrapper`,false);
+            if (fxMasterFilter == 'lightning') {
+                displayElement(`#filterPeriodWrapper`,true);
+                displayElement(`#filterDurationWrapper`,true);
+                displayElement(`#filterBrightnessWrapper`,true);
+            }
+            else if (fxMasterFilter == 'underwater') {
+                displayElement(`#filterSpeedWrapper`,true);
+                displayElement(`#filterScaleWrapper`,true);
+            }
+            else if (fxMasterFilter == 'predator') {
+                displayElement(`#filterNoiseWrapper`,true);
+                displayElement(`#filterSpeedWrapper`,true);
+            }
+            else if (fxMasterFilter == 'color') {
+                displayElement(`#filterColorWrapper`,true);
+            }
+            else if (fxMasterFilter == 'bloom') {
+                displayElement(`#filterBlurWrapper`,true);
+                displayElement(`#filterBloomWrapper`,true);
+                displayElement(`#filterThresholdWrapper`,true);
+            }
+            else if (fxMasterFilter == 'oldfilm') {
+                displayElement(`#filterSepiaWrapper`,true);
+                displayElement(`#filterNoiseWrapper`,true);
+            }
+        }
     }
     else if (module == 'gmscreen')
         displayElement('#gmScreenWrapper',true);

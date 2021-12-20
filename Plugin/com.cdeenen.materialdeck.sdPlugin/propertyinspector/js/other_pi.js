@@ -25,11 +25,19 @@ function setUI(returnValue={key:null,value:null}) {
     else if (mode == 'controlButtons'){   //control buttons
         let controlMode = settings.control ? settings.control : 'dispControls';
         if (returnValue.key == 'control') controlMode = returnValue.value;
+        let offsetType = settings.controlsOffsetType ? settings.controlsOffsetType : 'absoluteOffset';
+        if (returnValue.key == 'controlsOffsetType') offsetType = returnValue.value;
         displayElement(`#controlContainer`,true);
         displayElement(`#displayedControlsContainer`,false);
         displayElement(`#toolContainer`,false);
+        displayElement(`#controlsOffsetContainer`,false);
 
         if (controlMode == 'dispControls' || controlMode == 'dispTools') displayElement(`#displayedControlsContainer`,true);
+        else if (controlMode == 'controlsOffset' || controlMode == 'toolsOffset') {
+            displayElement(`#controlsOffsetContainer`,true);
+            if (offsetType == 'absoluteOffset') displayElement(`#ringColorWrapper`,true);
+            else displayElement(`#ringColorWrapper`,false);
+        }
         else {
             if (returnValue.key != 'tool') getTools(controlMode);
             if (returnValue.key != undefined && returnValue.key != 'dispControls' && returnValue.key != 'dispTools') {
@@ -121,7 +129,8 @@ function getTools(control) {
         tools = [
             {value:'select',name:'Select Tiles'},
             {value:'tile',name:'Place Tile'},
-            {value:'browse',name:'Tile Browser'}
+            {value:'browse',name:'Tile Browser'},
+            {value:'foreground',name:'Foreground Layer'}
         ]
     }
     else if (control == 'drawings') {
@@ -162,6 +171,7 @@ function getTools(control) {
     else if (control == 'sounds') {
         tools = [
             {value:'sound',name:'Draw Ambient Sound'},
+            {value:'preview',name:'Preview Ambient Sounds'},
             {value:'clear',name:'Clear Sounds'}
         ]
     }

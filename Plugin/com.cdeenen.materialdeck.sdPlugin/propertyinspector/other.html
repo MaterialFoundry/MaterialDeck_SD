@@ -69,6 +69,8 @@
             <select class="sdpi-item-value select" id="control" type="select">
               <option value='dispControls'>Displayed Controls</option>
               <option value='dispTools'>Displayed Tools</option>
+              <option value='controlsOffset'>Controls Offset</option>
+              <option value='toolsOffset'>Tools Offset</option>
               <option value='token'>Basic Controls</option>
               <option value='measure'>Measurement Controls</option>
               <option value='tiles'>Tile Controls</option>
@@ -96,6 +98,29 @@
                 <select class="sdpi-item-value select" id="tool" type="select">
                   <option value='open'>Open Control</option>
                 </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="spdi-wrapper" id="controlsOffsetContainer" style="display:none">
+            <div class="sub2">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Type</div>
+                <select class="sdpi-item-value select" id="controlsOffsetType" type="select">
+                  <option value='absoluteOffset'>Absolute Offset</option>
+                  <option value='relativeOffset'>Relative Offset</option>
+                </select>
+              </div>
+              
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Offset</div>
+                <input class="sdpi-item-value" id="controlsOffset" value=0>
+              </div>
+
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Display Offset</div>
+                <input class="sdpi-item-value" id="controlsOffsetDisplay" type="checkbox">
+                <label for="controlsOffsetDisplay"><span></span></label>
               </div>
             </div>
           </div>
@@ -181,6 +206,7 @@
               <option value='items'>Items Directory</option>
               <option value='journal'>Journal Entries</option>
               <option value='tables'>Rollable Tables</option>
+              <option value='cards'>Card Stacks</option>
               <option value='playlists'>Audio Playlist</option>
               <option value='compendium'>Compendium Packs</option>
               <option value='settings'>Game Settings</option>

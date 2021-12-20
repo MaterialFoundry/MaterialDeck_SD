@@ -75,6 +75,7 @@ $SD.on('deviceDidConnect', jsn => {
 
     buttonContext[connectedDevices] = {
         device: jsn.device,
+        name: jsn.deviceInfo.name,
         type: jsn.deviceInfo.type,
         size: jsn.deviceInfo.size,
         context: context,
@@ -85,7 +86,23 @@ $SD.on('deviceDidConnect', jsn => {
             tokenId: '',
         }
     }
+
+    let msg = {
+        target: "MD",
+        source: 0,
+        type: "newDevice",
+        iteration: connectedDevices,
+        device: {
+            id: jsn.device,
+            name: jsn.deviceInfo.name,
+            type: jsn.deviceInfo.type,
+            size: jsn.deviceInfo.size
+        }
+    }
+    sendToServer(msg);
+
     connectedDevices++;
+    
 });
 
 $SD.on('com.cdeenen.materialdeck.token.propertyInspectorDidAppear', jsn => {
@@ -490,7 +507,10 @@ function sendContext(){
         for (let context of d.context) {
             if (context != undefined) {
                 context.event = 'willAppear';
+                context.deviceName = d.name;
+                context.deviceType = d.type;
                 sendToServer(context);
+                
             }
                 
         }
