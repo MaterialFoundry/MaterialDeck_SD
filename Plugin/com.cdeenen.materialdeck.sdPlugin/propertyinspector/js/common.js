@@ -1874,7 +1874,7 @@ function getSpellTypes(system) {
             {value:'7', name:'7th Level'},
             {value:'8', name:'8th Level'},
             {value:'9', name:'9th Level'},
-            {value:'10', name:'10th Level'},
+            {value:'10', name:'10th Level'}
         ]
     else
         types = [
