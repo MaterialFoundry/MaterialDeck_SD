@@ -1863,6 +1863,7 @@ function getSpellTypes(system) {
     let types = [];
     if (system == 'pf2e') 
         types = [
+            {value:'f', name:'Focus'},
             {value:'0', name:'Cantrip'},
             {value:'1', name:'1st Level'},
             {value:'2', name:'2nd Level'},
@@ -1873,7 +1874,7 @@ function getSpellTypes(system) {
             {value:'7', name:'7th Level'},
             {value:'8', name:'8th Level'},
             {value:'9', name:'9th Level'},
-            {value:'10', name:'10th Level'}
+            {value:'10', name:'10th Level'},
         ]
     else
         types = [
