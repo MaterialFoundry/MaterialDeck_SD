@@ -7,6 +7,7 @@ function setUI(returnValue={key:null,value:null}) {
     let soundscapeTarget = settings.soundscapeTarget ? settings.soundscapeTarget : 'mixer';
     let soundscapeMixerMode = settings.soundscapeMixerMode ? settings.soundscapeMixerMode : 'startStop';
     let soundscapeSoundboardMode = settings.soundscapeSoundboardMode ? settings.soundscapeSoundboardMode : 'play';
+    let monksActiveTilesMode = settings.monksActiveTilesMode ? settings.monksActiveTilesMode : 'toggle';
     
     if (returnValue.key == 'module') module = returnValue.value;
     else if (returnValue.key == 'fxMasterType') fxMasterType = returnValue.value;
@@ -16,6 +17,7 @@ function setUI(returnValue={key:null,value:null}) {
     else if (returnValue.key == 'soundscapeTarget') soundscapeTarget = returnValue.value;
     else if (returnValue.key == 'soundscapeMixerMode') soundscapeMixerMode = returnValue.value;
     else if (returnValue.key == 'soundscapeSoundboardMode') soundscapeSoundboardMode = returnValue.value;
+    else if (returnValue.key == 'monksActiveTilesMode') monksActiveTilesMode = returnValue.value;
 
     displayElement(`#fxMasterWrapper`,false);
     displayElement(`#weatherControlsWrapper`,false);
@@ -31,6 +33,7 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement('#aboutTimeAdvanceWrapper',false);
     displayElement('#aboutTimeRingWrapper',false);
     displayElement('#soundscapeWrapper',false);
+    displayElement('#monksActiveTilesWrapper',false);
 
     if (module == 'fxmaster'){
         displayElement(`#fxMasterWrapper`,true);
@@ -129,6 +132,8 @@ function setUI(returnValue={key:null,value:null}) {
                 displayElement('#soundscapeSoundboardValueWrapper',true);     
         }
     }
+    else if (module == 'monksActiveTiles')
+        displayElement('#monksActiveTilesWrapper',true);
     else if (module == 'custom') {
         
     }

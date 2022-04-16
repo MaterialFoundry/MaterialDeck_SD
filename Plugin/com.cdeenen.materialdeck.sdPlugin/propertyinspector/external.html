@@ -22,6 +22,7 @@
           <option value='mookAI'>Mook AI</option>
           <option value='aboutTime'>About Time</option>
           <option value='soundscape'>Soundscape</option>
+          <option value='monksActiveTiles'>Monk's Active Tile Triggers</option>
         </select>
       </div>
 
@@ -574,6 +575,29 @@
               <label for="soundscapeSoundboardIcon"><span></span></label>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper" id="monksActiveTilesWrapper" style="display:none">
+      <div class="sub1">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label" id='monksActiveTilesIdLabel'>Tile id</div>
+          <input class="sdpi-item-value" id="monksActiveTilesId" value="">
+        </div>
+
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Mode</div>
+          <select class="sdpi-item-value select" id="monksActiveTilesMode" type="select">
+            <option value='toggle'>Toggle Active</option>
+            <option value='enable'>Activate Tile</option>
+            <option value='disable'>Deactive Tile</option>
+          </select> 
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Tile</div>
+          <input class="sdpi-item-value" id="monksActiveTilesIcon" type="checkbox">
+          <label for="monksActiveTilesIcon"><span></span></label>
         </div>
       </div>
     </div>

@@ -1349,6 +1349,20 @@ function getStats(system){
             {value: 'Resolve', name: 'Resolve'},
             {value: 'Ability', name: 'Characteristics' } /* value is ability to conform to the interface */    
         ]
+    else if (system == "sfrpg")
+        stats = [
+            {value:'HP', name:'HP'},
+            {value:'HPbox', name:'HP (box)'},
+            {value:'Stamina', name:'Stamina'},
+            {value:'AC', name:'Energy AC'},
+            {value:'KinAC', name:'Kinetic AC'},
+            {value:'Speed', name:'Speed'},
+            {value:'Init', name:'Initiative'},
+            {value:'Ability', name:'Ability Score'},
+            {value:'AbilityMod', name:'Ability Score Modifier'},
+            {value:'Save', name:'Saving Throw Modifier'},
+            {value:'Skill', name:'Skill Modifier'}
+        ]
     else 
         stats = [
             {value:'HP', name:'HP'},
@@ -1412,7 +1426,7 @@ function getAbilities(system){
 
 function getSaves(system){
     let saves = [];
-    if (system == 'D35E' || system == 'pf1' || system == 'pf2e')
+    if (system == 'D35E' || system == 'pf1' || system == 'pf2e' || system == 'sfrpg')
         saves = [
             {value:'fort',name:'Fortitude'},
             {value:'ref',name:'Reflex'},
@@ -1564,6 +1578,44 @@ function getConditions(system){
             {value:'thirsty', name:'thirsty'},
             {value:'hungry', name:'hungry'},
             {value:'cold', name:'cold'}
+        ]
+    else if (system == 'sfrpg')  //{value:'',name: ''},
+        conditions = [
+            {value:'asleep', name:'Asleep'},
+            {value:'bleeding', name:'Bleeding'},
+            {value:'blinded', name:'Blinded'},
+            {value:'broken', name:'Broken'},
+            {value:'burning', name:'Burning'},
+            {value:'confused', name:'Confused'},
+            {value:'cowering',name: 'Cowering'},
+            {value:'dazed',name: 'Dazed'},
+            {value:'dazzled', name:'Dazzled'},
+            {value:'dead',name: 'Dead'},
+            {value:'deafened', name:'Deafened'},
+            {value:'dying',name: 'Dying'},
+            {value:'encumbered',name: 'Encumbered'},
+            {value:'entangled', name:'Entangled'},
+            {value:'exhausted', name:'Exhausted'},
+            {value:'fascinated', name:'Fascinated'},
+            {value:'fatigued', name:'Fatigued'},
+            {value:'flat-footed',name: 'Flat-footed'},
+            {value:'frightened',name: 'Frightened'},
+            {value:'grappled', name:'Grappled'},
+            {value:'helpless', name:'Helpless'},
+            {value:'nauseated', name:'Nauseated'},
+            {value:'off-kilter',name: 'Off-kilter'},
+            {value:'off-target',name: 'Off-target'},
+            {value:'overburdened',name: 'Overburduned'},
+            {value:'panicked',name: 'Panicked'},
+            {value:'paralyzed', name:'Paralyzed'},
+            {value:'pinned', name:'Pinned'},
+            {value:'prone', name:'Prone'},
+            {value:'shaken', name:'Shaken'},
+            {value:'sickened', name:'Sickened'},
+            {value:'stable',name: 'Stable'},
+            {value:'staggered',name: 'Staggered'},
+            {value:'stunned',name: 'Stunned'},
+            {value:'unconscious',name: 'Unconscious'}
         ]
     else  //default/dnd5e
         conditions = [
@@ -1753,6 +1805,30 @@ function getSkills(system){
                 {value: 'animal-handling', name: 'Animal Handling'}
             ]
     }
+    else if (system == 'sfrpg') {
+        skills = [
+            {value: 'acr', name: 'Acrobatics'},
+            {value: 'ath', name: 'Athletics'},
+            {value: 'blu', name: 'Bluff'},
+            {value: 'com', name: 'Computers'},
+            {value: 'cul', name: 'Culture'},
+            {value: 'dip', name: 'Diplomacy'},
+            {value: 'dis', name: 'Disguise'},
+            {value: 'eng', name: 'Engineering'},
+            {value: 'int', name: 'Intimidate'},
+            {value: 'lsc', name: 'Life Science'},
+            {value: 'med', name: 'Medicine'},
+            {value: 'mys', name: 'Mysticism'},
+            {value: 'per', name: 'Perception'},
+            {value: 'phs', name: 'Physical Science'},
+            {value: 'pil', name: 'Piloting'},
+            {value: 'pro', name: 'Profession'},
+            {value: 'sen', name: 'Sense Motive'},
+            {value: 'sle', name: 'Sleight of Hand'},
+            {value: 'ste', name: 'Stealth'},
+            {value: 'sur', name: 'Survival'}
+        ]
+    }
     else  //default/dnd5e
         skills = [
             {value:'acr', name:'Acrobatics'},
@@ -1870,6 +1946,19 @@ function getItemTypes(system){
             {value:'weapon', name: "Weapons"},
             {value:'rawMaterial', name: "Raw Material"}
         ]
+    else if (system == 'sfrpg')
+        types = [
+            {value:'weapon', name:'Weapons'},
+            {value:'shield', name:'Shields'},
+            {value:'equipment', name:'Armor'},
+            {value:'ammunition', name:'Ammunition'},
+            {value:'consumable', name:'Consumables'},
+            {value:'goods', name:'Goods'},
+            {value:'container', name:'Containers'},
+            {value:'technological', name:'Technological, Magical, and Hybrid Items'},
+            {value:'enhancers', name:'Equipment Enhancers'},
+            {value:'augmentation', name:'Augmentations'}
+        ]
     else 
         types = [
             {value:'weapon', name:'Weapons'},
@@ -1917,6 +2006,17 @@ function getFeatureTypes(system){
     else if (system == "forbidden-lands") {
         types = []
     }
+    else if (system == 'sfrpg')
+        types = [
+            {value:'class', name:'Class'},
+            {value:'race', name:'Race'},
+            {value:'theme', name:'Theme'},
+            {value:'asi', name:'Ability Score Increases'},
+            {value:'archetypes', name:'Archetypes'},
+            {value:'activeFeat', name:'Active Feats'},
+            {value:'passiveFeat', name:'Passive Feats'},
+            {value:'actorResource', name:'Actor Resources'}
+        ]
     else 
         types = [
             {value:'class', name:'Class'},
@@ -1944,6 +2044,17 @@ function getSpellTypes(system) {
         ]
     else if (system == 'forbidden-lands') 
         types = []
+    else if (system == 'sfrpg') 
+    types = [
+        {value:'innate', name:'Innate Spellcasting'},
+        {value:'0', name:'0th Level'},
+        {value:'1', name:'1st Level'},
+        {value:'2', name:'2nd Level'},
+        {value:'3', name:'3rd Level'},
+        {value:'4', name:'4th Level'},
+        {value:'5', name:'5th Level'},
+        {value:'6', name:'6th Level'}
+    ]
     else
         types = [
             {value:'0', name:'Cantrip'},
@@ -1959,85 +2070,3 @@ function getSpellTypes(system) {
         ]
     return types;
 }
-
-/*
-function getDataElements(path) {
-    const split = path.split('/');
-    console.log('path',split)
-
-    let d = data.filter(e => e.action == split[0])[0];
-
-    return d.elements;
-}
-
-function getDataItem(path) {
-    const split = path.split('/');
-    console.log('path',split)
-
-    let d = data.filter(e => e.action == split[0])[0];
-    
-    for (let i=1; i<split.length; i++) {
-        console.log('d',i,d)
-        d = d.elements.filter(e => e.id == split[i])[0];
-        
-    }
-    console.log('d',d)
-    return d;
-}
-
-const data = [
-{
-    action: 'external',
-    elements: [
-        {
-            id:      'module',
-            label:   'Module',
-            type:    'select',
-            display: true,
-            options: [
-                { value: 'fxmaster',        label: 'Fx Master',         opens: ['external/fxMasterType'] },
-                { value: 'gmscreen',        label: 'GM Screen',         opens: [] },
-                { value: 'triggerHappy',    label: 'Trigger Happy',     opens: [] },
-                { value: 'sharedVision',    label: 'Shared Vision',     opens: [] },
-                { value: 'lockView',        label: 'Lock View',         opens: [] },
-                { value: 'notYourTurn',     label: 'Not Your Turn!',    opens: [] },
-                { value: 'mookAI',          label: 'Mook AI',           opens: [] },
-                { value: 'aboutTime',       label: 'About Time',        opens: [] },
-                { value: 'soundscape',      label: 'Soundscape',        opens: [] }
-            ]
-        },{
-            id:      'fxMasterType',
-            label:   'Type',
-            type:    'select',
-            display: false,
-            options: [
-                { value: 'weatherControls',  label: 'Weather Controls',  opens: [] },
-                { value: 'colorize',         label: 'Colorize Effects',  opens: [] },
-                { value: 'filters',          label: 'Filters',           opens: [] },
-                { value: 'clear',            label: 'Clear All',         opens: [] }
-            ]
-        },{
-            id:      'densitySlider',
-            label:   'Density',
-            type:    'range',
-            display: false,
-            min:     0,
-            max:     100,
-            value:   50
-        },{
-            id:      'fxWeatherEnColor',
-            label:   'Color Enable',
-            type:    'checkbox',
-            display: false,
-            checked: true
-        },{
-            id:      'fxWeatherColor',
-            label:   'Color',
-            type:    'color',
-            display: false,
-            value:   "#000000"
-        }
-    ]
-}
-]
-*/
