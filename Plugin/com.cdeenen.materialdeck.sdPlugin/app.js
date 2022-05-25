@@ -105,6 +105,23 @@ $SD.on('deviceDidConnect', jsn => {
     
 });
 
+$SD.on('deviceDidDisconnect', jsn => {
+    const index = buttonContext.findIndex( d => d.device === jsn.device );
+    buttonContext.splice(index,1);
+
+    let msg = {
+        target: "MD",
+        source: 0,
+        type: "deviceDisconnected",
+        device: {
+            id: jsn.device,
+        }
+    }
+    sendToServer(msg);
+
+    connectedDevices--;
+});
+
 $SD.on('com.cdeenen.materialdeck.token.propertyInspectorDidAppear', jsn => {
     
     let device;
@@ -366,6 +383,26 @@ function connectToServerWS() {
         if (sdCon) {
             serverWS.send(JSON.stringify({ target: 'server', source: "SD", version: $SD.applicationInfo.plugin.version}));
 
+            let devices = [];
+            for (let device of buttonContext) {
+                console.log('device',device)
+                devices.push({
+                    id: device.device,
+                    name: device.name,
+                    type: device.type,
+                    size: device.size
+                })
+            }
+            
+            let msg = {
+                target: "MD",
+                source: 0,
+                type: "deviceList",
+                devices
+            }
+            console.log('devices',devices)
+            sendToServer(msg);
+            
             //serverWS.send(JSON.stringify({ target: 'MD', source: "SD", type:"version", version: $SD.applicationInfo.plugin.version}));
         }
         if (debugEn) console.log('Connection to Node.js server successful.');
