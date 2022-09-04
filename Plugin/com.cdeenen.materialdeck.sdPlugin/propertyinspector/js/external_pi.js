@@ -40,7 +40,6 @@ function setUI(returnValue={key:null,value:null}) {
         if (fxMasterType == 'weatherControls')
             displayElement(`#weatherControlsWrapper`,true);
         else if (fxMasterType == 'filters') {
-            console.log('check',fxMasterFilter)
             displayElement(`#filterWrapper`,true);
             displayElement(`#filterPeriodWrapper`,false);
             displayElement(`#filterDurationWrapper`,false);

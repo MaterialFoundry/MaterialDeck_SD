@@ -1,4 +1,5 @@
 let system = 'dnd5e';
+let foundryVersion = '10';
 
 /**
  * First we declare a global variable, which change all elements behaviour
@@ -65,6 +66,9 @@ const updateUI = (pl) => {
     if (pl.gameSystem != undefined) {
         system = pl.gameSystem;
         setSystemDependentElements();
+    }
+    if (pl.foundryVersion != undefined) {
+        foundryVersion = pl.foundryVersion;
     }
     if (pl.device != undefined) {
        // console.log( 'setNewPageSettings',pl.device.pageSettings )

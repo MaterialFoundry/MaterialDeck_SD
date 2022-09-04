@@ -1580,3 +1580,34 @@ input[type="range"].colortemperature::-webkit-slider-thumb {
   opacity: 1;
   transition: opacity 0.25s ease-out;
 }
+
+.expandable {
+  cursor: pointer;
+}
+.collapsed {
+  display:none;
+}
+.expandableIcon {
+  border: none;
+  filter:invert(1);
+}
+
+h4 {
+  margin-left: 90px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+
+.sideCheckbox {
+  
+  color: green
+}
+
+.newRange {
+  display:flex;
+}
+
+.newRange[type='range'] {
+  max-width: 10px;
+  background-color: red;
+}

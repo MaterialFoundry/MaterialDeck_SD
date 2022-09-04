@@ -9,6 +9,7 @@
       <link rel="stylesheet" href="css/sdpi.css">
   </head>
   <body>
+    
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
 
       <div type="checkbox" class="sdpi-item">
@@ -44,6 +45,9 @@
           <option value='inventory'>Inventory</option>
           <option value='features'>Features</option>
           <option value='spellbook'>Spellbook</option>
+          <option value='offset'>Item Absolute Offset</option>
+          <option value='offsetRel'>Item Relative Offset</option>
+          <option value='dispOffset'>Display Item Offset</option>
         </select>
       </div>
 
@@ -109,7 +113,7 @@
             <option value='visibility'>Toggle Visiblity</option>
             <option value='combatState'>Toggle Combat State</option>
             <option value='target'>Target Token</option>
-            <option value='vision'>Set Vision</option>
+            <option value='vision'>Set Vision & Light</option>
             <option value='wildcard'>Set Token Wildcard Image</option> 
             <option value='condition'>Handle Condition</option>
             <option value='cubCondition'>Toggle CUB Condition</option>
@@ -208,7 +212,7 @@
                 <option value='removeAll'>Remove All</option>
               </select>
             </div>
-            <div class='sdpi-item'>
+            <div class='sdpi-item' id="conditionFunctionWrapper" style="">
               <div class="sdpi-item-label">Condition Function</div>
               <select class="sdpi-item-value select" id="conditionFunction" type="select">
                 <option value='toggle'>Toggle Condition</option>
@@ -238,21 +242,13 @@
             </div>
 
             <div class="sdpi-item">
-              <div class="sdpi-item-label">Macro Target</div>
-              <select class="sdpi-item-value select" id="macroTarget" type="select">
-                <option value='any'>Any</option>
-                <option value='token'>This Token/Actor</option>
-              </select>
-            </div>
-
-            <div class="sdpi-item">
               <div class="sdpi-item-label" id="macroNumberLabel">Macro Number</div>
               <input class="sdpi-item-value" id="macroId" value="">
             </div>
 
             <div class="wrapper" id="macroArgsWrapper" style="display:none">
               <div class="sdpi-item">
-                <div class="sdpi-item-label">Furnace Arguments</div>
+                <div class="sdpi-item-label">Advanced Macro Arguments</div>
                 <input class="sdpi-item-value" id="macroArgs" value="">
               </div>
             </div>
@@ -307,43 +303,135 @@
           </div>
 
           <div class="wrapper"  id="visionWrapper" style="display:none">
+            <h4 class="expandable"><img src="../right.png" class="expandableIcon" style="width:12px">Vision - Basic Configuration</h4>
+            <div class="collapsed">
               <div class="sdpi-item">
-                <div class="sdpi-item-label">Dim Vision</div>
-                <input class="sdpi-item-value" id="dimVision" value="">
+                <div class="sdpi-item-label">Vision Enabled</div>
+                <select class="sdpi-item-value select" id="visionEnabled" type="select">
+                  <option value='noChange'>No Change</option>
+                  <option value='toggle'>Toggle</option>
+                  <option value='enable'>Enable</option>
+                  <option value='disable'>Disable</option>
+                </select>
+              </div>
+              <div class="sdpi-item v10only">
+                <div class="sdpi-item-label">Vision Range</div>
+                <input class="sdpi-item-value" id="visionRange" value="">
+              </div>
+              <div class="sdpi-item v9only">
+                <div class="sdpi-item-label">Dim Vision Range</div>
+                <input class="sdpi-item-value" id="visionDimRange" value="">
+              </div>
+              <div class="sdpi-item v9only">
+                <div class="sdpi-item-label">Bright Vision Radius</div>
+                <input class="sdpi-item-value" id="visionBrightRange" value="">
               </div>
               <div class="sdpi-item">
-                <div class="sdpi-item-label">Bright Vision</div>
-                <input class="sdpi-item-value" id="brightVision" value="">
+                <div class="sdpi-item-label">Vision Angle</div>
+                <input class="sdpi-item-value" id="visionAngle" value="">
+              </div>
+              <div class="sdpi-item v10only">
+                <div class="sdpi-item-label">Vision Mode</div>
+                <select class="sdpi-item-value select" id="visionMode" type="select">
+                  <option value='noChange'>No Change</option>
+                  <option value='basic'>Basic Vision</option>
+                  <option value='darkvision'>Darkvision</option>
+                  <option value='monochromatic'>Monochromatic</option>
+                  <option value='tremorsense'>Tremorsense</option>
+                  <option value='lightAmplification'>Light Amplification</option>
+                </select>
+              </div>
+            </div>
+            <h4 class="expandable v10only"><img src="../right.png" class="expandableIcon" style="width:12px">Vision - Detection Modes</h4>
+            <div class="collapsed">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Mode</div>
+                <select class="sdpi-item-value select" id="visionDetectionModeEnable" type="select">
+                  <option value='noChange'>No Change</option>
+                  <option value='toggle'>Toggle</option>
+                  <option value='enable'>Enable</option>
+                  <option value='disable'>Disable</option>
+                </select>
               </div>
               <div class="sdpi-item">
-                <div class="sdpi-item-label">Sight Angle</div>
-                <input class="sdpi-item-value" id="sightAngle" value="">
+                <div class="sdpi-item-label">Mode Nr</div>
+                <input class="sdpi-item-value" id="visionDetectionModeNumber" value="">
               </div>
+            </div>
+            <h4 class="expandable v10only"><img src="../right.png" class="expandableIcon" style="width:12px">Vision - Advanced Options</h4>
+            <div class="collapsed">
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Vision Color</div>
+                <div class="sdpi-item-value">
+                  <input type="color" id="visionColor" value="#000000">
+                </div>
+                <input class="sdpi-item-value" id="visionColorEnable" type="checkbox">
+                <label for="visionColorEnable"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Attenuation</div>
+                <input type="range" class="sdpi-item-value" min="0" max="1" step="0.05" value=0  id="visionAttenuation">
+                <input class="sdpi-item-value" id="visionAttenuationEnable" type="checkbox">
+                <label for="visionAttenuationEnable"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Brightness</div>
+                <input type="range" class="sdpi-item-value" min="-1" max="1" step="0.05" value=0  id="visionBrightness">
+                <input class="sdpi-item-value" id="visionBrightnessEnable" type="checkbox">
+                <label for="visionBrightnessEnable"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Saturation</div>
+                <input type="range" class="sdpi-item-value" min="-1" max="1" step="0.05" value=0  id="visionSaturation">
+                <input class="sdpi-item-value" id="visionSaturationEnable" type="checkbox">
+                <label for="visionSaturationEnable"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Contrast</div>
+                <input type="range" class="sdpi-item-value" min="-1" max="1" step="0.05" value=0  id="visionContrast">
+                <input class="sdpi-item-value" id="visionContrastEnable" type="checkbox">
+                <label for="visionContrastEnable"><span></span></label>
+              </div>
+            </div>
+          
+            
+            <h4 class="expandable"><img src="../right.png" class="expandableIcon" style="width:12px">Light - Basic Configuration</h4>
+            <div class="collapsed">
               <div class="sdpi-item">
                 <div class="sdpi-item-label">Dim Light Radius</div>
-                <input class="sdpi-item-value" id="dimRadius" value="">
+                <input class="sdpi-item-value" id="lightDimRadius" value="">
               </div>
               <div class="sdpi-item">
                 <div class="sdpi-item-label">Bright Light Radius</div>
-                <input class="sdpi-item-value" id="brightRadius" value="">
+                <input class="sdpi-item-value" id="lightBrightRadius" value="">
               </div>
               <div class="sdpi-item">
                 <div class="sdpi-item-label">Emission Angle</div>
-                <input class="sdpi-item-value" id="emissionAngle" value="">
+                <input class="sdpi-item-value" id="lightEmissionAngle" value="">
               </div>
-              <div type="range" class="sdpi-item">
+              <div type="checkbox" class="sdpi-item">
                 <div class="sdpi-item-label">Light Color</div>
                 <div class="sdpi-item-value">
-                    <input type="color" id="lightColor" value="#000000">
+                  <input type="color" id="lightColor" value="#000000">
                 </div>
+                <input class="sdpi-item-value" id="lightColorEnable" type="checkbox">
+                <label for="lightColorEnable"><span></span></label>
+                
               </div>
-              <div type="range" class="sdpi-item">
+              <div type="checkbox" class="sdpi-item">
                 <div class="sdpi-item-label">Color Intensity</div>
-                <input type="range" class="sdpi-item-value" min="0" max="100" value=50  id="colorIntensity">
+                <input type="range" class="sdpi-item-value" min="0" max="1" step="0.05" value="0"  id="lightColorIntensity">
+                <input class="sdpi-item-value" id="lightColorIntensityEnable" type="checkbox">
+                <label for="lightColorIntensityEnable"><span></span></label>
               </div>
+            </div>
+
+            <h4 class="expandable"><img src="../right.png" class="expandableIcon" style="width:12px">Light - Animation</h4>
+            <div class="collapsed">
               <div class="sdpi-item">
                 <div class="sdpi-item-label">Animation Type</div>
-                <select class="sdpi-item-value select" id="animationType" type="select">
+                <select class="sdpi-item-value select" id="lightAnimationType" type="select">
+                  <option value='noChange'>No Change</option>
                   <option value='none'>None</option>
                   <option value='torch'>Torch</option>
                   <option value='pulse'>Pulse</option>
@@ -356,18 +444,102 @@
                   <option value='hexa'>Hexa Dome</option>
                   <option value='ghost'>Ghostly Light</option>
                   <option value='energy'>Energy Field</option>
-                  <option value='roiling'>Roiling Mass (Darkness)</option>
-                  <option value='hole'>Black Hole (Darkness)</option>
+                  <option value='roiling'>Roiling Mass</option>
+                  <option value='hole'>Black Hole</option>
+                  <option value='vortex'>Vortex</option>
+                  <option value='witchwave'>Bewitching Wave</option>
+                  <option value='rainbowswirl'>Swirling Rainbow</option>
+                  <option value='radialrainbow'>Radial Rainbow</option>
+                  <option value='fairy'>Fairy Light</option>
+                  <option class='v10only' value='grid'>Force Grid</option>
+                  <option class='v10only' value='starlight'>Star Light</option>
+                  <option class='v10only' value='smokepatch'>Smoke Patch</option>
                 </select>
-            </div>
-              <div type="range" class="sdpi-item">
+              </div>
+              <div type="checkbox" class="sdpi-item">
                 <div class="sdpi-item-label">Animation Speed</div>
-                <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="animationSpeed">
+                <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="lightAnimationSpeed">
+                <input class="sdpi-item-value" id="lightAnimationSpeedEnable" type="checkbox">
+                <label for="lightAnimationSpeedEnable"><span></span></label>
               </div>
-              <div type="range" class="sdpi-item">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Reverse Direction</div>
+                <select class="sdpi-item-value select" id="lightAnimationReverseDirection" type="select">
+                  <option value='noChange'>No Change</option>
+                  <option value='toggle'>Toggle</option>
+                  <option value='enable'>Enable</option>
+                  <option value='disable'>Disable</option>
+                </select>
+              </div>
+              <div type="checkbox" class="sdpi-item">
                 <div class="sdpi-item-label">Animation Intensity</div>
-                <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="animationIntensity">
+                <input type="range" class="sdpi-item-value" min="1" max="10" value=5  id="lightAnimationIntensity">
+                <input class="sdpi-item-value" id="lightAnimationIntensityEnable" type="checkbox">
+                <label for="lightAnimationIntensityEnable"><span></span></label>
               </div>
+            </div>
+            
+            <h4 class="expandable"><img src="../right.png" class="expandableIcon" style="width:12px">Light - Advanced Options</h4>
+            <div class="collapsed">
+              <div class="sdpi-item">
+                <div class="sdpi-item-label">Coloration Technique</div>
+                <select class="sdpi-item-value select" id="lightColorationTechnique" type="select">
+                  <option value='noChange'>No Change</option>
+                  <option value='0'>Legacy Coloration</option>
+                  <option value='1'>Adaptive Luminance</option>
+                  <option value='2'>Internal Halo</option>
+                  <option value='3'>External Halo</option>
+                  <option value='4'>Color Burn</option>
+                  <option value='5'>Internal Color Burn</option>
+                  <option value='6'>External Color Burn</option>
+                  <option value='7'>Low Absorption</option>
+                  <option value='8'>High Absorption</option>
+                  <option value='9'>Invert Absorption</option>
+                  <option class='v10only' value='10'>Natural Light</option>
+                </select>
+              </div>
+
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Luminosity</div>
+                <input type="range" class="sdpi-item-value" min="-1" max="1" value="0.5" step="0.05"  id="lightLuminosity">
+                <input class="sdpi-item-value" id="lightLuminosityEnable" type="checkbox">
+                <label for="lightLuminosityEnable"><span></span></label>
+              </div>
+              <div class="sdpi-item v9only">
+                <div class="sdpi-item-label">Gradual Illumination</div>
+                <select class="sdpi-item-value select" id="lightGradualIllumination" type="select">
+                  <option value='noChange'>No Change</option>
+                  <option value='toggle'>Toggle</option>
+                  <option value='enable'>Enable</option>
+                  <option value='disable'>Disable</option>
+                </select>
+              </div>
+              <div type="checkbox" class="sdpi-item v10only">
+                <div class="sdpi-item-label">Attenuation</div>
+                <input type="range" class="sdpi-item-value" min="0" max="1" value="0.5" step="0.05"  id="lightAttenuation">
+                <input class="sdpi-item-value" id="lightAttenuationEnable" type="checkbox">
+                <label for="lightAttenuationEnable"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Saturation</div>
+                <input type="range" class="sdpi-item-value" min="-1" max="1" value="0" step="0.05"  id="lightSaturation">
+                <input class="sdpi-item-value" id="lightSaturationEnable" type="checkbox">
+                <label for="lightSaturationEnable"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Contrast</div>
+                <input type="range" class="sdpi-item-value" min="-1" max="1" value="0" step="0.05"  id="lightContrast">
+                <input class="sdpi-item-value" id="lightContrastEnable" type="checkbox">
+                <label for="lightContrastEnable"><span></span></label>
+              </div>
+              <div type="checkbox" class="sdpi-item">
+                <div class="sdpi-item-label">Shadows</div>
+                <input type="range" class="sdpi-item-value" min="0" max="1" value="0" step="0.05"  id="lightShadows">
+                <input class="sdpi-item-value" id="lightShadowsEnable" type="checkbox">
+                <label for="lightShadowsEnable"><span></span></label>
+              </div>
+            </div>
+            
           </div>
         </div>
         
@@ -421,11 +593,37 @@
           </select>
         </div>
       </div>
+
+      <div class="wrapper" id='inventorySelectionWrapper' style="">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Selection</div>
+          <select class="sdpi-item-value select" id="inventorySelection" type="select">
+            <option value='order'>Order</option>
+            <option value='name'>Name</option>
+            <option value='id'>Id</option>
+          </select>
+        </div>
+      </div>
       
-      <div class="sdpi-item">
+      <div class="sdpi-item" id="itemNrWrapper" style="">
         <div class="sdpi-item-label">Nr</div>
         <input class="sdpi-item-value" id="itemNr" value="1">
       </div>
+
+      <div class="sdpi-item" id="itemNameWrapper" style="display:none">
+        <div class="sdpi-item-label" id="itemNameLabel">Name</div>
+        <input class="sdpi-item-value" id="itemName" value="">
+      </div>
+
+      <div class="wrapper" id='itemRollModeWrapper' style="">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Roll Mode</div>
+          <select class="sdpi-item-value select" id="weaponRollMode" type="select">
+
+          </select>
+        </div>
+      </div>
+
       <div type="checkbox" class="sdpi-item">
         <div class="sdpi-item-label">Display Uses/Quantity</div>
         <input class="sdpi-item-value" id="displayUses" type="checkbox">
@@ -443,9 +641,55 @@
       </div>
     </div>
 
+    <div class="wrapper" id='dispOffsetWrapper'>
+      <div class="sdpi-item">
+        <div class="sdpi-item-label">Prepend Title</div>
+        <input class="sdpi-item-value" id="offsetPrepend" value="">
+      </div>
+    </div>
+
+    <div class="spdi-wrapper" id="itemOffsetWrapper" style="display:none">
+      <div class="sdpi-item" id="offsetContainer">
+        <div class="sdpi-item-label">Offset</div>
+        <input class="sdpi-item-value" id="itemOffset" value=0>
+      </div>
+      <div class="spdi-wrapper" id="ringColorWrapper" style="">
+        <div type="range" class="sdpi-item" id="onColorContainer">
+          <div class="sdpi-item-label">On Color</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="onRing" value="#00FF00">
+          </div>
+        </div>
+        <div type="range" class="sdpi-item" id="offColorContainer">
+          <div class="sdpi-item-label">Off Color</div>
+          <div class="sdpi-item-value">
+              <input type="color" id="offRing" value="#000000">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
     <script src="js/token_pi.js"></script>
+    <script>
+      console.log('test2',document.getElementsByClassName("expandable"))
+      for (let element of document.getElementsByClassName("expandable")) {
+        console.log('element',element)
+        element.addEventListener("click",(event) => {
+          console.log('test')
+            let thisElement = event.target;
+            if (event.target.className == "expandableIcon") thisElement = event.target.parentElement;
+            let nextElement = thisElement.nextElementSibling;
+            console.log('nextElement',nextElement)
+            const collapse = nextElement.className == "collapsed" ? false : true;
+            nextElement.className = collapse ? "collapsed" : "";
+            thisElement.children[0].src = collapse ? "../right.png" : "../down.png";
+        })
+      }
+  </script>
   </body>
 </html>

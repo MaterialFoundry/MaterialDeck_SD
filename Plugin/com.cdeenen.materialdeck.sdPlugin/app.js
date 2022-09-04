@@ -21,6 +21,7 @@ let port = "3001";                //Port of the websocket server
 let sdCon = false;
 
 let gameSystem = 'dnd5e';
+let foundryVersion = 10;
 
 let buttonContext = [];
 let connectedDevices = 0;
@@ -136,6 +137,7 @@ $SD.on('com.cdeenen.materialdeck.token.propertyInspectorDidAppear', jsn => {
         context: jsn.context,
         payload: {
             gameSystem,
+            foundryVersion,
             device
         }
     };
@@ -147,7 +149,7 @@ $SD.on('com.cdeenen.materialdeck.combattracker.propertyInspectorDidAppear', jsn 
         action: jsn.action,
         event: "sendToPropertyInspector",
         context: jsn.context,
-        payload: {gameSystem:gameSystem}
+        payload: {gameSystem, foundryVersion}
     };
     $SD.connection.send(JSON.stringify(json)); 
 });
@@ -157,7 +159,7 @@ $SD.on('com.cdeenen.materialdeck.other.propertyInspectorDidAppear', jsn => {
         action: jsn.action,
         event: "sendToPropertyInspector",
         context: jsn.context,
-        payload: {gameSystem:gameSystem}
+        payload: {gameSystem, foundryVersion}
     };
     $SD.connection.send(JSON.stringify(json)); 
 });
@@ -165,7 +167,9 @@ $SD.on('com.cdeenen.materialdeck.other.propertyInspectorDidAppear', jsn => {
 $SD.on('didReceiveGlobalSettings', jsn => {
     const system = jsn.payload.settings.gameSystem;
     if (system != undefined) gameSystem = system;
-    if (debugEn) console.log('Stored game system: ',system);
+    const foundry = jsn.payload.settings.foundryVersion;
+    if (foundry != undefined) foundryVersion = foundry;
+    if (debugEn) console.log('Stored game system and foundry core: ',system,foundryVersion);
 });
 
 function checkConnection(){
@@ -385,7 +389,6 @@ function connectToServerWS() {
 
             let devices = [];
             for (let device of buttonContext) {
-                console.log('device',device)
                 devices.push({
                     id: device.device,
                     name: device.name,
@@ -400,7 +403,6 @@ function connectToServerWS() {
                 type: "deviceList",
                 devices
             }
-            console.log('devices',devices)
             sendToServer(msg);
             
             //serverWS.send(JSON.stringify({ target: 'MD', source: "SD", type:"version", version: $SD.applicationInfo.plugin.version}));
@@ -421,14 +423,14 @@ function connectToServerWS() {
         if (data.target != 'SD') return;
         if (data.type == 'init'){
             sendContext();
- 
             gameSystem=data.system;
+            foundryVersion=parseInt(data.coreVersion);
             if (debugEn) console.log("Game System: ",gameSystem);
 
             var json = {
                 event: "setGlobalSettings",
                 context: $SD.uuid,
-                payload: {gameSystem:gameSystem}
+                payload: {gameSystem, foundryVersion}
             };
             $SD.connection.send(JSON.stringify(json)); 
             if (sdCon) serverWS.send(JSON.stringify({ target: 'MD', source: "SD", type:"version", version: $SD.applicationInfo.plugin.version}));

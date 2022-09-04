@@ -1259,6 +1259,11 @@ function setElements(id) {
         selection = settings.inventoryType;
         if (selection == undefined) selection = 'any';
     }
+    else if (id == 'weaponRollMode') {
+        options = getWeaponRollModes(system)
+        selection = settings.weaponRollMode;
+        if (selection == undefined) selection = 'default';
+    }
     else if (id == 'featureType') {
         options = getFeatureTypes(system)
         selection = settings.featureType;
@@ -1756,7 +1761,7 @@ function getSkills(system){
             {value:'cra', name:'Crafting'},
             {value:'dec', name:'Deception'},
             {value:'dip', name:'Diplomacy'},
-            {value:'inv', name:'Intimidation'},
+            {value:'itm', name:'Intimidation'},
             {value:'med', name:'Medicine'},
             {value:'nat', name:'Nature'},
             {value:'occ', name:'Occultism'},
@@ -1971,6 +1976,37 @@ function getItemTypes(system){
     return types;
 }
 
+function getWeaponRollModes(system){
+    let types = [];
+    if (system == 'D35E')
+        types = []
+    else if (system == 'D35E')
+        types = []
+    else if (system == 'pf1')
+        types = []
+    else if (system == 'pf2e')
+        types = []
+    else if (system == 'demonlord')
+        types = []
+    else if (system == 'wfrp4e')
+        types = []
+    else if (system == 'forbidden-lands')
+        types = []
+    if (system == 'sfrpg')
+        types = []
+    else    //dnd5e
+        types = [
+            {value:'default', name:'Default'},
+            {value:'attack', name:'Attack'},
+            {value:'damage', name:'Damage'},
+            {value:'damageCrit', name:'Damage (Critical)'},
+            {value:'versatile', name:'Versatile'},
+            {value:'versatileCrit', name:'Versatile (Critical)'},
+            {value:'otherFormula', name:'Other Formula'}
+        ]
+    return types;
+}
+
 function getFeatureTypes(system){
     let types = [];
     if (system == 'D35E') 
@@ -2030,7 +2066,9 @@ function getFeatureTypes(system){
     else 
         types = [
             {value:'class', name:'Class'},
-            {value:'feat', name:'Abilities'}
+            {value:'feat', name:'Abilities'},
+            {value:'activeAbilities', name:'Active Abilities'},
+            {value:'passiveAbilities', name:'Passive Abilities'}
         ]
     return types;
 }

@@ -7,6 +7,7 @@ function setUI(returnValue={key:null,value:null}) {
     let roll = settings.roll ? settings.roll : 'ability';
     let pageWideToken = settings.pageWideToken ? settings.pageWideToken : false;
     let pageTokenSelection = settings.pageTokenSelection ? settings.pageTokenSelection : false;
+    let selectionMode = settings.inventorySelection ? settings.inventorySelection : 'order';
 
     if (returnValue.key == 'tokenMode') mode = returnValue.value;
     else if (returnValue.key == 'stats' || returnValue.key == 'statsDemonlord') stats = returnValue.value;
@@ -15,11 +16,15 @@ function setUI(returnValue={key:null,value:null}) {
     else if (returnValue.key == 'macroMode') macroMode = returnValue.value;
     else if (returnValue.key == 'roll') roll = returnValue.value;
     else if (returnValue.key == 'pageTokenSelection') pageTokenSelection = returnValue.value;
+    else if (returnValue.key == 'inventorySelection') selectionMode = returnValue.value;
     
-    if (debugEn) console.log('settings',settings)
     displayElement(`#tokenWrapper`,false);
     displayElement(`#itemWrapper`,false);
+    displayElement(`#itemNrWrapper`,false);
+    displayElement(`#itemNameWrapper`,false);
+    displayElement(`#itemRollModeWrapper`,false);
     displayElement(`#conditionWrapper`,false);
+    displayElement(`#conditionFunctionWrapper`,false);
     displayElement(`#visionWrapper`,false);
     displayElement('#wildcardWrapper',false);
     displayElement('#customOnClickWrapper',false);
@@ -38,6 +43,8 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#rotateWrapper`,false);
     displayElement(`#pageWideWrapper`,false);
     displayElement(`#pageTokenNameWrapper`,false);
+    displayElement(`#itemOffsetWrapper`,false);
+    displayElement(`#dispOffsetWrapper`,false);
 
     if (returnValue.key == 'pageSettings') {
         
@@ -111,6 +118,15 @@ function setUI(returnValue={key:null,value:null}) {
         //$SD.emit('piDataChanged', {key:'pageSettings',value:pageSettings});
     }
 
+    const v9elements = document.getElementsByClassName('v9only');
+    for (let elmnt of v9elements) {
+        elmnt.style = (foundryVersion == 10) ? 'display:none' : '';
+    }
+    const v10elements = document.getElementsByClassName('v10only');
+    for (let elmnt of v10elements) {
+        elmnt.style = (foundryVersion == 10) ? '' : 'display:none';
+    }
+
     if (selection != 'selected') {
         displayElement('#tokenNameWrapper',true);
     }
@@ -118,14 +134,17 @@ function setUI(returnValue={key:null,value:null}) {
         element = document.querySelector('#tokenNameLabel');
         if (element != null) element.innerHTML = 'Id';
     }
-    
 
     if (mode == 'token') {
         displayElement(`#tokenWrapper`,true);
         
-        
-        if (onClick == 'condition') displayElement(`#conditionWrapper`,true);
-        else if (onClick == 'vision') displayElement(`#visionWrapper`,true);
+        if (onClick == 'condition') {
+            displayElement(`#conditionWrapper`,true);
+            if (system == 'pf2e') displayElement(`#conditionFunctionWrapper`,true);
+        }
+        else if (onClick == 'vision') {
+            displayElement(`#visionWrapper`,true);
+        }
         else if (onClick == 'wildcard') displayElement('#wildcardWrapper',true);
         else if (onClick == 'custom') displayElement('#customOnClickWrapper',true);
         else if (onClick == 'cubCondition') displayElement('#cubConditionWrapper',true);
@@ -166,14 +185,36 @@ function setUI(returnValue={key:null,value:null}) {
         else if (stats == 'Save') displayElement(`#saveContainer`,true);
         else if (stats == 'Skill') displayElement(`#skillContainer`,true);
     }
+    else if (mode == 'offset' || mode == 'offsetRel')
+        displayElement(`#itemOffsetWrapper`,true);
+    else if (mode == 'dispOffset') {
+        displayElement(`#dispOffsetWrapper`,true);
+    }
     else {
         displayElement(`#itemWrapper`,true);
         displayElement(`#inventoryWrapper`,false);
         displayElement(`#featureWrapper`,false);
         displayElement(`#spellWrapper`,false);
-        if (mode == 'inventory') displayElement(`#inventoryWrapper`,true);
+        displayElement(`#itemRollModeWrapper`,false);
+        if (mode == 'inventory') {
+            displayElement(`#inventoryWrapper`,true);
+            displayElement(`#itemRollModeWrapper`,true);
+        }
         else if (mode == 'features') displayElement(`#featureWrapper`,true);
         else if (mode == 'spellbook') displayElement(`#spellWrapper`,true);
+
+        if (selectionMode == 'order') displayElement(`#itemNrWrapper`,true);
+        else if (selectionMode == 'name') {
+            displayElement(`#itemNameWrapper`,true);
+            element = document.querySelector('#itemNameLabel');
+            if (element != null) element.innerHTML = 'Name';
+        }
+        else {
+            displayElement(`#itemNameWrapper`,true);
+            element = document.querySelector('#itemNameLabel');
+            if (element != null) element.innerHTML = 'Id';
+        }
+        
     }
     
     
@@ -191,6 +232,7 @@ function setSystemDependentElements() {
     setElements('save');
     setElements('rollSave');
     setElements('inventoryType');
+    setElements('weaponRollMode');
     setElements('featureType');
     setElements('spellType');
 

@@ -135,12 +135,18 @@
             <select class="sdpi-item-value select" id="darknessFunction" type="select">
               <option value='value'>Value</option>
               <option value='incDec'>Increase/Decrease</option>
+              <option value='transitionDay'>Transition to Day</option>
+              <option value='transitionNight'>Transition to Night</option>
               <option value='disp'>Display</option>
             </select>
           </div>
           <div class="sdpi-item" id="darknessVal" style="display:none">
             <div class="sdpi-item-label">Value</div>
             <input class="sdpi-item-value" id="darknessValue" value="0">
+          </div>
+          <div class="sdpi-item" id="darknessAnimation" style="display:none">
+            <div class="sdpi-item-label">Animation Time</div>
+            <input class="sdpi-item-value" id="darknessAnimation" value="500">
           </div>
         </div>
       </div>
@@ -199,15 +205,15 @@
           <div class="sdpi-item">
             <div class="sdpi-item-label">Sidebar</div>
             <select class="sdpi-item-value select" id="sidebarTab" type="select">
-              <option value='chat'>Chat Log</option>
-              <option value='combat'>Combat Tracker</option>
-              <option value='scenes'>Scenes Directory</option>
-              <option value='actors'>Actors Directory</option>
-              <option value='items'>Items Directory</option>
-              <option value='journal'>Journal Entries</option>
-              <option value='tables'>Rollable Tables</option>
-              <option value='cards'>Card Stacks</option>
-              <option value='playlists'>Audio Playlist</option>
+              <option value='chat'>Chat Messages</option>
+              <option value='combat'>Combat Encounters</option>
+              <option value='scenes'>Scenes</option>
+              <option value='actors'>Actors</option>
+              <option value='items'>Items</option>
+              <option value='journal'>Journal</option>
+              <option value='tables'>Rollable</option>
+              <option value='cards'>Card</option>
+              <option value='playlists'>Playlist</option>
               <option value='compendium'>Compendium Packs</option>
               <option value='settings'>Game Settings</option>
               <option value='collapse'>Collapse or Expand</option>

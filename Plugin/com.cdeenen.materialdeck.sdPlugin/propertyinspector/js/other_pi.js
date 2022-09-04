@@ -60,10 +60,14 @@ function setUI(returnValue={key:null,value:null}) {
         if (returnValue.key == 'darknessFunction') darknessFunction = returnValue.value;
         
         displayElement(`#darknessContainer`,true);
-        if (darknessFunction == 'disp')
-            displayElement(`#darknessVal`,false);
-        else   
-            displayElement(`#darknessVal`,true); 
+        if (darknessFunction == 'value' || darknessFunction == 'incDec') {
+            displayElement(`#darknessVal`,true);
+            displayElement(`#darknessAnimation`,true);
+        }
+        else {
+            displayElement(`#darknessVal`,false); 
+            displayElement(`#darknessAnimation`,false);
+        }     
     }
     else if (mode == 'rollDice')    //roll dice
         displayElement(`#rollDiceContainer`,true);
