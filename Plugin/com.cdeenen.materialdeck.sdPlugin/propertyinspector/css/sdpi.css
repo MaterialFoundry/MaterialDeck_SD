@@ -1264,7 +1264,8 @@ input:required:valid {
 }
 
 a {
-  color: #7397d2;
+  color: inherit;
+  cursor: pointer;
 }
 
 .testcontainer {

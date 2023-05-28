@@ -1,7 +1,7 @@
 function setUI(returnValue={key:null,value:null}) {
     let mode = settings.otherMode ? settings.otherMode : 'pause';
     if (returnValue.key == 'otherMode') mode = returnValue.value;
-    
+
     displayElement(`#pauseContainer`,false);
     displayElement(`#moveContainer`,false);
     displayElement(`#controlContainer`,false);
@@ -14,6 +14,8 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#chatMessageContainer`,false);
     displayElement(`#rollOptionsContainer`,false);
     displayElement(`#rollModeContainer`,false);
+    displayElement(`#attackModesContainer`,false);
+    displayElement(`#globalVolumeContainer`,false);
 
     if (mode == 'pause'){    //pause
         displayElement(`#pauseContainer`,true);
@@ -62,11 +64,11 @@ function setUI(returnValue={key:null,value:null}) {
         displayElement(`#darknessContainer`,true);
         if (darknessFunction == 'value' || darknessFunction == 'incDec') {
             displayElement(`#darknessVal`,true);
-            displayElement(`#darknessAnimation`,true);
+            //displayElement(`#darknessAnimation`,true);
         }
         else {
             displayElement(`#darknessVal`,false); 
-            displayElement(`#darknessAnimation`,false);
+            //displayElement(`#darknessAnimation`,false);
         }     
     }
     else if (mode == 'rollDice')    //roll dice
@@ -85,13 +87,22 @@ function setUI(returnValue={key:null,value:null}) {
         displayElement(`#rollOptionsContainer`,true);
         displayElement(`#ringColorWrapper`,true);
     }
+    else if (mode == 'attackModes') {
+        displayElement(`#attackModesContainer`,true);
+        displayElement(`#ringColorWrapper`,true);
+    }
     else if (mode == 'rollMode') {
         displayElement(`#rollModeContainer`,true);
         displayElement(`#ringColorWrapper`,true);
     }
+    else if (mode == 'globalVolumeControls') {
+        displayElement(`#globalVolumeContainer`,true);
+    }
 }
 
 function setSystemDependentElements() {
+    setElements('attackMode');
+
     let otherModeElement = document.getElementById(`otherMode`);
 
     let newotherModeOptions = [];
@@ -198,13 +209,3 @@ function getTools(control) {
         element.appendChild(newOption);
     }
 }
-
-/*
-else if (control == '') {
-        tools = [
-            {value:'',name:''},
-            {value:'',name:''},
-            {value:'',name:''}
-        ]
-    }
-    */

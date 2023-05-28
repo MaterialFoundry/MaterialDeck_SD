@@ -11,7 +11,12 @@
   <body>
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
       <div class="sdpi-item">
-        <div class="sdpi-item-label">Mode</div>
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Custom-Icons#icon-override-preferred" target=”_blank”>Icon Override</a></div>
+        <input class="sdpi-item-value" id="iconOverride" value="">
+      </div>
+      
+      <div class="sdpi-item">
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#mode" target=”_blank”>Mode</a></div>
         <select class="sdpi-item-value select" id="otherMode" type="select">
           <option value='pause'>Pause Game</option>
           <option value='move'>Move Canvas</option>
@@ -23,15 +28,17 @@
           <option value='compendium'>Open Compendium Pack</option>
           <option value='journal'>Open Journal</option>
           <option value='chatMessage'>Send Chat Message</option>
-          <option value='rollOptions'>Token Roll Options</option>
-          <option value='rollMode'>Set Roll Mode</option>
+          <option value='rollOptions'>Token Roll Modes</option>
+          <option value='attackModes'>Attack Roll Modes</option>
+          <option value='rollMode'>Set Roll Sharing Mode</option>
+          <option value='globalVolumeControls'>Global Volume Controls</option>
         </select>
       </div>
 
       <div class="spdi-wrapper" id="pauseContainer" style="">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Function</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#function" target=”_blank”>Function</a></div>
             <select class="sdpi-item-value select" id="pauseFunction" type="select">
               <option value='pause'>Pause Game</option>
               <option value='resume'>Resume Game</option>
@@ -44,7 +51,7 @@
       <div class="spdi-wrapper" id="moveContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Direction</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#mode-move-canvas" target=”_blank”>Direction</a></div>
             <select class="sdpi-item-value select" id="dir">
               <option value='center'>Center</option>
               <option value='up'>Up</option>
@@ -65,7 +72,7 @@
       <div class="spdi-wrapper" id="controlContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Control</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#control" target=”_blank”>Control</a></div>
             <select class="sdpi-item-value select" id="control" type="select">
               <option value='dispControls'>Displayed Controls</option>
               <option value='dispTools'>Displayed Tools</option>
@@ -85,7 +92,7 @@
           <div class="spdi-wrapper" id="displayedControlsContainer" style="display:none">
             <div class="sub2">
               <div class="sdpi-item">
-                <div class="sdpi-item-label">Nr</div>
+                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#nr" target=”_blank”>Nr</a></div>
                 <input class="sdpi-item-value" id="controlNr" value="1">
               </div>
             </div>
@@ -94,7 +101,7 @@
           <div class="spdi-wrapper" id="toolContainer" style="display:none">
             <div class="sub2">
               <div class="sdpi-item">
-                <div class="sdpi-item-label">Tool</div>
+                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#tool" target=”_blank”>Tool</a></div>
                 <select class="sdpi-item-value select" id="tool" type="select">
                   <option value='open'>Open Control</option>
                 </select>
@@ -105,7 +112,7 @@
           <div class="spdi-wrapper" id="controlsOffsetContainer" style="display:none">
             <div class="sub2">
               <div class="sdpi-item">
-                <div class="sdpi-item-label">Type</div>
+                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#type-absolute-offset" target=”_blank”>Type</a></div>
                 <select class="sdpi-item-value select" id="controlsOffsetType" type="select">
                   <option value='absoluteOffset'>Absolute Offset</option>
                   <option value='relativeOffset'>Relative Offset</option>
@@ -113,12 +120,12 @@
               </div>
               
               <div class="sdpi-item">
-                <div class="sdpi-item-label">Offset</div>
+                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#type-absolute-offset" target=”_blank”>Offset</a></div>
                 <input class="sdpi-item-value" id="controlsOffset" value=0>
               </div>
 
               <div type="checkbox" class="sdpi-item">
-                <div class="sdpi-item-label">Display Offset</div>
+                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#display-offset" target=”_blank”>Display Offset</a></div>
                 <input class="sdpi-item-value" id="controlsOffsetDisplay" type="checkbox">
                 <label for="controlsOffsetDisplay"><span></span></label>
               </div>
@@ -131,7 +138,7 @@
       <div class="spdi-wrapper" id="darknessContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Function</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#function-1" target=”_blank”>Function</a></div>
             <select class="sdpi-item-value select" id="darknessFunction" type="select">
               <option value='value'>Value</option>
               <option value='incDec'>Increase/Decrease</option>
@@ -141,11 +148,11 @@
             </select>
           </div>
           <div class="sdpi-item" id="darknessVal" style="display:none">
-            <div class="sdpi-item-label">Value</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#value" target=”_blank”>Value</a></div>
             <input class="sdpi-item-value" id="darknessValue" value="0">
           </div>
-          <div class="sdpi-item" id="darknessAnimation" style="display:none">
-            <div class="sdpi-item-label">Animation Time</div>
+          <div class="sdpi-item" id="darknessAnimation">
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#animation-time" target=”_blank”>Animation Time</a></div>
             <input class="sdpi-item-value" id="darknessAnimation" value="500">
           </div>
         </div>
@@ -154,7 +161,7 @@
       <div class="spdi-wrapper" id="rollDiceContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Function</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#function-2" target=”_blank”>Function</a></div>
             <select class="sdpi-item-value select" id="rollDiceFunction" type="select">
               <option value='public'>Public Roll</option>
               <option value='private'>Private Roll</option>
@@ -162,11 +169,11 @@
             </select>
           </div>
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Formula</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#formula" target=”_blank”>Formula</a></div>
             <input class="sdpi-item-value" id="rollDiceFormula" value="1d20 + 7">
           </div>
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Display Name</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#display-formula" target=”_blank”>Display Formula</a></div>
             <input class="sdpi-item-value" id="displayDiceName" type="checkbox">
             <label for="displayDiceName"><span></span></label>
           </div> 
@@ -176,7 +183,7 @@
       <div class="spdi-wrapper" id="rollTableContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Function</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#function-3" target=”_blank”>Function</a></div>
             <select class="sdpi-item-value select" id="rolltableFunction" type="select">
               <option value='open'>Open</option>
               <option value='public'>Public Roll</option>
@@ -184,16 +191,16 @@
             </select>
           </div>
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Name</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#name" target=”_blank”>Name</a></div>
             <input class="sdpi-item-value" id="rollTableName" value="">
           </div>
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Display Name</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#display-name" target=”_blank”>Display Name</a></div>
             <input class="sdpi-item-value" id="displayRollName" type="checkbox">
             <label for="displayRollName"><span></span></label>
           </div> 
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Display Icon</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#display-icon" target=”_blank”>Display Icon</a></div>
             <input class="sdpi-item-value" id="displayRollIcon" type="checkbox">
             <label for="displayRollIcon"><span></span></label>
           </div> 
@@ -203,7 +210,7 @@
       <div class="spdi-wrapper" id="sidebarContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Sidebar</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#sidebar" target=”_blank”>Sidebar</a></div>
             <select class="sdpi-item-value select" id="sidebarTab" type="select">
               <option value='chat'>Chat Messages</option>
               <option value='combat'>Combat Encounters</option>
@@ -220,17 +227,17 @@
             </select>
           </div>
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Pop Out</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#pop-out" target=”_blank”>Pop Out</a></div>
             <input class="sdpi-item-value" id="sidebarPopOut" type="checkbox">
             <label for="sidebarPopOut"><span></span></label>
           </div> 
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Display Name</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#display-name-1" target=”_blank”>Display Name</a></div>
             <input class="sdpi-item-value" id="displaySidebarName" type="checkbox">
             <label for="displaySidebarName"><span></span></label>
           </div> 
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Display Icon</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#display-icon-1" target=”_blank”>Display Icon</a></div>
             <input class="sdpi-item-value" id="displaySidebarIcon" type="checkbox">
             <label for="displaySidebarIcon"><span></span></label>
           </div> 
@@ -240,11 +247,11 @@
       <div class="spdi-wrapper" id="compendiumContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Name</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#name-1" target=”_blank”>Name</a></div>
             <input class="sdpi-item-value" id="compendiumName" value="">
           </div>
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label">Display Name</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#display-name-2" target=”_blank”>Display Name</a></div>
             <input class="sdpi-item-value" id="displayCompendiumName" type="checkbox">
             <label for="displayCompendiumName"><span></span></label>
           </div> 
@@ -254,7 +261,7 @@
       <div class="spdi-wrapper" id="chatMessageContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Message</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#message" target=”_blank”>Message</a></div>
             <input class="sdpi-item-value" id="chatMessage" value="">
           </div>
         </div>
@@ -263,7 +270,7 @@
       <div class="spdi-wrapper" id="rollOptionsContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Function</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#mode-token-roll-modes" target=”_blank”>Mode</a></div>
             <select class="sdpi-item-value select" id="rollOptionFunction" type="select">
               <option value='dialog'>Dialog Box</option>
               <option value='normal'>Normal</option>
@@ -276,10 +283,21 @@
         </div>
       </div>
 
+      <div class="spdi-wrapper" id="attackModesContainer" style="display:none">
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#mode-attack-roll-modes" target=”_blank”>Mode</a></div>
+            <select class="sdpi-item-value select" id="attackMode" type="select">
+              <option value='chat'>Chat</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
       <div class="spdi-wrapper" id="rollModeContainer" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label">Mode</div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#mode-set-roll-sharing-mode" target=”_blank”>Mode</a></div>
             <select class="sdpi-item-value select" id="rollMode" type="select">
               <option value='roll'>Public Roll</option>
               <option value='gmroll'>Private GM Roll</option>
@@ -289,23 +307,53 @@
           </div>
         </div>
       </div>
+
+      <div class="spdi-wrapper" id="globalVolumeContainer" style="display:none">
+        <div class="sub1">
+          <div class="sdpi-item">
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#type" target=”_blank”>Type</a></div>
+            <select class="sdpi-item-value select" id="globalVolumeType" type="select">
+              <option value='playlists'>Playlists</option>
+              <option value='ambient'>Ambient</option>
+              <option value='interface'>Interface</option>
+            </select>
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#mode-1" target=”_blank”>Mode</a></div>
+            <select class="sdpi-item-value select" id="globalVolumeMode" type="select">
+              <option value='incDec'>Increase/Decrease</option>
+              <option value='set'>Set to Value</option>
+            </select>
+          </div>
+          <div class="sdpi-item">
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#value-1" target=”_blank”>Value</a></div>
+            <input class="sdpi-item-value" id="globalVolumeValue" value=0.1>
+          </div>
+          <div type="checkbox" class="sdpi-item">
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#display-value" target=”_blank”>Display Value</a></div>
+            <input class="sdpi-item-value" id="displayGlobalVolumeValue" type="checkbox">
+            <label for="displayGlobalVolumeValue"><span></span></label>
+          </div> 
+        </div>
+        
+      </div>
       
       <div class="spdi-wrapper" id="ringColorWrapper" style="">
         <div type="range" class="sdpi-item" id="onColorContainer">
-          <div class="sdpi-item-label">On Color</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#on-color" target=”_blank”>On Color</a></div>
           <div class="sdpi-item-value">
               <input type="color" id="onRing" value="#00FF00">
           </div>
         </div>
         <div type="range" class="sdpi-item" id="offColorContainer">
-          <div class="sdpi-item-label">Off Color</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#off-color" target=”_blank”>Off Color</a></div>
           <div class="sdpi-item-value">
               <input type="color" id="offRing" value="#000000">
           </div>
         </div>
       </div>
       <div type="range" class="sdpi-item" id="backgroundContainer">
-        <div class="sdpi-item-label">Background</div>
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Other-Actions#background" target=”_blank”>Background</a></div>
         <div class="sdpi-item-value">
             <input type="color" id="background" value="#000000">
         </div>

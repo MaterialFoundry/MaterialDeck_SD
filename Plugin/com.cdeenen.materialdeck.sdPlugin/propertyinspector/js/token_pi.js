@@ -59,7 +59,7 @@ function setUI(returnValue={key:null,value:null}) {
                 document.querySelector('#selection').value = pageSettings.tokenSelection;
                 settings.selection = pageSettings.tokenSelection;
                 selection = pageSettings.tokenSelection;
-            }  
+            } 
         }
     } 
 
@@ -118,21 +118,17 @@ function setUI(returnValue={key:null,value:null}) {
         //$SD.emit('piDataChanged', {key:'pageSettings',value:pageSettings});
     }
 
-    const v9elements = document.getElementsByClassName('v9only');
-    for (let elmnt of v9elements) {
-        elmnt.style = (foundryVersion == 10) ? 'display:none' : '';
-    }
-    const v10elements = document.getElementsByClassName('v10only');
-    for (let elmnt of v10elements) {
-        elmnt.style = (foundryVersion == 10) ? '' : 'display:none';
-    }
-
     if (selection != 'selected') {
         displayElement('#tokenNameWrapper',true);
     }
+    
     if (selection == 'tokenId' || selection == 'actorId') {
         element = document.querySelector('#tokenNameLabel');
-        if (element != null) element.innerHTML = 'Id';
+        if (element != null) element.innerHTML = '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#tokenactor-id" target=”_blank”>Id</a>';
+    }
+    else if (selection == 'tokenName' || selection == 'actorName') {
+        element = document.querySelector('#tokenNameLabel');
+        if (element != null) element.innerHTML = '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#tokenactor-name" target=”_blank”>Name</a>';
     }
 
     if (mode == 'token') {
@@ -153,9 +149,13 @@ function setUI(returnValue={key:null,value:null}) {
             if (macroMode == 'name') {
                 displayElement('#macroArgsWrapper',true);
                 element = document.querySelector('#macroNumberLabel');
-                if (element != null) element.innerHTML = 'Macro Name';
+                if (element != null) element.innerHTML = '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#macro-name" target=”_blank”>Macro Name</a>';
             }
-            else displayElement('#macroArgsWrapper',false);
+            else {
+                displayElement('#macroArgsWrapper',false);
+                element = document.querySelector('#macroNumberLabel');
+                if (element != null) element.innerHTML = '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#macro-number" target=”_blank”>Macro Number</a>';
+            }
         }
         else if (onClick == 'roll') {
             displayElement('#rollWrapper',true);
@@ -176,7 +176,11 @@ function setUI(returnValue={key:null,value:null}) {
             }
             if (pageTokenSelection == 'tokenId' || pageTokenSelection == 'actorId') {
                 element = document.querySelector('#pageTokenNameLabel');
-                if (element != null) element.innerHTML = 'Id';
+                if (element != null) element.innerHTML = '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#tokenactor-id" target=”_blank”>Id</a>';
+            }
+            else if (pageTokenSelection == 'tokenName' || pageTokenSelection == 'actorName') {
+                element = document.querySelector('#pageTokenNameLabel');
+                if (element != null) element.innerHTML = '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#tokenactor-name" target=”_blank”>Name</a>';
             }
         }
     
@@ -207,12 +211,12 @@ function setUI(returnValue={key:null,value:null}) {
         else if (selectionMode == 'name') {
             displayElement(`#itemNameWrapper`,true);
             element = document.querySelector('#itemNameLabel');
-            if (element != null) element.innerHTML = 'Name';
+            if (element != null) element.innerHTML = '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#selection" target=”_blank”>Name</a>';
         }
         else {
             displayElement(`#itemNameWrapper`,true);
             element = document.querySelector('#itemNameLabel');
-            if (element != null) element.innerHTML = 'Id';
+            if (element != null) element.innerHTML = '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#selection" target=”_blank”>Id</a>';
         }
         
     }
@@ -235,6 +239,7 @@ function setSystemDependentElements() {
     setElements('weaponRollMode');
     setElements('featureType');
     setElements('spellType');
+    setElements('spellMode');
 
     autoScaleElement('custom');
     autoScaleElement('customOnClickFormula');

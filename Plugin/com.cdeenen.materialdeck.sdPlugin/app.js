@@ -26,6 +26,8 @@ let foundryVersion = 10;
 let buttonContext = [];
 let connectedDevices = 0;
 
+let systemData = {};
+
 $SD.on('connected', (jsonObj) => connected(jsonObj));
 
 function connected(jsn) {
@@ -138,7 +140,8 @@ $SD.on('com.cdeenen.materialdeck.token.propertyInspectorDidAppear', jsn => {
         payload: {
             gameSystem,
             foundryVersion,
-            device
+            device,
+            systemData
         }
     };
     $SD.connection.send(JSON.stringify(json)); 
@@ -149,7 +152,7 @@ $SD.on('com.cdeenen.materialdeck.combattracker.propertyInspectorDidAppear', jsn 
         action: jsn.action,
         event: "sendToPropertyInspector",
         context: jsn.context,
-        payload: {gameSystem, foundryVersion}
+        payload: {gameSystem, foundryVersion, systemData}
     };
     $SD.connection.send(JSON.stringify(json)); 
 });
@@ -159,7 +162,11 @@ $SD.on('com.cdeenen.materialdeck.other.propertyInspectorDidAppear', jsn => {
         action: jsn.action,
         event: "sendToPropertyInspector",
         context: jsn.context,
-        payload: {gameSystem, foundryVersion}
+        payload: {
+            gameSystem, 
+            foundryVersion,
+            systemData
+        }
     };
     $SD.connection.send(JSON.stringify(json)); 
 });
@@ -418,13 +425,14 @@ function connectToServerWS() {
   
     serverWS.addEventListener('message', e => {
         if (debugEn) console.log('server event listener received: ',e.data);
-
+        //console.log('data received',e.data)
         const data = JSON.parse(e.data);
         if (data.target != 'SD') return;
         if (data.type == 'init'){
             sendContext();
-            gameSystem=data.system;
-            foundryVersion=parseInt(data.coreVersion);
+            gameSystem = data.system;
+            systemData = data.systemData;
+            foundryVersion = parseInt(data.coreVersion);
             if (debugEn) console.log("Game System: ",gameSystem);
 
             var json = {

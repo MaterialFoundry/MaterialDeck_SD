@@ -25,13 +25,14 @@ function setUI(returnValue={key:null,value:null}) {
     else if (macroMode == 'name') {
         displayElement(`#macroTriggerStuff`,true);
         displayElement(`#macroArgsWrapper`,true);
-        element = document.querySelector('#macroNumberLabel');
-        if (element != null) element.innerHTML = 'Macro Name';
     }
     else {
         displayElement(`#macroTriggerStuff`,true);
         displayElement(`#backgroundContainer`,true);
     }
+
+    element = document.querySelector('#macroNumberLabel');
+    if (element != null) element.innerHTML = macroMode == 'name' ? '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#macro-name" target=”_blank”>Macro Name</a>' : '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#macro-number" target=”_blank”>Macro Number</a>';
 }
 
 function setSystemDependentElements() {

@@ -1,6 +1,8 @@
 function setUI(returnValue={key:null,value:null}) {
     let mode = settings.combatTrackerMode ? settings.combatTrackerMode : 'combatants';
     let func = settings.combatTrackerFunction ? settings.combatTrackerFunction : 'startStop';
+    let dispositionFilter = settings.dispositionFilter ? settings.dispositionFilter : 'all';
+    let visibilityFilter = settings.visibilityFilter ? settings.visibilityFilter : 'none';
     
     if (returnValue.key == 'combatTrackerMode') mode = returnValue.value;
     if (returnValue.key == 'combatTrackerFunction') func = returnValue.value;
@@ -10,10 +12,15 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#turnDisplay`,false);
 
     if (mode == 'combatants' || mode == 'currentCombatant'){
+        if (returnValue.key == 'dispositionFilter') dispositionFilter = returnValue.value; 
+        if (returnValue.key == 'visibilityFilter') visibilityFilter = returnValue.value;
+
         let system = settings.system ? settings.system : 'dnd5e';
         if (returnValue.key == 'system') system = returnValue.value;
         let stats = settings.stats ? settings.stats : 'none';
-        if (returnValue.key == 'stats') stats = returnValue.value;
+        if (returnValue.key == 'stats') {
+            stats = returnValue.value;
+        }
         if (system == 'demonlord') {
             stats = settings.statsDemonlord ? settings.statsDemonlord : 'none';
             if (returnValue.key == 'statsDemonlord') stats = returnValue.value;
@@ -48,6 +55,13 @@ function setUI(returnValue={key:null,value:null}) {
             displayElement(`#demonlordWrapper`,true);
             displayElement(`#onClickDemonWrapper`,true);
         }
+
+        
+        if (dispositionFilter == 'all') displayElement(`#dispModeWrapper`,false);
+        else displayElement(`#dispModeWrapper`,true);
+
+        if (visibilityFilter == 'none') displayElement(`#visibilityModeWrapper`,false);
+        else displayElement(`#visibilityModeWrapper`,true);
     }
     else if (mode == 'function'){
         displayElement(`#funcWrapper`,true);
@@ -62,72 +76,9 @@ function setUI(returnValue={key:null,value:null}) {
     }
 }
 
+
+
 function setSystemDependentElements() {
-    let statsElement = document.getElementById(`stats`);
-    let onClickElement = document.getElementById(`onClick`);
-    
-    let newStatOptions = [];
-    let newOnClickOptions = [];
-
-    if (system == 'D35E') {
-        newStatOptions.push({value:'HP', name:'HP'});
-        newStatOptions.push({value:'TempHP', name:'Temp HP'});
-        newStatOptions.push({value:'AC', name:'AC'});
-        newStatOptions.push({value:'Speed', name:'Speed'});
-        newStatOptions.push({value:'Init', name:'Initiative'});
-    }
-    else if (system == 'pf1') {
-        newStatOptions.push({value:'HP', name:'HP'});
-        newStatOptions.push({value:'TempHP', name:'Temp HP'});
-        newStatOptions.push({value:'AC', name:'AC'});
-        newStatOptions.push({value:'Speed', name:'Speed'});
-        newStatOptions.push({value:'Init', name:'Initiative'});
-    }
-    else if (system == 'pf2e') {
-        newStatOptions.push({value:'HP', name:'HP'});
-        newStatOptions.push({value:'TempHP', name:'Temp HP'});
-        newStatOptions.push({value:'AC', name:'AC'});
-        newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
-        newStatOptions.push({value:'Speed', name:'Speed'});
-        newStatOptions.push({value:'Init', name:'Initiative'});
-    }
-    else if (system == 'demonlord') {
-        newStatOptions.push({value:'HP', name:'HP'});
-        newStatOptions.push({value:'AC', name:'Defense'});
-        newStatOptions.push({value:'ShieldHP', name:'Shield HP'});
-        newStatOptions.push({value:'Speed', name:'Speed'});
-        newStatOptions.push({value:'Init', name:'Initiative'});
-
-        newOnClickOptions.push({value:'initiative',name:'Toggle Initiative'});
-    }
-    else { //default/dnd5e
-        newStatOptions.push({value:'HP', name:'HP'});
-        newStatOptions.push({value:'TempHP', name:'Temp HP'});
-        newStatOptions.push({value:'AC', name:'AC'});
-        newStatOptions.push({value:'Speed', name:'Speed'});
-        newStatOptions.push({value:'Init', name:'Initiative'});
-        newStatOptions.push({value:'PassivePerception', name:'Passive Perception'});
-        newStatOptions.push({value:'PassiveInvestigation', name:'Passive Investigation'});
-    }
-
-    for (let option of newStatOptions) {
-        let newOption = document.createElement('option');
-        newOption.value = option.value;
-        newOption.innerHTML = option.name;
-        statsElement.appendChild(newOption);
-    }
-
-    for (let option of newOnClickOptions) {
-        let newOption = document.createElement('option');
-        newOption.value = option.value;
-        newOption.innerHTML = option.name;
-        onClickElement.appendChild(newOption);
-    }
-
-    const statsSelection = settings.stats ? settings.stats : 'none';
-    statsElement.value = statsSelection;
-
-    const onClickSelection = settings.onClick ? settings.onClick : 'doNothing';
-    onClickElement.value = onClickSelection;
+    setElements('stats');
+    setElements('onClick');
 }
-

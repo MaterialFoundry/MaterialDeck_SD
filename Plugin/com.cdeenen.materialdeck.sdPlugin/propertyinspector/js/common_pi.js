@@ -1,5 +1,16 @@
 let system = 'dnd5e';
 let foundryVersion = '10';
+let systemData = {
+    conditions: [],
+    abilities: [],
+    saves: [],
+    skills: [],
+    itemTypes: [],
+    weaponRollModes: [],
+    featureTypes: [],
+    spellLevels: [],
+    attackModes: []
+}
 
 /**
  * First we declare a global variable, which change all elements behaviour
@@ -61,8 +72,10 @@ const updateUI = (pl) => {
 
  $SD.on('sendToPropertyInspector', jsn => {
   const pl = jsn.payload;
-  //console.log('plReceived',pl)
 
+    if (pl.systemData != undefined) {
+        systemData = pl.systemData;
+    }
     if (pl.gameSystem != undefined) {
         system = pl.gameSystem;
         setSystemDependentElements();
@@ -71,15 +84,10 @@ const updateUI = (pl) => {
         foundryVersion = pl.foundryVersion;
     }
     if (pl.device != undefined) {
-       // console.log( 'setNewPageSettings',pl.device.pageSettings )
         pageSettings = pl.device.pageSettings;
         setUI(returnValue={key:'pageSettings',value:null})
         //setPageSettings(pageSettings,parentSD);
     }
-        
-
-  
-  
 });
 
 /**

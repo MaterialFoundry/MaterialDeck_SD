@@ -10,9 +10,13 @@
   </head>
   <body>
     <div class="sdpi-wrapper" id="wrapper" style="">
+      <div class="sdpi-item">
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Custom-Icons#icon-override-preferred" target=”_blank”>Icon Override</a></div>
+        <input class="sdpi-item-value" id="iconOverride" value="">
+      </div>
       
       <div class="sdpi-item">
-        <div class="sdpi-item-label">Function</div>
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#function" target=”_blank”>Function</a></div>
         <select class="sdpi-item-value select" id="sceneFunction" type="select">
           <option value='visible'>Visible Scenes</option>
           <option value='dir'>Scene Directory</option>
@@ -24,7 +28,7 @@
 
       <div class="sub1">
         <div class="sdpi-item" id="sceneViewFunctionContainer" style="display:none">
-          <div class="sdpi-item-label">View Function</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#view-function" target=”_blank”>View Function</a></div>
           <select class="sdpi-item-value select" id="sceneViewFunction" type="select">
             <option value='view'>View</option>
             <option value='activate'>Activate</option>
@@ -33,49 +37,55 @@
         </div>
         
         <div class="sdpi-item" id="visibleSceneContainer" style="display:none">
-          <div class="sdpi-item-label">Scene Nr</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#scene-nr" target=”_blank”>Scene Nr</a></div>
           <input class="sdpi-item-value" id="sceneNr" value="1">
         </div>
 
         <div class="sdpi-item" id="anySceneContainer" style="display:none">
-          <div class="sdpi-item-label">Scene Name</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#scene-name" target=”_blank”>Scene Name</a></div>
           <input class="sdpi-item-value" id="sceneName" value="">
         </div>
 
         <div class="sdpi-item" id="sceneOffsetContainer" style="display:none">
-          <div class="sdpi-item-label">Offset</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#offset" target=”_blank”>Offset</a></div>
           <input class="sdpi-item-value" id="sceneOffset" value="0">
         </div>
       </div>
 
       <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Name</div>
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#display-name" target=”_blank”>Display Name</a></div>
         <input class="sdpi-item-value" id="displaySceneName" type="checkbox">
         <label for="displaySceneName"><span></span></label>
       </div>
 
       <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label">Display Icon</div>
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#display-icon" target=”_blank”>Display Icon</a></div>
         <input class="sdpi-item-value" id="displaySceneIcon" type="checkbox">
         <label for="displaySceneIcon"><span></span></label>
       </div>
       
       <div class="spdi-wrapper" id="ringColorWrapper" style="">
         <div type="range" class="sdpi-item" id="onColorContainer">
-          <div class="sdpi-item-label">On Color</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#scene-open-color" target=”_blank”>Scene Open Color</a></div>
           <div class="sdpi-item-value">
               <input type="color" id="onRing" value="#00FF00">
           </div>
         </div>
+        <div type="range" class="sdpi-item" id="onColorContainer">
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#scene-active-color" target=”_blank”>Scene Active Color</a></div>
+          <div class="sdpi-item-value">
+              <input type="color" id="activeRing" value="#FFFF00">
+          </div>
+        </div>
         <div type="range" class="sdpi-item" id="offColorContainer">
-          <div class="sdpi-item-label">Off Color</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#off-color" target=”_blank”>Off Color</a></div>
           <div class="sdpi-item-value">
               <input type="color" id="offRing" value="#000000">
           </div>
         </div>
       </div>
       <div type="range" class="sdpi-item" id="backgroundContainer">
-        <div class="sdpi-item-label">Background</div>
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Scene-Action#background" target=”_blank”>Background</a></div>
         <div class="sdpi-item-value">
             <input type="color" id="background" value="#000000">
         </div>

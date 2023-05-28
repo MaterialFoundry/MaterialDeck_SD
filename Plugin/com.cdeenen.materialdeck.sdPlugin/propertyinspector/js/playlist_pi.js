@@ -12,6 +12,8 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#offsetName`,false);
     displayElement(`#trackNrContainer`,false);
     displayElement(`#stopAllWrapper`,false);
+    displayElement(`#trackVolumeWrapper`,false);
+    displayElement(`#dispTrackVolume`,false);
 
     if (playlistMode == 'stopAll' || playlistMode == 'pauseAll') {
         displayElement(`#stopAllWrapper`,true);
@@ -27,7 +29,31 @@ function setUI(returnValue={key:null,value:null}) {
             if (playlistMode == 'track') displayElement(`#trackNrContainer`,true);
             displayElement(`#playlistPlayWrapper`,true);
         }
-    } 
+    }
+
+    if (playlistMode == 'track') {
+        if (playlistType == 'incDecVol' || playlistType == 'setVol') displayElement(`#trackVolumeWrapper`,true);
+        displayElement(`#dispTrackVolume`,true);
+
+        let element = document.getElementById('playlistType');
+        for (let option of element.options) {
+            if (option.value == 'incDecVol') return;
+        }
+        let newOption = new Option('Increase/Decrease Volume','incDecVol')
+        element.add(newOption);
+        let newOption2 = new Option('Set Volume','setVol')
+        element.add(newOption2);
+
+        element.value = playlistType; 
+    }
+    else if (playlistMode == 'playlist') {
+        let element = document.getElementById('playlistType');
+        for (let i=element.options.length-1; i>=0; i--) {
+            const option = element.options[i];
+            if (option.value == 'incDecVol') element.removeChild(option)
+            if (option.value == 'setVol') element.removeChild(option)
+        }
+    }
 }
 
 function setSystemDependentElements() {

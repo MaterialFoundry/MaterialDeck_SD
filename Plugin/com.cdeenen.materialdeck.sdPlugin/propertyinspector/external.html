@@ -11,25 +11,29 @@
   <body>
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
       <div class="sdpi-item">
-        <div class="sdpi-item-label">Module</div>
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Custom-Icons#icon-override-preferred" target=”_blank”>Icon Override</a></div>
+        <input class="sdpi-item-value" id="iconOverride" value="">
+      </div>
+      
+      <div class="sdpi-item">
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#external-modules-action" target=”_blank”>Module</a></div>
         <select class="sdpi-item-value select" id="module" type="select">
           <option value='fxmaster'>FXMaster</option>
           <option value='gmscreen'>GM Screen</option>
-          <option value='triggerHappy'>Trigger Happy</option>
-          <option value='sharedVision'>Shared Vision</option>
           <option value='lockView'>Lock View</option>
-          <option value='notYourTurn'>Not Your Turn!</option>
-          <option value='mookAI'>Mook AI</option>
-          <option value='aboutTime'>About Time</option>
-          <option value='soundscape'>Soundscape</option>
           <option value='monksActiveTiles'>Monk's Active Tile Triggers</option>
+          <option value='notYourTurn'>Not Your Turn!</option>
+          <option value='sharedVision'>Shared Vision</option>
+          <option value='simpleCalendar'>Simple Calendar</option>
+          <option value='soundscape'>Soundscape</option>
+          <option value='triggerHappy'>Trigger Happy</option>
         </select>
       </div>
 
     <div class="wrapper" id="fxMasterWrapper" style="display:none">
       <div class="sub1">
         <div class="sdpi-item">
-          <div class="sdpi-item-label">Type</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#fx-master" target=”_blank”>Type</a></div>
           <select class="sdpi-item-value select" id="fxMasterType" type="select">
             <option value='weatherControls'>Weather Controls</option>
             <option value='filters'>Filters</option>
@@ -222,7 +226,7 @@
     <div class="wrapper" id="gmScreenWrapper" style="display:none">
       <div class="sub1">
         <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#gm-screen" target=”_blank”>Display Name</a></div>
           <input class="sdpi-item-value" id="displayGmScreenName" type="checkbox">
           <label for="displayGmScreenName"><span></span></label>
         </div>
@@ -240,56 +244,10 @@
       </div>
     </div>
 
-    <div class="wrapper" id="triggerHappyWrapper" style="display:none">
-      <div class="sub1">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Mode</div>
-          <select class="sdpi-item-value select" id="triggerHappyMode" type="select">
-            <option value='toggle'>Toggle Triggers</option>
-            <option value='enable'>Enable Triggers</option>
-            <option value='disable'>Disable Triggers</option>
-          </select> 
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="displayTriggerHappyName" type="checkbox">
-          <label for="displayTriggerHappyName"><span></span></label>
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Icon</div>
-          <input class="sdpi-item-value" id="displayTriggerHappyIcon" type="checkbox">
-          <label for="displayTriggerHappyIcon"><span></span></label>
-        </div>
-      </div>
-    </div>
-
-    <div class="wrapper" id="sharedVisionWrapper" style="display:none">
-      <div class="sub1">
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Mode</div>
-          <select class="sdpi-item-value select" id="sharedVisionMode" type="select">
-            <option value='toggle'>Toggle Global Shared Vision</option>
-            <option value='enable'>Enable Global Shared Vision</option>
-            <option value='disable'>Disable Global Shared Vision</option>
-          </select> 
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="sharedVisionName" type="checkbox">
-          <label for="sharedVisionName"><span></span></label>
-        </div>
-        <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Icon</div>
-          <input class="sdpi-item-value" id="sharedVisionIcon" type="checkbox">
-          <label for="sharedVisionIcon"><span></span></label>
-        </div>
-      </div>
-    </div>
-
     <div class="wrapper" id="lockViewWrapper" style="display:none">
       <div class="sub1">
         <div class="sdpi-item">
-          <div class="sdpi-item-label">Mode</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#lock-view" target=”_blank”>Mode</a></div>
           <select class="sdpi-item-value select" id="lockViewMode" type="select">
             <option value='panLock'>Pan Lock</option>
             <option value='zoomLock'>Zoom Lock</option>
@@ -317,10 +275,33 @@
         </div>
     </div>
 
+    <div class="wrapper" id="monksActiveTilesWrapper" style="display:none">
+      <div class="sub1">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label" id='monksActiveTilesIdLabel'><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#monks-active-tile-triggers" target=”_blank”>Tile id</a></div>
+          <input class="sdpi-item-value" id="monksActiveTilesId" value="">
+        </div>
+
+        <div class="sdpi-item">
+          <div class="sdpi-item-label">Mode</div>
+          <select class="sdpi-item-value select" id="monksActiveTilesMode" type="select">
+            <option value='toggle'>Toggle Active</option>
+            <option value='enable'>Activate Tile</option>
+            <option value='disable'>Deactive Tile</option>
+          </select> 
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Tile</div>
+          <input class="sdpi-item-value" id="monksActiveTilesIcon" type="checkbox">
+          <label for="monksActiveTilesIcon"><span></span></label>
+        </div>
+      </div>
+    </div>
+
     <div class="wrapper" id="notYourTurnWrapper" style="display:none">
       <div class="sub1">
         <div class="sdpi-item">
-          <div class="sdpi-item-label">Mode</div>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#not-your-turn" target=”_blank”>Mode</a></div>
           <select class="sdpi-item-value select" id="notYourTurnMode" type="select">
             <option value='toggle'>Toggle Combat Movement Block</option>
             <option value='enable'>Enable Combat Movement Block</option>
@@ -343,26 +324,34 @@
       </div>
     </div>
 
-    <div class="wrapper" id="mookWrapper" style="display:none">
+    <div class="wrapper" id="sharedVisionWrapper" style="display:none">
       <div class="sub1">
+        <div class="sdpi-item">
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#shared-vision" target=”_blank”>Mode</a></div>
+          <select class="sdpi-item-value select" id="sharedVisionMode" type="select">
+            <option value='toggle'>Toggle Global Shared Vision</option>
+            <option value='enable'>Enable Global Shared Vision</option>
+            <option value='disable'>Disable Global Shared Vision</option>
+          </select> 
+        </div>
         <div type="checkbox" class="sdpi-item">
           <div class="sdpi-item-label">Display Name</div>
-          <input class="sdpi-item-value" id="mookName" type="checkbox">
-          <label for="mookName"><span></span></label>
+          <input class="sdpi-item-value" id="sharedVisionName" type="checkbox">
+          <label for="sharedVisionName"><span></span></label>
         </div>
         <div type="checkbox" class="sdpi-item">
           <div class="sdpi-item-label">Display Icon</div>
-          <input class="sdpi-item-value" id="mookIcon" type="checkbox">
-          <label for="mookIcon"><span></span></label>
+          <input class="sdpi-item-value" id="sharedVisionIcon" type="checkbox">
+          <label for="sharedVisionIcon"><span></span></label>
         </div>
       </div>
     </div>
 
-    <div class="wrapper" id="aboutTimeWrapper" style="display:none">
+    <div class="wrapper" id="simpleCalendarWrapper" style="display:none">
       <div class="sub1">
         <div class="sdpi-item">
-          <div class="sdpi-item-label">Display Time</div>
-          <select class="sdpi-item-value select" id="aboutTimeDisplayTime" type="select">
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#simple-calendar" target=”_blank”>Display Time</a></div>
+          <select class="sdpi-item-value select" id="simpleCalendarDisplayTime" type="select">
             <option value='none'>Do Not Display</option>
             <option value='hours24h'>Hours (24H)</option>
             <option value='hours12h'>Hours (12H)</option>
@@ -377,7 +366,7 @@
         </div>
         <div class="sdpi-item">
           <div class="sdpi-item-label">Display Date</div>
-          <select class="sdpi-item-value select" id="aboutTimeDisplayDate" type="select">
+          <select class="sdpi-item-value select" id="simpleCalendarDisplayDate" type="select">
             <option value='none'>Do Not Display</option>
             <option value='day'>Day</option>
             <option value='dayName'>Day (name)</option>
@@ -389,13 +378,15 @@
             <option value='full'>D:M:Y</option>
             <option value='fullInv'>M:D:Y</option>
             <option value='textDay'>Full Text With Day</option>
+            <option value='textDayAbbr'>Full Text With Day (abbreviated)</option>
             <option value='text'>Full Text Without Day</option>
+            <option value='textAbbr'>Full Text Without Day (abbreviated)</option>
           </select> 
         </div>
 
         <div class="sdpi-item">
           <div class="sdpi-item-label">On Click</div>
-          <select class="sdpi-item-value select" id="aboutTimeOnClick" type="select">
+          <select class="sdpi-item-value select" id="simpleCalendarOnClick" type="select">
             <option value='none'>Do Nothing</option>
             <option value='startStop'>Start/Stop the Clock</option>
             <option value='advance'>Advance the Time</option>
@@ -403,11 +394,11 @@
           </select> 
         </div>
 
-        <div class="wrapper" id="aboutTimeStartStopWrapper" style="display:none">
+        <div class="wrapper" id="simpleCalendarStartStopWrapper" style="display:none">
           <div class="sub1">
             <div class="sdpi-item">
               <div class="sdpi-item-label">Start/Stop</div>
-              <select class="sdpi-item-value select" id="aboutTimeStartStopMode" type="select">
+              <select class="sdpi-item-value select" id="simpleCalendarStartStopMode" type="select">
                 <option value='toggle'>Toggle</option>
                 <option value='start'>Start</option>
                 <option value='stop'>Stop</option>
@@ -416,14 +407,14 @@
           </div>
         </div>
 
-        <div class="wrapper" id="aboutTimeAdvanceWrapper" style="display:none">
+        <div class="wrapper" id="simpleCalendarAdvanceWrapper" style="display:none">
           <div class="sub2">
             <div class="sdpi-item">
               <div class="sdpi-item-label" id="advanceModeLabel">Advance</div>
-              <select class="sdpi-item-value select" id="aboutTimeAdvanceMode" type="select">
-                <option value='dawn'>To Dawn</option>
-                <option value='noon'>To Noon</option>
-                <option value='dusk'>To Dusk</option>
+              <select class="sdpi-item-value select" id="simpleCalendarAdvanceMode" type="select">
+                <option value='sunrise'>Sunrise</option>
+                <option value='midday'>Midday</option>
+                <option value='sunset'>Sunset</option>
                 <option value='midnight'>To Midnight</option>
                 <option value='1s'>1 Second</option>
                 <option value='30s'>30 Seconds</option>
@@ -431,6 +422,11 @@
                 <option value='5m'>5 Minutes</option>
                 <option value='15m'>15 Minutes</option>
                 <option value='1h'>1 Hour</option>
+                <option value='6h'>6 Hours</option>
+                <option value='12h'>12 Hours</option>
+                <option value='1d'>1 Day</option>
+                <option value='7d'>7 Days</option>
+                <option value='1M'>1 Month</option>
               </select> 
             </div>
           </div>
@@ -438,30 +434,30 @@
 
         <div type="checkbox" class="sdpi-item">
           <div class="sdpi-item-label">Display Running</div>
-          <input class="sdpi-item-value" id="aboutTimeActive" type="checkbox">
-          <label for="aboutTimeActive"><span></span></label>
+          <input class="sdpi-item-value" id="simpleCalendarActive" type="checkbox">
+          <label for="simpleCalendarActive"><span></span></label>
         </div>
 
-        <div class="wrapper" id="aboutTimeRingWrapper" style="display:none">
+        <div class="wrapper" id="simpleCalendarRingWrapper" style="display:none">
           <div type="range" class="sdpi-item" id="onColorContainer">
             <div class="sdpi-item-label">On Color</div>
             <div class="sdpi-item-value">
-                <input type="color" id="aboutTimeOnRing" value="#00FF00">
+                <input type="color" id="simpleCalendarOnRing" value="#00FF00">
             </div>
           </div>
           <div type="range" class="sdpi-item" id="offColorContainer">
             <div class="sdpi-item-label">Off Color</div>
             <div class="sdpi-item-value">
-                <input type="color" id="aboutTimeOffRing" value="#000000">
+                <input type="color" id="simpleCalendarOffRing" value="#000000">
             </div>
           </div>
         </div>
       </div>
     </div>
-
+    
     <div class="wrapper" id="soundscapeWrapper" style="display:none">
       <div class="sdpi-item">
-        <div class="sdpi-item-label">Target</div>
+        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#soundscape" target=”_blank”>Target</a></div>
         <select class="sdpi-item-value select" id="soundscapeTarget" type="select">
           <option value='mixer'>Mixer</option>
           <option value='soundboard'>Soundboard</option>
@@ -579,28 +575,35 @@
       </div>
     </div>
 
-    <div class="wrapper" id="monksActiveTilesWrapper" style="display:none">
+    <div class="wrapper" id="triggerHappyWrapper" style="display:none">
       <div class="sub1">
         <div class="sdpi-item">
-          <div class="sdpi-item-label" id='monksActiveTilesIdLabel'>Tile id</div>
-          <input class="sdpi-item-value" id="monksActiveTilesId" value="">
-        </div>
-
-        <div class="sdpi-item">
-          <div class="sdpi-item-label">Mode</div>
-          <select class="sdpi-item-value select" id="monksActiveTilesMode" type="select">
-            <option value='toggle'>Toggle Active</option>
-            <option value='enable'>Activate Tile</option>
-            <option value='disable'>Deactive Tile</option>
+          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/External-Modules#trigger-happy" target=”_blank”>Mode</a></div>
+          <select class="sdpi-item-value select" id="triggerHappyMode" type="select">
+            <option value='toggle'>Toggle Triggers</option>
+            <option value='enable'>Enable Triggers</option>
+            <option value='disable'>Disable Triggers</option>
           </select> 
         </div>
         <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label">Display Tile</div>
-          <input class="sdpi-item-value" id="monksActiveTilesIcon" type="checkbox">
-          <label for="monksActiveTilesIcon"><span></span></label>
+          <div class="sdpi-item-label">Display Name</div>
+          <input class="sdpi-item-value" id="displayTriggerHappyName" type="checkbox">
+          <label for="displayTriggerHappyName"><span></span></label>
+        </div>
+        <div type="checkbox" class="sdpi-item">
+          <div class="sdpi-item-label">Display Icon</div>
+          <input class="sdpi-item-value" id="displayTriggerHappyIcon" type="checkbox">
+          <label for="displayTriggerHappyIcon"><span></span></label>
         </div>
       </div>
     </div>
+
+
+
+
+   
+
+
       
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
