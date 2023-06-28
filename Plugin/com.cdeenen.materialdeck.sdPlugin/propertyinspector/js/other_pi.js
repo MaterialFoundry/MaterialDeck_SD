@@ -1,6 +1,9 @@
 function setUI(returnValue={key:null,value:null}) {
     let mode = settings.otherMode ? settings.otherMode : 'pause';
     if (returnValue.key == 'otherMode') mode = returnValue.value;
+    let journalMode = settings.journalMode ? settings.journalMode : 'openJournal';
+    if (returnValue.key == 'journalMode') journalMode = returnValue.value;
+    console.log(mode,journalMode)
 
     displayElement(`#pauseContainer`,false);
     displayElement(`#moveContainer`,false);
@@ -16,6 +19,7 @@ function setUI(returnValue={key:null,value:null}) {
     displayElement(`#rollModeContainer`,false);
     displayElement(`#attackModesContainer`,false);
     displayElement(`#globalVolumeContainer`,false);
+    displayElement(`#journalContainer`,false);
 
     if (mode == 'pause'){    //pause
         displayElement(`#pauseContainer`,true);
@@ -79,7 +83,16 @@ function setUI(returnValue={key:null,value:null}) {
         displayElement(`#sidebarContainer`,true);
         displayElement(`#ringColorWrapper`,true);
     }
-    else if (mode == 'compendium' || mode == 'journal')   //open compendium or journal
+    else if (mode == 'journal') { //open journal
+        if (journalMode == 'openJournal') displayElement(`#journalPageNameContainer`,false);
+        else {
+            displayElement(`#journalPageNameContainer`,true);
+            if (journalMode == 'openPageNr') document.getElementById('journalPageNameLabel').innerHTML = 'Page Nr';
+            else document.getElementById('journalPageNameLabel').innerHTML = 'Page Name';
+        }
+        displayElement(`#journalContainer`,true);
+    }
+    else if (mode == 'compendium')   //open compendium
         displayElement(`#compendiumContainer`,true);
     else if (mode == 'chatMessage')
         displayElement(`#chatMessageContainer`,true);

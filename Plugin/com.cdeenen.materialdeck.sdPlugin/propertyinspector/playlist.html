@@ -20,6 +20,8 @@
         <select class="sdpi-item-value select" id="playlistMode" type="select">
           <option value='playlist'>Playlist</option>
           <option value='track'>Track</option>
+          <option value='playlistName'>Playlist by Name</option>
+          <option value='trackName'>Track by Name</option>
           <option value='pauseAll'>Pause All</option>
           <option value='stopAll'>Stop All</option>
         </select>
@@ -50,11 +52,11 @@
         </div>
         <div class="spdi-wrapper" id="playlistPlayWrapper" style="">
           <div class="sdpi-item" id="playlistNrContainer">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Playlist-Action#playlisttrack-nr" target=”_blank”>Playlist Nr</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Playlist-Action#playlisttrack-nr" target=”_blank” id="playlistNrLabel">Playlist Nr</a></div>
             <input class="sdpi-item-value" id="playlistNr" value=1>
           </div>
           <div class="sdpi-item" id="trackNrContainer" style="display:none">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Playlist-Action#playlisttrack-nr" target=”_blank”>Track Nr</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Playlist-Action#playlisttrack-nr" target=”_blank” id="trackNrLabel">Track Nr</a></div>
             <input class="sdpi-item-value" id="trackNr" value=1>
           </div>
           <div class="spdi-wrapper" id="trackVolumeWrapper" style="display:none">

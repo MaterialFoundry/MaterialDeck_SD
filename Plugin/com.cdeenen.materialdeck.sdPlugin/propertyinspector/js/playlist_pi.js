@@ -26,34 +26,34 @@ function setUI(returnValue={key:null,value:null}) {
             if (playlistMode == 'playlist') displayElement(`#offsetName`,true);
         }
         else {
-            if (playlistMode == 'track') displayElement(`#trackNrContainer`,true);
+            if (playlistMode == 'track' || playlistMode == 'trackName') displayElement(`#trackNrContainer`,true);
             displayElement(`#playlistPlayWrapper`,true);
         }
     }
 
-    if (playlistMode == 'track') {
+    if (playlistMode == 'track' || playlistMode == 'trackName') {
         if (playlistType == 'incDecVol' || playlistType == 'setVol') displayElement(`#trackVolumeWrapper`,true);
         displayElement(`#dispTrackVolume`,true);
-
-        let element = document.getElementById('playlistType');
-        for (let option of element.options) {
-            if (option.value == 'incDecVol') return;
-        }
-        let newOption = new Option('Increase/Decrease Volume','incDecVol')
-        element.add(newOption);
-        let newOption2 = new Option('Set Volume','setVol')
-        element.add(newOption2);
-
-        element.value = playlistType; 
+        addSelectOption('playlistType','incDecVol','Increase/Decrease Volume');
+        addSelectOption('playlistType','setVol','Set Volume');
     }
-    else if (playlistMode == 'playlist') {
-        let element = document.getElementById('playlistType');
-        for (let i=element.options.length-1; i>=0; i--) {
-            const option = element.options[i];
-            if (option.value == 'incDecVol') element.removeChild(option)
-            if (option.value == 'setVol') element.removeChild(option)
-        }
+    else if (playlistMode == 'playlist' || playlistMode == 'playlistName') {
+        removeSelectOption('playlistType','incDecVol');
+        removeSelectOption('playlistType','setVol');
     }
+    if (playlistMode == 'track' || playlistMode == 'playlist') {
+        addSelectOption('playlistType','offset','Absolute Offset');
+        addSelectOption('playlistType','relativeOffset','Relative Offset');
+        document.getElementById('playlistNrLabel').innerHTML = 'Playlist Nr';
+        document.getElementById('trackNrLabel').innerHTML = 'Track Nr';
+    }
+    else if (playlistMode == 'trackName' || playlistMode == 'playlistName') {
+        removeSelectOption('playlistType','offset');
+        removeSelectOption('playlistType','relativeOffset');
+        document.getElementById('playlistNrLabel').innerHTML = 'Playlist Name';
+        document.getElementById('trackNrLabel').innerHTML = 'Track Name';
+    }
+    document.getElementById('playlistType').value = playlistType;
 }
 
 function setSystemDependentElements() {

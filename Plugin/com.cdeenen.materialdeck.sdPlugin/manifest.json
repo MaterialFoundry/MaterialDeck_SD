@@ -115,7 +115,7 @@
   "Name": "Material Deck", 
   "Icon": "MaterialFoundry", 
   "URL": "https://github.com/CDeenen/MaterialDeck_SD", 
-  "Version": "1.5.0",
+  "Version": "1.5.1",
   "OS": [
     {
         "Platform": "mac", 
