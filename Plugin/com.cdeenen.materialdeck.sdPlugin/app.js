@@ -91,9 +91,9 @@ $SD.on('deviceDidConnect', jsn => {
     }
 
     let msg = {
-        target: "MD",
-        source: 0,
-        type: "newDevice",
+        target: "MaterialDeck_Foundry",
+        source: "MaterialDeck_Device",
+        type: "deviceConnected",
         iteration: connectedDevices,
         device: {
             id: jsn.device,
@@ -113,8 +113,8 @@ $SD.on('deviceDidDisconnect', jsn => {
     buttonContext.splice(index,1);
 
     let msg = {
-        target: "MD",
-        source: 0,
+        target: "MaterialDeck_Foundry",
+        source: "MaterialDeck_Device",
         type: "deviceDisconnected",
         device: {
             id: jsn.device,
@@ -225,8 +225,8 @@ const action = {
         }
 
         let msg = {
-            target: "MD",
-            source: 0,
+            target: "MaterialDeck_Foundry",
+            source: "MaterialDeck_Device",
             type: "data",
             device: jsn.device,
             action: action,
@@ -392,8 +392,6 @@ function connectToServerWS() {
     // Initalise Node.js WebSocket connection.
     serverWS.addEventListener('open', () => {
         if (sdCon) {
-            serverWS.send(JSON.stringify({ target: 'server', source: "SD", version: $SD.applicationInfo.plugin.version}));
-
             let devices = [];
             for (let device of buttonContext) {
                 devices.push({
@@ -403,14 +401,23 @@ function connectToServerWS() {
                     size: device.size
                 })
             }
-            
-            let msg = {
-                target: "MD",
-                source: 0,
+
+            sendToServer({ 
+                target: 'MaterialCompanion', 
+                type: 'connected', 
+                source: "MaterialDeck_Device", 
+                sourceTarget: "MaterialDeck_Foundry", 
+                userId: "sd", 
+                version: $SD.applicationInfo.plugin.version,
+                devices
+            });
+
+            sendToServer({
+                target: "MaterialDeck_Foundry",
+                source: "MaterialDeck_Device", 
                 type: "deviceList",
                 devices
-            }
-            sendToServer(msg);
+            });
             
             //serverWS.send(JSON.stringify({ target: 'MD', source: "SD", type:"version", version: $SD.applicationInfo.plugin.version}));
         }
@@ -427,7 +434,7 @@ function connectToServerWS() {
         if (debugEn) console.log('server event listener received: ',e.data);
         //console.log('data received',e.data)
         const data = JSON.parse(e.data);
-        if (data.target != 'SD') return;
+        if (data.target != 'MaterialDeck_Device') return;
         if (data.type == 'init'){
             sendContext();
             gameSystem = data.system;
@@ -441,7 +448,7 @@ function connectToServerWS() {
                 payload: {gameSystem, foundryVersion}
             };
             $SD.connection.send(JSON.stringify(json)); 
-            if (sdCon) serverWS.send(JSON.stringify({ target: 'MD', source: "SD", type:"version", version: $SD.applicationInfo.plugin.version}));
+            if (sdCon) serverWS.send(JSON.stringify({ target: 'MaterialDeck_Foundry', source: "MaterialDeck_Device", type:"version", version: $SD.applicationInfo.plugin.version}));
         }
         else
             sendToSDWS(e.data); 

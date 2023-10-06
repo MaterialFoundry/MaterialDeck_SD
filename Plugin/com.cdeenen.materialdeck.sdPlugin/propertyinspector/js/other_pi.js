@@ -1,7 +1,7 @@
 function setUI(returnValue={key:null,value:null}) {
     let mode = settings.otherMode ? settings.otherMode : 'pause';
     if (returnValue.key == 'otherMode') mode = returnValue.value;
-    let journalMode = settings.journalMode ? settings.journalMode : 'openJournal';
+let journalMode = settings.journalMode ? settings.journalMode : 'openJournal';
     if (returnValue.key == 'journalMode') journalMode = returnValue.value;
     console.log(mode,journalMode)
 

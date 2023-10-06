@@ -8,7 +8,7 @@
   no-var: 0,
   vars-on-top: 0
 */
-const debugEn = false;
+const debugEn = true;
 if (debugEn) console.log("starting common.js")
 
 // don't change this to let or const, because we rely on var's hoisting

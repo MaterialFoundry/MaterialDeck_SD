@@ -34,7 +34,7 @@ function setUI(returnValue={key:null,value:null}) {
     if (playlistMode == 'track' || playlistMode == 'trackName') {
         if (playlistType == 'incDecVol' || playlistType == 'setVol') displayElement(`#trackVolumeWrapper`,true);
         displayElement(`#dispTrackVolume`,true);
-        addSelectOption('playlistType','incDecVol','Increase/Decrease Volume');
+addSelectOption('playlistType','incDecVol','Increase/Decrease Volume');
         addSelectOption('playlistType','setVol','Set Volume');
     }
     else if (playlistMode == 'playlist' || playlistMode == 'playlistName') {

@@ -42,23 +42,6 @@ function displayElement(element,display){
   }
 }
 
-function addSelectOption(elementId,value,label) {
-    let element = document.getElementById(elementId);
-    for (let option of element.options) {
-        if (option.value == value) return;
-    }
-    let newOption = new Option(label,value)
-    element.add(newOption);
-}
-
-function removeSelectOption(elementId,value) {
-    let element = document.getElementById(elementId);
-    for (let i=element.options.length-1; i>=0; i--) {
-        const option = element.options[i];
-        if (option.value == value) element.removeChild(option)
-    }
-}
-
 const updateUI = (pl) => {
   if (debugEn) console.log("pl",pl);
   if (debugEn) console.log('settings',settings)
