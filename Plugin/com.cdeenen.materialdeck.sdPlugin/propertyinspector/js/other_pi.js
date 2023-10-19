@@ -3,7 +3,6 @@ function setUI(returnValue={key:null,value:null}) {
     if (returnValue.key == 'otherMode') mode = returnValue.value;
 let journalMode = settings.journalMode ? settings.journalMode : 'openJournal';
     if (returnValue.key == 'journalMode') journalMode = returnValue.value;
-    console.log(mode,journalMode)
 
     displayElement(`#pauseContainer`,false);
     displayElement(`#moveContainer`,false);
@@ -20,6 +19,7 @@ let journalMode = settings.journalMode ? settings.journalMode : 'openJournal';
     displayElement(`#attackModesContainer`,false);
     displayElement(`#globalVolumeContainer`,false);
     displayElement(`#journalContainer`,false);
+    displayElement(`#openPartySheetContainer`, false);
 
     if (mode == 'pause'){    //pause
         displayElement(`#pauseContainer`,true);
@@ -111,6 +111,10 @@ let journalMode = settings.journalMode ? settings.journalMode : 'openJournal';
     else if (mode == 'globalVolumeControls') {
         displayElement(`#globalVolumeContainer`,true);
     }
+    else if (mode == 'openPartySheet') {
+        displayElement(`#openPartySheetContainer`, true);
+        displayElement(`#ringColorWrapper`,true);
+    }
 }
 
 function setSystemDependentElements() {
@@ -122,6 +126,7 @@ function setSystemDependentElements() {
 
     if (system == "pf2e") {
         newotherModeOptions.push({value:'compendiumBrowser',name:'Open Compendium Browser'});
+        newotherModeOptions.push({value:'openPartySheet',name:'Open Party Sheet'});
     }
 
     for (let option of newotherModeOptions) {

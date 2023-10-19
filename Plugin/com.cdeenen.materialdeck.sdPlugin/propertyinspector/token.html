@@ -13,20 +13,21 @@
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
 
       <div class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Custom-Icons#icon-override-preferred" target=”_blank”>Icon Override</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Custom-Icons#icon-override-preferred" target=”_blank”>Icon Override</a></div>
         <input class="sdpi-item-value" id="iconOverride" value="">
       </div>
 
       <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#page-wide-token" target=”_blank”>Page-Wide Token</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#page-wide-token" target=”_blank”>Page-Wide Token</a></div>
         <input class="sdpi-item-value" id="pageWideToken" type="checkbox">
         <label for="pageWideToken"><span></span></label>
       </div>
 
       <div class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#token-selection" target=”_blank”>Token</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#token-selection" target=”_blank”>Token</a></div>
         <select class="sdpi-item-value select" id="selection" type="select">
           <option value='selected'>Selected Token</option>
+          <option value='user'>User Character</option>
           <option value='tokenName'>Token Name</option>
           <option value='actorName'>Actor Name</option>
           <option value='tokenId'>Token Id</option>
@@ -37,14 +38,14 @@
       <div class="wrapper"  id="tokenNameWrapper" style="display:none">
         <div class="sub1">
           <div class="sdpi-item">
-            <div class="sdpi-item-label" id='tokenNameLabel'><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#tokenactor-name" target=”_blank”>Name</a></div>
+            <div class="sdpi-item-label" id='tokenNameLabel'><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#tokenactor-name" target=”_blank”>Name</a></div>
             <input class="sdpi-item-value" id="tokenName" value="">
           </div>
         </div>
       </div>
 
       <div class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#mode" target=”_blank”>Mode</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#mode" target=”_blank”>Mode</a></div>
         <select class="sdpi-item-value select" id="tokenMode" type="select">
           <option value='token'>Token</option>
           <option value='inventory'>Inventory</option>
@@ -58,12 +59,12 @@
 
       <div class="wrapper" id='tokenWrapper'>
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#prepend-title" target=”_blank”>Prepend Title</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#prepend-title" target=”_blank”>Prepend Title</a></div>
           <input class="sdpi-item-value" id="prependTitle" value="">
         </div>
 
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#stats" target=”_blank”>Stats</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#stats" target=”_blank”>Stats</a></div>
           <select class="sdpi-item-value select" id="stats" type="select">
             <option value='none'>None</option>
             <option value='custom'>Custom</option>
@@ -72,7 +73,7 @@
 
         <div class="sub1">
           <div class="sdpi-item" id="customContainer" style="display:none">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#custom-stats" target=”_blank”>Custom Formula</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#custom-stats" target=”_blank”>Custom Formula</a></div>
             <textarea class="sdpi-item-value" id="custom" style="word-break:break-word;" value="">
             </textarea>
           </div>
@@ -103,7 +104,7 @@
         </div>
 
         <div class="sdpi-item" id="onClickWrapper" style="">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#on-click" target=”_blank”>On Click</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#on-click" target=”_blank”>On Click</a></div>
           <select class="sdpi-item-value select" id="onClick" type="select">
             <option value='doNothing'>Do Nothing</option>
             <option value='custom'>Custom</option>
@@ -130,7 +131,7 @@
         <div class="wrapper" id="pageWideWrapper" style="display:none">
           <div class="sub1">
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#page-wide-token" target=”_blank”>Token</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#page-wide-token" target=”_blank”>Token</a></div>
               <select class="sdpi-item-value select" id="pageTokenSelection" type="select">
                 <option value='selected'>Selected Token</option>
                 <option value='tokenName'>Token Name</option>
@@ -144,7 +145,7 @@
           <div class="wrapper"  id="pageTokenNameWrapper" style="display:none">
             <div class="sub1">
               <div class="sdpi-item">
-                <div class="sdpi-item-label" id='pageTokenNameLabel'><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#tokenactor-name" target=”_blank”>Name</a></div>
+                <div class="sdpi-item-label" id='pageTokenNameLabel'><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#tokenactor-name" target=”_blank”>Name</a></div>
                 <input class="sdpi-item-value" id="pageTokenName" value="">
               </div>
             </div>
@@ -153,7 +154,7 @@
         <div class="wrapper" id="moveWrapper" style="display:none">
           <div class="sub1">
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#move-token" target=”_blank”>Direction</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#move-token" target=”_blank”>Direction</a></div>
               <select class="sdpi-item-value select" id="dir">
                 <option value='up'>Up</option>
                 <option value='down'>Down</option>
@@ -171,14 +172,14 @@
       <div class='wrapper' id='rotateWrapper' style='display:none'>  
         <div class="sub1">
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#rotate-token" target=”_blank”>Rotation</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#rotate-token" target=”_blank”>Rotation</a></div>
               <select class="sdpi-item-value select" id="rot">
                 <option value='to'>Rotate to Value</option>
                 <option value='by'>Rotate by Value</option>
               </select>
             </div>
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#rotate-token" target=”_blank”>Value (deg)</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#rotate-token" target=”_blank”>Value (deg)</a></div>
               <input class="sdpi-item-value" id="rotValue" value="0">
             </div>
         </div>
@@ -188,7 +189,7 @@
           <div class="wrapper" id="wildcardWrapper" style="display:none">
             <div class="sub1">
               <div class="sdpi-item">
-                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#set-token-wildcard-image" target=”_blank”>Wildcard Image</a></div>
+                <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#set-token-wildcard-image" target=”_blank”>Wildcard Image</a></div>
                 <select class="sdpi-item-value select" id="wildcardMethod" type="select">
                   <option value='iterate'>Iterate image</option>
                   <option value='set'>Set image</option>
@@ -196,7 +197,7 @@
                 </select>
               </div>
               <div class="sdpi-item">
-                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#set-token-wildcard-image" target=”_blank”>Value</a></div>
+                <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#set-token-wildcard-image" target=”_blank”>Value</a></div>
                 <input class="sdpi-item-value" id="wildcardValue" value="1">
               </div>
             </div>
@@ -204,7 +205,7 @@
 
           <div class="wrapper" id="customOnClickWrapper" style="display:none">
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#custom-on-click" target=”_blank”>Formula</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#custom-on-click" target=”_blank”>Formula</a></div>
               <textarea class="sdpi-item-value" id="customOnClickFormula" style="word-break: break-word;">
               </textarea>
             </div> 
@@ -212,13 +213,13 @@
           
           <div class="wrapper" id="conditionWrapper" style="">
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#toggle-condition" target=”_blank”>Condition</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#toggle-condition" target=”_blank”>Condition</a></div>
               <select class="sdpi-item-value select" id="condition" type="select">
                 <option value='removeAll'>Remove All</option>
               </select>
             </div>
             <div class='sdpi-item' id="conditionFunctionWrapper" style="">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#toggle-condition" target=”_blank”>Condition Function</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#toggle-condition" target=”_blank”>Condition Function</a></div>
               <select class="sdpi-item-value select" id="conditionFunction" type="select">
                 <option value='toggle'>Toggle Condition</option>
                 <option value='increase'>Increase</option>
@@ -229,14 +230,14 @@
 
           <div class="wrapper" id="cubConditionWrapper" style="display:none">
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#toggle-cub-condition" target=”_blank”>Condition Name</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#toggle-cub-condition" target=”_blank”>Condition Name</a></div>
               <input class="sdpi-item-value" id="cubConditionName" value="">
             </div>
           </div>
 
           <div class="wrapper" id="macroWrapper" style="display:none">
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#mode" target=”_blank”>Macro Mode</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#mode" target=”_blank”>Macro Mode</a></div>
               <select class="sdpi-item-value select" id="macroMode" type="select">
                 <option value='hotbar'>Hotbar</option>
                 <option value='visibleHotbar'>Visible Hotbar</option>
@@ -247,13 +248,13 @@
             </div>
 
             <div class="sdpi-item">
-              <div class="sdpi-item-label" id="macroNumberLabel"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#macro-number" target=”_blank”>Macro Number</a></div>
+              <div class="sdpi-item-label" id="macroNumberLabel"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#macro-number" target=”_blank”>Macro Number</a></div>
               <input class="sdpi-item-value" id="macroId" value="">
             </div>
 
             <div class="wrapper" id="macroArgsWrapper" style="display:none">
               <div class="sdpi-item">
-                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#furnace-arguments-1" target=”_blank”>Advanced Macro Arguments</a></div>
+                <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#furnace-arguments-1" target=”_blank”>Advanced Macro Arguments</a></div>
                 <input class="sdpi-item-value" id="macroArgs" value="">
               </div>
             </div>
@@ -262,7 +263,7 @@
 
           <div class="wrapper" id="rollWrapper" style="display:none">
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Roll</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Roll</a></div>
               <select class="sdpi-item-value select" id="roll" type="select">
                 <option value='ability'>Ability Check</option>
                 <option value='save'>Saving Throw</option>
@@ -272,7 +273,7 @@
 
             <div class="wrapper" id="rollAbilityContainer" style="display:none">
               <div class="sdpi-item">
-                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Ability</a></div>
+                <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Ability</a></div>
                 <select class="sdpi-item-value select" id="rollAbility" type="select">
                 </select>
               </div>
@@ -280,7 +281,7 @@
 
             <div class="wrapper" id="rollSaveContainer" style="display:none">
               <div class="sdpi-item">
-                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Save</a></div>
+                <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Save</a></div>
                 <select class="sdpi-item-value select" id="rollSave" type="select">
                 </select>
               </div>
@@ -288,14 +289,14 @@
 
             <div class="wrapper" id="rollSkillContainer" style="display:none">
               <div class="sdpi-item">
-                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Skill</a></div>
+                <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Skill</a></div>
                 <select class="sdpi-item-value select" id="rollSkill" type="select">
                 </select>
               </div>
             </div>
 
             <div class="sdpi-item">
-              <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Roll Mode</a></div>
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#dice-roll" target=”_blank”>Roll Mode</a></div>
               <select class="sdpi-item-value select" id="rollMode" type="select">
                 <option value='default'>Default</option>
                 <option value='normal'>Normal Roll</option>
@@ -311,7 +312,7 @@
             <h4 class="expandable"><img src="../right.png" class="expandableIcon" style="width:12px">Vision - Basic Configuration</h4>
             <div class="collapsed">
               <div class="sdpi-item">
-                <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#set-vision--light" target=”_blank”>Vision Enabled</a></div>
+                <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#set-vision--light" target=”_blank”>Vision Enabled</a></div>
                 <select class="sdpi-item-value select" id="visionEnabled" type="select">
                   <option value='noChange'>No Change</option>
                   <option value='toggle'>Toggle</option>
@@ -532,7 +533,7 @@
         </div>
         
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#icon" target=”_blank”>Icon</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#icon" target=”_blank”>Icon</a></div>
           <select class="sdpi-item-value select" id="icon" type="select">
             <option value='none'>None</option>
             <option value='tokenIcon'>Token Icon</option>
@@ -542,13 +543,13 @@
         </div>
 
         <div type="checkbox" class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#display-name-1" target=”_blank”>Display Name</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#display-name-1" target=”_blank”>Display Name</a></div>
           <input class="sdpi-item-value" id="displayName" type="checkbox">
           <label for="displayName"><span></span></label>
         </div>
       
         <div type="range" class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#background" target=”_blank”>Background</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#background" target=”_blank”>Background</a></div>
           <div class="sdpi-item-value">
               <input type="color" id="background" value="#000000">
           </div>
@@ -558,7 +559,7 @@
     <div class="wrapper" id='itemWrapper' style="display:none">
       <div class="wrapper" id='inventoryWrapper' style="display:none">
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#typespell-level" target=”_blank”>Type</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#typespell-level" target=”_blank”>Type</a></div>
           <select class="sdpi-item-value select" id="inventoryType" type="select">
             <option value='any'>Any</option>
           </select>
@@ -566,7 +567,7 @@
       </div>
       <div class="wrapper" id='featureWrapper' style="display:none">
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#typespell-level" target=”_blank”>Type</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#typespell-level" target=”_blank”>Type</a></div>
           <select class="sdpi-item-value select" id="featureType" type="select">
             <option value='any'>Any</option>
           </select>
@@ -575,13 +576,13 @@
 
       <div class="wrapper" id='spellWrapper' style="display:none">
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#typespell-level" target=”_blank”>Spell Level</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#typespell-level" target=”_blank”>Spell Level</a></div>
           <select class="sdpi-item-value select" id="spellType" type="select">
             <option value='any'>Any</option>
           </select>
         </div>
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#typespell-level" target=”_blank”>Spell Type</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#typespell-level" target=”_blank”>Spell Type</a></div>
           <select class="sdpi-item-value select" id="spellMode" type="select">
             <option value='any'>Any</option>
           </select>
@@ -590,7 +591,7 @@
 
       <div class="wrapper" id='inventorySelectionWrapper' style="">
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#selection" target=”_blank”>Selection</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#selection" target=”_blank”>Selection</a></div>
           <select class="sdpi-item-value select" id="inventorySelection" type="select">
             <option value='order'>Order</option>
             <option value='name'>Name</option>
@@ -600,18 +601,18 @@
       </div>
       
       <div class="sdpi-item" id="itemNrWrapper" style="">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#selection" target=”_blank”>Nr</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#selection" target=”_blank”>Nr</a></div>
         <input class="sdpi-item-value" id="itemNr" value="1">
       </div>
 
       <div class="sdpi-item" id="itemNameWrapper" style="display:none">
-        <div class="sdpi-item-label" id="itemNameLabel"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#selection" target=”_blank”>Name</a></div>
+        <div class="sdpi-item-label" id="itemNameLabel"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#selection" target=”_blank”>Name</a></div>
         <input class="sdpi-item-value" id="itemName" value="">
       </div>
 
       <div class="wrapper" id='itemRollModeWrapper' style="">
         <div class="sdpi-item">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#roll-mode" target=”_blank”>Roll Mode</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#roll-mode" target=”_blank”>Roll Mode</a></div>
           <select class="sdpi-item-value select" id="weaponRollMode" type="select">
 
           </select>
@@ -619,22 +620,22 @@
       </div>
 
       <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#display-usesquantity" target=”_blank”>Display Uses/Quantity</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#display-usesquantity" target=”_blank”>Display Uses/Quantity</a></div>
         <input class="sdpi-item-value" id="displayUses" type="checkbox">
         <label for="displayUses"><span></span></label>
       </div>
       <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#display-name" target=”_blank”>Display Name</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#display-name" target=”_blank”>Display Name</a></div>
         <input class="sdpi-item-value" id="displayInventoryName" type="checkbox">
         <label for="displayInventoryName"><span></span></label>
       </div>
       <div type="checkbox" class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#display-icon" target=”_blank”>Display Icon</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#display-icon" target=”_blank”>Display Icon</a></div>
         <input class="sdpi-item-value" id="displayInventoryIcon" type="checkbox">
         <label for="displayInventoryIcon"><span></span></label>
       </div>
       <div type="range" class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#background" target=”_blank”>Background</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#background" target=”_blank”>Background</a></div>
         <div class="sdpi-item-value">
             <input type="color" id="inventoryBackground" value="#000000">
         </div>
@@ -643,25 +644,25 @@
 
     <div class="wrapper" id='dispOffsetWrapper'>
       <div class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#prepend-title-1" target=”_blank”>Prepend Title</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#prepend-title-1" target=”_blank”>Prepend Title</a></div>
         <input class="sdpi-item-value" id="offsetPrepend" value="">
       </div>
     </div>
 
     <div class="spdi-wrapper" id="itemOffsetWrapper" style="display:none">
       <div class="sdpi-item" id="offsetContainer">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#offsets" target=”_blank”>Offset</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#offsets" target=”_blank”>Offset</a></div>
         <input class="sdpi-item-value" id="itemOffset" value=0>
       </div>
       <div class="spdi-wrapper" id="ringColorWrapper" style="">
         <div type="range" class="sdpi-item" id="onColorContainer">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#on-color" target=”_blank”>On Color</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#on-color" target=”_blank”>On Color</a></div>
           <div class="sdpi-item-value">
               <input type="color" id="onRing" value="#00FF00">
           </div>
         </div>
         <div type="range" class="sdpi-item" id="offColorContainer">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Token-Action#off-color" target=”_blank”>Off Color</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#off-color" target=”_blank”>Off Color</a></div>
           <div class="sdpi-item-value">
               <input type="color" id="offRing" value="#000000">
           </div>
@@ -669,7 +670,10 @@
       </div>
     </div>
 
-    
+    <div class="sdpi-item" id="buttonIdContainer">
+      <div class="sdpi-item-label" id="buttonIdLabel"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Change-Buttons-Using-Macros" target=”_blank”>Button Identifier</a></div>
+      <input class="sdpi-item-value" id="buttonId" value="">
+    </div>
 
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>

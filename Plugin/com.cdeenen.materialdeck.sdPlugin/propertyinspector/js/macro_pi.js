@@ -32,7 +32,7 @@ function setUI(returnValue={key:null,value:null}) {
     }
 
     element = document.querySelector('#macroNumberLabel');
-    if (element != null) element.innerHTML = macroMode == 'name' ? '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#macro-name" target=”_blank”>Macro Name</a>' : '<a href="https://github.com/CDeenen/MaterialDeck/wiki/Macro-Action#macro-number" target=”_blank”>Macro Number</a>';
+    if (element != null) element.innerHTML = macroMode == 'name' ? '<a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#macro-name" target=”_blank”>Macro Name</a>' : '<a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#macro-number" target=”_blank”>Macro Number</a>';
 }
 
 function setSystemDependentElements() {

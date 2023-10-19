@@ -103,6 +103,19 @@
       "Tooltip": "Displays selected token information.",
       "UUID": "com.cdeenen.materialdeck.token",
       "PropertyInspectorPath": "PropertyInspector/token.html"
+    },
+    {
+      "Name": "Custom",
+      "Icon": "action/images/custom/MaterialFoundry",
+      "States": [
+        {
+          "Image": "action/images/custom/MaterialFoundry",
+          "TitleAlignment": "middle"
+        }
+      ],
+      "Tooltip": "Customizable action.",
+      "UUID": "com.cdeenen.materialdeck.custom",
+      "PropertyInspectorPath": "PropertyInspector/custom.html"
     }
   ], 
   "SDKVersion": 2,
@@ -114,8 +127,8 @@
   "Description": "Stream Deck plugin for the 'Material Deck' Foundry VTT module", 
   "Name": "Material Deck", 
   "Icon": "MaterialFoundry", 
-  "URL": "https://github.com/CDeenen/MaterialDeck_SD", 
-  "Version": "1.5.1.1",
+  "URL": "https://github.com/MaterialFoundry/MaterialDeck_SD", 
+  "Version": "1.6.0",
   "OS": [
     {
         "Platform": "mac", 

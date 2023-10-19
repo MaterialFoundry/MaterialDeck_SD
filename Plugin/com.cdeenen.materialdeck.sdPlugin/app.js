@@ -45,6 +45,7 @@ function connected(jsn) {
     actions[5] = 'com.cdeenen.materialdeck.other';
     actions[6] = 'com.cdeenen.materialdeck.external';
     actions[7] = 'com.cdeenen.materialdeck.scene';
+    actions[8] = 'com.cdeenen.materialdeck.custom';
     
 
     for (let i=0; i<actions.length; i++){

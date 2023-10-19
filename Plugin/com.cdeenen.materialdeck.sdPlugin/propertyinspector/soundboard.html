@@ -11,12 +11,12 @@
   <body>
     <div class="sdpi-wrapper" id="wrapper" style="display:none">
       <div class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Custom-Icons#icon-override-preferred" target=”_blank”>Icon Override</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Custom-Icons#icon-override-preferred" target=”_blank”>Icon Override</a></div>
         <input class="sdpi-item-value" id="iconOverride" value="">
       </div>
       
       <div class="sdpi-item">
-        <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Soundboard-Action#mode" target=”_blank”>Mode</a></div>
+        <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Soundboard-Action#mode" target=”_blank”>Mode</a></div>
         <select class="sdpi-item-value select" id="soundboardMode" type="select">
           <option value='playSound'>Play Sound</option>
           <option value='offset'>Offset</option>
@@ -27,49 +27,56 @@
       <div class="sub1">
         <div class="spdi-wrapper" id="playContainer" style="">
           <div class="sdpi-item">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Soundboard-Action#sound-number" target=”_blank”>Sound Nr</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Soundboard-Action#sound-number" target=”_blank”>Sound Nr</a></div>
             <input class="sdpi-item-value" id="soundNr" value="0">
           </div>
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Soundboard-Action#display-name" target=”_blank”>Display Name</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Soundboard-Action#display-name" target=”_blank”>Display Name</a></div>
             <input class="sdpi-item-value" id="displayName" type="checkbox">
             <label for="displayName"><span></span></label>
           </div>
           <div type="checkbox" class="sdpi-item">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Soundboard-Action#display-icon" target=”_blank”>Display Icon</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Soundboard-Action#display-icon" target=”_blank”>Display Icon</a></div>
             <input class="sdpi-item-value" id="displayIcon" type="checkbox">
             <label for="displayIcon"><span></span></label>
           </div>
         </div>
         <div class="spdi-wrapper" id="offsetContainer" style="display:none">
           <div class="sdpi-item">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Soundboard-Action#offset" target=”_blank”>Offset</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Soundboard-Action#offset" target=”_blank”>Offset</a></div>
             <input class="sdpi-item-value" id="offset" value="0">
           </div>  
         </div>
         <div class="spdi-wrapper" id="ringColorWrapper" style="">
           <div type="range" class="sdpi-item" id="onColorContainer">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Soundboard-Action#on-color-1" target=”_blank”>On Color</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Soundboard-Action#on-color-1" target=”_blank”>On Color</a></div>
             <div class="sdpi-item-value">
                 <input type="color" id="onRing" value="#00FF00">
             </div>
           </div>
           <div type="range" class="sdpi-item" id="offColorContainer">
-            <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Soundboard-Action#off-color-1" target=”_blank”>Off Color</a></div>
+            <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Soundboard-Action#off-color-1" target=”_blank”>Off Color</a></div>
             <div class="sdpi-item-value">
                 <input type="color" id="offRing" value="#000000">
             </div>
           </div>
         </div>
         <div type="range" class="sdpi-item" id="backgroundContainer">
-          <div class="sdpi-item-label"><a href="https://github.com/CDeenen/MaterialDeck/wiki/Soundboard-Action#background-1" target=”_blank”>Background</a></div>
+          <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Soundboard-Action#background-1" target=”_blank”>Background</a></div>
           <div class="sdpi-item-value">
               <input type="color" id="background" value="#000000">
           </div>
         </div>
       </div>
+
+      <div class="sdpi-item" id="buttonIdContainer">
+        <div class="sdpi-item-label" id="buttonIdLabel"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Change-Buttons-Using-Macros" target=”_blank”>Button Identifier</a></div>
+        <input class="sdpi-item-value" id="buttonId" value="">
+      </div>
+  
     </div>
 
+   
     <div class="sdpi-info-label hidden" style="top: -1000;" value=""></div>
     <script src="js/common.js"></script>
     <script src="js/common_pi.js"></script>
