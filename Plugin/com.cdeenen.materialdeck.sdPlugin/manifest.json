@@ -119,7 +119,7 @@
     }
   ], 
   "SDKVersion": 2,
-  "Author": "cdeenen",
+  "Author": "Material Foundry",
   "Category": "Material Deck",
   "CategoryIcon": "MaterialFoundry",
   "CodePath": "index.html", 
@@ -128,7 +128,7 @@
   "Name": "Material Deck", 
   "Icon": "MaterialFoundry", 
   "URL": "https://github.com/MaterialFoundry/MaterialDeck_SD", 
-  "Version": "1.6.0",
+  "Version": "1.6.1",
   "OS": [
     {
         "Platform": "mac", 
