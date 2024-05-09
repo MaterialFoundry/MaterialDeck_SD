@@ -3,14 +3,19 @@ function setUI(returnValue={key:null,value:null}) {
     let func = settings.combatTrackerFunction ? settings.combatTrackerFunction : 'startStop';
     let dispositionFilter = settings.dispositionFilter ? settings.dispositionFilter : 'all';
     let visibilityFilter = settings.visibilityFilter ? settings.visibilityFilter : 'none';
+    let sceneMode = settings.sceneMode ? settings.sceneMode : 'current';
     
     if (returnValue.key == 'combatTrackerMode') mode = returnValue.value;
     if (returnValue.key == 'combatTrackerFunction') func = returnValue.value;
+    if (returnValue.key == 'sceneMode') sceneMode = returnValue.value;
 
     displayElement(`#funcWrapper`,false);
     displayElement(`#combatantWrapper`,false);
     displayElement(`#turnDisplay`,false);
 
+    if (sceneMode == 'name') displayElement(`#sceneNameContainer`,true);
+    else displayElement(`#sceneNameContainer`,false);
+    
     if (mode == 'combatants' || mode == 'currentCombatant'){
         if (returnValue.key == 'dispositionFilter') dispositionFilter = returnValue.value; 
         if (returnValue.key == 'visibilityFilter') visibilityFilter = returnValue.value;
@@ -72,7 +77,7 @@ function setUI(returnValue={key:null,value:null}) {
         else
             displayElement(`#turnDisplay`,false);
 
-        if (func == 'turnDisplay' || func == 'startStop') displayElement(`#selectCombatantWrapper`,false);
+        if (func == 'turnDisplay' || func == 'startStop' || func == 'addTokens') displayElement(`#selectCombatantWrapper`,false);
     }
 }
 

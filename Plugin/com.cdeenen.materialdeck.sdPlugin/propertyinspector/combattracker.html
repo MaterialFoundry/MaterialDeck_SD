@@ -14,7 +14,7 @@
         <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Custom-Icons#icon-override-preferred" target=”_blank”>Icon Override</a></div>
         <input class="sdpi-item-value" id="iconOverride" value="">
       </div>
-      
+
       <div class="sdpi-item">
         <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Combat-Tracker-Action#mode" target=”_blank”>Mode</a></div>
         <select class="sdpi-item-value select" id="combatTrackerMode" type="select">
@@ -37,6 +37,7 @@
               <option value='turnDisplay'>Turn Display</option>
               <option value='rollInitiative'>Roll Initiative (All)</option>
               <option value='rollInitiativeNPC'>Roll Initiative (NPCs)</option>
+              <option value='addTokens'>Add/remove selected tokens to combat</option>
             </select>
           </div>
           <div id="selectCombatantWrapper" style="display:none">
@@ -67,6 +68,29 @@
 
       <div class="wrapper" id="combatantWrapper" style="">
         <div class="sub1">
+
+          <div class="sdpi-item">
+            <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Combat-Tracker-Action#scene" target=”_blank”>Scene</a></div>
+            <select class="sdpi-item-value select" id="sceneMode" type="select">
+              <option value='current'>Current Scene</option>
+              <option value='active'>Active Scene</option>
+              <option value='name'>Scene by Name</option>
+              <option value='unlinked'>Unlinked Combat</option>
+            </select>
+          </div>
+    
+          <div class="sub2">
+            <div class="sdpi-item" id="sceneNameContainer">
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Combat-Tracker-Action#scene" target=”_blank”>Scene Name</a></div>
+              <input class="sdpi-item-value" id="sceneName" value="">
+            </div>
+      
+            <div class="sdpi-item">
+              <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Combat-Tracker-Action#encounter-nr" target=”_blank”>Encounter Nr</a></div>
+              <input class="sdpi-item-value" id="encounterNr" value="" placeholder="visible/first">
+            </div>
+          </div>
+
           <div class="sdpi-item" style="">
             <div class="sdpi-item-label"><a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#stats" target=”_blank”>Stats</a></div>
             <select class="sdpi-item-value select" id="stats" type="select">

@@ -20,6 +20,7 @@ let journalMode = settings.journalMode ? settings.journalMode : 'openJournal';
     displayElement(`#globalVolumeContainer`,false);
     displayElement(`#journalContainer`,false);
     displayElement(`#openPartySheetContainer`, false);
+    displayElement(`#cycleTokensContainer`, false);
 
     if (mode == 'pause'){    //pause
         displayElement(`#pauseContainer`,true);
@@ -114,6 +115,9 @@ let journalMode = settings.journalMode ? settings.journalMode : 'openJournal';
     else if (mode == 'openPartySheet') {
         displayElement(`#openPartySheetContainer`, true);
         displayElement(`#ringColorWrapper`,true);
+    }
+    else if (mode == 'cycleTokens') {
+        displayElement(`#cycleTokensContainer`, true);
     }
 }
 

@@ -9,6 +9,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "Combat tracker.",
       "UUID": "com.cdeenen.materialdeck.combattracker",
       "PropertyInspectorPath": "PropertyInspector/combattracker.html"
@@ -22,6 +23,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "External Modules.",
       "UUID": "com.cdeenen.materialdeck.external",
       "PropertyInspectorPath": "PropertyInspector/external.html"
@@ -35,6 +37,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "Trigger a macro.",
       "UUID": "com.cdeenen.materialdeck.macro",
       "PropertyInspectorPath": "PropertyInspector/macro.html"
@@ -48,6 +51,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "Other functions.",
       "UUID": "com.cdeenen.materialdeck.other",
       "PropertyInspectorPath": "PropertyInspector/other.html"
@@ -61,6 +65,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "Playlist Control.",
       "UUID": "com.cdeenen.materialdeck.playlist",
       "PropertyInspectorPath": "PropertyInspector/playlist.html"
@@ -74,6 +79,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "Scenes.",
       "UUID": "com.cdeenen.materialdeck.scene",
       "PropertyInspectorPath": "PropertyInspector/scene.html"
@@ -87,6 +93,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "Soundboard.",
       "UUID": "com.cdeenen.materialdeck.soundboard",
       "PropertyInspectorPath": "PropertyInspector/soundboard.html"
@@ -100,6 +107,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "Displays selected token information.",
       "UUID": "com.cdeenen.materialdeck.token",
       "PropertyInspectorPath": "PropertyInspector/token.html"
@@ -113,6 +121,7 @@
           "TitleAlignment": "middle"
         }
       ],
+      "Controllers": ["Keypad", "Information"],
       "Tooltip": "Customizable action.",
       "UUID": "com.cdeenen.materialdeck.custom",
       "PropertyInspectorPath": "PropertyInspector/custom.html"
@@ -128,7 +137,7 @@
   "Name": "Material Deck", 
   "Icon": "MaterialFoundry", 
   "URL": "https://github.com/MaterialFoundry/MaterialDeck_SD", 
-  "Version": "1.6.1",
+  "Version": "1.7.0",
   "OS": [
     {
         "Platform": "mac", 
