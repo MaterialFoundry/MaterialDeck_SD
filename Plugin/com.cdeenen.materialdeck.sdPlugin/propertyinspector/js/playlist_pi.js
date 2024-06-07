@@ -34,7 +34,7 @@ function setUI(returnValue={key:null,value:null}) {
     if (playlistMode == 'track' || playlistMode == 'trackName') {
         if (playlistType == 'incDecVol' || playlistType == 'setVol') displayElement(`#trackVolumeWrapper`,true);
         displayElement(`#dispTrackVolume`,true);
-addSelectOption('playlistType','incDecVol','Increase/Decrease Volume');
+        addSelectOption('playlistType','incDecVol','Increase/Decrease Volume');
         addSelectOption('playlistType','setVol','Set Volume');
     }
     else if (playlistMode == 'playlist' || playlistMode == 'playlistName') {
@@ -50,8 +50,8 @@ addSelectOption('playlistType','incDecVol','Increase/Decrease Volume');
     else if (playlistMode == 'trackName' || playlistMode == 'playlistName') {
         removeSelectOption('playlistType','offset');
         removeSelectOption('playlistType','relativeOffset');
-        document.getElementById('playlistNrLabel').innerHTML = 'Playlist Name';
-        document.getElementById('trackNrLabel').innerHTML = 'Track Name';
+        document.getElementById('playlistNrLabel').innerHTML = 'Playlist Name/ID';
+        document.getElementById('trackNrLabel').innerHTML = 'Track Name/ID';
     }
     document.getElementById('playlistType').value = playlistType;
 }

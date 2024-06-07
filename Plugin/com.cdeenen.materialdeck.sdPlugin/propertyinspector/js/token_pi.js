@@ -85,9 +85,6 @@ function setUI(returnValue={key:null,value:null}) {
         }
         $SD.connection.send(JSON.stringify(json));
     }
-    //else if (returnValue.key == 'pageWideToken') {
-    //    $SD.emit('piDataChanged', {key:'pageSettings',value:null});
-    //}
 
     else if (returnValue.key == 'tokenName' && pageWideToken) {
         pageSettings.tokenId = returnValue.value;
@@ -120,15 +117,6 @@ function setUI(returnValue={key:null,value:null}) {
 
     if (selection != 'selected') {
         displayElement('#tokenNameWrapper',true);
-    }
-    
-    if (selection == 'tokenId' || selection == 'actorId') {
-        element = document.querySelector('#tokenNameLabel');
-        if (element != null) element.innerHTML = '<a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#tokenactor-id" target=”_blank”>Id</a>';
-    }
-    else if (selection == 'tokenName' || selection == 'actorName') {
-        element = document.querySelector('#tokenNameLabel');
-        if (element != null) element.innerHTML = '<a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Token-Action#tokenactor-name" target=”_blank”>Name</a>';
     }
 
     if (mode == 'token') {

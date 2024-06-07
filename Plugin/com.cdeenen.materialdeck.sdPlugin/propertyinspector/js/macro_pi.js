@@ -22,7 +22,7 @@ function setUI(returnValue={key:null,value:null}) {
             displayElement(`#backgroundContainer`,true);
         }
     }
-    else if (macroMode == 'name') {
+    else if (macroMode == 'name' || macroMode == 'id') {
         displayElement(`#macroTriggerStuff`,true);
         displayElement(`#macroArgsWrapper`,true);
     }
@@ -31,8 +31,11 @@ function setUI(returnValue={key:null,value:null}) {
         displayElement(`#backgroundContainer`,true);
     }
 
-    element = document.querySelector('#macroNumberLabel');
-    if (element != null) element.innerHTML = macroMode == 'name' ? '<a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#macro-name" target=”_blank”>Macro Name</a>' : '<a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#macro-number" target=”_blank”>Macro Number</a>';
+    let element = document.querySelector('#macroNumberLabel');
+    if (element != null) {
+        if (macroMode == 'name') element.innerHTML = '<a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#macro-name" target=”_blank”>Name/ID</a>';
+        else element.innerHTML = '<a href="https://github.com/MaterialFoundry/MaterialDeck/wiki/Macro-Action#macro-number" target=”_blank”>Macro Number</a>'
+    }
 }
 
 function setSystemDependentElements() {

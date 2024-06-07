@@ -137,7 +137,7 @@
   "Name": "Material Deck", 
   "Icon": "MaterialFoundry", 
   "URL": "https://github.com/MaterialFoundry/MaterialDeck_SD", 
-  "Version": "1.7.0",
+  "Version": "1.7.2",
   "OS": [
     {
         "Platform": "mac", 
