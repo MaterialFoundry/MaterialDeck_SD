@@ -1,1 +1,0 @@
-scene.png & scene@2x.png: Edited from https://fontawesome.com/icons/images?style=regular

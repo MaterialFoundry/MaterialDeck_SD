@@ -1,0 +1,12 @@
+# Node.js
+node_modules/
+
+# Stream Deck files
+*.sdPlugin/bin
+*.sdPlugin/logs
+
+# VS Code files
+.vscode/
+
+# Generated plugin
+com.material-foundry.material-deck.sdPlugin/
