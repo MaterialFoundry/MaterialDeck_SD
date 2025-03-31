@@ -1,0 +1,7 @@
+mystery-man.png: Foundry's icon folder, converted from .svg
+scene.png: Edited from https://fontawesome.com/icons/images?style=regular
+other.png: Made using https://www.elgato.com/en/gaming/keycreator
+macro.png: Foundry's icon folder, converted from .svg, original name: dice-target.svg
+external.png: Edited from https://fontawesome.com/icons/external-link-alt?style=solid
+combattracker.png: Edited from https://fontawesome.com/icons/fist-raised?style=solid
+audio.png: Edited from https://fontawesome.com/icons/music?style=solid

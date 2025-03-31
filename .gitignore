@@ -7,6 +7,3 @@ node_modules/
 
 # VS Code files
 .vscode/
-
-# Generated plugin
-com.material-foundry.material-deck.sdPlugin/

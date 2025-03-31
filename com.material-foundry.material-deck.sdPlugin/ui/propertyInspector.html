@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <title>Material Deck - Property Inspector</title>
+    <meta charset="utf-8" />
+    <script src="https://sdpi-components.dev/releases/v3/sdpi-components.js"></script>
+    <link rel="stylesheet" href="css/sdpi.css">
+</head>
+
+<body>
+    <div class="sdpi-wrapper" id="settings" style="height:auto; display:none">
+       
+    </div>
+
+    <div class="sdpi-wrapper" id="loading" style="height:auto">
+        <div style="width:70%; padding-left:25%; text-align: center;">
+            <i>
+                Loading settings<br>
+                Please wait
+            </i>
+        </div>
+    </div>
+
+    <div class="sdpi-wrapper" id="noConnect" style="height:auto; display:none">
+        <div style="width:70%; padding-left:30%;">
+            Foundry VTT is not connected.<br>
+            Please check the following:
+            <ul style="width:80%; height: auto; max-height:100%; padding-left: 10%; overflow: auto">
+                <li>Foundry is running</li>
+                <li>Material Deck is installed and enabled, see <a href="https://materialfoundry.github.io/MaterialDeck/gettingStarted/installation/#module" target="_blank">here</a></li>
+                <li>Material Deck is up-to-date, see <a href="https://materialfoundry.github.io/MaterialDeck/gettingStarted/versions" target="_blank">here</a></li>
+                <li>The Stream Deck plugin is up-to-date, see <a href="https://materialfoundry.github.io/MaterialDeck/gettingStarted/versions" target="_blank">here</a></li>
+                <li>The connection is configured correctly, see <a href="https://materialfoundry.github.io/MaterialDeck/moduleSettings/moduleSettings/" target="_blank">here</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <hr style="margin-left:5%; width:90%;">
+    <sdpi-item>
+        <sdpi-button id="settingsButton">
+            Global Plugin Settings
+        </sdpi-button>
+    </sdpi-item>
+
+    <!-- Settings -->
+    <div id="settingsMenu" class="modal">
+        <!-- Settings content -->
+        <div class="modal-content">
+            <span class="close" id="closeSettingsMenu">&times;</span>
+            <div id="popupContent">
+                <h3>Global Plugin Settings</h3>
+                <div class="sdpi-item modal-item">
+                    <div class="sdpi-item-label modal-item-label">Port</div>
+                    <input class="sdpi-item-value" type="number" id="globalPortValue" value="3001">
+                </div>
+                <i>Set the port for the connection between the Stream Deck app and Foundry client.<br>
+                    Must be the same as configured in the Material Deck module settings.</i>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer" style="width:70%; padding-left:25%;text-align: center;">
+        <hyperlink data-url="https://materialfoundry.github.io/MaterialDeck/">Documentation</hyperlink> | 
+        <hyperlink data-url="https://github.com/MaterialFoundry/MaterialDeck/">GitHub</hyperlink> | 
+        <hyperlink data-url="https://discord.gg/3hd4G6TkmA/">Discord</hyperlink>
+    </div>
+    <script type="module" src="propertyInspector.js"></script>
+</body>
+
+</html>

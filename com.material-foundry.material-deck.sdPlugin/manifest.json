@@ -1,0 +1,166 @@
+{
+	"Name": "Material Deck",
+	"Version": "2.0.0.0",
+	"Author": "Material Foundry",
+	"PropertyInspectorPath": "ui/propertyInspector.html",
+	"Actions": [
+		{
+			"Name": "Audio",
+			"Icon": "imgs/actions/audio",
+			"States": [
+				{
+					"Image": "imgs/actions/audio",
+					"TitleAlignment": "middle"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"Tooltip": "Audio",
+			"UUID": "com.material-foundry.material-deck.audio"
+		},
+		{
+			"Name": "Combat Tracker",
+			"Icon": "imgs/actions/combattracker",
+			"States": [
+				{
+					"Image": "imgs/actions/combattracker",
+					"TitleAlignment": "middle"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"Tooltip": "Combat tracker",
+			"UUID": "com.material-foundry.material-deck.combattracker"
+		},
+		{
+			"Name": "Custom Actions",
+			"Icon": "imgs/actions/MaterialFoundryGS",
+			"States": [
+				{
+					"Image": "imgs/actions/MaterialFoundryGS",
+					"TitleAlignment": "middle"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"Tooltip": "Customizable action",
+			"UUID": "com.material-foundry.material-deck.custom"
+		},
+		{
+			"Name": "External Modules",
+			"Icon": "imgs/actions/external",
+			"States": [
+				{
+					"Image": "imgs/actions/external",
+					"TitleAlignment": "middle"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"Tooltip": "External Modules",
+			"UUID": "com.material-foundry.material-deck.external"
+		},
+		{
+			"Name": "Macro",
+			"Icon": "imgs/actions/macro",
+			"States": [
+				{
+					"Image": "imgs/actions/macro",
+					"TitleAlignment": "middle"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"Tooltip": "Macro",
+			"UUID": "com.material-foundry.material-deck.macro"
+		},
+		{
+			"Name": "Other Actions",
+			"Icon": "imgs/actions/other",
+			"States": [
+				{
+					"Image": "imgs/actions/other",
+					"TitleAlignment": "middle"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"Tooltip": "Other functions",
+			"UUID": "com.material-foundry.material-deck.other"
+		},
+		{
+			"Name": "Scene",
+			"Icon": "imgs/actions/scene",
+			"States": [
+				{
+					"Image": "imgs/actions/scene",
+					"TitleAlignment": "middle"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"Tooltip": "Scenes",
+			"UUID": "com.material-foundry.material-deck.scene"
+		},
+		{
+			"Name": "Token",
+			"Icon": "imgs/actions/mystery-man",
+			"States": [
+				{
+					"Image": "imgs/actions/mystery-man",
+					"TitleAlignment": "middle"
+				}
+			],
+			"Controllers": [
+				"Keypad"
+			],
+			"Tooltip": "Displays selected token information",
+			"UUID": "com.material-foundry.material-deck.token"
+		}
+	],
+	"Category": "Material Deck",
+	"CategoryIcon": "imgs/plugin/category-icon",
+	"CodePath": "bin/plugin.js",
+	"Description": "Foundry VTT integration",
+	"Icon": "imgs/plugin/marketplace",
+	"SDKVersion": 2,
+	"Software": {
+		"MinimumVersion": "6.5"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "10.15"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Nodejs": {
+		"Version": "20",
+		"Debug": "enabled"
+	},
+	"UUID": "com.material-foundry.material-deck",
+	"Profiles": [
+		{
+			"Name": "profiles/MaterialDeck",
+			"DeviceType": 0,
+			"Readonly": false,
+			"DontAutoSwitchWhenInstalled": false
+		},
+		{
+			"Name": "profiles/MaterialDeck_XL",
+			"DeviceType": 2,
+			"Readonly": false,
+			"DontAutoSwitchWhenInstalled": false
+		}
+	]
+}
