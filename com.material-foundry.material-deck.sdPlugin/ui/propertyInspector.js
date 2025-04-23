@@ -24,7 +24,6 @@ SD.registerEvent('piChanged', onPiChanged);
  * Callback function to handle data sent from the plugin
  */
 function onSendToPropertyInspector(ev) {
-    
     const payload = ev.payload;
 
     //If settingsconfig is received
@@ -124,7 +123,6 @@ SD.testFontSize = () => {
     let fontData = [];
     const testString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 .,;:/?`~!@#$%^&*()_+-=<>[]{}"
     for (let f of fontList) {
-        //console.log('FONT', f)
         let d = {
             fontFamily: f
         }
@@ -166,18 +164,12 @@ SD.testFontSize = () => {
 
         fontData.push(d);
     }
-    //console.log('fontData', fontData)
-    //console.log(JSON.stringify(fontData))
 }
 
 SD.measureText = (text, font, size) => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
-    
-        ctx.font = `${size}pt ${font}`;
-        //console.log('f', font, ctx.measureText(text).width)
-    
-    
+    ctx.font = `${size}pt ${font}`;
     return ctx.measureText(text).width;
 };
 
@@ -208,3 +200,4 @@ window.addEventListener('DOMContentLoaded',function () {
     })
 */
 });
+

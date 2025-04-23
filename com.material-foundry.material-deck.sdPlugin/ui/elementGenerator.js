@@ -244,6 +244,8 @@ function generateSelectElement(data) {
     return elmnt;
 }
 
+const indentSpace = String.fromCharCode(8194)+String.fromCharCode(8194)+String.fromCharCode(8194);
+
 function createSelect(data, className='', minWidth) {
     let select = document.createElement("select");
     select.setAttribute("class", `sdpi-item-value select ${className}`);
@@ -261,14 +263,27 @@ function createSelect(data, className='', minWidth) {
             optGroupElmnt.setAttribute("label", option.label);
             for (let child of option.children) {
                 let optionElmnt = document.createElement("option");
+
+                if (child.folder) {
+                    optionElmnt.setAttribute('style', 'font-style:italic');
+                    optionElmnt.setAttribute('disabled', 'true')
+                } 
+
+                let indent = '';
+                if (child.indent) {
+                    if (parseInt(child.indent) > 1) {
+                        for (let i=0; i<parseInt(child.indent); i++) indent += indentSpace;
+                    }
+                    else indent = indentSpace;
+                }
                 
                 if (child.permission === false) {
                     optionElmnt.value = child.value;
-                    optionElmnt.text = child.label + " (No Permission)";
+                    optionElmnt.text = indent + child.label + " (No Permission)";
                 }
                 else {
                     optionElmnt.value = child.value;
-                    optionElmnt.text = child.label;
+                    optionElmnt.text = indent + child.label;         
                 }
                 optGroupElmnt.appendChild(optionElmnt);
             }
@@ -277,13 +292,27 @@ function createSelect(data, className='', minWidth) {
         }
         
         let optionElmnt = document.createElement("option");
+
+        if (option.folder) {
+            optionElmnt.setAttribute('style', 'font-style:italic');
+            optionElmnt.setAttribute('disabled', 'true')
+        } 
+
+        let indent = '';
+        if (option.indent) {
+            if (parseInt(option.indent) > 1) {
+                for (let i=0; i<parseInt(option.indent); i++) indent += indentSpace;
+            }
+            else indent = indentSpace;
+        }
+
         if (option.permission === false) {
             optionElmnt.value = option.value;
-            optionElmnt.text = option.label + " (No Permission)";
+            optionElmnt.text = indent + option.label + " (No Permission)";
         }
         else {
             optionElmnt.value = option.value;
-            optionElmnt.text = option.label;
+            optionElmnt.text = indent + option.label;
         }
         select.add(optionElmnt);
     }
@@ -297,10 +326,20 @@ function createSelect(data, className='', minWidth) {
     else {
         if (data.options.length === 0) 
             select.value = '';
-        else if (data.options[0].children)
-            select.value = data.options[0].children?.length > 0 ? data.options[0].children[0].value : '';
-        else
-            select.value = data.options[0].value;
+        else {
+            let selectedOption;
+            for (let option of data.options) {
+                if (option.folder || option.permission === false) continue;
+                selectedOption = option;
+                break;
+            }
+
+            if (selectedOption.children)
+                select.value = selectedOption.children?.length > 0 ? selectedOption.children[0].value : '';
+            else
+                select.value = selectedOption.value;
+        }
+        
         
         SD.saveSetting({ key: data.id, value: select.value }, false);
     }
@@ -569,7 +608,7 @@ function generateTableElement(data) {
             else if (data.rowPermissions && data.rowPermissions[row] === false) rowElmnt.style.display = "none"
             rowElmnt.style.maxWidth = "30%"
             let subElementData = data.rows[row][column];
-            //console.log('elmntData', subElementData.id, subElementData.isVisible, subElementData)
+
             if (subElementData.type === 'label') {
                 let labelElmnt = document.createElement('div');
                 labelElmnt.innerHTML = subElementData.label;

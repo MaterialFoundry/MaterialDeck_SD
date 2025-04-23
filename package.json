@@ -1,7 +1,9 @@
 {
     "scripts": {
         "build": "rollup -c",
-        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.material-foundry.material-deck\""
+        "watch": "rollup -c -w --watch.onEnd=\"streamdeck restart com.material-foundry.material-deck\"",
+        "validate": "streamdeck validate com.material-foundry.material-deck.sdPlugin",
+        "package": "streamdeck pack com.material-foundry.material-deck.sdPlugin"
     },
     "type": "module",
     "devDependencies": {

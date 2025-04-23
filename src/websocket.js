@@ -7,7 +7,7 @@ export class Websocket {
     ip = "localhost";
     port;
     buffer = [];
-
+ 
     async start(port) {
 
         if (!port) {

@@ -8,6 +8,3 @@ streamDeck.actions.registerAction(new IncrementCounter());
 // Finally, connect to the Stream Deck.
 streamDeck.connect();
 websocketServer.connect();
-console.log('test');
-
-

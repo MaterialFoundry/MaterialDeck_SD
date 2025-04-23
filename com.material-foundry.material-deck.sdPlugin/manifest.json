@@ -1,6 +1,6 @@
 {
 	"Name": "Material Deck",
-	"Version": "2.0.0.0",
+	"Version": "2.0.1.0",
 	"Author": "Material Foundry",
 	"PropertyInspectorPath": "ui/propertyInspector.html",
 	"Actions": [
@@ -128,7 +128,8 @@
 	"Category": "Material Deck",
 	"CategoryIcon": "imgs/plugin/category-icon",
 	"CodePath": "bin/plugin.js",
-	"Description": "Foundry VTT integration",
+	"Description": "Foundry VTT integration for the Stream Deck. Allows you to, for example, control tokens, control playlists, execute macros and display and control the combat tracker.<br><br>Requires the <a href=\"https://foundryvtt.com/packages/materialdeck-premium\">Material Deck Premium</a> Foundry module to be installed and enabled.",
+	"URL": "https://materialfoundry.github.io/MaterialDeck",
 	"Icon": "imgs/plugin/marketplace",
 	"SDKVersion": 2,
 	"Software": {

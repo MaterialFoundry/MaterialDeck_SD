@@ -15,7 +15,7 @@ let syncTable = {};
 let imageBuffer = new ImageBuffer;
 
 export function debug() {
-    streamDeck.logger.debug(...arguments);
+    streamDeck.logger.debug(...arguments); 
 }
 
 export function info() {
